@@ -36,13 +36,13 @@
 }
 
 /* =========================================================
-   SOPHISTICATED MIDNIGHT NAVY DARK THEME SYSTEM
+   LUXURY MIDNIGHT BLACK & GOLD & ELECTRIC BLUE THEME SYSTEM
    ========================================================= */
 
 html.dark,
 body.dark,
 .dark {
-  background-color: #06090F !important;
+  background-color: #0B0B0F !important;
   color: #F8FAFC !important;
   color-scheme: dark;
 }
@@ -50,7 +50,7 @@ body.dark,
 html.dark #root,
 body.dark #root,
 .dark #root {
-  background-color: #06090F !important;
+  background-color: #0B0B0F !important;
   color: #F8FAFC !important;
 }
 
@@ -60,7 +60,7 @@ body.dark #root,
 }
 
 .gold-glow-text {
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.45), 0 0 24px rgba(243, 198, 68, 0.25);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.45), 0 0 24px rgba(212, 175, 55, 0.25);
 }
 
 .gold-glow-subtle {
@@ -68,25 +68,25 @@ body.dark #root,
 }
 
 .electric-glow {
-  text-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+  text-shadow: 0 0 12px rgba(0, 180, 255, 0.45);
 }
 
 .gold-border-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-  border: 1px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.5);
 }
 
 /* Dark Mode Smooth Canvas & Card Hierarchy */
 .dark .bg-\[\#F5F7FA\] {
-  background-color: #06090F;
+  background-color: #0B0B0F;
 }
 
 .dark input,
 .dark select,
 .dark textarea {
-  background-color: #0F1735;
+  background-color: #12121A;
   color: #F8FAFC;
-  border-color: #1E2B58;
+  border-color: #222230;
 }
 
 .dark input::placeholder,
@@ -97,15 +97,15 @@ body.dark #root,
 .dark input:focus,
 .dark select:focus,
 .dark textarea:focus {
-  border-color: #3B82F6;
-  background-color: #131E44;
+  border-color: #00B4FF;
+  background-color: #161622;
 }
 
 .dark .text-blue-600,
 .dark .text-blue-700,
 .dark .text-blue-800,
 .dark .text-blue-900 {
-  color: #4C7CFF !important;
+  color: #00B4FF !important;
 }
 
 /* Primary Dark Navy Text -> White / Light Grey in Dark Mode */
@@ -132,7 +132,7 @@ body.dark #root,
 .dark .border-slate-300,
 .dark .border-blue-100,
 .dark .border-blue-200 {
-  border-color: #24336A !important;
+  border-color: #222230 !important;
 }
 
 .dark .shadow-xs,
@@ -140,16 +140,16 @@ body.dark #root,
 .dark .shadow-md,
 .dark .shadow-lg,
 .dark .shadow-xl {
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4) !important;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Form Inputs, Selects, and Textareas */
 .dark input,
 .dark select,
 .dark textarea {
-  background-color: #111C3D !important;
+  background-color: #12121A !important;
   color: #F8FAFC !important;
-  border-color: #24336A !important;
+  border-color: #222230 !important;
 }
 
 .dark input::placeholder,
@@ -159,14 +159,14 @@ body.dark #root,
 
 /* Modals & Overlays in Dark Mode */
 .dark .glass-card {
-  background: #16224D !important;
-  border-color: #24336A !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4) !important;
+  background: #14141E !important;
+  border-color: #222230 !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6) !important;
 }
 
 .dark .glass-card-hover:hover {
-  border-color: #4C7CFF !important;
-  box-shadow: 0 12px 28px -6px rgba(76, 124, 255, 0.2) !important;
+  border-color: #00B4FF !important;
+  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.25) !important;
 }
 
 /* Custom Scrollbar for sleek physics platform */
@@ -185,25 +185,25 @@ body.dark #root,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1E4FD8;
+  background: #00B4FF;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #0D1B3E;
+  background: #0B0B0F;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #24336A;
+  background: #222230;
   border-radius: 4px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #4C7CFF;
+  background: #00B4FF;
 }
 
 /* Physics Glowing & Glass UI Accents */
 .physics-glow {
-  text-shadow: 0 2px 10px rgba(245, 179, 1, 0.4);
+  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
 }
 
 /* Anti-Print Security & Anti-Copy Protection */
@@ -226,7 +226,7 @@ body.dark #root,
 .glass-card {
   background: #EBF1FE;
   border: 1px solid #C7D9FE;
-  box-shadow: 0 4px 20px -2px rgba(30, 79, 216, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 180, 255, 0.08);
 }
 
 .glass-card-hover {
@@ -234,9 +234,9 @@ body.dark #root,
 }
 
 .glass-card-hover:hover {
-  border-color: #1E4FD8;
+  border-color: #00B4FF;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(30, 79, 216, 0.15);
+  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.2);
 }
 
 /* =========================================================

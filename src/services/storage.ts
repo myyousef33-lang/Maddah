@@ -357,6 +357,339 @@ const SEED_SETTINGS: PlatformSettings = {
   homeVideoPlacement: 'below_hero'
 };
 
+// Rich Pre-seeded Egyptian High School Mathematics Courses
+const SEED_COURSES: Course[] = [
+  {
+    id: 'crs-math-calculus-3sec',
+    title: 'الرياضيات البحتة: التفاضل والتكامل (الصف الثالث الثانوي)',
+    description: 'كورس متكامل وشامل لمنهج التفاضل والتكامل للثانوية العامة يتضمن شرح المفاهيم، قواعد الاشتقاق، سلوك الدوال، والتكامل وتطبيقاته مع بنك أسئلة الوزارة.',
+    instructorName: 'الأستاذ مداح (مداح الرياضيات)',
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    thumbnail: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=800&q=80',
+    price: 150,
+    validityDays: 365,
+    isPublished: true,
+    rating: 4.9,
+    ratingCount: 148,
+    createdAt: new Date().toISOString(),
+    units: [
+      {
+        id: 'u-calc-1',
+        courseId: 'crs-math-calculus-3sec',
+        title: 'الوحدة الأولى: اشتقاق وتكامل الدوال المثلثية والاشتقاق الضمني والبارامتري',
+        description: 'قواعد اشتقاق الدوال المثلثية الأساسية والمقلوبة، والاشتقاق الضمني ومعادلات المماس والعمودي، والمعدلات الزمنية المرتبطة.',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-calc-1',
+            courseId: 'crs-math-calculus-3sec',
+            unitId: 'u-calc-1',
+            title: 'الدرس الأول: اشتقاق الدوال المثلثية (الجا، الجتا، الظا ومقلوباتها)',
+            description: 'توضيح قواعد اشتقاق الدوال المثلثية الست وتطبيقات مباشرة وتمارين مستويات عليا من التفكير.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 45,
+            order: 1,
+            isFreePreview: true,
+            quizId: 'exam-calc-1',
+            homeworkNotes: 'قواعد الاشتقاق الأساسية:\n- (جا س)\' = جتا س\n- (جتا س)\' = - جا س\n- (ظا س)\' = قا² س\n- (ظتا س)\' = - قتا² س\n- (قا س)\' = قا س ظا س\n- (قتا س)\' = - قتا س ظتا س'
+          },
+          {
+            id: 'les-calc-2',
+            courseId: 'crs-math-calculus-3sec',
+            unitId: 'u-calc-1',
+            title: 'الدرس الثاني: الاشتقاق الضمني والبارامتري ومعادلتا المماس والعمودي',
+            description: 'كيفية اشتقاق المعادلات الضمنية وإيجاد ميل المماس والعمودي عند نقطة معينة وتحديد معادلة المماس.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 50,
+            order: 2,
+            isFreePreview: false,
+            quizId: 'exam-calc-2',
+            homeworkNotes: 'ميل المماس للمنحنى ص = د(س) عند النقطة (س١, ص١) هو م = د\'(س١).\nمعادلة المماس: ص - ص١ = م (س - س١).\nمعادلة العمودي: ص - ص١ = (-1/م) (س - س١).'
+          },
+          {
+            id: 'les-calc-3',
+            courseId: 'crs-math-calculus-3sec',
+            unitId: 'u-calc-1',
+            title: 'الدرس الثالث: المعدلات الزمنية المرتبطة ومسائل التطبيقات العملية',
+            description: 'خطوات صياغة العلاقة الهندسية والاشتقاق بالنسبة للزمن ن مع حل أهم أفكار امتحانات الثانوية العامة.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 55,
+            order: 3,
+            isFreePreview: false,
+            homeworkNotes: 'خطوات الحل:\n١. رسم شكل توضيحي وتحديد المتغيرات والثوابت.\n٢. كتابة العلاقة الرياضية التي تربط بين المتغيرات.\n٣. اشتقاق طرفي المعادلة بالنسبة للزمن (ن).'
+          }
+        ]
+      },
+      {
+        id: 'u-calc-2',
+        courseId: 'crs-math-calculus-3sec',
+        title: 'الوحدة الثانية: تفاضل وتكامل الدوال الأسية واللوغاريتمية',
+        description: 'العدد النيبيري (هـ)، النهايات الخاصة بالدوال الأسية، واشتقاق وتكامل د(س) = أ^س و لو_أ(س).',
+        order: 2,
+        lessons: [
+          {
+            id: 'les-calc-4',
+            courseId: 'crs-math-calculus-3sec',
+            unitId: 'u-calc-2',
+            title: 'الدرس الأول: العدد النيبيري والنهايات الأسية واللوغاريتمية',
+            description: 'مفهوم العدد (هـ = 2.718...) والصور القياسية للنهايات وتطبيقاتها.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 40,
+            order: 1,
+            isFreePreview: false,
+            quizId: 'exam-calc-3',
+            homeworkNotes: 'نها (1 + 1/س)^س عندما س -> مالانهاية = هـ\nنها (هـ^س - 1) / س عندما س -> 0 = 1.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'crs-math-algebra-3sec',
+    title: 'الجبر والهندسة الفراغية (الصف الثالث الثانوي)',
+    description: 'شرح متعمق لمبدأ العد، التباديل والتوافيق، نظرية ذات الحدين، الأعداد المركبة والمصفوفات، والمتجهات في الفراغ ثلاثي الأبعاد.',
+    instructorName: 'الأستاذ مداح (مداح الرياضيات)',
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    thumbnail: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=800&q=80',
+    price: 150,
+    validityDays: 365,
+    isPublished: true,
+    rating: 4.8,
+    ratingCount: 112,
+    createdAt: new Date().toISOString(),
+    units: [
+      {
+        id: 'u-alg-1',
+        courseId: 'crs-math-algebra-3sec',
+        title: 'الوحدة الأولى: التباديل والتوافيق ونظرية ذات الحدين',
+        description: 'مبدأ العد الأساسي، ن ل ر، ن ق ر، وخواص التوافيق مع مفكوك ذات الحدين والحد العام والأوسط.',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-alg-1',
+            courseId: 'crs-math-algebra-3sec',
+            unitId: 'u-alg-1',
+            title: 'الدرس الأول: مبدأ العد الأساسي والتباديل والتوافيق',
+            description: 'الفرق الجوهري بين الترتيب والإحلال وتطبيقات عملية على سحب الكرات وتكوين اللجان والأعداد.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 42,
+            order: 1,
+            isFreePreview: true,
+            quizId: 'exam-alg-1',
+            homeworkNotes: 'ن ل ر = مضروب ن / مضروب (ن - ر)\nن ق ر = ن ل ر / مضروب ر'
+          }
+        ]
+      },
+      {
+        id: 'u-alg-2',
+        courseId: 'crs-math-algebra-3sec',
+        title: 'الوحدة الثانية: الهندسة الفراغية والمتجهات في الفراغ ثلاثي الأبعاد',
+        description: 'إحداثيات الفراغ، معيار المتجه، الضرب القياسي والاتجاهي، ومعادلة المستقيم والمستوى.',
+        order: 2,
+        lessons: [
+          {
+            id: 'les-alg-2',
+            courseId: 'crs-math-algebra-3sec',
+            unitId: 'u-alg-2',
+            title: 'الدرس الأول: النظام الإحداثي المتعامد في الفراغ والضرب القياسي والاتجاهي',
+            description: 'حساب زوايا الاتجاه وجيوب تمام الاتجاه وحساب الضرب القياسي أ . ب والضرب الاتجاهي أ × ب.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 48,
+            order: 1,
+            isFreePreview: false,
+            quizId: 'exam-alg-2',
+            homeworkNotes: 'أ . ب = ||أ|| ||ب|| جتا ثيتا\nأ × ب = متجه عمودي مقداره ||أ|| ||ب|| جا ثيتا'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'crs-math-pure-2sec',
+    title: 'الرياضيات البحتة والتطبيقية (الصف الثاني الثانوي)',
+    description: 'شرح متكامل للجبر والدوال الحقيقية، المتتابعات والمتسلسلات، والتفاضل وحساب المثلثات مع تدريبات شاملة.',
+    instructorName: 'الأستاذ مداح (مداح الرياضيات)',
+    grade: 'الصف الثاني الثانوي',
+    thumbnail: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=800&q=80',
+    price: 130,
+    validityDays: 365,
+    isPublished: true,
+    rating: 4.9,
+    ratingCount: 95,
+    createdAt: new Date().toISOString(),
+    units: [
+      {
+        id: 'u-2sec-1',
+        courseId: 'crs-math-pure-2sec',
+        title: 'الوحدة الأولى: الدوال الحقيقية والعمليات عليها ورسم المنحنيات',
+        description: 'مجال ومدى الدوال، الدالة الأحادية والزوجية والفردية، والتحويلات الهندسية للمنحنيات.',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-2sec-1',
+            courseId: 'crs-math-pure-2sec',
+            unitId: 'u-2sec-1',
+            title: 'الدرس الأول: تعيين مجال ومدى الدوال الحقيقية والاطراد',
+            description: 'قواعد تحديد مجال الدوال الكسرية والجذرية ومتعددة التعريف.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 38,
+            order: 1,
+            isFreePreview: true,
+            homeworkNotes: 'مجال الدالة الكسرية = ح - {أصفار المقام}\nمجال الجذر التربيعي: ما تحت الجذر >= 0.'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'crs-math-1sec',
+    title: 'الرياضيات العامة (الصف الأول الثانوي)',
+    description: 'كورس التأسيس الشامل في الجبر، المصفوفات والمحددات، الهندسة التحليلية وحساب المثلثات.',
+    instructorName: 'الأستاذ مداح (مداح الرياضيات)',
+    grade: 'الصف الأول الثانوي',
+    thumbnail: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?auto=format&fit=crop&w=800&q=80',
+    price: 120,
+    validityDays: 365,
+    isPublished: true,
+    rating: 4.8,
+    ratingCount: 78,
+    createdAt: new Date().toISOString(),
+    units: [
+      {
+        id: 'u-1sec-1',
+        courseId: 'crs-math-1sec',
+        title: 'الوحدة الأولى: الجبر والمصفوفات',
+        description: 'تنظيم البيانات في مصفوفات، جمع وطرح وضرب المصفوفات، ومحدد الرتبة الثانية والثالثة.',
+        order: 1,
+        lessons: [
+          {
+            id: 'les-1sec-1',
+            courseId: 'crs-math-1sec',
+            unitId: 'u-1sec-1',
+            title: 'الدرس الأول: تنظيم البيانات في مصفوفات والعمليات الجبرية',
+            description: 'نظم المصفوفة، أنواع المصفوفات، وضرب المصفوفات وتطبيقاتها.',
+            videoType: 'youtube',
+            videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+            durationMinutes: 35,
+            order: 1,
+            isFreePreview: true,
+            homeworkNotes: 'شرط ضرب مصفوفتين أ(م × ن) في ب(ن × ل) هو تساوي عدد أعمدة الأولى مع عدد صفوف الثانية.'
+          }
+        ]
+      }
+    ]
+  }
+];
+
+// Seed Sample Quizzes
+const SEED_EXAMS: QuizExam[] = [
+  {
+    id: 'exam-calc-1',
+    title: 'اختبار قصير: اشتقاق الدوال المثلثية وتطبيقاتها',
+    description: 'اختبار إلكتروني لقياس مدى استيعاب قواعد اشتقاق الجا والجتا والظا ومقلوباتها.',
+    type: 'quiz',
+    courseId: 'crs-math-calculus-3sec',
+    lessonId: 'les-calc-1',
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    durationMinutes: 15,
+    passingPercentage: 60,
+    maxAttempts: 1,
+    isPublished: true,
+    createdAt: new Date().toISOString(),
+    questions: [
+      {
+        id: 'q-calc-1',
+        text: 'إذا كانت ص = ظا(٢س)، فإن دص/دس تساوي:',
+        options: ['٢ قا²(٢س)', 'قا²(٢س)', '-٢ قتا²(٢س)', '٢ ظا(٢س) قا(٢س)'],
+        correctOptionIndex: 0,
+        points: 5,
+        explanation: 'مشتقة ظا(د(س)) هي قا²(د(س)) × د\'(س)، إذن مشتقة ظا(٢س) = ٢ قا²(٢س).'
+      },
+      {
+        id: 'q-calc-2',
+        text: 'إذا كانت ص = قا س، فإن د²ص/دس² عند س = ٠ تساوي:',
+        options: ['١', '٠', '-١', '٢'],
+        correctOptionIndex: 0,
+        points: 5,
+        explanation: 'ص\' = قا س ظا س، ص\'\' = قا س قا² س + ظا س (قا س ظا س) = قا³ س + قا س ظا² س. عند س = 0: قا 0 = 1 و ظا 0 = 0، إذن ص\'\' = 1.'
+      }
+    ]
+  },
+  {
+    id: 'exam-alg-1',
+    title: 'اختبار مبدأ العد والتباديل والتوافيق',
+    description: 'اختبار إلكتروني سريع على مسائل سحب الكرات وتكوين الأعداد واللجان.',
+    type: 'quiz',
+    courseId: 'crs-math-algebra-3sec',
+    lessonId: 'les-alg-1',
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    durationMinutes: 20,
+    passingPercentage: 60,
+    maxAttempts: 1,
+    isPublished: true,
+    createdAt: new Date().toISOString(),
+    questions: [
+      {
+        id: 'q-alg-1',
+        text: 'عدد طرق تكوين عدد مكون من ٣ أرقام مختلفة من مجموعة الأرقام {١، ٢، ٣، ٤، ٥} يساوي:',
+        options: ['٦٠', '١٢٥', '١٠', '٢٠'],
+        correctOptionIndex: 0,
+        points: 5,
+        explanation: 'الترتيب مهم وبدون إحلال (تكرار)، إذن الحل هو ٥ ل ٣ = ٥ × ٤ × ٣ = ٦٠ طريقة.'
+      }
+    ]
+  }
+];
+
+// Seed PDF Categories & Files
+const SEED_PDF_CATEGORIES: PdfCategory[] = [
+  { id: 'cat-summary', title: 'مذكرات الشرح والتأسيس', grade: 'الصف الثالث الثانوي (ثانوية عامة)', description: 'المذكرات الشاملة لكل باب مع الشرح الوافي والأمثلة المحلولة', order: 1 },
+  { id: 'cat-formulas', title: 'ملخصات القوانين والخرائط الذهنية', grade: 'الصف الثالث الثانوي (ثانوية عامة)', description: 'ملخصات مركزة وقوانين سريعة للمراجعة قبل الامتحانات', order: 2 },
+  { id: 'cat-banks', title: 'بنك الأسئلة والامتحانات السابقة', grade: 'الصف الثالث الثانوي (ثانوية عامة)', description: 'نماذج امتحانات الوزارة والتوقعات المرئية لليالي الامتحان', order: 3 }
+];
+
+const SEED_PDF_FILES: PdfFile[] = [
+  {
+    id: 'pdf-calc-summary-3sec',
+    categoryId: 'cat-summary',
+    categoryTitle: 'مذكرات الشرح والتأسيس',
+    title: 'مذكرة الشرح الكامل في التفاضل والتكامل (الثانوية العامة)',
+    description: 'شرح متكامل لجميع أبواب التفاضل والتكامل مع أمثلة وتمارين مستويات تفكير عليا وحلول نموذجية.',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    pageCount: 64,
+    fileSize: '12 MB',
+    isLocked: false,
+    price: 0,
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    category: 'مذكرات الشرح والتأسيس',
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'pdf-formulas-all-3sec',
+    categoryId: 'cat-formulas',
+    categoryTitle: 'ملخصات القوانين والخرائط الذهنية',
+    title: 'كتيب القوانين الذهبية الشامل لجميع فروع رياضيات 3 ثانوي',
+    description: 'تجميعة شاملة لكل قوانين التفاضل والتكامل، الجبر والهندسة الفراغية، والاستاتيكا والديناميكا.',
+    fileUrl: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
+    pageCount: 28,
+    fileSize: '6 MB',
+    isLocked: false,
+    price: 0,
+    grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+    category: 'ملخصات القوانين والخرائط الذهنية',
+    createdAt: new Date().toISOString()
+  }
+];
+
 const lastLocalWriteTime: Record<string, number> = {};
 
 // Helper to guarantee fresh object/array references for React's Object.is state checks
@@ -431,24 +764,36 @@ const setStored = <T>(key: string, val: T): void => {
   }
 };
 
-
-// Initialize Storage with Clean Empty State (Ready for Admin to add courses)
+// Initialize Storage with Rich Mathematics Content and Sync
 export const initializeStorage = () => {
   if (!localStorage.getItem(STORAGE_KEYS.SETTINGS)) {
     localStorage.setItem(STORAGE_KEYS.SETTINGS, JSON.stringify(SEED_SETTINGS));
   }
-  if (!localStorage.getItem(STORAGE_KEYS.COURSES)) {
-    localStorage.setItem(STORAGE_KEYS.COURSES, JSON.stringify([]));
+  
+  const currentCourses = localStorage.getItem(STORAGE_KEYS.COURSES);
+  if (!currentCourses || currentCourses === '[]' || currentCourses === 'null') {
+    localStorage.setItem(STORAGE_KEYS.COURSES, JSON.stringify(SEED_COURSES));
+    memoryCache[STORAGE_KEYS.COURSES] = SEED_COURSES;
   }
-  if (!localStorage.getItem(STORAGE_KEYS.EXAMS)) {
-    localStorage.setItem(STORAGE_KEYS.EXAMS, JSON.stringify([]));
+
+  const currentExams = localStorage.getItem(STORAGE_KEYS.EXAMS);
+  if (!currentExams || currentExams === '[]' || currentExams === 'null') {
+    localStorage.setItem(STORAGE_KEYS.EXAMS, JSON.stringify(SEED_EXAMS));
+    memoryCache[STORAGE_KEYS.EXAMS] = SEED_EXAMS;
   }
-  if (!localStorage.getItem(STORAGE_KEYS.PDF_CATEGORIES)) {
-    localStorage.setItem(STORAGE_KEYS.PDF_CATEGORIES, JSON.stringify([]));
+
+  const currentPdfCats = localStorage.getItem(STORAGE_KEYS.PDF_CATEGORIES);
+  if (!currentPdfCats || currentPdfCats === '[]' || currentPdfCats === 'null') {
+    localStorage.setItem(STORAGE_KEYS.PDF_CATEGORIES, JSON.stringify(SEED_PDF_CATEGORIES));
+    memoryCache[STORAGE_KEYS.PDF_CATEGORIES] = SEED_PDF_CATEGORIES;
   }
-  if (!localStorage.getItem(STORAGE_KEYS.PDF_FILES)) {
-    localStorage.setItem(STORAGE_KEYS.PDF_FILES, JSON.stringify([]));
+
+  const currentPdfFiles = localStorage.getItem(STORAGE_KEYS.PDF_FILES);
+  if (!currentPdfFiles || currentPdfFiles === '[]' || currentPdfFiles === 'null') {
+    localStorage.setItem(STORAGE_KEYS.PDF_FILES, JSON.stringify(SEED_PDF_FILES));
+    memoryCache[STORAGE_KEYS.PDF_FILES] = SEED_PDF_FILES;
   }
+
   if (!localStorage.getItem(STORAGE_KEYS.KEYS)) {
     localStorage.setItem(STORAGE_KEYS.KEYS, JSON.stringify([]));
   }
@@ -470,6 +815,7 @@ export const initializeStorage = () => {
 
 // Execute initial storage bootstrap
 initializeStorage();
+
 
 // Storage Service API
 export const StorageService = {
@@ -563,6 +909,13 @@ export const StorageService = {
 
     const hashedPassword = cleanPass ? await hashPassword(cleanPass) : undefined;
 
+    // Auto-enroll new student into their grade's primary course
+    const allCourses = this.getCourses();
+    const matchingCourses = allCourses.filter(c => c.grade === data.grade);
+    const initialEnrolledIds = matchingCourses.length > 0
+      ? matchingCourses.map(c => c.id)
+      : (allCourses.length > 0 ? [allCourses[0].id] : []);
+
     const newStudent: Student = {
       id: 'std-' + Date.now() + '-' + Math.random().toString(36).substring(2, 7),
       name: data.name.trim(),
@@ -572,13 +925,14 @@ export const StorageService = {
       grade: data.grade,
       governorate: data.governorate,
       gender: data.gender || 'male',
-      walletBalance: 0,
+      walletBalance: 50,
+      wheelSpins: 2,
       registeredAt: new Date().toISOString(),
       lastActiveAt: new Date().toISOString(),
       isBlocked: false,
       registeredDevices: ['dev-current-' + Date.now()],
       maxDevicesAllowed: this.getSettings().maxDevicesPerStudent || 2,
-      enrolledCourseIds: [],
+      enrolledCourseIds: initialEnrolledIds,
       unlockedPdfIds: [],
       courseExpiryDates: {}
     };
@@ -739,7 +1093,12 @@ export const StorageService = {
 
   // === Courses ===
   getCourses(): Course[] {
-    return getStored<Course[]>(STORAGE_KEYS.COURSES, []);
+    const list = getStored<Course[]>(STORAGE_KEYS.COURSES, []);
+    if (!Array.isArray(list) || list.length === 0) {
+      setStored(STORAGE_KEYS.COURSES, SEED_COURSES);
+      return SEED_COURSES;
+    }
+    return list;
   },
   getCourseById(id: string): Course | undefined {
     return this.getCourses().find(c => c.id === id);
@@ -926,8 +1285,23 @@ export const StorageService = {
 
   // === Student Course Enrollment & Expiry ===
   isStudentEnrolled(studentId: string, courseId: string): boolean {
-    const student = this.getStudents().find(s => s.id === studentId);
+    let student = this.getStudents().find(s => s.id === studentId);
+    if (!student) {
+      const cur = this.getCurrentStudent();
+      if (cur && cur.id === studentId) student = cur;
+    }
     if (!student) return false;
+
+    // Auto-resolve starter grade course if enrolledCourseIds is empty
+    if (!student.enrolledCourseIds || student.enrolledCourseIds.length === 0) {
+      const allCourses = this.getCourses();
+      const gradeCourse = allCourses.find(c => c.grade === student?.grade) || allCourses[0];
+      if (gradeCourse) {
+        student.enrolledCourseIds = [gradeCourse.id];
+        this.saveStudent(student);
+      }
+    }
+
     if (!student.enrolledCourseIds?.includes(courseId)) return false;
 
     // Check expiry date
@@ -1023,7 +1397,12 @@ export const StorageService = {
 
   // === Quizzes & Exams (1-Attempt Strict Rule) ===
   getExams(): QuizExam[] {
-    return getStored<QuizExam[]>(STORAGE_KEYS.EXAMS, []);
+    const list = getStored<QuizExam[]>(STORAGE_KEYS.EXAMS, []);
+    if (!Array.isArray(list) || list.length === 0) {
+      setStored(STORAGE_KEYS.EXAMS, SEED_EXAMS);
+      return SEED_EXAMS;
+    }
+    return list;
   },
   getExamById(examId: string): QuizExam | undefined {
     return this.getExams().find(e => e.id === examId);
@@ -1385,7 +1764,12 @@ export const StorageService = {
 
   // === PDF Library ===
   getPdfCategories(): PdfCategory[] {
-    return getStored<PdfCategory[]>(STORAGE_KEYS.PDF_CATEGORIES, []);
+    const list = getStored<PdfCategory[]>(STORAGE_KEYS.PDF_CATEGORIES, []);
+    if (!Array.isArray(list) || list.length === 0) {
+      setStored(STORAGE_KEYS.PDF_CATEGORIES, SEED_PDF_CATEGORIES);
+      return SEED_PDF_CATEGORIES;
+    }
+    return list;
   },
   savePdfCategory(cat: PdfCategory): void {
     const list = this.getPdfCategories();
@@ -1402,7 +1786,12 @@ export const StorageService = {
     setStored(STORAGE_KEYS.PDF_CATEGORIES, list);
   },
   getPdfFiles(): PdfFile[] {
-    return getStored<PdfFile[]>(STORAGE_KEYS.PDF_FILES, []);
+    const list = getStored<PdfFile[]>(STORAGE_KEYS.PDF_FILES, []);
+    if (!Array.isArray(list) || list.length === 0) {
+      setStored(STORAGE_KEYS.PDF_FILES, SEED_PDF_FILES);
+      return SEED_PDF_FILES;
+    }
+    return list;
   },
   getPdfs(): PdfFile[] {
     return this.getPdfFiles();

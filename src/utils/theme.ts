@@ -20,9 +20,11 @@ export const applyTheme = (mode: ThemeMode) => {
     if (mode === 'dark') {
       document.documentElement.classList.add('dark');
       document.body.classList.add('dark');
+      document.documentElement.style.colorScheme = 'dark';
     } else {
       document.documentElement.classList.remove('dark');
       document.body.classList.remove('dark');
+      document.documentElement.style.colorScheme = 'light';
     }
   } catch (e) {
     console.warn('Error applying theme mode:', e);
@@ -36,7 +38,7 @@ export const toggleTheme = (): ThemeMode => {
   return next;
 };
 
-// Auto-initialize theme on boot immediately to dark
+// Auto-initialize theme on boot immediately to midnight dark
 if (typeof window !== 'undefined') {
   applyTheme(getTheme());
 }

@@ -50,13 +50,13 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
     ctx.lineWidth = 10;
     ctx.strokeRect(36, 36, 1128, 778);
 
-    ctx.strokeStyle = '#F5B301';
+    ctx.strokeStyle = '#D4AF37';
     ctx.lineWidth = 3;
     ctx.strokeRect(50, 50, 1100, 750);
 
     // Corner Ornaments
     const drawCorner = (x: number, y: number) => {
-      ctx.fillStyle = '#F5B301';
+      ctx.fillStyle = '#D4AF37';
       ctx.beginPath();
       ctx.arc(x, y, 12, 0, Math.PI * 2);
       ctx.fill();
@@ -87,12 +87,12 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
     ctx.fillText('تمنح هذه الشهادة بكل فخر واعتزاز للطالب / الطالبة:', 600, 330);
 
     // Student Name (Big Highlighted in Royal Navy / Blue)
-    ctx.fillStyle = '#1E4FD8';
+    ctx.fillStyle = '#00B4FF';
     ctx.font = 'bold 46px sans-serif';
     ctx.fillText(student.name || 'طالب متميز', 600, 405);
 
     // Gold Divider line under name
-    ctx.strokeStyle = '#F5B301';
+    ctx.strokeStyle = '#D4AF37';
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(360, 430);
@@ -179,7 +179,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
         {/* Modal Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 border border-amber-200 text-[#F5B301]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 border border-amber-200 text-[#D4AF37]">
               <Award className="h-5 w-5" />
             </div>
             <div>
@@ -215,13 +215,13 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               onClick={handleShare}
               className="rounded-xl border border-slate-200 bg-[#F5F7FA] px-4 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-slate-100 transition-all flex items-center gap-2 shadow-xs"
             >
-              <Share2 className="h-4 w-4 text-[#1E4FD8]" />
+              <Share2 className="h-4 w-4 text-[#00B4FF]" />
               <span>مشاركة الرابط</span>
             </button>
 
             <button
               onClick={handleDownload}
-              className="rounded-xl bg-[#F5B301] px-5 py-2.5 text-xs font-black text-[#0D1B3E] hover:bg-[#e0a401] shadow-xs transition-all flex items-center gap-2"
+              className="rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-black text-[#0D1B3E] hover:bg-[#D4AF37] shadow-xs transition-all flex items-center gap-2"
             >
               <Download className="h-4 w-4" />
               <span>تحميل الشهادة كصورة PNG</span>

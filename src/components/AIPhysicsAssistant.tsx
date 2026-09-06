@@ -254,7 +254,7 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
           >
             <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
               msg.role === 'user'
-                ? 'bg-[#F5B301] text-[#0D1B3E]'
+                ? 'bg-[#D4AF37] text-[#0D1B3E]'
                 : 'bg-purple-100 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-800 text-purple-700 dark:text-purple-300'
             }`}>
               {msg.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
@@ -263,7 +263,7 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
             <div className={`max-w-[85%] sm:max-w-[82%] space-y-2 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
               <div className={`rounded-2xl p-4 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === 'user'
-                  ? 'bg-[#F5B301] text-[#0D1B3E] font-semibold rounded-tr-none shadow-xs'
+                  ? 'bg-[#D4AF37] text-[#0D1B3E] font-semibold rounded-tr-none shadow-xs'
                   : 'bg-white dark:bg-[#152044] border border-slate-200 dark:border-slate-700/80 text-[#0D1B3E] dark:text-slate-100 rounded-tl-none shadow-xs'
               }`}>
                 {msg.text}

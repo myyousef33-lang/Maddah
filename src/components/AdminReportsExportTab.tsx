@@ -102,7 +102,7 @@ export const AdminReportsExportTab: React.FC = () => {
       {/* Header */}
       <div className="border-b border-slate-200 pb-5">
         <h2 className="text-xl font-black text-[#0D1B3E] flex items-center gap-2">
-          <FileSpreadsheet className="h-6 w-6 text-[#1E4FD8]" />
+          <FileSpreadsheet className="h-6 w-6 text-[#00B4FF]" />
           <span>تصدير التقارير وسجلات المنصة (Excel / CSV)</span>
         </h2>
         <p className="text-xs text-slate-500 mt-1">
@@ -113,9 +113,9 @@ export const AdminReportsExportTab: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         
         {/* Export Students */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#1E4FD8]/40 shadow-xs transition-colors">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#00B4FF]/40 shadow-xs transition-colors">
           <div className="space-y-2">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#1E4FD8]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#00B4FF]">
               <Users className="h-6 w-6" />
             </div>
             <h3 className="text-base font-black text-[#0D1B3E]">سجل بيانات الطلاب الكامل</h3>
@@ -127,7 +127,7 @@ export const AdminReportsExportTab: React.FC = () => {
           <button
             onClick={exportStudents}
             disabled={downloadingType === 'students'}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#1E4FD8] hover:bg-blue-700 text-white py-3 text-xs font-black transition-all shadow-xs disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#00B4FF] hover:bg-blue-700 text-white py-3 text-xs font-black transition-all shadow-xs disabled:opacity-50"
           >
             <Download className="h-4 w-4" />
             <span>{downloadingType === 'students' ? 'جارٍ التصدير...' : 'تصدير شيت الطلاب (CSV)'}</span>
@@ -135,9 +135,9 @@ export const AdminReportsExportTab: React.FC = () => {
         </div>
 
         {/* Export Exams Results */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#1E4FD8]/40 shadow-xs transition-colors">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#00B4FF]/40 shadow-xs transition-colors">
           <div className="space-y-2">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-[#F5B301]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-[#D4AF37]">
               <Award className="h-6 w-6" />
             </div>
             <h3 className="text-base font-black text-[#0D1B3E]">تقرير نتائج الاختبارات</h3>
@@ -149,7 +149,7 @@ export const AdminReportsExportTab: React.FC = () => {
           <button
             onClick={exportExamsResults}
             disabled={downloadingType === 'exams'}
-            className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#F5B301] hover:bg-[#e0a401] text-[#0D1B3E] py-3 text-xs font-black transition-all shadow-xs disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-2 rounded-xl bg-[#D4AF37] hover:bg-[#D4AF37] text-[#0D1B3E] py-3 text-xs font-black transition-all shadow-xs disabled:opacity-50"
           >
             <Download className="h-4 w-4" />
             <span>{downloadingType === 'exams' ? 'جارٍ التصدير...' : 'تصدير شيت النتائج (CSV)'}</span>
@@ -157,7 +157,7 @@ export const AdminReportsExportTab: React.FC = () => {
         </div>
 
         {/* Export Wallet Transactions */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#1E4FD8]/40 shadow-xs transition-colors">
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 space-y-4 flex flex-col justify-between hover:border-[#00B4FF]/40 shadow-xs transition-colors">
           <div className="space-y-2">
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-600">
               <Wallet className="h-6 w-6" />

@@ -68,8 +68,8 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
             {msg}
           </div>
         )}
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#06090F] px-4 py-1.5 text-xs font-bold text-[#F3C644]">
-          <Sparkles className="h-3.5 w-3.5 text-[#F3C644]" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#0B0B0F] px-4 py-1.5 text-xs font-bold text-[#D4AF37]">
+          <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
           <span>مناهج الرياضيات لجميع المراحل الدراسية</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-black text-[#0D1B3E] dark:text-white leading-tight">
@@ -88,8 +88,8 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
             onClick={() => setSelectedGrade(g.id)}
             className={`rounded-xl px-5 py-2.5 text-xs font-bold transition-all ${
               selectedGrade === g.id
-                ? 'bg-[#1E4FD8] text-white shadow-md shadow-blue-500/20 scale-105'
-                : 'border border-slate-200 bg-white text-[#0D1B3E] hover:border-blue-300 hover:text-[#1E4FD8]'
+                ? 'bg-[#00B4FF] text-white shadow-md shadow-blue-500/20 scale-105'
+                : 'border border-slate-200 bg-white text-[#0D1B3E] hover:border-blue-300 hover:text-[#00B4FF]'
             }`}
           >
             {g.label}
@@ -100,7 +100,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
       {/* Courses Cards */}
       {filteredCourses.length === 0 ? (
         <div className="rounded-3xl border border-slate-200 bg-white p-12 text-center max-w-lg mx-auto space-y-4 shadow-xs">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#1E4FD8]">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#00B4FF]">
             <BookOpen className="h-8 w-8" />
           </div>
           <div className="space-y-1">
@@ -139,7 +139,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
                         height={360}
                         className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
                       />
-                      <div className="absolute top-2.5 right-2.5 rounded-lg bg-white/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-[#1E4FD8] border border-blue-200 shadow-xs z-10">
+                      <div className="absolute top-2.5 right-2.5 rounded-lg bg-white/95 backdrop-blur-md px-2.5 py-1 text-[11px] font-bold text-[#00B4FF] border border-blue-200 shadow-xs z-10">
                         {course.grade}
                       </div>
 
@@ -173,7 +173,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
 
                       <div className="flex items-center justify-between text-xs text-[#6B7280] pt-2 border-t border-slate-100">
                         <span>المحاضر: {course.instructorName}</span>
-                        <span className="text-[#1E4FD8] font-black text-sm">{course.price} ج.م</span>
+                        <span className="text-[#00B4FF] font-black text-sm">{course.price} ج.م</span>
                       </div>
                     </div>
                   </div>
@@ -192,7 +192,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
                       <div className="flex flex-col sm:flex-row items-center gap-2">
                         <button
                           onClick={() => handleQuickWalletPurchase(course)}
-                          className="flex-1 w-full rounded-xl bg-[#F5B301] py-2.5 px-3 text-xs font-black text-[#0D1B3E] shadow-sm hover:bg-[#e0a401] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="flex-1 w-full rounded-xl bg-[#D4AF37] py-2.5 px-3 text-xs font-black text-[#0D1B3E] shadow-sm hover:bg-[#D4AF37] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                           title="خصم فوري وتفعيل تلقائي من المحفظة"
                         >
                           <Wallet className="h-4 w-4 shrink-0" />
@@ -201,7 +201,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
 
                         <button
                           onClick={student ? onOpenActivationModal : onOpenAuthModal}
-                          className="flex-1 w-full rounded-xl border-2 border-[#1E4FD8] bg-white py-2.5 px-3 text-xs font-bold text-[#1E4FD8] hover:bg-blue-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="flex-1 w-full rounded-xl border-2 border-[#00B4FF] bg-white py-2.5 px-3 text-xs font-bold text-[#00B4FF] hover:bg-blue-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                         >
                           <Key className="h-3.5 w-3.5 shrink-0" />
                           <span>كود الاشتراك</span>
@@ -211,7 +211,7 @@ export const CourseCatalogView: React.FC<CourseCatalogViewProps> = ({
 
                     <button
                       onClick={() => onNavigate('course-details', { courseId: course.id })}
-                      className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2 text-[11px] font-bold text-[#6B7280] hover:text-[#1E4FD8] hover:border-blue-200 transition-colors"
+                      className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2 text-[11px] font-bold text-[#6B7280] hover:text-[#00B4FF] hover:border-blue-200 transition-colors"
                     >
                       استعراض المنهج والتفاصيل الكاملة
                     </button>

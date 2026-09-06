@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
   const settings = StorageService.getSettings();
 
   return (
-    <footer className="mt-20 border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0B132B] text-[#6B7280] dark:text-slate-400 transition-colors">
+    <footer className="mt-20 border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-[#0B0B0F] text-[#6B7280] dark:text-slate-400 transition-colors">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
           
@@ -26,12 +26,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <span className="flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#121E3E] px-3 py-1.5 text-xs text-[#0D1B3E] dark:text-slate-200 font-medium">
+              <span className="flex items-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#12121A] px-3 py-1.5 text-xs text-[#0D1B3E] dark:text-slate-200 font-medium">
                 <ShieldCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                 حماية أجهزة ومتابعة دورية
               </span>
-              <span className="flex items-center gap-1.5 rounded-xl border border-[#D4AF37]/30 bg-[#06090F] px-3 py-1.5 text-xs text-[#F3C644] font-medium">
-                <Zap className="h-4 w-4 text-[#F3C644]" />
+              <span className="flex items-center gap-1.5 rounded-xl border border-[#D4AF37]/30 bg-[#0B0B0F] px-3 py-1.5 text-xs text-[#D4AF37] font-medium">
+                <Zap className="h-4 w-4 text-[#D4AF37]" />
                 تصحيح امتحانات فوري
               </span>
             </div>
@@ -45,7 +45,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 <button
                   type="button"
                   onClick={() => onNavigate?.('courses-catalog')}
-                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#F3C644] transition-colors cursor-pointer text-right"
+                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-right"
                 >
                   رياضيات الصف الثالث الثانوي (3ث)
                 </button>
@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 <button
                   type="button"
                   onClick={() => onNavigate?.('courses-catalog')}
-                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#F3C644] transition-colors cursor-pointer text-right"
+                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-right"
                 >
                   رياضيات الصف الثاني الثانوي (2ث)
                 </button>
@@ -63,7 +63,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 <button
                   type="button"
                   onClick={() => onNavigate?.('courses-catalog')}
-                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#F3C644] transition-colors cursor-pointer text-right"
+                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-right"
                 >
                   رياضيات الصف الأول الثانوي (1ث)
                 </button>
@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 <button
                   type="button"
                   onClick={() => onNavigate?.('pdf-library')}
-                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#F3C644] transition-colors cursor-pointer text-right"
+                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-right"
                 >
                   مذكرات الشرح وبنوك الأسئلة
                 </button>
@@ -81,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 <button
                   type="button"
                   onClick={() => onNavigate?.('courses-catalog')}
-                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#F3C644] transition-colors cursor-pointer text-right"
+                  className="text-[#6B7280] dark:text-slate-400 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-right"
                 >
                   الامتحانات الشاملة والتجريبية
                 </button>
@@ -109,9 +109,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
                 href={settings.telegramChannel}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2.5 rounded-xl border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/40 px-3.5 py-2.5 text-xs font-bold text-[#1E4FD8] dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
+                className="flex items-center gap-2.5 rounded-xl border border-blue-200 dark:border-blue-800/60 bg-blue-50 dark:bg-blue-950/40 px-3.5 py-2.5 text-xs font-bold text-[#00B4FF] dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
               >
-                <Send className="h-4 w-4 text-[#1E4FD8] dark:text-blue-400" />
+                <Send className="h-4 w-4 text-[#00B4FF] dark:text-blue-400" />
                 <span>قناة التليجرام الرسمية</span>
               </a>
             </div>
@@ -124,14 +124,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenActivationModa
           <p>© {new Date().getFullYear()} منصة مداح الرياضيات التعليمية — جميع الحقوق محفوظة</p>
 
           {/* Designed & Developed by YOUSEF EMAD */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-blue-200 dark:border-blue-800/80 bg-white dark:bg-[#121E3E] px-4 py-2 shadow-sm hover:border-[#1E4FD8] transition-all duration-300 group cursor-default" dir="ltr">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-blue-200 dark:border-slate-800 bg-white dark:bg-[#12121A] px-4 py-2 shadow-sm hover:border-[#00B4FF] transition-all duration-300 group cursor-default" dir="ltr">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1E4FD8] opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1E4FD8]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00B4FF] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00B4FF]"></span>
             </span>
-            <Code2 className="h-4 w-4 text-[#1E4FD8] group-hover:rotate-12 transition-transform duration-300" />
+            <Code2 className="h-4 w-4 text-[#00B4FF] group-hover:rotate-12 transition-transform duration-300" />
             <span className="text-xs text-[#6B7280] dark:text-slate-400 font-sans tracking-wide">
-              Designed & Engineered by <span className="font-bold text-[#1E4FD8] dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors tracking-wider">Yousef Emad</span>
+              Designed & Engineered by <span className="font-bold text-[#00B4FF] dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors tracking-wider">Yousef Emad</span>
             </span>
           </div>
 

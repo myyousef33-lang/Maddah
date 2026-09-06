@@ -74,8 +74,8 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
       <div className="rounded-3xl border border-blue-100 bg-white p-6 sm:p-8 shadow-xs relative overflow-hidden">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 text-center sm:text-right">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-black text-[#1E4FD8]">
-              <Trophy className="h-4 w-4 text-[#F5B301]" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3.5 py-1 text-xs font-black text-[#00B4FF]">
+              <Trophy className="h-4 w-4 text-[#D4AF37]" />
               <span>لوحة الشرف والتنافس الأسبوعي</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-black text-[#0D1B3E] dark:text-white">
@@ -90,7 +90,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
             <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${
               stats.isFirstOnPlatform 
                 ? 'bg-gradient-to-tr from-amber-400 to-yellow-400 border-amber-300 text-slate-950 ring-2 ring-amber-400/50' 
-                : 'bg-blue-50 border-blue-200 text-[#1E4FD8]'
+                : 'bg-blue-50 border-blue-200 text-[#00B4FF]'
             }`}>
               {stats.isFirstOnPlatform ? <Crown className="h-7 w-7 text-slate-950 fill-slate-950" /> : <Medal className="h-7 w-7" />}
             </div>
@@ -103,7 +103,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                   رتبة {stats.level.badge}
                 </span>
               </div>
-              <p className="text-xl font-black text-[#1E4FD8]">
+              <p className="text-xl font-black text-[#00B4FF]">
                 {stats.points.toLocaleString('ar-EG')} نقطة
               </p>
             </div>
@@ -134,7 +134,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                     key={entry.studentId}
                     className={`flex items-center justify-between p-4 sm:p-5 transition-colors ${
                       isCurrent 
-                        ? 'bg-blue-50/60 border-r-4 border-[#1E4FD8]' 
+                        ? 'bg-blue-50/60 border-r-4 border-[#00B4FF]' 
                         : 'hover:bg-slate-50'
                     }`}
                   >
@@ -142,7 +142,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                       {/* Rank Badge */}
                       <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl font-black text-sm ${
                         rankNum === 1 
-                          ? 'bg-[#F5B301] text-[#0D1B3E] shadow-xs' 
+                          ? 'bg-[#D4AF37] text-[#0D1B3E] shadow-xs' 
                           : rankNum === 2 
                           ? 'bg-slate-200 text-[#0D1B3E]' 
                           : rankNum === 3 
@@ -163,7 +163,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                             </span>
                           )}
                           {isCurrent && (
-                            <span className="rounded bg-blue-100 text-[#1E4FD8] px-1.5 py-0.5 text-[10px] font-bold">
+                            <span className="rounded bg-blue-100 text-[#00B4FF] px-1.5 py-0.5 text-[10px] font-bold">
                               أنت
                             </span>
                           )}
@@ -183,14 +183,14 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                             title={b.description}
                             className="flex items-center gap-1 rounded-full bg-[#F5F7FA] px-2 py-0.5 text-[10px] font-bold text-[#0D1B3E] border border-slate-200"
                           >
-                            <Medal className="h-3 w-3 text-[#1E4FD8]" />
+                            <Medal className="h-3 w-3 text-[#00B4FF]" />
                             <span>{b.title}</span>
                           </span>
                         ))}
                       </div>
 
                       <div className="text-left">
-                        <span className="text-base font-black text-[#1E4FD8]">{entry.points}</span>
+                        <span className="text-base font-black text-[#00B4FF]">{entry.points}</span>
                         <span className="text-[10px] text-[#6B7280] block">نقطة تميز</span>
                       </div>
                     </div>
@@ -212,7 +212,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
             <div className="rounded-3xl border border-blue-100 bg-white p-6 space-y-5 shadow-xs">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-[#1E4FD8]" />
+                  <Zap className="h-5 w-5 text-[#00B4FF]" />
                   <h3 className="text-sm font-black text-[#0D1B3E]">تحدي الأسبوع الفيزيائي</h3>
                 </div>
                 <span className="rounded-full bg-amber-50 border border-amber-200 px-2.5 py-0.5 text-[10px] font-bold text-amber-700">
@@ -245,7 +245,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                             btnStyle = 'border-rose-300 bg-rose-50 text-rose-800';
                           }
                         } else if (isSelected) {
-                          btnStyle = 'border-[#1E4FD8] bg-blue-50 text-[#1E4FD8] font-bold';
+                          btnStyle = 'border-[#00B4FF] bg-blue-50 text-[#00B4FF] font-bold';
                         }
 
                         return (
@@ -273,7 +273,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                 <button
                   onClick={handleSubmitChallenge}
                   disabled={Object.keys(selectedAnswers).length < activeChallenge.questions.length}
-                  className="w-full rounded-2xl bg-[#F5B301] py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#e0a401] disabled:opacity-40 transition-colors shadow-xs"
+                  className="w-full rounded-2xl bg-[#D4AF37] py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] disabled:opacity-40 transition-colors shadow-xs"
                 >
                   تسليم إجابات التحدي وحصد النقاط
                 </button>
@@ -284,7 +284,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
           {/* Badges Collection Showcase */}
           <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-4 shadow-xs">
             <h3 className="text-sm font-black text-[#0D1B3E] flex items-center gap-2">
-              <Star className="h-4 w-4 text-[#F5B301]" />
+              <Star className="h-4 w-4 text-[#D4AF37]" />
               <span>أوسمة الشرف الفيزيائية المتاحة</span>
             </h3>
             <div className="space-y-2.5 text-xs">
@@ -298,7 +298,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                 </div>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-[#F5F7FA] p-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#1E4FD8] border border-blue-200">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#00B4FF] border border-blue-200">
                   <Zap className="h-5 w-5" />
                 </div>
                 <div>
@@ -307,7 +307,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                 </div>
               </div>
               <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-[#F5F7FA] p-3">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-[#F5B301] border border-amber-200">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-[#D4AF37] border border-amber-200">
                   <Sparkles className="h-5 w-5" />
                 </div>
                 <div>

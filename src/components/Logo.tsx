@@ -30,20 +30,20 @@ export const Logo: React.FC<LogoProps> = ({
       {/* Visual Mathematical Geometry & Golden Ratio Badge */}
       <div className="relative group">
         {/* Outer Luxury Gold & Electric Blue Halo */}
-        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#D4AF37]/50 via-[#00F0FF]/30 to-[#F3C644]/50 blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#D4AF37]/50 via-[#00F0FF]/30 to-[#D4AF37]/50 blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
         
         {/* Inner Badge Frame */}
-        <div className={`relative flex ${iconSizes[size]} items-center justify-center rounded-2xl bg-[#06090F] border-2 border-[#D4AF37] dark:border-[#F3C644] shadow-md overflow-hidden shrink-0`}>
+        <div className={`relative flex ${iconSizes[size]} items-center justify-center rounded-2xl bg-[#0B0B0F] border-2 border-[#D4AF37] dark:border-[#D4AF37] shadow-md overflow-hidden shrink-0`}>
           
           {/* Subtle Math Geometry Rings & Golden Spirals in Background */}
           <svg className="absolute inset-0 h-full w-full opacity-40 animate-[spin_24s_linear_infinite]" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="38" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeDasharray="4 3" />
             <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#00F0FF" strokeWidth="1.2" strokeDasharray="3 3" transform="rotate(45 50 50)" />
-            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#F3C644" strokeWidth="1.2" transform="rotate(-45 50 50)" />
+            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#D4AF37" strokeWidth="1.2" transform="rotate(-45 50 50)" />
           </svg>
 
           {/* Central Mathematical Symbol: Infinity (∞) or Sigma (∑) with Gold Gradient */}
-          <div className="relative z-10 flex items-center justify-center font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5C0] via-[#F3C644] to-[#B8860B] drop-shadow-[0_2px_8px_rgba(212,175,55,0.6)]">
+          <div className="relative z-10 flex items-center justify-center font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5C0] via-[#D4AF37] to-[#B8860B] drop-shadow-[0_2px_8px_rgba(212,175,55,0.6)]">
             <span className="leading-none">∑</span>
           </div>
 
@@ -56,7 +56,7 @@ export const Logo: React.FC<LogoProps> = ({
       <div className="flex flex-col text-right shrink-0">
         <div className="flex items-center gap-2">
           <div className={`${titleSizes[size]} font-calligraphy font-black tracking-normal flex items-center gap-1.5 whitespace-nowrap`}>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3C644] to-[#E5B83B] gold-glow-subtle font-extrabold">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] gold-glow-subtle font-extrabold">
               مداح
             </span>
             <span className="text-[#0D1B3E] dark:text-white transition-colors">

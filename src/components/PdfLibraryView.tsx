@@ -128,7 +128,7 @@ export const PdfLibraryView: React.FC<PdfLibraryViewProps> = ({
       
       {/* Header Banner */}
       <div className="text-center space-y-3 max-w-3xl mx-auto">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3.5 py-1 text-xs font-bold text-[#F3C644]">
+        <div className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3.5 py-1 text-xs font-bold text-[#D4AF37]">
           <Sparkles className="h-3.5 w-3.5" />
           <span>المكتبة الرقمية والملازم والمذكرات</span>
         </div>

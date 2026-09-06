@@ -19,7 +19,7 @@ export const PRESET_AVATARS: AvatarOption[] = [
     name: 'المحاسب الذكي',
     iconName: 'Calculator',
     bgGradient: 'from-blue-500/20 to-indigo-600/30',
-    borderColor: 'border-[#1E4FD8]'
+    borderColor: 'border-[#00B4FF]'
   },
   {
     id: 'preset:geometry',

@@ -49,11 +49,11 @@ export function generateSamplePhysicsWorksheetDataUrl(title = 'شيت أسئلة
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&amp;display=swap');
       text { font-family: 'Cairo', system-ui, sans-serif; direction: rtl; }
-      .header-bg { fill: #06090F; }
+      .header-bg { fill: #0B0B0F; }
       .gold-accent { fill: #D4AF37; }
       .card { fill: #FFFFFF; stroke: #E2E8F0; stroke-width: 2; rx: 16; }
       .title { font-size: 24px; font-weight: 900; fill: #FFFFFF; text-anchor: middle; }
-      .subtitle { font-size: 14px; font-weight: 700; fill: #F3C644; text-anchor: middle; }
+      .subtitle { font-size: 14px; font-weight: 700; fill: #D4AF37; text-anchor: middle; }
       .q-num { font-size: 16px; font-weight: 900; fill: #D4AF37; }
       .q-text { font-size: 15px; font-weight: 700; fill: #1E293B; }
       .formula { font-size: 15px; font-weight: 700; fill: #0F172A; font-family: monospace; }

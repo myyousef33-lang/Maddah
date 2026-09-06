@@ -105,7 +105,7 @@ export const WeaknessAnalysisView: React.FC<WeaknessAnalysisViewProps> = ({ onNa
               </p>
               <button
                 onClick={() => onNavigate('courses-catalog')}
-                className="rounded-xl bg-[#F5B301] px-6 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#e0a401] transition-colors shadow-xs"
+                className="rounded-xl bg-[#D4AF37] px-6 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] transition-colors shadow-xs"
               >
                 تصفح الكورسات والامتحانات
               </button>
@@ -162,7 +162,7 @@ export const WeaknessAnalysisView: React.FC<WeaknessAnalysisViewProps> = ({ onNa
                         </div>
                         <button
                           onClick={() => onNavigate('courses-catalog')}
-                          className="flex items-center gap-1 rounded-lg bg-[#F5B301] px-3 py-1 text-[11px] font-bold text-[#0D1B3E] hover:bg-[#e0a401] transition-colors"
+                          className="flex items-center gap-1 rounded-lg bg-[#D4AF37] px-3 py-1 text-[11px] font-bold text-[#0D1B3E] hover:bg-[#D4AF37] transition-colors"
                         >
                           <span>مشاهدة الشرح</span>
                           <Play className="h-3 w-3 fill-[#0D1B3E]" />
