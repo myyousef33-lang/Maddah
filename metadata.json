@@ -1,0 +1,6 @@
+{
+  "name": "مداح الرياضيات - Maddah Mathematics",
+  "description": "المنصة التعليمية المتخصصة في مادة الرياضيات لجميع المراحل الدراسية مع نظام الوحدات، الامتحانات التفاعلية، والشرح الشامل للمنهج الحديث.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

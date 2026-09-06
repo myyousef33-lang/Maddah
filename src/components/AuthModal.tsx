@@ -1,0 +1,463 @@
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
+import { User, Phone, Sparkles, X, UserPlus, LogIn, GraduationCap, MapPin, Lock, Eye, EyeOff, ShieldCheck } from 'lucide-react';
+import { StorageService } from '../services/storage';
+import { GradeLevel, Student } from '../types';
+
+interface AuthModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  initialMode?: 'login' | 'register';
+  onSuccess?: () => void;
+}
+
+export const AuthModal: React.FC<AuthModalProps> = ({
+  isOpen,
+  onClose,
+  initialMode = 'login',
+  onSuccess
+}) => {
+  const [mode, setMode] = useState<'login' | 'register'>(initialMode);
+  
+  // Login Form
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  
+  // Register Form
+  const [name, setName] = useState('');
+  const [regPhone, setRegPhone] = useState('');
+  const [parentPhone, setParentPhone] = useState('');
+  const [regPassword, setRegPassword] = useState('');
+  const [showRegPassword, setShowRegPassword] = useState(false);
+  const [grade, setGrade] = useState<GradeLevel>(GradeLevel.GRADE_12);
+  const [governorate, setGovernorate] = useState('القاهرة');
+  const [gender, setGender] = useState<'male' | 'female'>('male');
+
+  // Error & Status
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+
+  if (!isOpen) return null;
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!phone.trim()) {
+      setError('يرجى إدخال رقم الهاتف المحمول');
+      return;
+    }
+    if (!password.trim()) {
+      setError('يرجى إدخال كلمة المرور (الباسورد)');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await StorageService.loginStudentAsync(phone.trim(), password.trim());
+      setLoading(false);
+      if (res.success && res.student) {
+        setSuccess(`أهلاً بك مجدداً يا ${res.student.name}! تم تسجيل الدخول بنجاح`);
+        setTimeout(() => {
+          onClose();
+          if (onSuccess) onSuccess();
+        }, 700);
+      } else {
+        setError(res.error || 'رقم الهاتف أو كلمة المرور غير صحيحة. يرجى التأكد وإعادة المحاولة.');
+      }
+    } catch {
+      setLoading(false);
+      setError('حدث خطأ أثناء الاتصال بالخادم.');
+    }
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim() || !regPhone.trim()) {
+      setError('يرجى كتابة اسم الطالب ورقم الهاتف المحمول');
+      return;
+    }
+
+    if (!regPassword.trim() || regPassword.trim().length < 4) {
+      setError('يرجى كتابة كلمة مرور تتكون من 4 أرقام أو أحرف على الأقل لحماية حسابك');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await StorageService.registerStudentAsync({
+        name: name.trim(),
+        phone: regPhone.trim(),
+        parentPhone: parentPhone.trim() || '01000000000',
+        password: regPassword.trim(),
+        grade,
+        governorate,
+        gender
+      });
+      setLoading(false);
+
+      if (res.success && res.student) {
+        setSuccess(`تم إنشاء حسابك بنجاح يا ${res.student.name}! مرحباً بك في منصة مداح الرياضيات`);
+        setTimeout(() => {
+          onClose();
+          if (onSuccess) onSuccess();
+        }, 800);
+      } else {
+        setError(res.error || 'حدث خطأ أثناء إنشاء الحساب، يرجى المحاولة برقم هاتف آخر');
+      }
+    } catch {
+      setLoading(false);
+      setError('حدث خطأ أثناء إنشاء الحساب.');
+    }
+  };
+
+  const handleQuickDemoSwitch = async (studentId: string) => {
+    const s = StorageService.getStudentById(studentId);
+    if (s) {
+      StorageService.setCurrentStudent(s);
+      setSuccess(`تم الدخول بحساب: ${s.name}`);
+      setTimeout(() => {
+        onClose();
+        if (onSuccess) onSuccess();
+      }, 500);
+    } else {
+      // If demo student doesn't exist, create one
+      const res = await StorageService.registerStudent({
+        name: 'أحمد محمود (طالب تجريبي)',
+        phone: '01012345678',
+        parentPhone: '01112345678',
+        password: '123',
+        grade: GradeLevel.GRADE_12,
+        governorate: 'القاهرة'
+      });
+      if (res.student) {
+        StorageService.setCurrentStudent(res.student);
+        setSuccess(`تم الدخول بالحساب التجريبي بنجاح`);
+        setTimeout(() => {
+          onClose();
+          if (onSuccess) onSuccess();
+        }, 500);
+      }
+    }
+  };
+
+  const governorates = [
+    'القاهرة', 'الجيزة', 'الإسكندرية', 'الدقهلية', 'الشرقية', 'المنوفية', 'القليوبية', 
+    'البحيرة', 'الغربية', 'كفر الشيخ', 'الفيوم', 'بني سويف', 'المنيا', 'أسيوط', 
+    'سوهاج', 'قنا', 'الأقصر', 'أسوان', 'الإسماعيلية', 'السويس', 'بورسعيد', 'دمياط'
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/70 backdrop-blur-xs p-4"
+      dir="rtl"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.94, y: 16 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.94, y: 16 }}
+        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#121E3E] p-6 sm:p-8 shadow-2xl space-y-5 transition-colors"
+      >
+        
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-5 left-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#16224D] p-2 text-[#6B7280] dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-[#0D1B3E] dark:hover:text-white transition-colors"
+          title="إغلاق"
+        >
+          <X className="h-4 w-4" />
+        </button>
+
+        {/* Header Title */}
+        <div className="text-center space-y-1 pt-1">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[#1E4FD8] dark:text-[#60A5FA] mb-2 shadow-xs">
+            <GraduationCap className="h-6 w-6" />
+          </div>
+          <h2 className="text-xl font-black text-[#0D1B3E] dark:text-white flex items-center justify-center gap-1.5">
+            <span>بوابة طلاب</span>
+            <span className="text-[#F5B301] dark:text-[#FBBF24]">مداح الرياضيات</span>
+          </h2>
+          <p className="text-xs text-[#6B7280] dark:text-slate-300">سجل الدخول برقم هاتفك وكلمة المرور لمتابعة دروسك</p>
+        </div>
+
+        {/* Mode Switcher Tabs */}
+        <div className="flex items-center gap-1 rounded-2xl border border-slate-200 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#0B132B] p-1.5">
+          <button
+            onClick={() => { setMode('login'); setError(null); }}
+            className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
+              mode === 'login' 
+                ? 'bg-[#1E4FD8] text-white shadow-xs' 
+                : 'text-[#6B7280] dark:text-slate-400 hover:text-[#0D1B3E] dark:hover:text-white'
+            }`}
+          >
+            <LogIn className="h-4 w-4" />
+            <span>تسجيل الدخول</span>
+          </button>
+          <button
+            onClick={() => { setMode('register'); setError(null); }}
+            className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
+              mode === 'register' 
+                ? 'bg-[#1E4FD8] text-white shadow-xs' 
+                : 'text-[#6B7280] dark:text-slate-400 hover:text-[#0D1B3E] dark:hover:text-white'
+            }`}
+          >
+            <UserPlus className="h-4 w-4" />
+            <span>إنشاء حساب جديد</span>
+          </button>
+        </div>
+
+        {/* Alerts */}
+        {error && (
+          <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-xs font-bold text-red-700 leading-relaxed">
+            {error}
+          </div>
+        )}
+        {success && (
+          <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-xs font-bold text-emerald-700 leading-relaxed">
+            {success}
+          </div>
+        )}
+
+        {/* Mode: Student Login */}
+        {mode === 'login' && (
+          <form onSubmit={handleLogin} className="space-y-4">
+            {/* Phone Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
+                <span>رقم الهاتف المحمول</span>
+                <span className="text-[11px] text-[#1E4FD8] font-normal">المسجل بالمنصة</span>
+              </label>
+              <div className="relative">
+                <Phone className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                <input
+                  type="tel"
+                  dir="ltr"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder="010XXXXXXXX"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-4 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none transition-all text-sm"
+                  autoFocus
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Password Input */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
+                <span>كلمة المرور (الباسورد)</span>
+                <span className="text-[11px] text-[#6B7280] font-normal">لحماية حسابك</span>
+              </label>
+              <div className="relative">
+                <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                <input
+                  type={showLoginPassword ? 'text' : 'password'}
+                  dir="ltr"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-10 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none transition-all text-sm"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowLoginPassword(!showLoginPassword)}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#1E4FD8] transition-colors"
+                  title={showLoginPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
+                >
+                  {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-2xl bg-[#F5B301] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#e0a401] transition-all disabled:opacity-50 mt-2"
+            >
+              {loading ? 'جارٍ تسجيل الدخول...' : 'دخول إلى حسابي'}
+            </button>
+
+            {/* Quick Demo Switcher */}
+            <div className="pt-3 border-t border-slate-100 text-center space-y-2">
+              <span className="text-[11px] text-[#6B7280] font-medium">حسابات تجريبية للاختبار السريع:</span>
+              <div className="flex flex-wrap justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => handleQuickDemoSwitch('student-demo')}
+                  className="rounded-xl border border-slate-200 bg-[#F5F7FA] px-3 py-1.5 text-xs font-bold text-[#1E4FD8] hover:border-blue-300 hover:bg-blue-50 transition-all shadow-xs"
+                >
+                  أحمد محمود (3 ثانوي)
+                </button>
+              </div>
+            </div>
+          </form>
+        )}
+
+        {/* Mode: Student Register */}
+        {mode === 'register' && (
+          <form onSubmit={handleRegister} className="space-y-3.5 max-h-[60vh] overflow-y-auto pr-1">
+            {/* Student Name */}
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[#0D1B3E]">اسم الطالب ثلاثي / رباعي <span className="text-[#F5B301]">*</span></label>
+              <div className="relative">
+                <User className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="مثال: أحمد محمد مصطفى"
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                  required
+                />
+              </div>
+            </div>
+
+            {/* Student Phone & Parent Phone */}
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#0D1B3E]">هاتف الطالب <span className="text-[#F5B301]">*</span></label>
+                <div className="relative">
+                  <Phone className="absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
+                  <input
+                    type="tel"
+                    dir="ltr"
+                    value={regPhone}
+                    onChange={(e) => setRegPhone(e.target.value)}
+                    placeholder="010XXXXXXXX"
+                    className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-8 pl-2.5 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#0D1B3E]">هاتف ولي الأمر</label>
+                <input
+                  type="tel"
+                  dir="ltr"
+                  value={parentPhone}
+                  onChange={(e) => setParentPhone(e.target.value)}
+                  placeholder="011XXXXXXXX"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Password Creation */}
+            <div className="space-y-1">
+              <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
+                <span>كلمة المرور للحساب <span className="text-[#F5B301]">*</span></span>
+                <span className="text-[10px] text-[#1E4FD8] font-medium flex items-center gap-1">
+                  <ShieldCheck className="h-3 w-3 inline" /> أمان الحساب
+                </span>
+              </label>
+              <div className="relative">
+                <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                <input
+                  type={showRegPassword ? 'text' : 'password'}
+                  dir="ltr"
+                  value={regPassword}
+                  onChange={(e) => setRegPassword(e.target.value)}
+                  placeholder="أنشئ كلمة مرور (4 خانات أو أكثر)"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-10 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowRegPassword(!showRegPassword)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#1E4FD8] transition-colors"
+                  title={showRegPassword ? 'إخفاء' : 'إظهار'}
+                >
+                  {showRegPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
+                </button>
+              </div>
+            </div>
+
+            {/* Gender Selection */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
+                <span>الجنس (لتخصيص تجربتك وشخصيتك التعليمية) <span className="text-[#F5B301]">*</span></span>
+              </label>
+              <div className="grid grid-cols-2 gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setGender('male')}
+                  className={`flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-bold transition-all border cursor-pointer ${
+                    gender === 'male'
+                      ? 'border-[#1E4FD8] bg-blue-50 text-[#1E4FD8] shadow-xs ring-1 ring-[#1E4FD8]'
+                      : 'border-slate-200 bg-[#F5F7FA] text-slate-600 hover:bg-slate-100 hover:text-[#0D1B3E]'
+                  }`}
+                >
+                  <User className="h-3.5 w-3.5" />
+                  <span>طالب (ذكر)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGender('female')}
+                  className={`flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-bold transition-all border cursor-pointer ${
+                    gender === 'female'
+                      ? 'border-[#1E4FD8] bg-blue-50 text-[#1E4FD8] shadow-xs ring-1 ring-[#1E4FD8]'
+                      : 'border-slate-200 bg-[#F5F7FA] text-slate-600 hover:bg-slate-100 hover:text-[#0D1B3E]'
+                  }`}
+                >
+                  <User className="h-3.5 w-3.5" />
+                  <span>طالبة (أنثى)</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Grade & Governorate in Grid */}
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#0D1B3E]">الصف الدراسي <span className="text-[#F5B301]">*</span></label>
+                <select
+                  value={grade}
+                  onChange={(e) => setGrade(e.target.value as GradeLevel)}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                >
+                  <option value={GradeLevel.GRADE_12}>الصف الثالث الثانوي (3 ث)</option>
+                  <option value={GradeLevel.GRADE_11}>الصف الثاني الثانوي (2 ث)</option>
+                  <option value={GradeLevel.GRADE_10}>الصف الأول الثانوي (1 ث)</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-[#0D1B3E]">المحافظة <span className="text-[#F5B301]">*</span></label>
+                <select
+                  value={governorate}
+                  onChange={(e) => setGovernorate(e.target.value)}
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#1E4FD8] focus:bg-white focus:outline-none"
+                >
+                  {governorates.map((g) => (
+                    <option key={g} value={g}>{g}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full rounded-2xl bg-[#F5B301] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#e0a401] transition-all disabled:opacity-50 mt-2"
+            >
+              {loading ? 'جارٍ إنشاء الحساب...' : 'إنشاء الحساب وبدء التعلم'}
+            </button>
+          </form>
+        )}
+
+      </motion.div>
+    </motion.div>
+  );
+};
+
+

@@ -1,0 +1,79 @@
+import React from 'react';
+
+interface LogoProps {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  showSubtitle?: boolean;
+  className?: string;
+}
+
+export const Logo: React.FC<LogoProps> = ({
+  size = 'md',
+  showSubtitle = true,
+  className = ''
+}) => {
+  const iconSizes = {
+    sm: 'h-8 w-8 text-lg',
+    md: 'h-11 w-11 text-xl',
+    lg: 'h-14 w-14 text-2xl',
+    xl: 'h-18 w-18 text-3xl'
+  };
+
+  const titleSizes = {
+    sm: 'text-lg',
+    md: 'text-2xl',
+    lg: 'text-3xl',
+    xl: 'text-4xl'
+  };
+
+  return (
+    <div className={`flex items-center gap-3 select-none ${className}`}>
+      {/* Visual Mathematical Geometry & Golden Ratio Badge */}
+      <div className="relative group">
+        {/* Outer Luxury Gold & Electric Blue Halo */}
+        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#D4AF37]/50 via-[#00F0FF]/30 to-[#F3C644]/50 blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
+        
+        {/* Inner Badge Frame */}
+        <div className={`relative flex ${iconSizes[size]} items-center justify-center rounded-2xl bg-[#06090F] border-2 border-[#D4AF37] dark:border-[#F3C644] shadow-md overflow-hidden shrink-0`}>
+          
+          {/* Subtle Math Geometry Rings & Golden Spirals in Background */}
+          <svg className="absolute inset-0 h-full w-full opacity-40 animate-[spin_24s_linear_infinite]" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeDasharray="4 3" />
+            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#00F0FF" strokeWidth="1.2" strokeDasharray="3 3" transform="rotate(45 50 50)" />
+            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#F3C644" strokeWidth="1.2" transform="rotate(-45 50 50)" />
+          </svg>
+
+          {/* Central Mathematical Symbol: Infinity (∞) or Sigma (∑) with Gold Gradient */}
+          <div className="relative z-10 flex items-center justify-center font-serif font-black text-transparent bg-clip-text bg-gradient-to-b from-[#FFF5C0] via-[#F3C644] to-[#B8860B] drop-shadow-[0_2px_8px_rgba(212,175,55,0.6)]">
+            <span className="leading-none">∑</span>
+          </div>
+
+          {/* Electric Blue Quantum Spark Dot */}
+          <div className="absolute top-1 right-1 h-2 w-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_#00F0FF] animate-pulse" />
+        </div>
+      </div>
+
+      {/* Luxury Calligraphic Typography: مداح الرياضيات */}
+      <div className="flex flex-col text-right shrink-0">
+        <div className="flex items-center gap-2">
+          <div className={`${titleSizes[size]} font-calligraphy font-black tracking-normal flex items-center gap-1.5 whitespace-nowrap`}>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F3C644] to-[#E5B83B] gold-glow-subtle font-extrabold">
+              مداح
+            </span>
+            <span className="text-[#0D1B3E] dark:text-white transition-colors">
+              الرياضيات
+            </span>
+          </div>
+          <span className="hidden xs:inline-block rounded-md bg-[#00F0FF]/10 dark:bg-[#00F0FF]/20 border border-[#00F0FF]/30 px-1.5 py-0.5 text-[9px] font-black text-[#0284C7] dark:text-[#00F0FF] tracking-wider uppercase font-mono shadow-xs whitespace-nowrap">
+            MATHEMATICS
+          </span>
+        </div>
+        
+        {showSubtitle && (
+          <span className="text-[11px] sm:text-xs font-medium text-[#6B7280] dark:text-slate-300 whitespace-nowrap hidden sm:block">
+            منصة الرياضيات لجميع المراحل الدراسية
+          </span>
+        )}
+      </div>
+    </div>
+  );
+};
