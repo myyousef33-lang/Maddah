@@ -1278,9 +1278,8 @@ ${weakConceptsText}
               </div>
             </div>
 
-            {/* Left in RTL: Action Buttons (Firestore Sync, Theme Toggle, Student View, Logout) */}
+            {/* Left in RTL: Action Buttons (Firestore Sync, Student View, Logout) */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
-              <ThemeToggle />
 
               <button
                 onClick={handleForceSyncCloud}
@@ -2776,12 +2775,12 @@ ${weakConceptsText}
                         rows={2}
                         value={newQuestionForm.text}
                         onChange={e => setNewQuestionForm({ ...newQuestionForm, text: e.target.value })}
-                        placeholder="اكتب صيغة السؤال الفيزيائي هنا..."
+                        placeholder="اكتب صيغة السؤال الرياضي هنا..."
                         className="w-full rounded-xl border border-slate-200 bg-white p-2.5 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:outline-none"
                       />
                     </div>
 
-                    {/* Question Diagram / Image (Optional for physics diagrams, circuits, etc.) */}
+                    {/* Question Diagram / Image (Optional for math diagrams, graphs, etc.) */}
                     <div className="space-y-1">
                       <label className="text-[10px] font-bold text-[#6B7280] flex items-center justify-between">
                         <span>صورة أو رسم توضيحي للسؤال (اختياري للدوائر والرسوم البيانية)</span>

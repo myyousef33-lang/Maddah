@@ -307,7 +307,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
   const mascotSrc = isFemale ? '/images/student-mascot-female-half.png' : '/images/student-mascot-male-half.png';
 
   return (
-    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-5 sm:space-y-6 animate-in fade-in duration-300 pb-24 md:pb-12 text-[#0D1B3E] dark:text-slate-100" dir="rtl">
+    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-5 sm:space-y-6 pb-24 md:pb-12 text-slate-100" dir="rtl">
       
       {/* Guest Mode Notice for Visitors */}
       {!student && (
@@ -317,8 +317,8 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-sm font-black text-slate-900 dark:text-white">أنت تتصفح لوحة دراستي كزائر (طالب تجريبي)</h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5">سجل دخولك أو أنشئ حسابك لحفظ تقدمك الفعلي وتفعيل الأكواد ومتابعة نتائج امتحاناتك.</p>
+              <h3 className="text-sm font-black text-white">أنت تتصفح لوحة دراستي كزائر (طالب تجريبي)</h3>
+              <p className="text-xs text-slate-400 mt-0.5">سجل دخولك أو أنشئ حسابك لحفظ تقدمك الفعلي وتفعيل الأكواد ومتابعة نتائج امتحاناتك.</p>
             </div>
           </div>
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
@@ -330,7 +330,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
             </button>
             <button
               onClick={onOpenActivationModal}
-              className="flex-1 sm:flex-initial rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#0E172E] px-4 py-2 text-xs font-bold text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer text-center"
+              className="flex-1 sm:flex-initial rounded-xl border border-[#222230] bg-[#181824] px-4 py-2 text-xs font-bold text-slate-200 hover:bg-[#222232] transition-all cursor-pointer text-center"
             >
               تفعيل كود
             </button>
@@ -341,10 +341,10 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       {/* ========================================================================= */}
       {/* 1. Welcome Section (قسم الترحيب مع الشخصية الكرتونية 3D Mascot)             */}
       {/* ========================================================================= */}
-      <section className="rounded-2xl sm:rounded-3xl border border-blue-100 dark:border-[#D4AF37]/30 bg-gradient-to-l from-white via-white to-blue-50/70 dark:from-[#0D1527] dark:via-[#080D21] dark:to-[#0B0B0F] p-4 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-[310px] lg:min-h-[330px] flex items-center">
+      <section className="rounded-2xl sm:rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-l from-[#14141E] via-[#0F0F18] to-[#0B0B0F] p-4 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-[310px] lg:min-h-[330px] flex items-center">
         {/* Decorative physics ambient glow behind mascot */}
-        <div className="absolute -left-12 -bottom-12 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-blue-400/25 dark:bg-blue-600/15 blur-3xl pointer-events-none" />
-        <div className="absolute left-8 bottom-0 h-56 w-56 sm:h-72 sm:w-72 rounded-full bg-amber-400/20 dark:bg-amber-500/15 blur-2xl pointer-events-none" />
+        <div className="absolute -left-12 -bottom-12 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
+        <div className="absolute left-8 bottom-0 h-56 w-56 sm:h-72 sm:w-72 rounded-full bg-amber-500/15 blur-2xl pointer-events-none" />
 
         <div className="relative z-10 w-full flex flex-row items-center justify-between gap-3 sm:gap-6">
           
@@ -352,9 +352,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
           <div className="flex-1 space-y-2.5 sm:space-y-3.5 min-w-0 py-1 pl-2 sm:pl-4">
             {/* Badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 dark:border-blue-800/80 bg-blue-50 dark:bg-blue-950/60 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-[#00B4FF] dark:text-blue-300">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-800/80 bg-blue-950/60 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-blue-300">
                 <Sparkles className="h-3.5 w-3.5 text-[#D4AF37]" />
-                <span>{activeStudent.grade || 'الصف الثالث الثانوي'}</span>
+                <span>{activeStudent.grade || 'جميع المراحل الدراسية'}</span>
               </span>
 
               {/* Student Level & Rank Status Badge */}
@@ -364,8 +364,8 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                   rankStats.isFirstOnPlatform
                     ? 'border-amber-400 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 text-slate-950 animate-pulse ring-2 ring-amber-300/80'
                     : rankStats.isTopThree
-                    ? 'border-amber-300 dark:border-amber-600/60 bg-amber-50 dark:bg-amber-950/50 text-amber-900 dark:text-amber-300 hover:bg-amber-100'
-                    : 'border-blue-200 dark:border-blue-800/80 bg-blue-50 dark:bg-blue-950/50 text-[#00B4FF] dark:text-blue-300 hover:bg-blue-100'
+                    ? 'border-amber-600/60 bg-amber-950/50 text-amber-300 hover:bg-amber-900/40'
+                    : 'border-blue-800/80 bg-blue-950/50 text-blue-300 hover:bg-blue-900/40'
                 }`}
                 title="عرض ترتيبك على مستوى الجمهورية في لوحة الشرف"
               >
@@ -384,17 +384,17 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               {/* Level Badge */}
               <button
                 onClick={() => onNavigate('leaderboard')}
-                className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50 dark:bg-indigo-950/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-800 dark:text-indigo-300 hover:bg-indigo-100 transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-indigo-800/60 bg-indigo-950/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-indigo-300 hover:bg-indigo-900/40 transition-colors cursor-pointer"
                 title="رتبتك الحالية في منصة مداح الرياضيات"
               >
-                <RankTierIcon tier={rankStats.level.tier} className="h-3.5 w-3.5 text-indigo-700 dark:text-indigo-400" />
+                <RankTierIcon tier={rankStats.level.tier} className="h-3.5 w-3.5 text-indigo-400" />
                 <span>رتبة {rankStats.level.badge} (مستوى {rankStats.level.level})</span>
               </button>
 
               {activeStudent.walletBalance !== undefined && (
                 <button 
                   onClick={onOpenWalletModal}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 dark:border-amber-800/60 bg-amber-50 dark:bg-amber-950/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-amber-800 dark:text-amber-300 hover:bg-amber-100 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-amber-800/60 bg-amber-950/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-bold text-amber-300 hover:bg-amber-900/40 transition-colors cursor-pointer"
                 >
                   <Wallet className="h-3.5 w-3.5 text-[#D4AF37]" />
                   <span>المحفظة: {activeStudent.walletBalance} ج.م</span>
@@ -404,21 +404,21 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               {/* Lucky Wheel Spins Badge */}
               <button
                 onClick={() => setIsLuckyWheelOpen(true)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 dark:border-amber-600/60 bg-gradient-to-r from-amber-100 to-amber-200/90 dark:from-amber-900/60 dark:to-amber-800/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-black text-amber-950 dark:text-amber-200 hover:from-amber-200 hover:to-amber-300 transition-all cursor-pointer shadow-xs group"
+                className="inline-flex items-center gap-1.5 rounded-full border border-amber-600/60 bg-gradient-to-r from-amber-900/60 to-amber-800/50 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-black text-amber-200 hover:from-amber-800/80 hover:to-amber-700/70 transition-all cursor-pointer shadow-xs group"
                 title="عجلة الحظ لربح نقاط إضافية وتصدر المركز الأول"
               >
-                <Gift className="h-3.5 w-3.5 text-amber-700 dark:text-amber-400 group-hover:rotate-12 transition-transform" />
+                <Gift className="h-3.5 w-3.5 text-amber-400 group-hover:rotate-12 transition-transform" />
                 <span>عجلة الحظ: {activeStudent.wheelSpins || 0} لفات</span>
               </button>
 
               {/* Gender selector badge for older accounts if not set */}
               {!activeStudent.gender && (
-                <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200 dark:border-indigo-800/60 bg-indigo-50 dark:bg-indigo-950/60 px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-bold text-indigo-700 dark:text-indigo-300 shadow-2xs">
+                <div className="inline-flex items-center gap-1.5 rounded-full border border-indigo-800/60 bg-indigo-950/60 px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-bold text-indigo-300 shadow-2xs">
                   <span>اختر شخصيتك:</span>
                   <button
                     type="button"
                     onClick={() => handleQuickSetGender('male')}
-                    className="hover:scale-105 transition-transform cursor-pointer px-1 text-xs font-black text-blue-700 dark:text-blue-400"
+                    className="hover:scale-105 transition-transform cursor-pointer px-1 text-xs font-black text-blue-400"
                     title="طالب (ذكر)"
                   >
                     طالب (ذكر)
@@ -427,7 +427,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                   <button
                     type="button"
                     onClick={() => handleQuickSetGender('female')}
-                    className="hover:scale-105 transition-transform cursor-pointer px-1 text-xs font-black text-pink-700 dark:text-pink-400"
+                    className="hover:scale-105 transition-transform cursor-pointer px-1 text-xs font-black text-pink-400"
                     title="طالبة (أنثى)"
                   >
                     طالبة (أنثى)
@@ -437,12 +437,12 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
             </div>
 
             {/* Greeting Title */}
-            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#0D1B3E] dark:text-white tracking-tight leading-tight">
+            <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
               مرحبًا بك يا {activeStudent.name || 'طالبنا المتميز'}
             </h1>
 
             {/* Subtitle description */}
-            <p className="text-xs sm:text-sm md:text-base text-[#4B5563] dark:text-slate-300 font-medium leading-relaxed max-w-xl line-clamp-2 sm:line-clamp-none">
+            <p className="text-xs sm:text-sm md:text-base text-slate-300 font-medium leading-relaxed max-w-xl line-clamp-2 sm:line-clamp-none">
               {rankStats.isFirstOnPlatform
                 ? 'ما شاء الله! أنت متصدر المركز الأول على مستوى الجمهورية! واصل التفوق للحفاظ على الصدارة.'
                 : rankStats.pointsToNextLevel > 0
@@ -457,7 +457,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               {/* Leaderboard & Rank Button */}
               <button
                 onClick={() => onNavigate('leaderboard')}
-                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 px-3.5 sm:px-5 text-xs sm:text-sm font-black text-[#0D1B3E] hover:from-amber-300 hover:to-yellow-300 shadow-md shadow-amber-500/30 ring-2 ring-amber-400/60 hover:scale-105 transition-all cursor-pointer"
+                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-400 px-3.5 sm:px-5 text-xs sm:text-sm font-black text-slate-950 hover:from-amber-300 hover:to-yellow-300 shadow-md shadow-amber-500/30 ring-2 ring-amber-400/60 hover:scale-105 transition-all cursor-pointer"
                 title="عرض لوحة الشرف وترتيب المتفوقين"
               >
                 <Trophy className="h-4 w-4" />
@@ -469,10 +469,10 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               {/* Lucky Wheel Button */}
               <button
                 onClick={() => setIsLuckyWheelOpen(true)}
-                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-amber-200 dark:border-amber-800/60 bg-amber-50 dark:bg-amber-950/50 text-xs sm:text-sm font-bold text-amber-900 dark:text-amber-300 hover:bg-amber-100 dark:hover:bg-amber-900/60 transition-all cursor-pointer shadow-xs"
+                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-amber-800/60 bg-amber-950/50 text-xs sm:text-sm font-bold text-amber-300 hover:bg-amber-900/60 transition-all cursor-pointer shadow-xs"
                 title="لف عجلة الحظ واكسب نقاط تصدر لوحة الشرف"
               >
-                <Gift className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                <Gift className="h-4 w-4 text-amber-400" />
                 <span>عجلة الحظ ({activeStudent.wheelSpins || 0})</span>
               </button>
 
@@ -480,7 +480,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                 <button
                   onClick={onOpenEditProfileModal}
                   title="تعديل الملف الشخصي"
-                  className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-[#0D1B3E] dark:text-slate-200 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-[#00B4FF] dark:hover:text-blue-400 transition-all cursor-pointer shadow-xs"
+                  className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-[#222230] bg-[#181824] text-xs sm:text-sm font-bold text-slate-200 hover:border-[#00B4FF]/50 hover:text-[#00B4FF] transition-all cursor-pointer shadow-xs"
                 >
                   <User className="h-4 w-4" />
                   <span>الملف الشخصي</span>
@@ -490,15 +490,15 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               <button
                 onClick={() => onNavigate('weakness-profile')}
                 title="تشخيص مستواي"
-                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 text-xs sm:text-sm font-bold text-[#0D1B3E] dark:text-slate-200 hover:border-blue-300 hover:bg-blue-50 dark:hover:bg-slate-700 hover:text-[#00B4FF] dark:hover:text-blue-400 transition-all cursor-pointer shadow-xs"
+                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 px-3 sm:px-4 rounded-xl border border-[#222230] bg-[#181824] text-xs sm:text-sm font-bold text-slate-200 hover:border-[#00B4FF]/50 hover:text-[#00B4FF] transition-all cursor-pointer shadow-xs"
               >
-                <Brain className="h-4 w-4 text-[#00B4FF] dark:text-blue-400" />
+                <Brain className="h-4 w-4 text-[#00B4FF]" />
                 <span className="hidden xs:inline">تشخيص مستواي</span>
               </button>
 
               <button
                 onClick={onOpenActivationModal}
-                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 rounded-xl bg-[#0D1B3E] dark:bg-blue-600 px-3.5 sm:px-5 text-xs sm:text-sm font-black text-white hover:bg-slate-800 dark:hover:bg-blue-500 shadow-xs transition-all cursor-pointer"
+                className="flex h-9 sm:h-11 items-center gap-1.5 sm:gap-2 rounded-xl bg-blue-600 px-3.5 sm:px-5 text-xs sm:text-sm font-black text-white hover:bg-blue-500 shadow-xs transition-all cursor-pointer"
               >
                 <Key className="h-4 w-4 text-[#D4AF37]" />
                 <span>تفعيل كود</span>
@@ -530,39 +530,39 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       {/* ========================================================================= */}
       {/* 2. Next Step (خطوتك القادمة - Primary CTA)                                 */}
       {/* ========================================================================= */}
-      <section className="rounded-2xl sm:rounded-3xl border-2 border-[#00B4FF]/25 dark:border-[#D4AF37]/30 bg-gradient-to-r from-blue-50/70 via-white to-amber-50/40 dark:from-[#0E172E] dark:via-[#080D21] dark:to-[#0E172E] p-4 sm:p-6 shadow-sm relative overflow-hidden">
+      <section className="rounded-2xl sm:rounded-3xl border-2 border-[#D4AF37]/30 bg-gradient-to-r from-[#14141E] via-[#0F0F18] to-[#14141E] p-4 sm:p-6 shadow-sm relative overflow-hidden">
         {nextStepInfo ? (
           <div className="space-y-4">
             
             {/* Header Tag */}
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#00B4FF] dark:bg-[#D4AF37] text-white dark:text-slate-950 shadow-xs">
+                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#D4AF37] text-slate-950 shadow-xs">
                   <PlayCircle className="h-4 w-4 fill-current" />
                 </span>
                 <div>
-                  <h2 className="text-sm sm:text-base font-black text-[#0D1B3E] dark:text-white">خطوتك القادمة</h2>
-                  <span className="text-[10px] text-[#6B7280] dark:text-slate-400 font-medium">النشاط الأهم لمواصلة تقدمك الآن</span>
+                  <h2 className="text-sm sm:text-base font-black text-white">خطوتك القادمة</h2>
+                  <span className="text-[10px] text-slate-400 font-medium">النشاط الأهم لمواصلة تقدمك الآن</span>
                 </div>
               </div>
 
-              <span className="rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300">
+              <span className="rounded-full bg-emerald-950/60 border border-emerald-800/60 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300">
                 جاهز للمشاهدة
               </span>
             </div>
 
             {/* Main Content Info & Action */}
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 bg-white/90 dark:bg-[#0B1120]/90 rounded-2xl border border-blue-100/80 dark:border-slate-800 p-3.5 sm:p-5">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 bg-[#181824]/90 rounded-2xl border border-[#222230] p-3.5 sm:p-5">
               
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full lg:w-auto">
                 {/* Course Thumbnail */}
-                <div className="relative h-20 w-32 sm:h-24 sm:w-36 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shrink-0">
+                <div className="relative h-20 w-32 sm:h-24 sm:w-36 rounded-xl overflow-hidden bg-slate-800 border border-slate-700 shrink-0">
                   <img
                     src={nextStepInfo.course.thumbnail || 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?auto=format&fit=crop&w=300&q=80'}
                     alt={nextStepInfo.course.title}
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute top-1.5 right-1.5 rounded-md bg-[#0D1B3E]/85 dark:bg-[#0B0B0F]/90 px-1.5 py-0.5 text-[9px] font-bold text-white">
+                  <div className="absolute top-1.5 right-1.5 rounded-md bg-[#0B0B0F]/90 px-1.5 py-0.5 text-[9px] font-bold text-white">
                     الرياضيات
                   </div>
                 </div>
@@ -570,32 +570,32 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                 {/* Lesson & Course Details */}
                 <div className="space-y-1.5 flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <span className="text-[11px] font-bold text-[#00B4FF] dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-200 dark:border-blue-800 truncate max-w-xs">
+                    <span className="text-[11px] font-bold text-blue-300 bg-blue-950/60 px-2 py-0.5 rounded-md border border-blue-800 truncate max-w-xs">
                       {nextStepInfo.course.title}
                     </span>
-                    <span className="text-[11px] text-[#6B7280] dark:text-slate-400 font-medium flex items-center gap-1">
+                    <span className="text-[11px] text-slate-400 font-medium flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       <span>{nextStepInfo.lesson.durationMinutes || 45} دقيقة</span>
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-xl font-black text-[#0D1B3E] dark:text-white leading-snug line-clamp-1">
+                  <h3 className="text-base sm:text-xl font-black text-white leading-snug line-clamp-1">
                     {nextStepInfo.lesson.title}
                   </h3>
 
                   {/* Course Progress Bar */}
                   <div className="space-y-1 max-w-md pt-0.5">
                     <div className="flex items-center justify-between text-[11px] font-bold">
-                      <span className="text-[#6B7280] dark:text-slate-400">نسبة إنجاز الكورس</span>
-                      <span className="text-[#00B4FF] dark:text-[#D4AF37] font-mono">{nextStepInfo.courseProgress}%</span>
+                      <span className="text-slate-400">نسبة إنجاز الكورس</span>
+                      <span className="text-[#D4AF37] font-mono">{nextStepInfo.courseProgress}%</span>
                     </div>
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/60 dark:border-slate-700">
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800 border border-slate-700">
                       <div 
                         className="h-full bg-gradient-to-r from-blue-600 to-amber-500 rounded-full transition-all duration-500" 
                         style={{ width: `${nextStepInfo.courseProgress}%` }} 
                       />
                     </div>
-                    <p className="text-[10px] text-[#6B7280] dark:text-slate-400">
+                    <p className="text-[10px] text-slate-400">
                       {nextStepInfo.completedLessonsInCourse} من {nextStepInfo.totalLessonsInCourse} درس مكتمل
                     </p>
                   </div>
@@ -621,17 +621,17 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
         ) : (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/60 text-[#00B4FF] dark:text-blue-300 border border-blue-200 dark:border-blue-800 shrink-0">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-950/60 text-blue-300 border border-blue-800 shrink-0">
                 <BookOpen className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-black text-[#0D1B3E] dark:text-white">ابدأ رحلتك الدراسية الأولى اليوم</h3>
-                <p className="text-xs text-[#6B7280] dark:text-slate-400">استعرض الكورسات المتاحة وابدأ في حل الدروس والامتحانات</p>
+                <h3 className="text-sm sm:text-base font-black text-white">ابدأ رحلتك الدراسية الأولى اليوم</h3>
+                <p className="text-xs text-slate-400">استعرض الكورسات المتاحة وابدأ في حل الدروس والامتحانات</p>
               </div>
             </div>
             <button
               onClick={() => onNavigate('courses-catalog')}
-              className="w-full sm:w-auto rounded-xl bg-[#00B4FF] dark:bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-white dark:text-slate-950 hover:bg-[#163cb5] dark:hover:bg-[#D4AF37] transition-all shrink-0 cursor-pointer"
+              className="w-full sm:w-auto rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-slate-950 hover:bg-[#E5BE3B] transition-all shrink-0 cursor-pointer"
             >
               استعراض الكورسات
             </button>
@@ -659,10 +659,10 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       <section className="space-y-2.5">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <LayoutGrid className="h-4 w-4 text-[#00B4FF] dark:text-[#D4AF37]" />
-            <h2 className="text-sm sm:text-base font-black text-[#0D1B3E] dark:text-white">الوصول السريع</h2>
+            <LayoutGrid className="h-4 w-4 text-[#D4AF37]" />
+            <h2 className="text-sm sm:text-base font-black text-white">الوصول السريع</h2>
           </div>
-          <span className="text-[11px] text-[#6B7280] dark:text-slate-400 font-medium">أهم الأدوات التعليمية</span>
+          <span className="text-[11px] text-slate-400 font-medium">أهم الأدوات التعليمية</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -672,20 +672,20 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               <button
                 key={tool.id}
                 onClick={tool.action}
-                className="rounded-xl border border-slate-200/90 dark:border-slate-800 bg-white dark:bg-[#0E172E] p-2 sm:p-2.5 text-right flex items-center gap-2.5 hover:border-blue-300 dark:hover:border-[#D4AF37]/50 hover:bg-blue-50/20 dark:hover:bg-slate-800/80 hover:shadow-xs transition-all group cursor-pointer"
+                className="rounded-xl border border-[#222230] bg-[#14141E] p-2 sm:p-2.5 text-right flex items-center gap-2.5 hover:border-[#D4AF37]/50 hover:bg-[#181824] hover:shadow-xs transition-all group cursor-pointer"
               >
                 <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border ${tool.bg} ${tool.color} group-hover:scale-105 transition-transform`}>
                   <Icon className="h-4 w-4" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <h3 className="text-xs font-black text-[#0D1B3E] dark:text-slate-100 group-hover:text-[#00B4FF] dark:group-hover:text-[#D4AF37] transition-colors truncate">
+                  <h3 className="text-xs font-black text-white group-hover:text-[#D4AF37] transition-colors truncate">
                     {tool.name}
                   </h3>
-                  <p className="text-[10px] text-[#6B7280] dark:text-slate-400 truncate mt-0.5">
+                  <p className="text-[10px] text-slate-400 truncate mt-0.5">
                     {tool.desc}
                   </p>
                 </div>
-                <ChevronLeft className="h-3.5 w-3.5 text-slate-300 dark:text-slate-600 group-hover:text-[#00B4FF] dark:group-hover:text-[#D4AF37] transition-colors shrink-0" />
+                <ChevronLeft className="h-3.5 w-3.5 text-slate-600 group-hover:text-[#D4AF37] transition-colors shrink-0" />
               </button>
             );
           })}
@@ -695,20 +695,20 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       {/* ========================================================================= */}
       {/* 6. AI Math Assistant (المساعد الذكي مداح AI)                                */}
       {/* ========================================================================= */}
-      <section className="rounded-2xl sm:rounded-3xl border border-blue-100 dark:border-[#D4AF37]/30 bg-gradient-to-r from-blue-50/60 via-white to-indigo-50/40 dark:from-[#0E172E] dark:via-[#080D21] dark:to-[#0E172E] p-4 sm:p-5 shadow-xs">
+      <section className="rounded-2xl sm:rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-r from-[#14141E] via-[#0F0F18] to-[#14141E] p-4 sm:p-5 shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3.5">
-            <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-[#00B4FF] dark:bg-gradient-to-tr dark:from-amber-500 dark:to-yellow-400 text-white dark:text-slate-950 shadow-xs">
+            <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 shadow-xs">
               <Bot className="h-6 w-6" />
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <h3 className="text-sm sm:text-base font-black text-[#0D1B3E] dark:text-white">المساعد الذكي (مداح AI)</h3>
-                <span className="rounded-full bg-blue-100 dark:bg-amber-950/70 border border-blue-200 dark:border-amber-700/60 px-2 py-0.5 text-[9px] font-bold text-[#00B4FF] dark:text-[#D4AF37]">
+                <h3 className="text-sm sm:text-base font-black text-white">المساعد الذكي (مداح AI)</h3>
+                <span className="rounded-full bg-amber-950/70 border border-amber-700/60 px-2 py-0.5 text-[9px] font-bold text-[#D4AF37]">
                   Gemini AI
                 </span>
               </div>
-              <p className="text-xs text-[#6B7280] dark:text-slate-300 leading-relaxed max-w-xl">
+              <p className="text-xs text-slate-300 leading-relaxed max-w-xl">
                 اسأل عن أي مسألة رياضية أو ارفع صورتها للحصول على خطوات الحل النموذجية وتوضيح القوانين والمفاهيم.
               </p>
             </div>
@@ -716,7 +716,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
           <button
             onClick={() => onNavigate('ai-assistant')}
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#00B4FF] dark:bg-gradient-to-r dark:from-amber-400 dark:to-amber-500 px-5 py-2.5 text-xs font-bold text-white dark:text-slate-950 hover:bg-[#163cb5] dark:hover:from-amber-300 dark:hover:to-amber-400 shadow-xs transition-all shrink-0 cursor-pointer self-stretch sm:self-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-5 py-2.5 text-xs font-bold text-slate-950 hover:from-amber-300 hover:to-amber-400 shadow-xs transition-all shrink-0 cursor-pointer self-stretch sm:self-auto"
           >
             <Bot className="h-4 w-4" />
             <span>ابدأ المحادثة</span>
@@ -731,25 +731,25 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       <section className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
         
         {/* Card 1: Weakness Diagnosis */}
-        <div className="rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E172E] p-4 sm:p-5 flex flex-col justify-between space-y-3 shadow-xs">
+        <div className="rounded-2xl sm:rounded-3xl border border-[#222230] bg-[#14141E] p-4 sm:p-5 flex flex-col justify-between space-y-3 shadow-xs">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-800/60">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-950/50 text-amber-400 border border-amber-800/60">
                 <Brain className="h-4 w-4" />
               </div>
-              <span className="rounded-full bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 text-[10px] font-bold text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60">
+              <span className="rounded-full bg-amber-950/60 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-800/60">
                 تشخيص ذكي
               </span>
             </div>
 
-            <h3 className="text-sm sm:text-base font-black text-[#0D1B3E] dark:text-white">تحليل نقاط الضعف وخطة العلاج</h3>
-            <p className="text-xs text-[#6B7280] dark:text-slate-300 leading-relaxed">
+            <h3 className="text-sm sm:text-base font-black text-white">تحليل نقاط الضعف وخطة العلاج</h3>
+            <p className="text-xs text-slate-300 leading-relaxed">
               تحديد القوانين التي تكثر أخطاؤك فيها مع توجيه مباشر لدروس وملاحظات المعالجة وتوصيات المذاكرة.
             </p>
 
             {recommendations.length > 0 && (
-              <div className="rounded-xl border border-blue-100 dark:border-blue-900/60 bg-blue-50/50 dark:bg-blue-950/40 p-2.5 text-[11px] text-[#0D1B3E] dark:text-blue-200 font-medium flex items-center gap-2">
-                <Compass className="h-3.5 w-3.5 text-[#00B4FF] dark:text-blue-400 shrink-0" />
+              <div className="rounded-xl border border-blue-900/60 bg-blue-950/40 p-2.5 text-[11px] text-blue-200 font-medium flex items-center gap-2">
+                <Compass className="h-3.5 w-3.5 text-blue-400 shrink-0" />
                 <span className="line-clamp-1">توصية: {recommendations[0].title}</span>
               </div>
             )}
@@ -757,7 +757,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
           <button
             onClick={() => onNavigate('weakness-profile')}
-            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/60 py-2 text-xs font-bold text-[#00B4FF] dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-slate-700 hover:border-blue-300 transition-colors cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-1.5 rounded-xl border border-[#222230] bg-[#181824] py-2 text-xs font-bold text-blue-400 hover:bg-[#222232] transition-colors cursor-pointer"
           >
             <span>عرض تقرير التشخيص</span>
             <ChevronLeft className="h-3.5 w-3.5" />
@@ -778,12 +778,12 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       <section className="rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E172E] p-3.5 sm:p-4 shadow-xs space-y-2.5">
         <div className="flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
-            <BarChart3 className="h-4 w-4 text-[#00B4FF] dark:text-[#D4AF37]" />
-            <h2 className="text-xs sm:text-sm font-black text-[#0D1B3E] dark:text-white">الإحصائيات الأكاديمية</h2>
+            <BarChart3 className="h-4 w-4 text-[#D4AF37]" />
+            <h2 className="text-xs sm:text-sm font-black text-white">الإحصائيات الأكاديمية</h2>
           </div>
           <button
             onClick={() => onNavigate('my-results')}
-            className="text-[11px] font-bold text-[#00B4FF] dark:text-[#D4AF37] hover:underline flex items-center gap-1 cursor-pointer"
+            className="text-[11px] font-bold text-[#D4AF37] hover:underline flex items-center gap-1 cursor-pointer"
           >
             <span>سجل النتائج</span>
             <ChevronLeft className="h-3 w-3" />
@@ -793,57 +793,57 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5">
           
           {/* Enrolled Courses */}
-          <div className="rounded-xl border border-slate-100 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#080D21] p-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-950/50 text-[#D4AF37] dark:text-[#D4AF37] border border-amber-200 dark:border-amber-800/60">
+          <div className="rounded-xl border border-[#222230] bg-[#0B0B0F] p-3 flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-950/50 text-[#D4AF37] border border-amber-800/60">
               <BookOpen className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-base font-black text-[#0D1B3E] dark:text-white block">{relevantCourses.length}</span>
-              <p className="text-[10px] font-bold text-[#6B7280] dark:text-slate-400">الكورسات المفتوحة</p>
+              <span className="text-base font-black text-white block">{relevantCourses.length}</span>
+              <p className="text-[10px] font-bold text-slate-400">الكورسات المفتوحة</p>
             </div>
           </div>
 
           {/* Completed Lessons */}
-          <div className="rounded-xl border border-slate-100 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#080D21] p-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+          <div className="rounded-xl border border-[#222230] bg-[#0B0B0F] p-3 flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-950/50 text-emerald-400 border border-emerald-800/60">
               <CheckCircle2 className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-base font-black text-[#0D1B3E] dark:text-white block">{completedLessonsCount} / {totalAvailableLessons}</span>
-              <p className="text-[10px] font-bold text-[#6B7280] dark:text-slate-400">الدروس المكتملة</p>
+              <span className="text-base font-black text-white block">{completedLessonsCount} / {totalAvailableLessons}</span>
+              <p className="text-[10px] font-bold text-slate-400">الدروس المكتملة</p>
             </div>
           </div>
 
           {/* Passed Exams */}
-          <div className="rounded-xl border border-slate-100 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#080D21] p-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 border border-purple-200 dark:border-purple-800/60">
+          <div className="rounded-xl border border-[#222230] bg-[#0B0B0F] p-3 flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-purple-950/50 text-purple-400 border border-purple-800/60">
               <Award className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-base font-black text-[#0D1B3E] dark:text-white block">{passedExamsCount}</span>
-              <p className="text-[10px] font-bold text-[#6B7280] dark:text-slate-400">اختبارات مجتازة</p>
+              <span className="text-base font-black text-white block">{passedExamsCount}</span>
+              <p className="text-[10px] font-bold text-slate-400">اختبارات مجتازة</p>
             </div>
           </div>
 
           {/* Overall Progress */}
-          <div className="rounded-xl border border-slate-100 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#080D21] p-3 flex items-center gap-3">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/50 text-[#00B4FF] dark:text-blue-400 border border-blue-200 dark:border-blue-800/60">
+          <div className="rounded-xl border border-[#222230] bg-[#0B0B0F] p-3 flex items-center gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-950/50 text-blue-400 border border-blue-800/60">
               <TrendingUp className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-base font-black text-[#00B4FF] dark:text-[#D4AF37] block font-mono">{overallProgressPercent}%</span>
-              <p className="text-[10px] font-bold text-[#6B7280] dark:text-slate-400">التقدم الكلي</p>
+              <span className="text-base font-black text-[#D4AF37] block font-mono">{overallProgressPercent}%</span>
+              <p className="text-[10px] font-bold text-slate-400">التقدم الكلي</p>
             </div>
           </div>
 
           {/* Average Score */}
-          <div className="rounded-xl border border-slate-100 dark:border-slate-800 bg-[#F5F7FA] dark:bg-[#080D21] p-3 flex items-center gap-3 col-span-2 sm:col-span-1">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60">
+          <div className="rounded-xl border border-[#222230] bg-[#0B0B0F] p-3 flex items-center gap-3 col-span-2 sm:col-span-1">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-950/50 text-emerald-400 border border-emerald-800/60">
               <Target className="h-4 w-4" />
             </div>
             <div>
-              <span className="text-base font-black text-[#0D1B3E] dark:text-white block font-mono">{averageScore}%</span>
-              <p className="text-[10px] font-bold text-[#6B7280] dark:text-slate-400">متوسط الدرجات</p>
+              <span className="text-base font-black text-white block font-mono">{averageScore}%</span>
+              <p className="text-[10px] font-bold text-slate-400">متوسط الدرجات</p>
             </div>
           </div>
 
@@ -856,12 +856,12 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       <section className="space-y-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <BookOpen className="h-4 w-4 sm:h-5 sm:w-5 text-[#00B4FF] dark:text-[#D4AF37]" />
-            <h2 className="text-base sm:text-lg font-black text-[#0D1B3E] dark:text-white">كورساتي الحالية ({relevantCourses.length})</h2>
+            <BookOpen className="h-4 w-4 sm:h-5 sm:w-5 text-[#D4AF37]" />
+            <h2 className="text-base sm:text-lg font-black text-white">كورساتي الحالية ({relevantCourses.length})</h2>
           </div>
           <button
             onClick={() => onNavigate(student ? 'my-courses' : 'courses-catalog')}
-            className="flex items-center gap-1 text-xs font-bold text-[#00B4FF] dark:text-[#D4AF37] hover:underline cursor-pointer"
+            className="flex items-center gap-1 text-xs font-bold text-[#D4AF37] hover:underline cursor-pointer"
           >
             <span>عرض الكل</span>
             <ChevronLeft className="h-3.5 w-3.5" />
@@ -870,10 +870,10 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
         {relevantCourses.length === 0 ? (
           <div className="space-y-4">
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0E172E] p-6 text-center shadow-xs">
+            <div className="rounded-2xl border border-[#222230] bg-[#14141E] p-6 text-center shadow-xs">
               <AlertCircle className="mx-auto h-8 w-8 text-slate-400 opacity-60" />
-              <h4 className="mt-2 text-sm font-bold text-[#0D1B3E] dark:text-white">لم تقم بالاشتراك في أي كورس بعد</h4>
-              <p className="mt-1 text-xs text-[#6B7280] dark:text-slate-400">أدخل كود التفعيل الخاص بك أو تصفح المناهج المتاحة للاشتراك وبدء المذاكرة</p>
+              <h4 className="mt-2 text-sm font-bold text-white">لم تقم بالاشتراك في أي كورس بعد</h4>
+              <p className="mt-1 text-xs text-slate-400">أدخل كود التفعيل الخاص بك أو تصفح المناهج المتاحة للاشتراك وبدء المذاكرة</p>
               <div className="mt-3.5 flex justify-center gap-2.5">
                 <button
                   onClick={onOpenActivationModal}
@@ -883,7 +883,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                 </button>
                 <button
                   onClick={() => onNavigate('courses-catalog')}
-                  className="rounded-xl border border-[#00B4FF] dark:border-slate-700 bg-white dark:bg-[#0B1120] px-4 py-2 text-xs font-bold text-[#00B4FF] dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                  className="rounded-xl border border-[#222230] bg-[#181824] px-4 py-2 text-xs font-bold text-slate-200 hover:bg-[#222232] transition-colors cursor-pointer"
                 >
                   استعراض الكورسات المتاحة
                 </button>
@@ -895,18 +895,18 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sparkles className="h-4 w-4 text-[#D4AF37]" />
-                    <h3 className="text-sm font-black text-[#0D1B3E] dark:text-white">الكورسات المتاحة للتسجيل</h3>
+                    <h3 className="text-sm font-black text-white">الكورسات المتاحة للتسجيل</h3>
                   </div>
-                  <span className="text-[11px] text-[#6B7280] dark:text-slate-400">اختر كورس لعرض التفاصيل والاشتراك</span>
+                  <span className="text-[11px] text-slate-400">اختر كورس لعرض التفاصيل والاشتراك</span>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                   {allCoursesList.slice(0, 3).map((course) => (
                     <div 
                       key={course.id}
-                      className="rounded-2xl bg-white dark:bg-[#0E172E] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-blue-200 dark:hover:border-[#D4AF37]/40 hover:shadow-sm transition-all overflow-hidden flex flex-col justify-between"
+                      className="rounded-2xl bg-[#14141E] border border-[#222230] shadow-xs hover:border-[#D4AF37]/40 hover:shadow-sm transition-all overflow-hidden flex flex-col justify-between"
                     >
                       <div>
-                        <div className="relative h-28 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                        <div className="relative h-28 w-full overflow-hidden bg-slate-800">
                           <img 
                             src={course.thumbnail} 
                             alt={course.title}
@@ -915,16 +915,16 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                           <div className="absolute top-1.5 right-1.5 rounded-md bg-[#D4AF37] text-slate-950 px-2 py-0.5 text-[10px] font-black shadow-xs z-10">
                             {course.price} ج.م
                           </div>
-                          <div className="absolute bottom-1.5 right-1.5 rounded-md bg-[#0D1B3E]/85 dark:bg-[#0B0B0F]/90 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-slate-200 z-10 flex items-center gap-1">
+                          <div className="absolute bottom-1.5 right-1.5 rounded-md bg-[#0B0B0F]/90 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-slate-200 z-10 flex items-center gap-1">
                             <Lock className="h-2.5 w-2.5 text-amber-400" />
                             <span>غير مشترك</span>
                           </div>
                         </div>
                         <div className="p-3 space-y-1.5">
-                          <h4 className="font-bold text-[#0D1B3E] dark:text-white text-xs sm:text-sm line-clamp-1">
+                          <h4 className="font-bold text-white text-xs sm:text-sm line-clamp-1">
                             {course.title}
                           </h4>
-                          <p className="text-[10px] text-[#6B7280] dark:text-slate-400 line-clamp-1">
+                          <p className="text-[10px] text-slate-400 line-clamp-1">
                             {course.description}
                           </p>
                         </div>
@@ -932,7 +932,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                       <div className="p-3 pt-0">
                         <button
                           onClick={() => onNavigate('course-details', { courseId: course.id })}
-                          className="w-full rounded-xl bg-blue-50 dark:bg-slate-800/80 border border-blue-200 dark:border-slate-700 py-2 text-xs font-bold text-[#00B4FF] dark:text-[#D4AF37] hover:bg-[#00B4FF] hover:text-white dark:hover:bg-[#D4AF37] dark:hover:text-slate-950 transition-all cursor-pointer text-center"
+                          className="w-full rounded-xl bg-[#181824] border border-[#222230] py-2 text-xs font-bold text-[#D4AF37] hover:bg-[#D4AF37] hover:text-slate-950 transition-all cursor-pointer text-center"
                         >
                           عرض تفاصيل الكورس والاشتراك
                         </button>
@@ -964,18 +964,18 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               return (
                 <div 
                   key={course.id}
-                  className="rounded-2xl bg-white dark:bg-[#0E172E] border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-blue-200 dark:hover:border-[#D4AF37]/40 hover:shadow-sm transition-all overflow-hidden flex flex-col justify-between"
+                  className="rounded-2xl bg-[#14141E] border border-[#222230] shadow-xs hover:border-[#D4AF37]/40 hover:shadow-sm transition-all overflow-hidden flex flex-col justify-between"
                 >
                   <div>
                     {/* Compact Thumbnail */}
-                    <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-800">
                       <img 
                         src={course.thumbnail} 
                         alt={course.title}
                         className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                       />
-                      <div className="absolute top-1.5 right-1.5 rounded-md bg-white/95 dark:bg-[#080D21]/95 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-[#00B4FF] dark:text-[#D4AF37] border border-blue-200 dark:border-slate-700 shadow-xs z-10">
-                        {course.grade?.includes('الثالث') ? '3 ثانوي' : '2 ثانوي'}
+                      <div className="absolute top-1.5 right-1.5 rounded-md bg-[#0B0B0F]/95 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-[#D4AF37] border border-slate-700 shadow-xs z-10">
+                        {course.grade?.includes('الثالث') ? '3 ثانوي' : 'جميع المراحل'}
                       </div>
                       <CourseRatingBadge 
                         rating={course.rating} 
@@ -984,7 +984,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                         position="top-left" 
                         className="!top-1.5 !left-1.5 !px-1.5 !py-0.5 !text-[9px]"
                       />
-                      <div className="absolute bottom-1.5 right-1.5 rounded-md bg-[#0D1B3E]/85 dark:bg-[#0B0B0F]/90 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-white z-10">
+                      <div className="absolute bottom-1.5 right-1.5 rounded-md bg-[#0B0B0F]/90 backdrop-blur-md px-1.5 py-0.5 text-[9px] font-bold text-white z-10">
                         {completedLessons} / {totalLessons} درس
                       </div>
                     </div>
@@ -992,18 +992,18 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                     {/* Compact Body */}
                     <div className="p-3 space-y-2">
                       <div>
-                        <h3 className="font-bold text-[#0D1B3E] dark:text-white text-xs sm:text-sm leading-snug line-clamp-1">
+                        <h3 className="font-bold text-white text-xs sm:text-sm leading-snug line-clamp-1">
                           {course.title}
                         </h3>
-                        <p className="text-[10px] sm:text-[11px] text-[#6B7280] dark:text-slate-400 line-clamp-1 mt-0.5">
+                        <p className="text-[10px] sm:text-[11px] text-slate-400 line-clamp-1 mt-0.5">
                           {course.description}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] text-[#6B7280] dark:text-slate-400">
+                      <div className="flex items-center justify-between text-[10px] text-slate-400">
                         <span className="truncate max-w-[140px]">المحاضر: {course.instructorName || 'مداح الرياضيات'}</span>
                         {expiry && (
-                          <span className="flex items-center gap-1 text-[9px] text-[#00B4FF] dark:text-blue-400 font-bold shrink-0">
+                          <span className="flex items-center gap-1 text-[9px] text-blue-400 font-bold shrink-0">
                             <Calendar className="h-3 w-3" />
                             متاح حتى {new Date(expiry).toLocaleDateString('ar-EG')}
                           </span>
@@ -1013,10 +1013,10 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                       {/* Progress Bar */}
                       <div className="space-y-1 pt-0.5">
                         <div className="flex justify-between text-[10px] font-bold">
-                          <span className="text-[#6B7280] dark:text-slate-400">نسبة الإنجاز</span>
-                          <span className="text-[#00B4FF] dark:text-[#D4AF37] font-mono">{percentage}%</span>
+                          <span className="text-slate-400">نسبة الإنجاز</span>
+                          <span className="text-[#D4AF37] font-mono">{percentage}%</span>
                         </div>
-                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
+                        <div className="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
                           <div 
                             className="h-full bg-gradient-to-r from-blue-600 to-amber-500 rounded-full transition-all duration-300"
                             style={{ width: `${percentage}%` }}
@@ -1030,13 +1030,13 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
                   <div className="p-3 pt-0 flex items-center gap-2">
                     <button
                       onClick={() => onNavigate('course-details', { courseId: course.id })}
-                      className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-[#F5F7FA] dark:bg-slate-800/60 py-1.5 text-xs font-bold text-[#0D1B3E] dark:text-slate-200 hover:border-blue-300 hover:text-[#00B4FF] dark:hover:text-[#D4AF37] transition-colors cursor-pointer text-center"
+                      className="flex-1 rounded-xl border border-[#222230] bg-[#181824] py-1.5 text-xs font-bold text-slate-200 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] transition-colors cursor-pointer text-center"
                     >
                       تفاصيل المنهج
                     </button>
                     <button
                       onClick={() => onNavigate('lesson-player', { courseId: course.id, lessonId: resumeLessonId })}
-                      className="flex-1 rounded-xl bg-[#00B4FF] dark:bg-gradient-to-r dark:from-amber-400 dark:to-amber-500 py-1.5 text-xs font-bold text-white dark:text-slate-950 shadow-xs hover:bg-[#163cb5] dark:hover:from-amber-300 dark:hover:to-amber-400 transition-colors cursor-pointer text-center"
+                      className="flex-1 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 py-1.5 text-xs font-bold text-slate-950 shadow-xs hover:from-amber-300 hover:to-amber-400 transition-colors cursor-pointer text-center"
                     >
                       استكمال التعلم
                     </button>
@@ -1053,13 +1053,13 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       {/* ========================================================================= */}
       <nav 
         aria-label="التنقل السفلي للهاتف" 
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#080D21]/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-2 px-3 shadow-lg flex justify-around items-center"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B0B0F]/95 backdrop-blur-md border-t border-[#222230] py-2 px-3 shadow-lg flex justify-around items-center"
       >
         <button
           onClick={() => onNavigate('dashboard')}
-          className="flex flex-col items-center gap-1 text-[#00B4FF] dark:text-[#D4AF37] cursor-pointer"
+          className="flex flex-col items-center gap-1 text-[#D4AF37] cursor-pointer"
         >
-          <div className="p-1 rounded-xl bg-blue-50 dark:bg-amber-950/60 text-[#00B4FF] dark:text-[#D4AF37]">
+          <div className="p-1 rounded-xl bg-amber-950/60 text-[#D4AF37]">
             <BookOpen className="h-4 w-4" />
           </div>
           <span className="text-[10px] font-bold">لوحتي</span>
@@ -1067,9 +1067,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
         <button
           onClick={() => onNavigate(student ? 'my-courses' : 'courses-catalog')}
-          className="flex flex-col items-center gap-1 text-[#6B7280] dark:text-slate-400 hover:text-[#00B4FF] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+          className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#D4AF37] transition-colors cursor-pointer"
         >
-          <div className="p-1 rounded-xl text-[#6B7280] dark:text-slate-400">
+          <div className="p-1 rounded-xl text-slate-400">
             <PlayCircle className="h-4 w-4" />
           </div>
           <span className="text-[10px] font-bold">كورساتي</span>
@@ -1078,24 +1078,24 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
         {/* Lucky Wheel Tab */}
         <button
           onClick={() => setIsLuckyWheelOpen(true)}
-          className="flex flex-col items-center gap-1 text-amber-600 dark:text-amber-400 hover:text-amber-700 transition-colors cursor-pointer relative"
+          className="flex flex-col items-center gap-1 text-amber-400 hover:text-amber-300 transition-colors cursor-pointer relative"
         >
-          <div className="p-1 rounded-xl bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 relative">
+          <div className="p-1 rounded-xl bg-amber-950/70 text-amber-300 relative">
             <Gift className="h-4 w-4" />
             {(activeStudent.wheelSpins || 0) > 0 && (
-              <span className="absolute -top-1 -right-1 h-3.5 w-3.5 bg-amber-500 text-white rounded-full text-[8px] font-black flex items-center justify-center shadow-xs animate-pulse">
+              <span className="absolute -top-1 -right-1 h-3.5 w-3.5 bg-amber-500 text-slate-950 rounded-full text-[8px] font-black flex items-center justify-center shadow-xs animate-pulse">
                 {activeStudent.wheelSpins}
               </span>
             )}
           </div>
-          <span className="text-[10px] font-black text-amber-900 dark:text-amber-300">عجلة الحظ</span>
+          <span className="text-[10px] font-black text-amber-300">عجلة الحظ</span>
         </button>
 
         <button
           onClick={() => onNavigate('ai-assistant')}
-          className="flex flex-col items-center gap-1 text-[#6B7280] dark:text-slate-400 hover:text-[#00B4FF] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+          className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#D4AF37] transition-colors cursor-pointer"
         >
-          <div className="p-1 rounded-xl text-[#6B7280] dark:text-slate-400">
+          <div className="p-1 rounded-xl text-slate-400">
             <Bot className="h-4 w-4" />
           </div>
           <span className="text-[10px] font-bold">مداح AI</span>
@@ -1103,9 +1103,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
         <button
           onClick={() => onNavigate('leaderboard')}
-          className="flex flex-col items-center gap-1 text-[#6B7280] dark:text-slate-400 hover:text-[#00B4FF] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+          className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#D4AF37] transition-colors cursor-pointer"
         >
-          <div className="p-1 rounded-xl text-[#6B7280] dark:text-slate-400">
+          <div className="p-1 rounded-xl text-slate-400">
             <Trophy className="h-4 w-4" />
           </div>
           <span className="text-[10px] font-bold">لوحة الشرف</span>
@@ -1113,9 +1113,9 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
 
         <button
           onClick={() => onOpenEditProfileModal ? onOpenEditProfileModal() : onNavigate('dashboard')}
-          className="flex flex-col items-center gap-1 text-[#6B7280] dark:text-slate-400 hover:text-[#00B4FF] dark:hover:text-[#D4AF37] transition-colors cursor-pointer"
+          className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#D4AF37] transition-colors cursor-pointer"
         >
-          <div className="p-1 rounded-xl text-[#6B7280] dark:text-slate-400">
+          <div className="p-1 rounded-xl text-slate-400">
             <User className="h-4 w-4" />
           </div>
           <span className="text-[10px] font-bold">حسابي</span>

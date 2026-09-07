@@ -1,51 +1,27 @@
-export type ThemeMode = 'light' | 'dark';
+export type ThemeMode = 'dark';
 
-export const getTheme = (): ThemeMode => {
-  if (typeof window === 'undefined') return 'dark';
-  try {
-    const saved = localStorage.getItem('maddah_math_theme_mode');
-    if (saved === 'dark' || saved === 'light') {
-      return saved;
-    }
-  } catch (e) {
-    console.warn('Error reading theme mode:', e);
-  }
-  return 'dark';
-};
+export const getTheme = (): ThemeMode => 'dark';
 
-export const applyTheme = (mode: ThemeMode) => {
+export const applyTheme = (mode?: ThemeMode) => {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem('maddah_math_theme_mode', mode);
-    if (mode === 'dark') {
-      document.documentElement.classList.add('dark');
-      document.body.classList.add('dark');
-      document.documentElement.style.colorScheme = 'dark';
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('dark');
-      document.documentElement.style.colorScheme = 'light';
-    }
+    localStorage.setItem('maddah_math_theme_mode', 'dark');
+    document.documentElement.classList.add('dark');
+    document.body.classList.add('dark');
+    document.documentElement.style.colorScheme = 'dark';
   } catch (e) {
     console.warn('Error applying theme mode:', e);
   }
 };
 
 export const toggleTheme = (): ThemeMode => {
-  const current = getTheme();
-  const next: ThemeMode = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  return next;
+  applyTheme('dark');
+  return 'dark';
 };
 
-// Default to dark luxury theme (#0B0B0F) on boot
+// Always apply permanent dark luxury theme (#0B0B0F) on load
 if (typeof window !== 'undefined') {
-  const stored = localStorage.getItem('maddah_math_theme_mode');
-  if (!stored) {
-    applyTheme('dark');
-  } else {
-    applyTheme(getTheme());
-  }
+  applyTheme('dark');
 }
 
 

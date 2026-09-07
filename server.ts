@@ -13,8 +13,8 @@ if (!fs.existsSync(uploadsDir)) {
 }
 
 // Security & Secret Store
-const ADMIN_SECRET = process.env.ADMIN_JWT_SECRET || 'wikifizya_sec_token_' + crypto.randomBytes(16).toString('hex');
-let currentAdminPinHash = crypto.createHash('sha256').update(process.env.ADMIN_PIN || 'WikiPhys@9988#Master').digest('hex');
+const ADMIN_SECRET = process.env.ADMIN_JWT_SECRET || 'maddahmathematic_sec_token_' + crypto.randomBytes(16).toString('hex');
+let currentAdminPinHash = crypto.createHash('sha256').update(process.env.ADMIN_PIN || 'MaddahMath@9988#Master').digest('hex');
 
 // In-Memory Rate Limiting Stores
 const loginAttempts = new Map<string, { count: number; lockedUntil: number }>();
@@ -492,62 +492,60 @@ async function startServer() {
   });
 
   // ==========================================
-  // 3. Gemini AI Physics Assistant
+  // 3. Gemini AI Math Assistant
   // ==========================================
-  app.post('/api/gemini/physics-assistant', async (req, res): Promise<any> => {
+  const handleMathAssistantRequest = async (req: express.Request, res: express.Response): Promise<any> => {
     try {
       const { prompt, lessonTitle, courseTitle, imageBase64, chatHistory, history, lessonContext } = req.body;
       const historyList = chatHistory || history;
       const resolvedLessonTitle = lessonTitle || lessonContext;
       if (!prompt && !imageBase64) {
-        return res.status(400).json({ success: false, error: 'يرجى كتابة سؤال فيزيائي أو إرفاق صورة للمسألة' });
+        return res.status(400).json({ success: false, error: 'يرجى كتابة سؤال في الرياضيات أو إرفاق صورة للمسألة' });
       }
 
       const ai = getGemini();
 
       const systemInstruction = `
-أنت "مستر فيزياء الذكي AI" - معلم ومساعد شخصي متخصص في مادة الفيزياء لطلاب الثانوية العامة (الصف الأول والثاني والثالث الثانوي) بالمنهج المصري الحديث.
+أنت "مستر مداح الرياضيات الذكي AI" - معلم ومساعد شخصي متخصص في مادة الرياضيات لطلاب الثانوية العامة وجميع المراحل الدراسية بالمنهج المصري الحديث.
 
 قواعدك الأساسية الصارمة:
-1. أنت تشرح مادة الفيزياء فقط. إذا سألك الطالب في أي موضوع خارج الفيزياء أو الرياضيات المرتبطة بها (مثل لغات أخرى، أو مواضيع عامة)، اعتذر بأدب واشرح له بلباقة أن تخصصك فقط فيزياء الثانوية العامة.
+1. أنت تشرح مادة الرياضيات بكل فروعها (الجبر والهندسة الفراغية، التفاضل والتكامل، الديناميكا، الاستاتيكا، حساب المثلثات، الهندسة التحليلية، الإحصاء، والميكانيكا). إذا سألك الطالب في أي موضوع خارج الرياضيات، اعتذر بأدب واشرح له بلباقة أن تخصصك فقط في رياضيات الثانوية العامة والمراحل الدراسية.
 2. اشرح المسائل خطوة بخطوة باللغة العربية الواضحة:
    - ابدأ بذكر "المعطيات" (Given).
    - حدد "المطلوب" (Required).
-   - اكتب "القانون الفيزيائي الأساسي والعلاقات الرياضية" بوضوح مع وحدات القياس (SI Units).
-   - عوض بالأرقام واشرح فكرة الحل الفيزيائية (لماذا استنتجنا هذه الخطوة).
-   - اكتب الناتج النهائي بوحدته الصحيحة.
-3. ركز على مفاهيم المنهج المصري:
-   - التيار الكهربي وقانون أوم، كيرشوف، التأثير المغناطيسي، القوة وعزم الازدواج، الحث الكهرومغناطيسي، فاراداي وقاعدة لينز، الدينامو والمحول والمحرك، دوائر التيار المتردد (R-L-C)، المعاوقة والرنين.
-   - الفيزياء الحديثة: إشعاع الجسم الأسود، بلانك، الانبعاث الحراري والتأثير الكهروضوئي (أينشتاين)، كومتون، دي برولي، الطبيعة المزدوجة، الأطياف الذرية، الليزر، الإلكترونيات الحديثة والوصلة الثنائية والترانزستور والبوابات المنطقية.
-   - فيزياء 1ث و 2ث: الميكانيكا، الحركة، المتجهات، نيوتن، الطاقة، الموائع، الضغط، باسكال، الكثافة، الغازات (بويل، شارل، القانون العام)، الموجات، الصوت والضوء والعدسات والمنشور.
-4. استخدم تنسيق Markdown أنيق، مع خطوط عريضة وقوائم ونقاط، واشرح أي رسم بياني أو دائرة مرسومة في الصورة بدقة متناهية.
-5. شجع الطالب دائماً بكلمات تحفيزية مثل: "يا بطل الفيزياء"، "خطوة ممتازة نحو الـ 60/60".
+   - اكتب "القوانين والنظريات الرياضية الأساسية والعلاقات" بوضوح باستخدام رموزه الرياضية.
+   - عوض بالأرقام واشرح فكرة الحل الرياضية وتحديد الخطوات الهندسية والجبرية.
+   - اكتب الناتج النهائي بوحدته وشكله المبسط الصريح.
+3. ركز على مفاهيم المنهج المصري للرياضيات:
+   - الجبر والهندسة الفراغية: المحدودات، المصفوات، التباديل والتوافيق، نظرية ذات الحدين، الأعداد المركبة، صور المعادلة للخط المستقيم والمستوى في الفراغ.
+   - التفاضل والتكامل: نهايات الدوال، اشتقاق الدوال المثلثية والأسية واللوغاريتمية، سلوك الدالة والمماس والعمودي، المساحات والحجوم.
+   - التطبيقية (ميكانيكا): الاستاتيكا (الاحتكاك، العزوم، القوى المتوازية، الاتزان العام، مركز الثقل) والديناميكا (الحركة في خط مستقيم، قوانين نيوتن، الدفع والشغل والطاقة والقدرة).
+   - رياضيات 1ث و 2ث: الجبر، حساب المثلثات، الهندسة المستوية والتحليلية، المتتابعات والمتسلسلات، التفاضل والتكامل.
+4. استخدم تنسيق Markdown أنيق، واكتب المعادلات والرموز بوضوح، واشرح أي رسم هندسي أو شكل في الصورة بدقة متناهية.
+5. شجع الطالب دائماً بكلمات تحفيزية مثل: "يا بطل الرياضيات"، "خطوة ممتازة نحو الدرجة النهائية 60/60".
 `;
 
       const contents: any[] = [];
 
-      // Include previous conversation history if present (cleanly sanitized and alternated)
+      // Include previous conversation history if present
       if (Array.isArray(historyList) && historyList.length > 0) {
         const cleanHistory = historyList
           .filter((item: any) => item && typeof item.text === 'string' && item.text.trim().length > 0)
           .filter((item: any) => {
             const t = item.text.trim();
-            // Filter out system greetings, error messages, and retry banners
             return !t.includes('عذرًا، خادم الذكاء الاصطناعي') && 
                    !t.includes('تعذر الاتصال بخادم') && 
-                   !t.includes('أنا مساعدك الذكي في مادة الفيزياء');
+                   !t.includes('أنا مساعدك الذكي في مادة الرياضيات');
           })
           .slice(-6);
 
         cleanHistory.forEach((item: { role: string; text: string }) => {
           const role = (item.role === 'assistant' || item.role === 'model') ? 'model' : 'user';
           
-          // Gemini contents must begin with a 'user' turn
           if (contents.length === 0 && role !== 'user') {
             return;
           }
 
-          // Enforce strict alternating roles (user <-> model)
           const lastTurn = contents[contents.length - 1];
           if (lastTurn && lastTurn.role === role) {
             lastTurn.parts[0].text += `\n${item.text}`;
@@ -562,7 +560,7 @@ async function startServer() {
 
       // Context string about the current lesson
       const contextPrefix = resolvedLessonTitle || courseTitle 
-        ? `[سياق الدرس الحالي للطالب: كورس "${courseTitle || 'فيزياء'}" - درس "${resolvedLessonTitle || 'محتوى الدرس'}"]\n`
+        ? `[سياق الدرس الحالي للطالب: كورس "${courseTitle || 'الرياضيات'}" - درس "${resolvedLessonTitle || 'محتوى الدرس'}"]\n`
         : '';
 
       const currentParts: any[] = [];
@@ -580,13 +578,11 @@ async function startServer() {
       }
 
       currentParts.push({
-        text: `${contextPrefix}${prompt || 'اشرح هذه المسألة الفيزيائية الموضحة بالصورة بالتفصيل والخطوات والقوانين المستخدمة.'}`
+        text: `${contextPrefix}${prompt || 'اشرح هذه المسألة الرياضية الموضحة بالصورة بالتفصيل والخطوات والقوانين المستخدمة.'}`
       });
 
-      // If the last turn in contents was 'user', append/replace so we maintain strict alternating order
       const lastContentTurn = contents[contents.length - 1];
       if (lastContentTurn && lastContentTurn.role === 'user') {
-        // Merge the current parts into the user turn
         lastContentTurn.parts.push(...currentParts);
       } else {
         contents.push({
@@ -603,7 +599,7 @@ async function startServer() {
 
       return res.json({
         success: true,
-        reply: replyText || 'عذراً، لم أتمكن من استخراج الإجابة. يرجى المحاولة مجدداً أو صياغة السؤال بشكل أوضح.',
+        reply: replyText || 'عذراً، لم أتمكن من استخراج الإجابة. يرجى المحاولة مجدداً أو صياغة المسألة بشكل أوضح.',
         model: modelUsed
       });
     } catch (err: any) {
@@ -613,7 +609,10 @@ async function startServer() {
         error: err?.message || 'حدث خطأ أثناء التواصل مع المعلم الذكي. يرجى المحاولة مرة أخرى.'
       });
     }
-  });
+  };
+
+  app.post('/api/gemini/math-assistant', handleMathAssistantRequest);
+  app.post('/api/gemini/physics-assistant', handleMathAssistantRequest);
 
   // ==========================================
   // 4. Parent WhatsApp Performance Report
@@ -647,9 +646,9 @@ async function startServer() {
 السلام عليكم ورحمة الله وبركاته
 ولي أمر الطالب المحترم / ولي أمر ${studentName}،
 
-تحية طيبة من منصة *ويكيفزياء (WikiFizya)* ومستر الفيزياء
+تحية طيبة من منصة *مداح الرياضيات* ومستر مداح الرياضيات
 
-نشارك مع حضراتكم التقرير الدوري لمستوى والتزام الطالب في مادة الفيزياء (${grade || 'الثانوية العامة'}):
+نشارك مع حضراتكم التقرير الدوري لمستوى والتزام الطالب في مادة الرياضيات (${grade || 'جميع المراحل الدراسية'}):
 
 *ملخص الأداء والمتابعة:*
 - *اسم الطالب:* ${studentName}
@@ -658,7 +657,7 @@ async function startServer() {
 ${latestExamScore ? `- *آخر امتحان تم تسليمه:* ${latestExamScore}` : ''}
 - *ملاحظة المعلم:* ${teacherNote || 'طالب متميز وملتزم بالحصص والواجبات، نتمنى له دوام التفوق والدرجة النهائية بإذن الله.'}
 
-مع تحيات إدارة منصة ويكيفزياء التعليمية.
+مع تحيات إدارة منصة مداح الرياضيات التعليمية.
 `.trim();
 
       const encodedMessage = encodeURIComponent(reportMessage);
@@ -682,7 +681,7 @@ ${latestExamScore ? `- *آخر امتحان تم تسليمه:* ${latestExamScor
     try {
       const { query, courses } = req.body;
       if (!query || typeof query !== 'string') {
-        return res.status(400).json({ success: false, error: 'يرجى كتابة المفهوم أو المسألة الفيزيائية المراد البحث عنها' });
+        return res.status(400).json({ success: false, error: 'يرجى كتابة المفهوم أو المسألة الرياضية المراد البحث عنها' });
       }
 
       const ai = getGemini();
@@ -708,8 +707,8 @@ ${latestExamScore ? `- *آخر امتحان تم تسليمه:* ${latestExamScor
         : [];
 
       const prompt = `
-أنت محرك بحث ذكي متقدم لمنصة "ويكيفزياء" لمادة الفيزياء للثانوية العامة.
-المطلوب: بناءً على استفسار أو مفهوم يبحث عنه الطالب ("${query}")، ابحث في قائمة الكورسات والوحدات والدروس المتاحة وحدد بدقة أفضل الدروس المطابقة، مع تحديد التوقيت التقريبي بالدقائق والثواني (Timestamp) الذي يُشرح فيه هذا المفهوم، وكتابة ملخص فيزيائي موجز لما سيجده الطالب في هذه الدقيقة.
+أنت محرك بحث ذكي متقدم لمنصة "مداح الرياضيات" لمادة الرياضيات لجميع المراحل الدراسية.
+المطلوب: بناءً على استفسار أو مفهوم يبحث عنه الطالب ("${query}")، ابحث في قائمة الكورسات والوحدات والدروس المتاحة وحدد بدقة أفضل الدروس المطابقة، مع تحديد التوقيت التقريبي بالدقائق والثواني (Timestamp) الذي يُشرح فيه هذا المفهوم، وكتابة ملخص رياضي موجز لما سيجده الطالب في هذه الدقيقة.
 
 قائمة الكورسات والدروس المتاحة في المنصة:
 ${JSON.stringify(courseSummaries, null, 2)}
@@ -725,7 +724,7 @@ ${JSON.stringify(courseSummaries, null, 2)}
       "lessonTitle": "عنوان الدرس",
       "timestampSeconds": 180,
       "timestampFormatted": "03:00",
-      "relevanceReason": "شرح موجز: يتناول هذا الجزء قانون كيرشوف الثاني وتطبيق حلقة الجهد...",
+      "relevanceReason": "شرح موجز: يتناول هذا الجزء نظرية ذات الحدين وتطبيق قانون الحد العام...",
       "confidenceScore": 95
     }
   ],
@@ -771,8 +770,8 @@ ${JSON.stringify(courseSummaries, null, 2)}
       }
 
       const broadcastText = `
-*إشعار هام من منصة ويكيفزياء (WikiFizya)*
-${targetGrade ? `الموجه إلى: *${targetGrade}*` : 'لجميع طلاب الفيزياء'}
+*إشعار هام من منصة مداح الرياضيات*
+${targetGrade ? `الموجه إلى: *${targetGrade}*` : 'لجميع طلاب الرياضيات'}
 
 *${title}*
 
@@ -830,7 +829,7 @@ ${linkUrl ? `للدخول مباشرة: ${linkUrl}` : ''}
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Wikifizya LMS Server running on http://0.0.0.0:${PORT}`);
+    console.log(`Maddah Math LMS Server running on http://0.0.0.0:${PORT}`);
   });
 }
 

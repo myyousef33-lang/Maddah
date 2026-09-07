@@ -27,6 +27,7 @@ import { GlobalAntiScreenshotShield } from './components/GlobalAntiScreenshotShi
 import { StudentWalletModal } from './components/StudentWalletModal';
 import { FloatingSupportButton } from './components/FloatingSupportButton';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { LiveDebugOverlay } from './components/LiveDebugOverlay';
 import { StorageService, subscribeToStorage } from './services/storage';
 import { PresenceService } from './services/presence';
 import { EarnedCertificate, Student } from './types';
@@ -151,10 +152,9 @@ export default function App() {
           <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentView + (viewParams.courseId || '') + (viewParams.lessonId || '') + (viewParams.attemptId || '') + (viewParams.examId || '')}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.15 }}
             className="w-full min-h-[calc(100vh-80px)] flex flex-col"
           >
             {currentView === 'home' && (
@@ -215,7 +215,7 @@ export default function App() {
 
             {currentView === 'course-details' && (
               <CourseDetailsView
-                courseId={viewParams.courseId || 'course-physics-3sec-full'}
+                courseId={viewParams.courseId || 'course-math-all-grades'}
                 onNavigate={handleNavigate}
                 onOpenActivationModal={() => setIsActivationModalOpen(true)}
                 onOpenAuthModal={() => handleOpenAuth('login')}
@@ -224,7 +224,7 @@ export default function App() {
 
             {currentView === 'lesson-player' && (
               <LessonRoomView
-                courseId={viewParams.courseId || 'course-physics-3sec-full'}
+                courseId={viewParams.courseId || 'course-math-all-grades'}
                 lessonId={viewParams.lessonId || 'les-1'}
                 onNavigate={handleNavigate}
               />
@@ -375,6 +375,9 @@ export default function App() {
 
       {/* Floating Customer Support Action Button (WhatsApp) */}
       <FloatingSupportButton currentView={currentView} />
+
+      {/* Persistent Live Diagnostic Overlay */}
+      <LiveDebugOverlay currentView={currentView} />
 
       </div>
     </GlobalAntiScreenshotShield>

@@ -2126,12 +2126,12 @@ export const StorageService = {
     const stored = getStored<WeeklyChallenge[]>(STORAGE_KEYS.WEEKLY_CHALLENGES, []);
     if (stored && stored.length > 0) return stored;
     
-    // Seed standard physics challenge
+    // Seed standard math challenge
     const defaultChallenge: WeeklyChallenge = {
       id: 'challenge-w1',
-      title: 'تحدي الأسبوع الفيزيائي: دوائر التيار المتردد والمجال المغناطيسي',
+      title: 'تحدي الأسبوع الرياضي: التفاضل والتكامل ونظرية ذات الحدين',
       description: 'أجب عن المسائل المتقدمة واربح 50 نقطة تميز إضافية ترفع ترتيبك في لائحة الشرف!',
-      grade: 'الصف الثالث الثانوي (ثانوية عامة)',
+      grade: 'جميع المراحل الدراسية',
       startDate: new Date().toISOString(),
       endDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
       bonusPoints: 50,
@@ -2139,8 +2139,8 @@ export const StorageService = {
       questions: [
         {
           id: 'cq-1',
-          text: 'سلك مستقيم يمر به تيار شدته 5 أمبير موضوع عموديًا على مجال مغناطيسي كثافة فيضه 0.4 تسلا. إذا كان طول السلك 20 سم، فإن القوة المغناطيسية المؤثرة عليه تساوي:',
-          options: ['0.4 نيوتن', '4 نيوتن', '0.04 نيوتن', '40 نيوتن'],
+          text: 'إذا كانت د(س) = س³ - 3س + 5، فإن النقاط الحرجة للدالة عند س تساوي:',
+          options: ['س = ±1', 'س = 0', 'س = 3', 'س = ±2'],
           correctOptionIndex: 0,
           points: 10,
           explanation: 'F = B * I * L = 0.4 * 5 * 0.2 = 0.4 Newton.'

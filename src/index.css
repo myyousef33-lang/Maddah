@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+@variant dark (&:where(.dark, .dark *));
 
 @layer base {
   html, body {
     font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
-    background-color: #F5F7FA;
-    color: #0D1B3E;
+    background-color: #0B0B0F;
+    color: #F8FAFC;
+    color-scheme: dark;
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
@@ -29,9 +30,9 @@
     overflow-x: hidden !important;
     max-width: 100vw !important;
     width: 100% !important;
-    background-color: #F5F7FA;
+    background-color: #0B0B0F;
     min-height: 100vh;
-    color: #0D1B3E;
+    color: #F8FAFC;
   }
 }
 

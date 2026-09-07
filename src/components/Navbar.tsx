@@ -257,9 +257,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>تفعيل كود</span>
           </button>
 
-          {/* Theme Toggle Button */}
-          <ThemeToggle />
-
           {/* Notifications Button */}
           <button
             onClick={onOpenNotificationModal}

@@ -400,24 +400,24 @@ export const PhysicsSimulationsLab: React.FC = () => {
     <div className="space-y-6 text-right font-sans">
       
       {/* Top Banner */}
-      <div className="rounded-3xl border border-blue-100 bg-white p-6 shadow-xs relative overflow-hidden">
+      <div className="rounded-3xl border border-[#222230] bg-[#14141E] p-6 shadow-xl relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#00B4FF] mb-2">
+            <div className="inline-flex items-center gap-2 rounded-xl bg-[#00B4FF]/10 border border-[#00B4FF]/30 px-3 py-1 text-xs font-bold text-[#00B4FF] mb-2">
               <Microscope className="h-3.5 w-3.5" />
-              <span>المعمل الفيزيائي التفاعلي الحديث</span>
+              <span>معمل الرياضيات التطبيقية والميكانيكا</span>
             </div>
-            <h2 className="text-2xl font-black text-[#0D1B3E]">محاكاة التجارب الفيزيائية التفاعلية</h2>
-            <p className="text-xs text-[#6B7280] mt-1 max-w-xl">
-              غير المتغيرات (السرعة، المقاومة، القوة...) وشاهد النتائج تتغير بصرياً في الوقت الفعلي مع حسابات القوانين!
+            <h2 className="text-2xl font-black text-white">محاكاة تجارب الميكانيكا والرياضيات التفاعلية</h2>
+            <p className="text-xs text-slate-400 mt-1 max-w-xl">
+              غير المتغيرات (السرعة، الزوايا، القوة...) وشاهد النتائج تتغير بصرياً في الوقت الفعلي مع حسابات القوانين!
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-[#F5F7FA] p-1.5 rounded-2xl border border-slate-200">
+          <div className="flex items-center gap-2 bg-[#0B0B0F] p-1.5 rounded-2xl border border-[#222230]">
             <button
               onClick={() => setIsRunning(!isRunning)}
               className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
-                isRunning ? 'bg-amber-50 text-amber-800 border border-amber-300' : 'bg-[#00B4FF] text-white'
+                isRunning ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-[#00B4FF] text-[#0B0B0F]'
               }`}
             >
               {isRunning ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
@@ -429,7 +429,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 setBoxPosX(50);
                 setBoxVelX(0);
               }}
-              className="rounded-xl border border-slate-200 bg-white p-2 text-[#0D1B3E] hover:bg-slate-100 transition-colors shadow-xs"
+              className="rounded-xl border border-[#222230] bg-[#14141E] p-2 text-white hover:bg-[#1A1A26] transition-colors shadow-xs"
               title="إعادة التعيين"
             >
               <RotateCcw className="h-4 w-4" />
