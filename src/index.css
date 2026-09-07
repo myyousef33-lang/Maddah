@@ -36,22 +36,22 @@
 }
 
 /* =========================================================
-   LUXURY MIDNIGHT BLACK & GOLD & ELECTRIC BLUE THEME SYSTEM
+   LUXURY BRAND & DUAL LIGHT / DARK THEME SYSTEM
    ========================================================= */
 
 html.dark,
 body.dark,
 .dark {
-  background-color: #0B0B0F !important;
-  color: #F8FAFC !important;
+  background-color: #0B0B0F;
+  color: #F8FAFC;
   color-scheme: dark;
 }
 
 html.dark #root,
 body.dark #root,
 .dark #root {
-  background-color: #0B0B0F !important;
-  color: #F8FAFC !important;
+  background-color: #0B0B0F;
+  color: #F8FAFC;
 }
 
 /* Calligraphic font & luxury gold glow for "مداح الرياضيات" */
@@ -76,11 +76,7 @@ body.dark #root,
   border: 1px solid rgba(212, 175, 55, 0.5);
 }
 
-/* Dark Mode Smooth Canvas & Card Hierarchy */
-.dark .bg-\[\#F5F7FA\] {
-  background-color: #0B0B0F;
-}
-
+/* Dark Mode Input & Select Fields */
 .dark input,
 .dark select,
 .dark textarea {
@@ -101,72 +97,16 @@ body.dark #root,
   background-color: #161622;
 }
 
-.dark .text-blue-600,
-.dark .text-blue-700,
-.dark .text-blue-800,
-.dark .text-blue-900 {
-  color: #00B4FF !important;
-}
-
-/* Primary Dark Navy Text -> White / Light Grey in Dark Mode */
-.dark .text-\[\#0D1B3E\],
-.dark .text-slate-900,
-.dark .text-slate-800,
-.dark .text-slate-700 {
-  color: #F8FAFC !important;
-}
-
-.dark .text-\[\#6B7280\],
-.dark .text-slate-600,
-.dark .text-slate-500 {
-  color: #94A3B8 !important;
-}
-
-.dark .text-slate-400 {
-  color: #CBD5E1 !important;
-}
-
-/* Border Adjustments (Light Borders instead of shadows) */
-.dark .border-slate-100,
-.dark .border-slate-200,
-.dark .border-slate-300,
-.dark .border-blue-100,
-.dark .border-blue-200 {
-  border-color: #222230 !important;
-}
-
-.dark .shadow-xs,
-.dark .shadow-sm,
-.dark .shadow-md,
-.dark .shadow-lg,
-.dark .shadow-xl {
-  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* Form Inputs, Selects, and Textareas */
-.dark input,
-.dark select,
-.dark textarea {
-  background-color: #12121A !important;
-  color: #F8FAFC !important;
-  border-color: #222230 !important;
-}
-
-.dark input::placeholder,
-.dark textarea::placeholder {
-  color: #64748B !important;
-}
-
 /* Modals & Overlays in Dark Mode */
 .dark .glass-card {
-  background: #14141E !important;
-  border-color: #222230 !important;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6) !important;
+  background: #14141E;
+  border-color: #222230;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
 }
 
 .dark .glass-card-hover:hover {
-  border-color: #00B4FF !important;
-  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.25) !important;
+  border-color: #00B4FF;
+  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.25);
 }
 
 /* Custom Scrollbar for sleek physics platform */

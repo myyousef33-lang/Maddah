@@ -46,10 +46,10 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
   return (
     <div className="space-y-2 font-sans" dir="rtl">
       {/* Compact Streak Card */}
-      <div className="rounded-2xl border border-amber-200/90 bg-gradient-to-r from-amber-50/70 via-white to-orange-50/50 p-3 sm:p-4 shadow-xs">
+      <div className="rounded-2xl border border-amber-200/90 dark:border-amber-500/30 bg-gradient-to-r from-amber-50/70 via-white to-orange-50/50 dark:from-[#14141E] dark:via-[#161622] dark:to-[#14141E] p-3 sm:p-4 shadow-xs">
         
         {/* Header Row */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2.5 border-b border-amber-100/80">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2.5 border-b border-amber-100/80 dark:border-amber-900/30">
           
           {/* Flame & Streak Days */}
           <div className="flex items-center gap-3">
@@ -59,14 +59,14 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
 
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-xs font-bold text-amber-800">الاستمرارية اليومية</span>
-                <span className="text-[10px] font-bold text-slate-500">Daily Streak</span>
+                <span className="text-xs font-bold text-amber-800 dark:text-amber-300">الاستمرارية اليومية</span>
+                <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">Daily Streak</span>
               </div>
               <div className="flex items-baseline gap-1.5 mt-0.5">
-                <span className="text-xl sm:text-2xl font-black text-[#0D1B3E] font-mono leading-none">
+                <span className="text-xl sm:text-2xl font-black text-[#0D1B3E] dark:text-white font-mono leading-none">
                   {streakDays}
                 </span>
-                <span className="text-xs font-bold text-amber-900">
+                <span className="text-xs font-bold text-amber-900 dark:text-amber-200">
                   {streakDays === 1 ? 'يوم متتالي' : streakDays === 2 ? 'يومان متتاليان' : 'أيام متتالية'}
                 </span>
               </div>
@@ -75,13 +75,13 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
 
           {/* Completed vs Remaining Badges */}
           <div className="flex items-center gap-2 self-start sm:self-center">
-            <div className="flex items-center gap-1 rounded-lg border border-emerald-200 bg-emerald-50/90 px-2.5 py-1 text-[11px] font-bold text-emerald-800">
-              <Check className="h-3 w-3 text-emerald-600" />
+            <div className="flex items-center gap-1 rounded-lg border border-emerald-200 dark:border-emerald-800 bg-emerald-50/90 dark:bg-emerald-950/60 px-2.5 py-1 text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
+              <Check className="h-3 w-3 text-emerald-600 dark:text-emerald-400" />
               <span>مكتمل: {completedInCycle} {completedInCycle === 1 ? 'يوم' : 'أيام'}</span>
             </div>
 
-            <div className="flex items-center gap-1 rounded-lg border border-amber-200 bg-amber-50/90 px-2.5 py-1 text-[11px] font-bold text-amber-900">
-              <Zap className="h-3 w-3 text-amber-600" />
+            <div className="flex items-center gap-1 rounded-lg border border-amber-200 dark:border-amber-800 bg-amber-50/90 dark:bg-amber-950/60 px-2.5 py-1 text-[11px] font-bold text-amber-900 dark:text-amber-300">
+              <Zap className="h-3 w-3 text-amber-600 dark:text-amber-400" />
               <span>المتبقي للهدف: {remainingInCycle} {remainingInCycle === 1 ? 'يوم' : 'أيام'}</span>
             </div>
           </div>
@@ -106,8 +106,8 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
                     isCompleted
                       ? 'bg-gradient-to-b from-amber-500 to-orange-500 text-white shadow-xs font-bold'
                       : isNext
-                      ? 'border-2 border-dashed border-amber-400 bg-amber-50/80 text-amber-900 font-bold'
-                      : 'bg-slate-100/90 text-slate-400 border border-slate-200/60'
+                      ? 'border-2 border-dashed border-amber-400 dark:border-amber-500 bg-amber-50/80 dark:bg-amber-950/50 text-amber-900 dark:text-amber-200 font-bold'
+                      : 'bg-slate-100/90 dark:bg-slate-800/80 text-slate-400 dark:text-slate-500 border border-slate-200/60 dark:border-slate-700/60'
                   }`}
                 >
                   <span className="text-[10px] sm:text-[11px] font-bold leading-tight">
@@ -117,7 +117,7 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
                     {isCompleted ? (
                       <Check className="h-3 w-3 stroke-[3]" />
                     ) : (
-                      <div className={`h-1.5 w-1.5 rounded-full ${isNext ? 'bg-amber-500 animate-pulse' : 'bg-slate-300'}`} />
+                      <div className={`h-1.5 w-1.5 rounded-full ${isNext ? 'bg-amber-500 animate-pulse' : 'bg-slate-300 dark:bg-slate-600'}`} />
                     )}
                   </div>
                 </div>
@@ -127,15 +127,15 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
 
           {/* Progress Bar with Milestone */}
           <div className="space-y-1 pt-0.5">
-            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#6B7280]">
+            <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-[#6B7280] dark:text-slate-400">
               <span>إنجاز الدورة الأسبوعية ({progressPercent}%)</span>
-              <span className="flex items-center gap-1 text-amber-800">
-                <Award className="h-3 w-3 text-amber-600" />
+              <span className="flex items-center gap-1 text-amber-800 dark:text-amber-300">
+                <Award className="h-3 w-3 text-amber-600 dark:text-amber-400" />
                 <span>الهدف القادم: {targetMilestone} يوم</span>
               </span>
             </div>
             
-            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 border border-slate-200/50">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700">
               <div 
                 className="h-full bg-gradient-to-r from-amber-500 via-orange-500 to-[#00B4FF] rounded-full transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
@@ -149,9 +149,9 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
 
       {/* Afternoon Reminder Warning */}
       {showWarning && (
-        <div className="flex items-center justify-between rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 font-bold animate-fadeIn">
+        <div className="flex items-center justify-between rounded-xl border border-amber-300 dark:border-amber-600/60 bg-amber-50 dark:bg-amber-950/60 px-3 py-2 text-xs text-amber-900 dark:text-amber-200 font-bold animate-fadeIn">
           <div className="flex items-center gap-2">
-            <AlertCircle className="h-4 w-4 shrink-0 text-amber-600" />
+            <AlertCircle className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
             <span>تذكير: حافظ على شعلتك اليوم! تصفح درساً أو حُل اختباراً سريعاً قبل منتصف الليل.</span>
           </div>
         </div>

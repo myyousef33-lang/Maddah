@@ -28,7 +28,7 @@ import { Course, PdfMaterial, Student } from '../types';
 import { CourseRatingBadge } from './CourseRatingBadge';
 import { ExamCountdownBanner } from './ExamCountdownBanner';
 import { ScrollReveal } from './ScrollReveal';
-import teacherCutout from '../assets/images/teacher-cutout.webp';
+const teacherCutout = '/images/student-mascot-male.png';
 
 interface HomeLandingViewProps {
   onNavigate: (view: string, params?: any) => void;

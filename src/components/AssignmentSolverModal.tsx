@@ -209,7 +209,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
         // PDF or other documents -> Save to MediaStore
         try {
           const mediaId = 'solution_' + Date.now() + '_' + i;
-          const url = await MediaStore.saveMedia(mediaId, file, file.name);
+          const url = await MediaStore.saveMedia(file, mediaId);
           newFileUrls.push(url);
         } catch (err) {
           console.error('Error saving solution file:', err);

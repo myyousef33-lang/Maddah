@@ -1,12 +1,10 @@
 import { StorageService } from './storage';
+import { db, doc, getDoc, setDoc } from './firebase';
 
 const PRESENCE_STORAGE_KEY = 'maddah_math_db_presence_v1';
 const HEARTBEAT_INTERVAL_MS = 30000;
 const ACTIVE_THRESHOLD_MS = 120000;
 const CLEANUP_THRESHOLD_MS = 300000;
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || 'https://maddah-math-lms.supabase.co';
-const SUPABASE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1tYWRkYWgtbWF0aCIsInJlZiI6Im1hZGRhaC1tYXRoLWxtcyIsInJvbGUiOiJhbm9uIiwiaWF0IjoxNzcyODQxNjAwLCJleHAiOjIwODg0MTc2MDB9.maddah_math_token_signature_2026';
-const REST_URL = `${SUPABASE_URL}/rest/v1/app_data`;
 
 interface SessionEntry { lastSeen: number; studentId?: string; studentName?: string; }
 interface PresenceData { sessions: Record<string, SessionEntry>; }
@@ -16,8 +14,6 @@ const getSessionId = (): string => {
   if (!id) { id = 'sess_' + Math.random().toString(36).substring(2, 11) + '_' + Date.now(); sessionStorage.setItem('maddah_math_session_id', id); }
   return id;
 };
-
-const authHeaders = () => ({ apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json' });
 
 const getLocalPresence = (): PresenceData => {
   try { const parsed = JSON.parse(localStorage.getItem(PRESENCE_STORAGE_KEY) || 'null'); if (parsed?.sessions) return parsed; } catch (_) {}
@@ -33,15 +29,25 @@ const calculateActiveCount = (data: PresenceData) => Object.values(data.sessions
 const notifyCountListeners = (count: number) => { currentActiveCount = count; activeCountListeners.forEach(cb => { try { cb(count); } catch (_) {} }); };
 
 const writePresence = async (data: PresenceData) => {
-  const response = await fetch(REST_URL, { method: 'POST', headers: { ...authHeaders(), Prefer: 'resolution=merge-duplicates,return=minimal' }, body: JSON.stringify({ key: PRESENCE_STORAGE_KEY, data, updated_at: new Date().toISOString() }) });
-  if (!response.ok) throw new Error(`Supabase presence write failed: ${response.status}`);
+  try {
+    const docRef = doc(db, 'app_data', PRESENCE_STORAGE_KEY);
+    await setDoc(docRef, { data, updatedAt: new Date().toISOString() });
+  } catch (err) {
+    console.warn('[Firebase Presence] Write error:', err);
+  }
 };
 
 const readPresence = async (): Promise<PresenceData | null> => {
-  const response = await fetch(`${REST_URL}?key=eq.${encodeURIComponent(PRESENCE_STORAGE_KEY)}&select=data`, { headers: authHeaders() });
-  if (!response.ok) throw new Error(`Supabase presence read failed: ${response.status}`);
-  const rows = await response.json();
-  return rows?.[0]?.data || null;
+  try {
+    const docRef = doc(db, 'app_data', PRESENCE_STORAGE_KEY);
+    const snap = await getDoc(docRef);
+    if (snap.exists()) {
+      return snap.data()?.data || null;
+    }
+  } catch (err) {
+    console.warn('[Firebase Presence] Read error:', err);
+  }
+  return null;
 };
 
 export const PresenceService = {
@@ -68,3 +74,4 @@ export const PresenceService = {
     document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') void this.sendHeartbeat(); });
   }
 };
+

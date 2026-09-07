@@ -64,7 +64,7 @@ export const ExamCountdownBanner: React.FC<ExamCountdownBannerProps> = ({ onNavi
   const [currentTip] = useState(() => mathTips[Math.floor(Math.random() * mathTips.length)]);
 
   return (
-    <div className="rounded-3xl border border-[#D4AF37]/40 bg-[#0B0B0F] p-5 sm:p-6 shadow-xl relative overflow-hidden text-white">
+    <div className="rounded-3xl border border-[#D4AF37]/50 bg-gradient-to-r from-[#0D1B3E] via-[#13244E] to-[#0D1B3E] p-5 sm:p-6 shadow-xl relative overflow-hidden text-white">
       <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
         
         {/* Title & Daily Tip */}

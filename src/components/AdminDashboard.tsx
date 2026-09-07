@@ -512,7 +512,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
     // 3. Fallback for videos/PDFs: MediaStore (IndexedDB)
     try {
       const mediaId = `${type}_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
-      const mediaKey = await MediaStore.saveMedia(mediaId, file, file.name);
+      const mediaKey = await MediaStore.saveMedia(file, mediaId);
       setIsUploadingFile(false);
       setUploadProgressText('');
       const sizeFormatted = `${mbSize} MB`;

@@ -78,7 +78,7 @@ export const AdminAssignmentsTab: React.FC = () => {
     setIsUploading(true);
     try {
       const mediaId = 'assignment_pdf_' + Date.now();
-      const url = await MediaStore.saveMedia(mediaId, file, file.name);
+      const url = await MediaStore.saveMedia(file, mediaId);
       setNewPdfUrl(url);
     } catch (err) {
       alert('حدث خطأ أثناء رفع ملف الـ PDF');
