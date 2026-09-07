@@ -1,7 +1,7 @@
 export type ThemeMode = 'light' | 'dark';
 
 export const getTheme = (): ThemeMode => {
-  if (typeof window === 'undefined') return 'light';
+  if (typeof window === 'undefined') return 'dark';
   try {
     const saved = localStorage.getItem('maddah_math_theme_mode');
     if (saved === 'dark' || saved === 'light') {
@@ -10,7 +10,7 @@ export const getTheme = (): ThemeMode => {
   } catch (e) {
     console.warn('Error reading theme mode:', e);
   }
-  return 'light';
+  return 'dark';
 };
 
 export const applyTheme = (mode: ThemeMode) => {
@@ -38,12 +38,11 @@ export const toggleTheme = (): ThemeMode => {
   return next;
 };
 
-// Force default light theme on boot for eye-friendly bright experience
+// Default to dark luxury theme (#0B0B0F) on boot
 if (typeof window !== 'undefined') {
   const stored = localStorage.getItem('maddah_math_theme_mode');
-  // Always default to light theme on fresh boot
-  if (!stored || stored === 'dark') {
-    applyTheme('light');
+  if (!stored) {
+    applyTheme('dark');
   } else {
     applyTheme(getTheme());
   }

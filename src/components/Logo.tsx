@@ -12,17 +12,17 @@ export const Logo: React.FC<LogoProps> = ({
   className = ''
 }) => {
   const iconSizes = {
-    sm: 'h-8 w-8 text-lg',
-    md: 'h-11 w-11 text-xl',
-    lg: 'h-14 w-14 text-2xl',
-    xl: 'h-18 w-18 text-3xl'
+    sm: 'h-7 w-7 text-base',
+    md: 'h-9 w-9 sm:h-10 sm:w-10 text-lg',
+    lg: 'h-12 w-12 text-xl',
+    xl: 'h-16 w-16 text-2xl'
   };
 
   const titleSizes = {
-    sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl',
-    xl: 'text-4xl'
+    sm: 'text-base',
+    md: 'text-lg sm:text-xl',
+    lg: 'text-2xl',
+    xl: 'text-3xl'
   };
 
   return (

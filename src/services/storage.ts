@@ -1292,17 +1292,17 @@ export const StorageService = {
     }
     if (!student) return false;
 
-    // Auto-resolve starter grade course if enrolledCourseIds is empty
-    if (!student.enrolledCourseIds || student.enrolledCourseIds.length === 0) {
+    // Check enrolled course IDs
+    let enrolled = student.enrolledCourseIds || [];
+    if (enrolled.length === 0) {
       const allCourses = this.getCourses();
       const gradeCourse = allCourses.find(c => c.grade === student?.grade) || allCourses[0];
       if (gradeCourse) {
-        student.enrolledCourseIds = [gradeCourse.id];
-        this.saveStudent(student);
+        enrolled = [gradeCourse.id];
       }
     }
 
-    if (!student.enrolledCourseIds?.includes(courseId)) return false;
+    if (!enrolled.includes(courseId)) return false;
 
     // Check expiry date
     if (student.courseExpiryDates && student.courseExpiryDates[courseId]) {

@@ -26,6 +26,7 @@ import { CertificateModal } from './components/CertificateModal';
 import { GlobalAntiScreenshotShield } from './components/GlobalAntiScreenshotShield';
 import { StudentWalletModal } from './components/StudentWalletModal';
 import { FloatingSupportButton } from './components/FloatingSupportButton';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { StorageService, subscribeToStorage } from './services/storage';
 import { PresenceService } from './services/presence';
 import { EarnedCertificate, Student } from './types';
@@ -146,7 +147,8 @@ export default function App() {
 
       {/* Main Content Area with Smooth Page/View Transitions */}
       <main className="flex-1 w-full max-w-full overflow-x-hidden">
-        <AnimatePresence mode="wait" initial={false}>
+        <ErrorBoundary onReset={() => setCurrentView('home')}>
+          <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentView + (viewParams.courseId || '') + (viewParams.lessonId || '') + (viewParams.attemptId || '') + (viewParams.examId || '')}
             initial={{ opacity: 0, y: 16 }}
@@ -290,6 +292,7 @@ export default function App() {
             )}
           </motion.div>
         </AnimatePresence>
+        </ErrorBoundary>
       </main>
 
       {/* Footer */}

@@ -9,7 +9,7 @@ interface StreakBannerProps {
 }
 
 export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
-  const [streakDays, setStreakDays] = useState(student.streakDays || 1);
+  const [streakDays, setStreakDays] = useState((student as any).streakDays || student.streakCount || 1);
   const [isNew, setIsNew] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
 
