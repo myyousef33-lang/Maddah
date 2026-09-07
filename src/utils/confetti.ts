@@ -6,7 +6,7 @@ export const triggerOrangeConfetti = () => {
       particleCount: 80,
       spread: 70,
       origin: { y: 0.6 },
-      colors: ['#F59E0B', '#D4AF37', '#FBBF24', '#00B4FF']
+      colors: ['#F59E0B', '#F97316', '#FBBF24', '#FDBA74']
     });
   } catch (_) {}
 };
@@ -14,7 +14,7 @@ export const triggerOrangeConfetti = () => {
 export const triggerAchievementConfetti = () => {
   try {
     const end = Date.now() + 1.5 * 1000;
-    const colors = ['#D4AF37', '#F59E0B', '#00B4FF', '#10B981'];
+    const colors = ['#F97316', '#F59E0B', '#FDBA74', '#10B981'];
 
     (function frame() {
       confetti({

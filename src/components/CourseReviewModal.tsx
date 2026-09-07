@@ -83,7 +83,7 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Accent Line */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#D4AF37] via-[#00B4FF] to-[#D4AF37]" />
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#F97316] via-[#FDBA74] to-[#F97316]" />
 
         {/* Close Button */}
         <button
@@ -117,7 +117,7 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
         ) : !student ? (
           /* Not Logged In State */
           <div className="p-6 rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-900/60 text-center space-y-4 my-2">
-            <MessageSquare className="h-10 w-10 text-[#00B4FF] dark:text-[#60A5FA] mx-auto" />
+            <MessageSquare className="h-10 w-10 text-[#FDBA74] dark:text-[#60A5FA] mx-auto" />
             <p className="text-xs text-[#0D1B3E] dark:text-slate-200 font-bold">
               يرجى تسجيل الدخول بحسابك أولاً حتى تتمكن من تقييم الكورس ومشاركة رأيك
             </p>
@@ -126,7 +126,7 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
                 onClose();
                 onOpenAuthModal();
               }}
-              className="rounded-2xl bg-[#00B4FF] hover:bg-blue-700 px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-all"
+              className="rounded-2xl bg-[#FDBA74] hover:bg-blue-700 px-6 py-2.5 text-xs font-bold text-white shadow-sm transition-all"
             >
               تسجيل الدخول الآن
             </button>
@@ -161,8 +161,8 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
                       <Star
                         className={`h-8 w-8 transition-colors ${
                           isFilled
-                            ? 'fill-[#D4AF37] text-[#D4AF37] drop-shadow-md'
-                            : 'fill-transparent text-slate-300 dark:text-slate-600 hover:text-[#D4AF37]'
+                            ? 'fill-[#F97316] text-[#F97316] drop-shadow-md'
+                            : 'fill-transparent text-slate-300 dark:text-slate-600 hover:text-[#F97316]'
                         }`}
                       />
                     </button>
@@ -186,7 +186,7 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
                 maxLength={300}
                 rows={3}
                 placeholder="اكتب هنا رأيك في أسلوب الشرح، الأمثلة والمسائل الفيزيائية، تنظيم المحاضرات..."
-                className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 p-3 text-xs text-[#0D1B3E] dark:text-white placeholder:text-slate-400 focus:border-[#00B4FF] focus:outline-none resize-none"
+                className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900/60 p-3 text-xs text-[#0D1B3E] dark:text-white placeholder:text-slate-400 focus:border-[#FDBA74] focus:outline-none resize-none"
               />
             </div>
 
@@ -195,7 +195,7 @@ export const CourseReviewModal: React.FC<CourseReviewModalProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 rounded-2xl bg-[#00B4FF] hover:bg-blue-700 py-3 text-xs font-black text-white shadow-md shadow-blue-500/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+                className="flex-1 rounded-2xl bg-[#FDBA74] hover:bg-blue-700 py-3 text-xs font-black text-white shadow-md shadow-blue-500/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
               >
                 <Send className="h-4 w-4" />
                 <span>{isSubmitting ? 'جارٍ الحفظ...' : existingReview ? 'تحديث التقييم' : 'إرسال التقييم'}</span>

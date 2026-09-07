@@ -30,6 +30,10 @@ export interface EarnedCertificate {
   certificateCode: string;
   grade?: string;
   percentage?: number;
+  examOrUnitName?: string;
+  score?: number;
+  maxScore?: number;
+  date?: string;
 }
 
 export interface Student {
@@ -45,7 +49,8 @@ export interface Student {
   password?: string;
   avatarUrl?: string;
   avatarId?: string;
-  equippedAccessories?: string[];
+  equippedAccessories?: any;
+  unlockedAccessories?: any;
   points?: number;
   walletBalance?: number;
   streakCount?: number;
@@ -60,10 +65,12 @@ export interface Student {
   maxDevicesAllowed?: number;
   badges?: StudentBadge[];
   certificates?: EarnedCertificate[];
+  earnedCertificates?: EarnedCertificate[];
   deviceFingerprint?: string;
   isBlocked?: boolean;
   wheelSpins?: number;
   courseExpiryDates?: Record<string, string>;
+  flashcardProgress?: Record<string, string>;
 }
 
 export interface Lesson {
@@ -92,6 +99,7 @@ export interface Unit {
   lessons: Lesson[];
   order?: number;
   courseId?: string;
+  unitExamId?: string;
 }
 
 export interface CourseReview {
@@ -274,6 +282,7 @@ export interface PlatformSettings {
   adminPin?: string;
   maxDevicesPerStudent?: number;
   ministryExamDate?: string;
+  examDate?: string;
   homeIntroVideoUrl?: string;
   homeVideoPlacement?: string;
 }
@@ -403,6 +412,11 @@ export interface AdminAuditLogEntry {
   details: string;
   ipAddress?: string;
   timestamp: string;
+  description?: string;
+  targetName?: string;
+  adminIdentifier?: string;
+  action?: string;
+  category?: string;
 }
 
 export interface LessonComment {
@@ -412,7 +426,11 @@ export interface LessonComment {
   studentId: string;
   studentName: string;
   studentAvatar?: string;
+  studentGrade?: string;
   content: string;
+  rating?: number;
+  adminReply?: string;
+  adminRepliedAt?: string;
   replyContent?: string;
   repliedAt?: string;
   repliedBy?: string;
@@ -441,6 +459,7 @@ export interface Assignment {
   description: string;
   courseId: string;
   courseTitle?: string;
+  gradeLevel?: string;
   lessonId?: string;
   dueDate?: string;
   deadline?: string;
@@ -464,6 +483,7 @@ export interface AssignmentSubmission {
   textAnswer?: string;
   studentNotes?: string;
   teacherNotes?: string;
+  teacherAnnotatedData?: string;
   feedbackStatus?: string;
   annotatedPdfData?: string;
   submittedAt: string;

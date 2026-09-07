@@ -116,7 +116,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
       {/* Header */}
       <div className="rounded-3xl border border-blue-100 bg-white p-6 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#00B4FF] mb-2">
+          <div className="inline-flex items-center gap-2 rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#FDBA74] mb-2">
             <Layers className="h-3.5 w-3.5" />
             <span>بطاقات المراجعة الفيزيائية السريعة</span>
           </div>
@@ -135,7 +135,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
               setCurrentIndex(0);
               setIsFlipped(false);
             }}
-            className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-[#0D1B3E] focus:border-[#00B4FF] focus:outline-none shadow-xs"
+            className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-[#0D1B3E] focus:border-[#FDBA74] focus:outline-none shadow-xs"
           >
             <option value="all">جميع الفصول والوحدات</option>
             {units.map(u => (
@@ -170,7 +170,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
               setSelectedUnit('all');
               setOnlyNeedsReview(false);
             }}
-            className="rounded-xl bg-[#D4AF37] px-4 py-2 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] transition-all shadow-xs"
+            className="rounded-xl bg-[#F97316] px-4 py-2 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316] transition-all shadow-xs"
           >
             إعادة إظهار كل البطاقات
           </button>
@@ -180,7 +180,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
           
           {/* Progress Indicator */}
           <div className="flex items-center justify-between text-xs text-[#6B7280] px-2 font-bold">
-            <span>الوحدة: <strong className="text-[#00B4FF]">{currentCard.unit}</strong></span>
+            <span>الوحدة: <strong className="text-[#FDBA74]">{currentCard.unit}</strong></span>
             <span>البطاقة <strong className="text-[#0D1B3E]">{currentIndex + 1}</strong> من <strong className="text-[#0D1B3E]">{filteredCards.length}</strong></span>
           </div>
 
@@ -195,12 +195,12 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
               
               {/* Card Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <span className="text-xs font-black text-[#00B4FF] flex items-center gap-1.5">
-                  <Sparkles className="h-4 w-4 text-[#D4AF37]" />
+                <span className="text-xs font-black text-[#FDBA74] flex items-center gap-1.5">
+                  <Sparkles className="h-4 w-4 text-[#F97316]" />
                   {currentCard.frontTitle}
                 </span>
                 <span className="text-[11px] font-bold text-[#6B7280] flex items-center gap-1">
-                  <RotateCw className="h-3.5 w-3.5 text-[#00B4FF] group-hover:rotate-180 transition-transform duration-500" />
+                  <RotateCw className="h-3.5 w-3.5 text-[#FDBA74] group-hover:rotate-180 transition-transform duration-500" />
                   انقر لقلب البطاقة
                 </span>
               </div>
@@ -212,7 +212,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
                     <p className="text-base md:text-lg font-black text-[#0D1B3E] leading-relaxed">
                       {currentCard.frontConcept}
                     </p>
-                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#00B4FF]">
+                    <span className="inline-flex items-center gap-1.5 rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#FDBA74]">
                       <HelpCircle className="h-3.5 w-3.5" />
                       <span>السؤال / المفهوم الفيزيائي</span>
                     </span>
@@ -223,7 +223,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
                       {currentCard.backAnswer}
                     </p>
                     {currentCard.formula && (
-                      <div className="rounded-xl bg-[#F5F7FA] border border-blue-200 p-2.5 font-mono text-xs font-bold text-[#00B4FF]">
+                      <div className="rounded-xl bg-[#F5F7FA] border border-blue-200 p-2.5 font-mono text-xs font-bold text-[#FDBA74]">
                         {currentCard.formula}
                       </div>
                     )}
@@ -262,7 +262,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({ student }) => {
 
             <button
               onClick={() => handleStatusUpdate('understood')}
-              className="rounded-2xl bg-[#00B4FF] py-3 px-4 text-xs font-black text-white hover:bg-[#163cb5] transition-all shadow-xs flex items-center justify-center gap-2"
+              className="rounded-2xl bg-[#FDBA74] py-3 px-4 text-xs font-black text-white hover:bg-[#163cb5] transition-all shadow-xs flex items-center justify-center gap-2"
             >
               <CheckCircle2 className="h-4 w-4" />
               <span>فاهمها ومتقنها!</span>

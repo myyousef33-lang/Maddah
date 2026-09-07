@@ -137,7 +137,7 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
             
             <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/50 dark:border-slate-700">
               <div 
-                className="h-full bg-gradient-to-r from-amber-500 via-orange-500 to-[#00B4FF] rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-amber-500 via-orange-500 to-[#FDBA74] rounded-full transition-all duration-500"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>

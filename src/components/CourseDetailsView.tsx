@@ -102,7 +102,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
         <h2 className="text-xl font-bold text-[#0D1B3E]">لم يتم العثور على الكورس</h2>
         <button
           onClick={() => onNavigate('courses-catalog')}
-          className="mt-4 rounded-xl bg-[#D4AF37] px-4 py-2 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37]"
+          className="mt-4 rounded-xl bg-[#F97316] px-4 py-2 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316]"
         >
           العودة للكورسات
         </button>
@@ -132,9 +132,9 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
       
       {/* Breadcrumbs */}
       <div className="flex items-center gap-2 text-xs text-[#6B7280]">
-        <button onClick={() => onNavigate('home')} className="hover:text-[#00B4FF] transition-colors">الرئيسية</button>
+        <button onClick={() => onNavigate('home')} className="hover:text-[#FDBA74] transition-colors">الرئيسية</button>
         <span>/</span>
-        <button onClick={() => onNavigate('courses-catalog')} className="hover:text-[#00B4FF] transition-colors">الكورسات</button>
+        <button onClick={() => onNavigate('courses-catalog')} className="hover:text-[#FDBA74] transition-colors">الكورسات</button>
         <span>/</span>
         <span className="text-[#0D1B3E] font-bold truncate max-w-xs">{course.title}</span>
       </div>
@@ -145,7 +145,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
           
           <div className="lg:col-span-2 space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#00B4FF]">
+              <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#FDBA74]">
                 {course.grade}
               </span>
 
@@ -182,11 +182,11 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
               <div className="space-y-2 pt-2 max-w-lg">
                 <div className="flex justify-between text-xs font-bold">
                   <span className="text-[#4B5563]">نسبة إنجازك في الكورس: {completedLessons} من {totalLessons} مكتمل</span>
-                  <span className="text-[#00B4FF]">{percentage}%</span>
+                  <span className="text-[#FDBA74]">{percentage}%</span>
                 </div>
                 <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-100">
                   <div 
-                    className="h-full bg-gradient-to-r from-[#00B4FF] to-blue-500 rounded-full transition-all duration-500"
+                    className="h-full bg-gradient-to-r from-[#FDBA74] to-blue-500 rounded-full transition-all duration-500"
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
@@ -211,7 +211,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                 onClick={() => setIsReviewModalOpen(true)}
               />
               <div className="absolute top-3 right-3 z-10">
-                <span className="rounded-xl bg-white/95 dark:bg-[#080D21]/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-[#00B4FF] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-900/60 shadow-sm">
+                <span className="rounded-xl bg-white/95 dark:bg-[#080D21]/95 backdrop-blur-md px-3 py-1 text-xs font-bold text-[#FDBA74] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-900/60 shadow-sm">
                   {course.grade}
                 </span>
               </div>
@@ -223,7 +223,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                   const firstLesson = course.units?.[0]?.lessons?.[0];
                   if (firstLesson) onNavigate('lesson-player', { courseId: course.id, lessonId: firstLesson.id });
                 }}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#D4AF37] px-6 py-3.5 text-sm font-black text-[#0D1B3E] shadow-sm hover:bg-[#D4AF37] transition-all cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#F97316] px-6 py-3.5 text-sm font-black text-[#0D1B3E] shadow-sm hover:bg-[#F97316] transition-all cursor-pointer"
               >
                 <PlayCircle className="h-5 w-5" />
                 <span>بدء / استكمال المشاهدة</span>
@@ -256,7 +256,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                 {student && (
                   <div className="flex items-center justify-between px-3 text-[11px] text-[#4B5563] font-bold bg-[#F5F7FA] py-2 rounded-xl border border-slate-200">
                     <span>رصيد محفظتك الحالي:</span>
-                    <span className="text-[#00B4FF] font-mono text-xs">{student.walletBalance || 0} ج.م</span>
+                    <span className="text-[#FDBA74] font-mono text-xs">{student.walletBalance || 0} ج.م</span>
                   </div>
                 )}
 
@@ -265,7 +265,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                   onClick={student ? onOpenActivationModal : onOpenAuthModal}
                   className="w-full inline-flex items-center justify-center gap-2 rounded-2xl bg-[#F5F7FA] border border-slate-200 px-5 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-slate-100 transition-all cursor-pointer shadow-xs"
                 >
-                  <Key className="h-4 w-4 shrink-0 text-[#00B4FF]" />
+                  <Key className="h-4 w-4 shrink-0 text-[#FDBA74]" />
                   <span>تفعيل بكود الاشتراك (كود مسبق الدفع)</span>
                 </button>
 
@@ -283,7 +283,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
       <div className="space-y-4">
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="rounded-xl bg-blue-50 border border-blue-200 p-2 text-[#00B4FF]">
+            <div className="rounded-xl bg-blue-50 border border-blue-200 p-2 text-[#FDBA74]">
               <Award className="h-6 w-6" />
             </div>
             <div>
@@ -291,7 +291,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
               <p className="text-xs text-[#6B7280]">كويزات الفصول والامتحانات الشاملة التابعة لهذا الكورس (تحدث تلقائياً)</p>
             </div>
           </div>
-          <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#00B4FF]">
+          <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-bold text-[#FDBA74]">
             {courseExams.length} اختبارات
           </span>
         </div>
@@ -312,12 +312,12 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                   className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3 relative overflow-hidden shadow-xs hover:border-blue-300 transition-all"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="rounded-lg bg-blue-50 border border-blue-100 text-[#00B4FF] text-[10px] font-bold px-2.5 py-1 flex items-center gap-1">
-                      <Sparkles className="h-3 w-3 text-[#00B4FF]" />
+                    <span className="rounded-lg bg-blue-50 border border-blue-100 text-[#FDBA74] text-[10px] font-bold px-2.5 py-1 flex items-center gap-1">
+                      <Sparkles className="h-3 w-3 text-[#FDBA74]" />
                       {ex.type === 'quiz' ? 'كويز تقييمي' : 'امتحان شامل'}
                     </span>
                     <span className="text-xs text-[#6B7280] flex items-center gap-1 font-mono">
-                      <Clock className="h-3.5 w-3.5 text-[#00B4FF]" />
+                      <Clock className="h-3.5 w-3.5 text-[#FDBA74]" />
                       {ex.durationMinutes} دقيقة
                     </span>
                   </div>
@@ -351,7 +351,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                       {isEnrolled ? (
                         <button
                           onClick={() => onNavigate('exam-runner', { examId: ex.id, courseId: course.id })}
-                          className="rounded-xl bg-[#00B4FF] px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 transition-all flex items-center gap-1.5"
+                          className="rounded-xl bg-[#FDBA74] px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 transition-all flex items-center gap-1.5"
                         >
                           <PlayCircle className="h-4 w-4" />
                           <span>بدء الامتحان الآن</span>
@@ -375,15 +375,15 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
       <div className="space-y-4 pt-4 border-t border-slate-200">
         <div className="flex items-center justify-between border-b border-slate-200 pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="rounded-xl bg-amber-50 border border-amber-200 p-2 text-[#0D1B3E] dark:text-[#D4AF37]">
-              <FileText className="h-6 w-6 text-[#00B4FF] dark:text-[#60A5FA]" />
+            <div className="rounded-xl bg-amber-50 border border-amber-200 p-2 text-[#0D1B3E] dark:text-[#F97316]">
+              <FileText className="h-6 w-6 text-[#FDBA74] dark:text-[#60A5FA]" />
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-[#0D1B3E] dark:text-white">واجبات الكورس وتطبيقات الـ PDF والتصحيح</h2>
               <p className="text-xs text-[#6B7280] dark:text-slate-400">واجبات تفاعلية يمكن إجابتها مباشرة فوق الـ PDF بالرسم والكتابة لتصحيحها من قبل المعلم</p>
             </div>
           </div>
-          <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-bold text-[#0D1B3E] dark:text-[#D4AF37]">
+          <span className="rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs font-bold text-[#0D1B3E] dark:text-[#F97316]">
             {assignments.length} واجبات
           </span>
         </div>
@@ -403,7 +403,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-black uppercase bg-[#00B4FF] text-white px-2.5 py-0.5 rounded-md">
+                      <span className="text-[10px] font-black uppercase bg-[#FDBA74] text-white px-2.5 py-0.5 rounded-md">
                         واجب تطبيقات الـ PDF
                       </span>
                       {sub && (
@@ -434,7 +434,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                           setSelectedAssignmentModal(asgn);
                           setAssignmentModalOpen(true);
                         }}
-                        className="inline-flex items-center gap-1.5 rounded-xl bg-[#00B4FF] dark:bg-[#3B82F6] px-4 py-2 text-xs font-bold text-white hover:bg-blue-700 shadow-xs transition-all"
+                        className="inline-flex items-center gap-1.5 rounded-xl bg-[#FDBA74] dark:bg-[#3B82F6] px-4 py-2 text-xs font-bold text-white hover:bg-blue-700 shadow-xs transition-all"
                       >
                         <FileText className="h-4 w-4" />
                         <span>{sub ? 'عرض ورقة الحل والتصحيح' : 'فتح وتأدية الواجب الآن'}</span>
@@ -462,7 +462,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
           <div className="space-y-4 pt-4 border-t border-slate-200">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <div className="flex items-center gap-2.5">
-                <div className="rounded-xl bg-amber-50 border border-amber-200 p-2 text-[#D4AF37]">
+                <div className="rounded-xl bg-amber-50 border border-amber-200 p-2 text-[#F97316]">
                   <FileText className="h-6 w-6 text-[#0D1B3E]" />
                 </div>
                 <div>
@@ -484,7 +484,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                   <div key={pdf.id} className="rounded-2xl border border-slate-200 bg-white p-5 space-y-3 flex flex-col justify-between hover:border-blue-300 transition-all shadow-xs">
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="rounded bg-blue-50 text-[#00B4FF] text-[10px] font-bold px-2 py-0.5 border border-blue-100">
+                        <span className="rounded bg-blue-50 text-[#FDBA74] text-[10px] font-bold px-2 py-0.5 border border-blue-100">
                           {pdf.category}
                         </span>
                         <span className="text-xs text-[#6B7280]">{pdf.pageCount || 30} صفحة</span>
@@ -497,7 +497,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                       {isUnlocked ? (
                         <button
                           onClick={() => downloadPdfFile(pdf.url, `${pdf.title}.pdf`)}
-                          className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#D4AF37] text-[#0D1B3E] py-2.5 text-xs font-bold hover:bg-[#D4AF37] transition-colors shadow-xs"
+                          className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#F97316] text-[#0D1B3E] py-2.5 text-xs font-bold hover:bg-[#F97316] transition-colors shadow-xs"
                         >
                           <FileText className="h-4 w-4" />
                           <span>تحميل / قراءة المذكرة</span>
@@ -510,7 +510,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                           </span>
                           <button
                             onClick={student ? onOpenActivationModal : onOpenAuthModal}
-                            className="rounded-xl bg-[#00B4FF] px-3 py-1.5 text-xs font-bold text-white hover:bg-blue-700"
+                            className="rounded-xl bg-[#FDBA74] px-3 py-1.5 text-xs font-bold text-white hover:bg-blue-700"
                           >
                             تفعيل الكورس
                           </button>
@@ -529,7 +529,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
       <div className="space-y-6">
         <div className="flex items-center justify-between border-b border-slate-200 pb-4">
           <div className="flex items-center gap-2.5">
-            <div className="rounded-xl bg-blue-50 border border-blue-200 p-2 text-[#00B4FF]">
+            <div className="rounded-xl bg-blue-50 border border-blue-200 p-2 text-[#FDBA74]">
               <BookOpen className="h-6 w-6" />
             </div>
             <div>
@@ -560,7 +560,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                     className="flex items-center justify-between p-4 sm:p-5 bg-white hover:bg-[#F5F7FA] cursor-pointer transition-colors border-b border-slate-100"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-sm font-black text-[#00B4FF]">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 border border-blue-100 text-sm font-black text-[#FDBA74]">
                         {uIdx + 1}
                       </div>
                       <div>
@@ -601,7 +601,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                                   <CheckCircle2 className="h-4 w-4" />
                                 </div>
                               ) : isAvailable ? (
-                                <div className="rounded-full bg-blue-50 p-1.5 text-[#00B4FF] mt-0.5 sm:mt-0">
+                                <div className="rounded-full bg-blue-50 p-1.5 text-[#FDBA74] mt-0.5 sm:mt-0">
                                   <PlayCircle className="h-4 w-4" />
                                 </div>
                               ) : (
@@ -614,7 +614,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                                 <div className="flex items-center gap-2">
                                   <span className="font-bold text-sm text-[#0D1B3E]">{lesson.title}</span>
                                   {lesson.isFreePreview && (
-                                    <span className="rounded bg-blue-50 border border-blue-200 px-1.5 py-0.2 text-[10px] font-bold text-[#00B4FF]">
+                                    <span className="rounded bg-blue-50 border border-blue-200 px-1.5 py-0.2 text-[10px] font-bold text-[#FDBA74]">
                                       معاينة مجانية
                                     </span>
                                   )}
@@ -631,7 +631,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                                     {lesson.durationMinutes || 45} دقيقة
                                   </span>
                                   {lesson.pdfUrl && (
-                                    <span className="text-[#00B4FF] font-medium flex items-center gap-1">
+                                    <span className="text-[#FDBA74] font-medium flex items-center gap-1">
                                       <FileText className="h-3 w-3" />
                                       مذكرة مرفقة
                                     </span>
@@ -651,7 +651,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                               {isAvailable ? (
                                 <button
                                   onClick={() => onNavigate('lesson-player', { courseId: course.id, lessonId: lesson.id })}
-                                  className="inline-flex items-center gap-1.5 rounded-xl bg-blue-50 border border-blue-200 px-4 py-2 text-xs font-bold text-[#00B4FF] hover:bg-[#00B4FF] hover:text-white transition-all shadow-xs"
+                                  className="inline-flex items-center gap-1.5 rounded-xl bg-blue-50 border border-blue-200 px-4 py-2 text-xs font-bold text-[#FDBA74] hover:bg-[#FDBA74] hover:text-white transition-all shadow-xs"
                                 >
                                   <PlayCircle className="h-4 w-4" />
                                   <span>{isCompleted ? 'إعادة المشاهدة' : 'مشاهدة الدرس'}</span>
@@ -674,13 +674,13 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                       {unitExam && (
                         <div className="mt-3 p-4 rounded-xl border border-blue-200 bg-blue-50/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                           <div className="flex items-center gap-3">
-                            <div className="rounded-xl bg-blue-100 p-2 text-[#00B4FF]">
+                            <div className="rounded-xl bg-blue-100 p-2 text-[#FDBA74]">
                               <Award className="h-5 w-5" />
                             </div>
                             <div>
                               <div className="flex items-center gap-2">
                                 <h4 className="font-bold text-sm text-[#0D1B3E]">{unitExam.title}</h4>
-                                <span className="rounded bg-blue-100 text-[#00B4FF] px-2 py-0.5 text-[10px] font-bold">
+                                <span className="rounded bg-blue-100 text-[#FDBA74] px-2 py-0.5 text-[10px] font-bold">
                                   امتحان شامل
                                 </span>
                               </div>
@@ -706,7 +706,7 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
                             return isEnrolled ? (
                               <button
                                 onClick={() => onNavigate('exam-runner', { examId: unitExam.id, courseId: course.id })}
-                                className="rounded-xl bg-[#00B4FF] px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 transition-all self-end sm:self-auto"
+                                className="rounded-xl bg-[#FDBA74] px-5 py-2 text-xs font-bold text-white shadow-xs hover:bg-blue-700 transition-all self-end sm:self-auto"
                               >
                                 بدء الامتحان
                               </button>

@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-[#1E293B] bg-white/98 dark:bg-[#080B10]/98 backdrop-blur-xl shadow-xs transition-all">
       {/* Top Royal Gold Accent Line */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#D4AF37] via-[#19C7E8] to-[#D4AF37]" />
+      <div className="h-1 w-full bg-gradient-to-r from-[#F97316] via-[#FDBA74] to-[#F97316]" />
 
       <div className="mx-auto flex h-20 lg:h-24 max-w-7xl 2xl:max-w-screen-2xl items-center justify-between px-3 sm:px-6 lg:px-10 xl:px-12 gap-2">
         
@@ -160,11 +160,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onNavigate(item.id)}
                 className={`flex items-center gap-1.5 rounded-xl px-3 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm font-bold transition-all ${
                   isActive
-                    ? 'bg-[#071A33] text-[#D4AF37] border border-[#D4AF37]/50 shadow-xs'
-                    : 'text-[#071A33] dark:text-slate-200 hover:bg-[#071A33]/10 dark:hover:bg-slate-800/60 hover:text-[#19C7E8] dark:hover:text-[#19C7E8]'
+                    ? 'bg-[#14141E] text-[#F97316] border border-[#F97316]/50 shadow-xs'
+                    : 'text-slate-200 hover:bg-[#181824] hover:text-[#FDBA74]'
                 }`}
               >
-                <Icon className={`h-4 w-4 xl:h-5 xl:w-5 ${isActive ? 'text-[#D4AF37]' : 'text-[#071A33]/70 dark:text-slate-400'}`} />
+                <Icon className={`h-4 w-4 xl:h-5 xl:w-5 ${isActive ? 'text-[#F97316]' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -176,21 +176,21 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
               className={`flex items-center gap-1.5 rounded-xl px-3 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm font-bold transition-all ${
                 isToolActive || toolsDropdownOpen
-                  ? 'bg-blue-50 dark:bg-blue-950/60 text-[#00B4FF] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-800/60 shadow-xs'
-                  : 'text-[#0D1B3E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-[#00B4FF] dark:hover:text-[#60A5FA]'
+                  ? 'bg-[#F97316]/15 text-[#FDBA74] border border-[#F97316]/40 shadow-xs'
+                  : 'text-slate-200 hover:bg-[#181824] hover:text-[#FDBA74]'
               }`}
             >
-              <Sparkles className="h-4 w-4 xl:h-5 xl:w-5 text-[#D4AF37]" />
+              <Sparkles className="h-4 w-4 xl:h-5 xl:w-5 text-[#F97316]" />
               <span>أدوات المنصة الذكية</span>
-              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${toolsDropdownOpen ? 'rotate-180 text-[#00B4FF] dark:text-[#60A5FA]' : 'text-[#6B7280] dark:text-slate-400'}`} />
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${toolsDropdownOpen ? 'rotate-180 text-[#FDBA74]' : 'text-slate-400'}`} />
             </button>
 
             {/* Dropdown Menu Popup */}
             {toolsDropdownOpen && (
-              <div className="absolute top-full right-0 mt-3 w-80 lg:w-96 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#12121A] p-3 shadow-xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                <div className="px-3 py-2 border-b border-slate-100 dark:border-slate-800 mb-2 flex items-center justify-between">
-                  <span className="text-xs font-black text-[#0D1B3E] dark:text-white">الأدوات التفاعلية والذكية</span>
-                  <span className="text-[10px] bg-[#D4AF37]/20 text-[#D4AF37] px-2 py-0.5 rounded-full font-bold">أدوات مداح الرياضيات</span>
+              <div className="absolute top-full right-0 mt-3 w-80 lg:w-96 rounded-3xl border border-slate-800 bg-[#12121A] p-3 shadow-xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="px-3 py-2 border-b border-slate-800 mb-2 flex items-center justify-between">
+                  <span className="text-xs font-black text-white">الأدوات التفاعلية والذكية</span>
+                  <span className="text-[10px] bg-[#F97316]/20 text-[#F97316] px-2 py-0.5 rounded-full font-bold">أدوات مداح الرياضيات</span>
                 </div>
                 <div className="space-y-1">
                   {smartToolsItems.map((tool) => {
@@ -205,18 +205,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                         }}
                         className={`w-full flex items-start gap-3 p-2.5 rounded-2xl text-right transition-all group ${
                           isCurrent
-                            ? 'bg-blue-50 dark:bg-blue-950/80 border border-blue-200 dark:border-blue-800'
-                            : 'hover:bg-slate-50 dark:hover:bg-slate-800/60 border border-transparent'
+                            ? 'bg-[#F97316]/15 border border-[#F97316]/40'
+                            : 'hover:bg-slate-800/60 border border-transparent'
                         }`}
                       >
                         <div className={`p-2.5 rounded-xl ${tool.bg} ${tool.color} shrink-0 mt-0.5 group-hover:scale-110 transition-transform`}>
                           <Icon className="h-5 w-5" />
                         </div>
                         <div className="space-y-0.5 flex-1 min-w-0">
-                          <p className={`text-xs lg:text-sm font-bold truncate ${isCurrent ? 'text-[#00B4FF] dark:text-[#60A5FA]' : 'text-[#0D1B3E] dark:text-slate-100'}`}>
+                          <p className={`text-xs lg:text-sm font-bold truncate ${isCurrent ? 'text-[#FDBA74]' : 'text-slate-100'}`}>
                             {tool.label}
                           </p>
-                          <p className="text-[11px] text-[#6B7280] dark:text-slate-400 line-clamp-1 leading-normal">
+                          <p className="text-[11px] text-slate-400 line-clamp-1 leading-normal">
                             {tool.desc}
                           </p>
                         </div>
@@ -236,12 +236,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {student && (
             <button
               onClick={() => onNavigate('dashboard')}
-              className="flex items-center gap-1.5 rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-300 px-3 py-2 text-xs font-black text-[#0D1B3E] shadow-sm shadow-amber-500/20 transition-transform hover:scale-105 active:scale-95 shrink-0"
+              className="flex items-center gap-1.5 rounded-2xl bg-gradient-to-r from-[#F97316] via-[#FB923C] to-[#EA580C] px-3 py-2 text-xs font-black text-[#0B0B0F] shadow-sm shadow-[#F97316]/20 transition-transform hover:scale-105 active:scale-95 shrink-0 cursor-pointer"
               title="عجلة الحظ لربح إكسسوارات الشخصية"
             >
-              <Gift className="h-4 w-4 text-[#0D1B3E]" />
+              <Gift className="h-4 w-4 text-[#0B0B0F]" />
               <span className="hidden lg:inline">عجلة الحظ</span>
-              <span className="inline-flex h-4 px-1.5 items-center justify-center rounded-full bg-[#0D1B3E] text-amber-300 text-[10px] font-black">
+              <span className="inline-flex h-4 px-1.5 items-center justify-center rounded-full bg-[#0B0B0F] text-[#FDBA74] text-[10px] font-black">
                 {student.wheelSpins || 0}
               </span>
             </button>
@@ -250,17 +250,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Activation Key Button */}
           <button
             onClick={onOpenActivationModal}
-            className="hidden sm:flex items-center gap-1.5 rounded-2xl bg-[#071A33] text-[#D4AF37] border border-[#D4AF37]/40 px-3.5 py-2 text-xs font-bold shadow-sm transition-transform hover:scale-105 active:scale-95 hover:bg-[#0C2446] shrink-0"
+            className="hidden sm:flex items-center gap-1.5 rounded-2xl bg-[#14141E] text-[#FDBA74] border border-[#F97316]/40 px-3.5 py-2 text-xs font-bold shadow-sm transition-transform hover:scale-105 active:scale-95 hover:bg-[#1E1611] hover:border-[#F97316] hover:text-white shrink-0 cursor-pointer"
             title="تفعيل كود مسبق الدفع"
           >
-            <Key className="h-4 w-4 text-[#D4AF37]" />
+            <Key className="h-4 w-4 text-[#F97316]" />
             <span>تفعيل كود</span>
           </button>
 
           {/* Notifications Button */}
           <button
             onClick={onOpenNotificationModal}
-            className="relative rounded-2xl border border-slate-200 dark:border-[#1E293B] bg-white dark:bg-[#101827] p-2 sm:p-2.5 text-[#071A33] dark:text-slate-100 transition-all hover:border-[#19C7E8] hover:text-[#19C7E8] shadow-xs shrink-0"
+            className="relative rounded-2xl border border-slate-700 bg-[#101827] p-2 sm:p-2.5 text-slate-100 transition-all hover:border-[#FDBA74] hover:text-[#FDBA74] shadow-xs shrink-0 cursor-pointer"
             title="الإشعارات والتنبيهات"
           >
             <Bell className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
@@ -275,10 +275,10 @@ export const Navbar: React.FC<NavbarProps> = ({
           {isAdmin && (
             <button
               onClick={() => onNavigate('admin')}
-              className="hidden lg:flex items-center gap-1.5 rounded-2xl border border-blue-200 dark:border-blue-800 bg-blue-50 dark:bg-blue-950/80 px-3 py-2 text-xs font-bold text-[#00B4FF] dark:text-[#60A5FA] hover:bg-blue-100 dark:hover:bg-blue-900 transition-colors shadow-xs shrink-0"
+              className="hidden lg:flex items-center gap-1.5 rounded-2xl border border-orange-500/40 bg-orange-950/60 px-3 py-2 text-xs font-bold text-[#FDBA74] hover:bg-orange-900/80 transition-colors shadow-xs shrink-0 cursor-pointer"
               title="لوحة الإدارة"
             >
-              <Shield className="h-4 w-4 text-[#00B4FF] dark:text-[#60A5FA]" />
+              <Shield className="h-4 w-4 text-[#FDBA74]" />
               <span>لوحة الإدارة</span>
             </button>
           )}
@@ -290,11 +290,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => setUserDropdownOpen(!userDropdownOpen)}
                 className={`flex items-center gap-2 rounded-2xl border px-2.5 py-1.5 sm:px-3 sm:py-2 text-right transition-all shadow-xs ${
                   userDropdownOpen 
-                    ? 'border-[#00B4FF] bg-blue-50 dark:bg-blue-950/80' 
-                    : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#16224D] hover:border-[#00B4FF]'
+                    ? 'border-[#FDBA74] bg-orange-950/80' 
+                    : 'border-slate-800 bg-[#14141E] hover:border-[#FDBA74]'
                 }`}
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100 dark:bg-blue-950 text-xs font-black text-[#00B4FF] dark:text-[#60A5FA] overflow-hidden border border-blue-200 dark:border-blue-800 shrink-0">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-orange-950 text-xs font-black text-[#FDBA74] overflow-hidden border border-orange-800/60 shrink-0">
                   {student.avatarUrl && !student.avatarUrl.startsWith('preset:') ? (
                     <img src={student.avatarUrl} alt={student.name} className="h-full w-full object-cover" />
                   ) : presetAvatar ? (
@@ -304,18 +304,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   )}
                 </div>
                 <div className="hidden sm:block text-right">
-                  <p className="text-xs font-bold text-[#0D1B3E] dark:text-white truncate max-w-[100px]">{student.name.split(' ')[0]}</p>
-                  <p className="text-[10px] text-[#00B4FF] dark:text-[#60A5FA] font-semibold">حسابي</p>
+                  <p className="text-xs font-bold text-white truncate max-w-[100px]">{student.name.split(' ')[0]}</p>
+                  <p className="text-[10px] text-[#FDBA74] font-semibold">حسابي</p>
                 </div>
-                <ChevronDown className={`h-4 w-4 text-[#6B7280] dark:text-slate-400 transition-transform duration-200 ${userDropdownOpen ? 'rotate-180 text-[#00B4FF]' : ''}`} />
+                <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform duration-200 ${userDropdownOpen ? 'rotate-180 text-[#FDBA74]' : ''}`} />
               </button>
 
               {/* User Menu Popup Card */}
               {userDropdownOpen && (
-                <div className="absolute top-full left-0 sm:right-0 sm:left-auto mt-3 w-72 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#16224D] p-3.5 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 sm:right-0 sm:left-auto mt-3 w-72 rounded-3xl border border-slate-800 bg-[#14141E] p-3.5 shadow-2xl z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   {/* User Card Header */}
-                  <div className="p-3 bg-blue-50/60 dark:bg-blue-950/60 rounded-2xl border border-blue-100 dark:border-blue-900/40 mb-3 flex items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#00B4FF] text-white text-base font-black shrink-0 shadow-xs">
+                  <div className="p-3 bg-orange-950/40 rounded-2xl border border-orange-900/40 mb-3 flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#F97316] text-[#0B0B0F] text-base font-black shrink-0 shadow-xs">
                       {student.avatarUrl && !student.avatarUrl.startsWith('preset:') ? (
                         <img src={student.avatarUrl} alt={student.name} className="h-full w-full object-cover rounded-xl" />
                       ) : (
@@ -323,9 +323,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                       )}
                     </div>
                     <div className="space-y-0.5 min-w-0 flex-1">
-                      <p className="text-sm font-black text-[#0D1B3E] dark:text-white truncate">{student.name}</p>
-                      <p className="text-xs text-[#00B4FF] dark:text-[#60A5FA] font-bold">{student.grade}</p>
-                      {student.phone && <p className="text-[10px] text-[#6B7280] dark:text-slate-400 font-mono">{student.phone}</p>}
+                      <p className="text-sm font-black text-white truncate">{student.name}</p>
+                      <p className="text-xs text-[#FDBA74] font-bold">{student.grade}</p>
+                      {student.phone && <p className="text-[10px] text-slate-400 font-mono">{student.phone}</p>}
                     </div>
                   </div>
 
@@ -336,28 +336,28 @@ export const Navbar: React.FC<NavbarProps> = ({
                         onOpenWalletModal();
                         setUserDropdownOpen(false);
                       }}
-                      className="w-full mb-3 flex items-center justify-between p-2.5 rounded-2xl bg-[#D4AF37]/15 border border-[#D4AF37]/40 hover:bg-[#D4AF37]/25 transition-all text-right"
+                      className="w-full mb-3 flex items-center justify-between p-2.5 rounded-2xl bg-[#F97316]/15 border border-[#F97316]/40 hover:bg-[#F97316]/25 transition-all text-right cursor-pointer"
                     >
                       <div className="flex items-center gap-2.5">
-                        <Wallet className="h-4 w-4 text-[#D4AF37]" />
-                        <span className="text-xs font-bold text-[#0D1B3E] dark:text-[#D4AF37]">رصيد محفظتي</span>
+                        <Wallet className="h-4 w-4 text-[#F97316]" />
+                        <span className="text-xs font-bold text-[#FDBA74]">رصيد محفظتي</span>
                       </div>
-                      <span className="font-mono font-black text-xs bg-[#D4AF37]/30 text-[#0D1B3E] dark:text-[#D4AF37] px-2.5 py-1 rounded-xl">
+                      <span className="font-mono font-black text-xs bg-[#F97316]/30 text-[#FDBA74] px-2.5 py-1 rounded-xl">
                         {student.walletBalance || 0} ج.م
                       </span>
                     </button>
                   )}
 
                   {/* User Links */}
-                  <div className="space-y-1 border-t border-b border-slate-100 dark:border-slate-800/80 py-2 my-1">
+                  <div className="space-y-1 border-t border-b border-slate-800/80 py-2 my-1">
                     <button
                       onClick={() => {
                         onNavigate('dashboard');
                         setUserDropdownOpen(false);
                       }}
-                      className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-[#0D1B3E] dark:text-slate-200 hover:bg-blue-50 dark:hover:bg-blue-950/60 hover:text-[#00B4FF] transition-all text-right"
+                      className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-slate-200 hover:bg-[#181824] hover:text-[#FDBA74] transition-all text-right cursor-pointer"
                     >
-                      <GraduationCap className="h-4 w-4 text-[#00B4FF] dark:text-[#60A5FA]" />
+                      <GraduationCap className="h-4 w-4 text-[#FDBA74]" />
                       <span>لوحة دراستي ومتابعة الدروس</span>
                     </button>
 
@@ -367,9 +367,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                           onOpenEditProfileModal();
                           setUserDropdownOpen(false);
                         }}
-                        className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-[#0D1B3E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-all text-right"
+                        className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-slate-200 hover:bg-slate-800/60 transition-all text-right cursor-pointer"
                       >
-                        <Edit3 className="h-4 w-4 text-[#6B7280] dark:text-slate-400" />
+                        <Edit3 className="h-4 w-4 text-slate-400" />
                         <span>تعديل بيانات الملف الشخصي</span>
                       </button>
                     )}
@@ -380,9 +380,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                           onNavigate('admin');
                           setUserDropdownOpen(false);
                         }}
-                        className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-[#00B4FF] dark:text-[#60A5FA] bg-blue-50 dark:bg-blue-950/80 hover:bg-blue-100 transition-all text-right"
+                        className="w-full flex items-center gap-2.5 p-2.5 rounded-xl text-xs font-bold text-[#FDBA74] bg-orange-950/80 hover:bg-orange-900 transition-all text-right cursor-pointer"
                       >
-                        <Shield className="h-4 w-4 text-[#00B4FF] dark:text-[#60A5FA]" />
+                        <Shield className="h-4 w-4 text-[#FDBA74]" />
                         <span>الدخول للوحة الإدارة</span>
                       </button>
                     )}
@@ -391,7 +391,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   {/* Prominent Red Logout Button */}
                   <button
                     onClick={handleLogout}
-                    className="w-full mt-2 flex items-center justify-center gap-2 p-2.5 rounded-2xl bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-900/60 text-xs font-black text-rose-600 dark:text-rose-400 hover:bg-rose-600 hover:text-white transition-all shadow-xs"
+                    className="w-full mt-2 flex items-center justify-center gap-2 p-2.5 rounded-2xl bg-rose-950/60 border border-rose-900/60 text-xs font-black text-rose-400 hover:bg-rose-600 hover:text-white transition-all shadow-xs cursor-pointer"
                   >
                     <LogOut className="h-4 w-4" />
                     <span>تسجيل الخروج من الحساب</span>
@@ -402,9 +402,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           ) : (
             <button
               onClick={onOpenAuthModal}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-2xl bg-[#D4AF37] hover:bg-[#C59F2D] border border-[#E5C158] px-4 py-2 text-xs sm:text-sm font-black text-[#071A33] transition-all shadow-md hover:shadow-lg hover:shadow-[#D4AF37]/20 shrink-0 cursor-pointer"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-2xl bg-[#F97316] hover:bg-[#EA580C] border border-[#F97316]/50 px-4 py-2 text-xs sm:text-sm font-black text-[#0B0B0F] hover:text-white transition-all shadow-md hover:shadow-lg hover:shadow-[#F97316]/20 shrink-0 cursor-pointer"
             >
-              <User className="h-4 w-4 shrink-0 text-[#071A33]" />
+              <User className="h-4 w-4 shrink-0 text-[#0B0B0F]" />
               <span className="hidden sm:inline">تسجيل الدخول / حساب جديد</span>
               <span className="sm:hidden">دخول</span>
             </button>
@@ -428,12 +428,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {student && (
             <div className="p-3 bg-blue-50 dark:bg-[#16224D] rounded-2xl border border-blue-200 dark:border-blue-900/50 mb-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#00B4FF] text-white text-sm font-black shrink-0">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FDBA74] text-white text-sm font-black shrink-0">
                   {student.name.charAt(0)}
                 </div>
                 <div>
                   <p className="text-xs font-black text-[#0D1B3E] dark:text-white">{student.name}</p>
-                  <p className="text-[10px] text-[#00B4FF] dark:text-[#60A5FA] font-bold">{student.grade}</p>
+                  <p className="text-[10px] text-[#FDBA74] dark:text-[#60A5FA] font-bold">{student.grade}</p>
                 </div>
               </div>
 
@@ -443,7 +443,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     onOpenEditProfileModal();
                     setMobileMenuOpen(false);
                   }}
-                  className="rounded-xl bg-white dark:bg-slate-800 p-2 text-xs font-bold text-[#00B4FF] shadow-xs"
+                  className="rounded-xl bg-white dark:bg-slate-800 p-2 text-xs font-bold text-[#FDBA74] shadow-xs"
                   title="تعديل الملف"
                 >
                   <Edit3 className="h-4 w-4" />
@@ -467,11 +467,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                   }}
                   className={`flex w-full items-center gap-3 rounded-2xl px-4 py-2.5 text-xs font-bold transition-all ${
                     isActive
-                      ? 'bg-blue-50 dark:bg-blue-950/80 text-[#00B4FF] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-800'
+                      ? 'bg-blue-50 dark:bg-blue-950/80 text-[#FDBA74] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-800'
                       : 'text-[#0D1B3E] dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800/60'
                   }`}
                 >
-                  <Icon className={`h-4 w-4 ${isActive ? 'text-[#00B4FF] dark:text-[#60A5FA]' : 'text-[#6B7280] dark:text-slate-400'}`} />
+                  <Icon className={`h-4 w-4 ${isActive ? 'text-[#FDBA74] dark:text-[#60A5FA]' : 'text-[#6B7280] dark:text-slate-400'}`} />
                   <span>{item.label}</span>
                 </button>
               );
@@ -483,13 +483,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onOpenWalletModal();
                   setMobileMenuOpen(false);
                 }}
-                className="flex w-full items-center justify-between rounded-2xl bg-[#D4AF37]/15 border border-[#D4AF37]/40 px-4 py-2.5 text-xs font-bold text-[#0D1B3E] dark:text-[#D4AF37] hover:bg-[#D4AF37]/25"
+                className="flex w-full items-center justify-between rounded-2xl bg-[#F97316]/15 border border-[#F97316]/40 px-4 py-2.5 text-xs font-bold text-[#0D1B3E] dark:text-[#F97316] hover:bg-[#F97316]/25"
               >
                 <div className="flex items-center gap-2.5">
-                  <Wallet className="h-4.5 w-4.5 text-[#D4AF37]" />
+                  <Wallet className="h-4.5 w-4.5 text-[#F97316]" />
                   <span>محفظة الطالب والشحن</span>
                 </div>
-                <span className="font-mono bg-[#D4AF37]/25 px-2.5 py-0.5 rounded-full text-xs font-black">
+                <span className="font-mono bg-[#F97316]/25 px-2.5 py-0.5 rounded-full text-xs font-black">
                   {student.walletBalance || 0} ج.م
                 </span>
               </button>
@@ -500,7 +500,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenActivationModal();
                 setMobileMenuOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-2xl bg-[#D4AF37] px-4 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] shadow-xs"
+              className="flex w-full items-center gap-2.5 rounded-2xl bg-[#F97316] px-4 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316] shadow-xs"
             >
               <Key className="h-4.5 w-4.5 text-[#0D1B3E]" />
               <span>تفعيل كود كورس أو مذكرة</span>
@@ -512,9 +512,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onNavigate('admin');
                   setMobileMenuOpen(false);
                 }}
-                className="flex w-full items-center gap-2.5 rounded-2xl bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 px-4 py-2.5 text-xs font-bold text-[#00B4FF] dark:text-[#60A5FA]"
+                className="flex w-full items-center gap-2.5 rounded-2xl bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 px-4 py-2.5 text-xs font-bold text-[#FDBA74] dark:text-[#60A5FA]"
               >
-                <Shield className="h-4.5 w-4.5 text-[#00B4FF] dark:text-[#60A5FA]" />
+                <Shield className="h-4.5 w-4.5 text-[#FDBA74] dark:text-[#60A5FA]" />
                 <span>لوحة تحكم الإدارة</span>
               </button>
             )}

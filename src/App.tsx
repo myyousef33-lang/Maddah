@@ -37,15 +37,16 @@ const AdminDashboard = React.lazy(() =>
 );
 
 const pageVariants = {
-  initial: { opacity: 0, y: 0, pointerEvents: 'none' as const },
-  animate: { opacity: 1, y: 0, pointerEvents: 'auto' as const },
-  exit: { opacity: 0, y: 0, pointerEvents: 'none' as const },
+  initial: { opacity: 1, y: 0 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 0 },
 };
 
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('home');
   const [viewParams, setViewParams] = useState<Record<string, any>>({});
   const [student, setStudent] = useState<Student | null>(StorageService.getCurrentStudent());
+  const [isInitialLoading, setIsInitialLoading] = useState<boolean>(true);
   
   // Modals
   const [isActivationModalOpen, setIsActivationModalOpen] = useState(false);
@@ -58,6 +59,11 @@ export default function App() {
   const [selectedCertificate, setSelectedCertificate] = useState<EarnedCertificate | null>(null);
 
   useEffect(() => {
+    // 8-second maximum safety timeout fallback for initial data load
+    const safetyTimer = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 800); // 800ms gives a smooth initial golden loading reveal, maximum 8s safety
+
     // Initialize presence heartbeat and listener
     PresenceService.initPresence();
 
@@ -65,7 +71,11 @@ export default function App() {
       setStudent(StorageService.getCurrentStudent());
     };
     updateStudent();
-    return subscribeToStorage(updateStudent);
+    const unsubscribe = subscribeToStorage(updateStudent);
+    return () => {
+      clearTimeout(safetyTimer);
+      unsubscribe();
+    };
   }, []);
 
   // Global Keyboard Shortcut for Secret Admin Access & Route-based Hash Check
@@ -136,9 +146,33 @@ export default function App() {
     }
   };
 
+  if (isInitialLoading) {
+    return (
+      <div className="min-h-screen w-full bg-[#0B0B0F] flex flex-col items-center justify-center p-6 text-white dir-rtl relative overflow-hidden" dir="rtl">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#F97316]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col items-center space-y-5 text-center">
+          <div className="relative flex items-center justify-center">
+            <div className="h-16 w-16 rounded-full border-4 border-[#F97316]/20 border-t-[#F97316] animate-spin shadow-lg shadow-[#F97316]/20" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-[#F97316] text-sm font-black font-mono">∑</span>
+            </div>
+          </div>
+          <div className="space-y-1">
+            <h2 className="text-2xl font-black text-[#F97316] gold-glow-text font-calligraphy tracking-wide">
+              مداح الرياضيات
+            </h2>
+            <p className="text-xs text-slate-400 font-bold animate-pulse">
+              جاري تحميل المنصة...
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <GlobalAntiScreenshotShield>
-      <div className="min-h-screen bg-[#F7FAFD] dark:bg-[#080B10] text-[#071A33] dark:text-slate-100 flex flex-col font-sans selection:bg-[#D4AF37]/30 selection:text-[#D4AF37] max-w-full w-full relative transition-colors duration-200">
+      <div className="min-h-screen bg-[#0B0B0F] text-slate-100 flex flex-col font-sans selection:bg-[#F97316]/30 selection:text-[#F97316] max-w-full w-full relative transition-colors duration-200">
       
       {/* Top Navbar */}
       <Navbar
@@ -162,7 +196,8 @@ export default function App() {
             animate="animate"
             exit="exit"
             transition={{ duration: 0.1, ease: 'easeInOut' }}
-            className="w-full flex-1 flex flex-col"
+            style={{ pointerEvents: 'auto' }}
+            className="w-full flex-1 flex flex-col pointer-events-auto"
           >
             {currentView === 'home' && (
               <HomeLandingView

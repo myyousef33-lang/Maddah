@@ -106,7 +106,7 @@ export const ExamResultView: React.FC<ExamResultViewProps> = ({
         <h2 className="text-xl font-bold">لم يتم العثور على تفاصيل النتيجة</h2>
         <button
           onClick={() => onNavigate('my-results')}
-          className="mt-4 rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-[#0D1B3E]"
+          className="mt-4 rounded-xl bg-[#F97316] px-5 py-2.5 text-xs font-bold text-[#0D1B3E]"
         >
           عرض سجل النتائج
         </button>
@@ -139,8 +139,8 @@ export const ExamResultView: React.FC<ExamResultViewProps> = ({
       }`}>
         
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-1.5 rounded-full px-4 py-1 text-xs font-bold border border-blue-200 bg-blue-50 text-[#00B4FF]">
-            <Sparkles className="h-3.5 w-3.5 text-[#00B4FF]" />
+          <div className="inline-flex items-center gap-1.5 rounded-full px-4 py-1 text-xs font-bold border border-blue-200 bg-blue-50 text-[#FDBA74]">
+            <Sparkles className="h-3.5 w-3.5 text-[#FDBA74]" />
             <span>نتيجة الاختبار النهائي</span>
           </div>
 
@@ -201,7 +201,7 @@ export const ExamResultView: React.FC<ExamResultViewProps> = ({
           {attempt.courseId && (
             <button
               onClick={() => onNavigate('course-details', { courseId: attempt.courseId })}
-              className="flex items-center gap-1.5 rounded-xl bg-[#D4AF37] px-6 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] transition-all shadow-xs"
+              className="flex items-center gap-1.5 rounded-xl bg-[#F97316] px-6 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316] transition-all shadow-xs"
             >
               <BookOpen className="h-4 w-4 text-[#0D1B3E]" />
               <span>العودة لمنهج الكورس</span>
@@ -244,7 +244,7 @@ export const ExamResultView: React.FC<ExamResultViewProps> = ({
           </div>
           <button
             onClick={() => setShowExplanations(!showExplanations)}
-            className="flex items-center gap-1.5 text-xs font-bold text-[#00B4FF] hover:underline"
+            className="flex items-center gap-1.5 text-xs font-bold text-[#FDBA74] hover:underline"
           >
             <span>{showExplanations ? 'إخفاء الشرح' : 'عرض الشرح'}</span>
             {showExplanations ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}

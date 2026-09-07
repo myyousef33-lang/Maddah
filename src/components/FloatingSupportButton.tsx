@@ -34,7 +34,7 @@ export const FloatingSupportButton: React.FC<FloatingSupportButtonProps> = ({ cu
   return (
     <button
       onClick={handleSupportClick}
-      className="fixed bottom-24 sm:bottom-8 left-5 sm:left-8 z-40 flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#0D1B3E] shadow-xl shadow-[#D4AF37]/30 border-2 border-white/90 dark:border-slate-800 transition-all hover:scale-110 active:scale-95 hover:bg-[#D4AF37] hover:shadow-2xl group focus:outline-none focus:ring-4 focus:ring-[#D4AF37]/40"
+      className="fixed bottom-24 sm:bottom-8 left-5 sm:left-8 z-40 flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#F97316] text-[#0D1B3E] shadow-xl shadow-[#F97316]/30 border-2 border-white/90 dark:border-slate-800 transition-all hover:scale-110 active:scale-95 hover:bg-[#F97316] hover:shadow-2xl group focus:outline-none focus:ring-4 focus:ring-[#F97316]/40"
       title="خدمة العملاء والدعم الفني - تواصل عبر واتساب"
       aria-label="تواصل مع خدمة العملاء والدعم الفني"
     >

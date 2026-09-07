@@ -729,22 +729,31 @@ const getStored = <T>(key: string, defaultVal: T): T => {
   return cloneData(val);
 };
 
-const setStored = <T>(key: string, val: T): void => {
+const setStored = <T>(key: string, val: T, skipNotify: boolean = false): void => {
   try {
+    const jsonVal = JSON.stringify(val);
+    const prevJson = localStorage.getItem(key);
+    if (prevJson === jsonVal && memoryCache[key] !== undefined) {
+      // Data is identical, bypass notifyListeners to prevent infinite re-render loops
+      return;
+    }
+
     memoryCache[key] = cloneData(val);
     lastLocalWriteTime[key] = Date.now();
     const nowIso = new Date().toISOString();
 
     try {
       localStorage.setItem(key + '_updated_at', nowIso);
-      localStorage.setItem(key, JSON.stringify(val));
+      localStorage.setItem(key, jsonVal);
     } catch (storageErr) {
       console.warn(`LocalStorage write error for ${key}:`, storageErr);
     }
 
-    notifyListeners();
+    if (!skipNotify) {
+      notifyListeners();
+    }
 
-    if (broadcastChannel) {
+    if (broadcastChannel && !skipNotify) {
       try {
         broadcastChannel.postMessage({ key, timestamp: Date.now() });
       } catch (_) {}
@@ -2115,7 +2124,7 @@ export const StorageService = {
     });
 
     const sorted = dynamicEntries.sort((a, b) => b.points - a.points).map((entry, idx) => ({ ...entry, rank: idx + 1 }));
-    setStored(STORAGE_KEYS.LEADERBOARD, sorted);
+    setStored(STORAGE_KEYS.LEADERBOARD, sorted, true);
     return sorted;
   },
   saveLeaderboard(leaderboard: LeaderboardEntry[]): void {
@@ -2692,7 +2701,7 @@ export const StorageService = {
 
     const stored = getStored<Record<string, SmartStudyRecommendation[]>>(STORAGE_KEYS.STUDY_RECOMMENDATIONS, {});
     stored[studentId] = recommendations;
-    setStored(STORAGE_KEYS.STUDY_RECOMMENDATIONS, stored);
+    setStored(STORAGE_KEYS.STUDY_RECOMMENDATIONS, stored, true);
     return recommendations;
   },
 

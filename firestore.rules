@@ -18,9 +18,25 @@ service cloud.firestore {
       return isAuthenticated() && request.auth.uid == userId;
     }
 
-    // Platform data storage - allows client synchronization of platform data collections
+    // Platform data storage - allows public read & write for app_data collections
     match /app_data/{document=**} {
       allow read, write: if true;
+    }
+
+    // Public settings, courses & config
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /courses/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /config/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
     }
 
     // Student Specific Documents

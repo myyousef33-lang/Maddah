@@ -200,13 +200,13 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 bg-[#0B0B0F] border-b border-[#222230] transition-colors">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#00B4FF]/10 border border-[#00B4FF]/30 text-[#00B4FF] shadow-xs">
-            <Sparkles className="h-5 w-5 text-[#00B4FF]" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#FDBA74]/10 border border-[#FDBA74]/30 text-[#FDBA74] shadow-xs">
+            <Sparkles className="h-5 w-5 text-[#FDBA74]" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-black text-white">المساعد الرياضي الذكي</h3>
-              <span className="rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 px-2 py-0.5 text-[10px] font-bold text-[#D4AF37]">
+              <span className="rounded-full bg-[#F97316]/15 border border-[#F97316]/30 px-2 py-0.5 text-[10px] font-bold text-[#F97316]">
                 Maddah AI
               </span>
             </div>
@@ -254,8 +254,8 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
           >
             <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
               msg.role === 'user'
-                ? 'bg-[#D4AF37] text-[#0B0B0F]'
-                : 'bg-[#00B4FF]/20 border border-[#00B4FF]/40 text-[#00B4FF]'
+                ? 'bg-[#F97316] text-[#0B0B0F]'
+                : 'bg-[#FDBA74]/20 border border-[#FDBA74]/40 text-[#FDBA74]'
             }`}>
               {msg.role === 'user' ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
             </div>
@@ -263,7 +263,7 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
             <div className={`max-w-[85%] sm:max-w-[82%] space-y-2 ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
               <div className={`rounded-2xl p-4 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap ${
                 msg.role === 'user'
-                  ? 'bg-[#D4AF37] text-[#0B0B0F] font-bold rounded-tr-none shadow-xs'
+                  ? 'bg-[#F97316] text-[#0B0B0F] font-bold rounded-tr-none shadow-xs'
                   : 'bg-[#181824] border border-[#2A2A3A] text-slate-100 rounded-tl-none shadow-xs'
               }`}>
                 {msg.text}
@@ -287,8 +287,8 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
         ))}
 
         {isLoading && (
-          <div className="flex gap-3 items-center text-xs text-[#00B4FF] bg-[#00B4FF]/10 border border-[#00B4FF]/30 rounded-2xl p-3.5 w-fit">
-            <RefreshCw className="h-4 w-4 animate-spin text-[#00B4FF]" />
+          <div className="flex gap-3 items-center text-xs text-[#FDBA74] bg-[#FDBA74]/10 border border-[#FDBA74]/30 rounded-2xl p-3.5 w-fit">
+            <RefreshCw className="h-4 w-4 animate-spin text-[#FDBA74]" />
             <span>المساعد الرياضي يحلل المسألة ويكتب الخطوات والقوانين...</span>
           </div>
         )}
@@ -303,7 +303,7 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
             <button
               key={idx}
               onClick={() => handleSendMessage(qp)}
-              className="shrink-0 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 px-3 py-1 text-[11px] font-bold text-[#D4AF37] hover:bg-[#D4AF37]/20 transition-colors"
+              className="shrink-0 rounded-full border border-[#F97316]/30 bg-[#F97316]/10 px-3 py-1 text-[11px] font-bold text-[#F97316] hover:bg-[#F97316]/20 transition-colors"
             >
               {qp}
             </button>
@@ -315,8 +315,8 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
       {selectedImage && (
         <div className="px-4 py-2 bg-[#14141E] border-t border-[#222230] flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src={selectedImage} alt="Selected" className="h-10 w-10 object-cover rounded-lg border border-[#00B4FF]" />
-            <span className="text-xs text-[#00B4FF] font-bold">تم إرفاق صورة المسألة</span>
+            <img src={selectedImage} alt="Selected" className="h-10 w-10 object-cover rounded-lg border border-[#FDBA74]" />
+            <span className="text-xs text-[#FDBA74] font-bold">تم إرفاق صورة المسألة</span>
           </div>
           <button
             onClick={() => setSelectedImage(null)}
@@ -347,7 +347,7 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
           type="button"
           onClick={() => fileInputRef.current?.click()}
           title="رفع صورة لمسألة من كتاب أو امتحان"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#222230] bg-[#0B0B0F] text-slate-300 hover:text-[#00B4FF] hover:border-[#00B4FF]/50 transition-all"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[#222230] bg-[#0B0B0F] text-slate-300 hover:text-[#FDBA74] hover:border-[#FDBA74]/50 transition-all"
         >
           <ImageIcon className="h-5 w-5" />
         </button>
@@ -357,13 +357,13 @@ export const AIPhysicsAssistant: React.FC<AIPhysicsAssistantProps> = ({
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="اكتب سؤالك الرياضي أو ارفع صورة للمسألة..."
-          className="flex-1 rounded-2xl border border-[#222230] bg-[#0B0B0F] px-4 py-2.5 text-xs sm:text-sm text-white placeholder:text-slate-500 focus:border-[#00B4FF] focus:bg-[#12121C] focus:outline-none transition-all"
+          className="flex-1 rounded-2xl border border-[#222230] bg-[#0B0B0F] px-4 py-2.5 text-xs sm:text-sm text-white placeholder:text-slate-500 focus:border-[#FDBA74] focus:bg-[#12121C] focus:outline-none transition-all"
         />
 
         <button
           type="submit"
           disabled={(!inputText.trim() && !selectedImage) || isLoading}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00B4FF] text-[#0B0B0F] hover:bg-[#0092D0] disabled:opacity-40 transition-all shadow-xs font-bold"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#FDBA74] text-[#0B0B0F] hover:bg-[#0092D0] disabled:opacity-40 transition-all shadow-xs font-bold"
         >
           <Send className="h-5 w-5 -rotate-90" />
         </button>

@@ -44,7 +44,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
         <h2 className="text-xl font-bold">يرجى تسجيل الدخول لعرض نتائجك</h2>
         <button
           onClick={() => onNavigate('home')}
-          className="mt-4 rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-[#0D1B3E]"
+          className="mt-4 rounded-xl bg-[#F97316] px-5 py-2.5 text-xs font-bold text-[#0D1B3E]"
         >
           تسجيل الدخول
         </button>
@@ -91,7 +91,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
           <div className="flex items-center justify-between text-[#6B7280]">
             <span className="text-xs font-bold">الاختبارات المنفذة</span>
-            <BarChart3 className="h-4 w-4 text-[#00B4FF]" />
+            <BarChart3 className="h-4 w-4 text-[#FDBA74]" />
           </div>
           <p className="mt-2 text-2xl sm:text-3xl font-black text-[#0D1B3E]">{totalExams}</p>
           <p className="text-[10px] text-[#6B7280] mt-1">اختبار وكويز</p>
@@ -118,7 +118,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-xs">
           <div className="flex items-center justify-between text-[#6B7280]">
             <span className="text-xs font-bold">الاختبارات الناجحة</span>
-            <CheckCircle2 className="h-4 w-4 text-[#00B4FF]" />
+            <CheckCircle2 className="h-4 w-4 text-[#FDBA74]" />
           </div>
           <p className="mt-2 text-2xl sm:text-3xl font-black text-[#0D1B3E]">{passedCount} / {totalExams}</p>
           <p className="text-[10px] text-[#6B7280] mt-1">نسبة النجاح: {totalExams > 0 ? Math.round((passedCount / totalExams) * 100) : 0}%</p>
@@ -132,7 +132,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
           <button
             onClick={() => setFilter('all')}
             className={`flex-1 sm:flex-initial rounded-lg px-4 py-2 text-xs font-bold transition-all ${
-              filter === 'all' ? 'bg-[#D4AF37] text-[#0D1B3E]' : 'text-[#6B7280] hover:text-[#0D1B3E]'
+              filter === 'all' ? 'bg-[#F97316] text-[#0D1B3E]' : 'text-[#6B7280] hover:text-[#0D1B3E]'
             }`}
           >
             جميع المحاولات ({attempts.length})
@@ -162,7 +162,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="بحث في أسماء الامتحانات..."
-            className="w-full rounded-xl border border-slate-200 bg-white py-2 pr-10 pl-4 text-xs text-[#0D1B3E] placeholder:text-[#9CA3AF] focus:border-[#00B4FF] focus:outline-none shadow-xs"
+            className="w-full rounded-xl border border-slate-200 bg-white py-2 pr-10 pl-4 text-xs text-[#0D1B3E] placeholder:text-[#9CA3AF] focus:border-[#FDBA74] focus:outline-none shadow-xs"
           />
         </div>
       </div>
@@ -175,7 +175,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
           <p className="text-xs text-[#6B7280] max-w-sm mx-auto">ادخل إلى الكورسات الخاصة بك، وتجاوز الكويزات الدورية والامتحانات الشاملة لتظهر نتائجك هنا.</p>
           <button
             onClick={() => onNavigate('my-courses')}
-            className="rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] mt-2 shadow-xs"
+            className="rounded-xl bg-[#F97316] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] mt-2 shadow-xs"
           >
             الانتقال لكورساتي
           </button>
@@ -237,13 +237,18 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
                           <button
                             onClick={() => setSelectedCert({
                               id: `cert-${attempt.id}`,
+                              courseId: attempt.courseId || '',
+                              courseTitle: attempt.examTitle,
+                              studentName: student.name,
+                              issueDate: attempt.submittedAt,
+                              certificateCode: `MADDAH-${attempt.id.slice(-6).toUpperCase()}`,
                               examOrUnitName: attempt.examTitle,
                               score: attempt.score,
                               maxScore: attempt.maxScore,
                               percentage: attempt.percentage,
                               date: attempt.submittedAt
                             })}
-                            className="inline-flex items-center gap-1 rounded-lg bg-[#D4AF37] border border-amber-400 px-2.5 py-1.5 text-xs font-bold text-[#0D1B3E] shadow hover:bg-[#D4AF37] transition-all"
+                            className="inline-flex items-center gap-1 rounded-lg bg-[#F97316] border border-orange-400 px-2.5 py-1.5 text-xs font-bold text-[#0B0B0F] shadow hover:brightness-105 transition-all cursor-pointer"
                             title="تحميل شهادة التميز والتفوق"
                           >
                             <Award className="h-3.5 w-3.5" />
@@ -252,7 +257,7 @@ export const MyResultsView: React.FC<MyResultsViewProps> = ({ onNavigate }) => {
                         )}
                         <button
                           onClick={() => onNavigate('exam-result', { attemptId: attempt.id })}
-                          className="inline-flex items-center gap-1 rounded-lg bg-blue-50 border border-blue-200 px-3 py-1.5 text-xs font-bold text-[#00B4FF] hover:bg-[#00B4FF] hover:text-white transition-all"
+                          className="inline-flex items-center gap-1 rounded-lg bg-blue-50 border border-blue-200 px-3 py-1.5 text-xs font-bold text-[#FDBA74] hover:bg-[#FDBA74] hover:text-white transition-all"
                         >
                           <span>مراجعة النتيجة</span>
                           <ChevronLeft className="h-3.5 w-3.5" />

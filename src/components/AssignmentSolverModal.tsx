@@ -107,7 +107,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
 
   // Drawing Canvas State
   const [activeTool, setActiveTool] = useState<'pen' | 'text' | 'eraser'>('pen');
-  const [penColor, setPenColor] = useState<string>(mode === 'grade' ? '#EF4444' : '#00B4FF');
+  const [penColor, setPenColor] = useState<string>(mode === 'grade' ? '#EF4444' : '#FDBA74');
   const [penSize, setPenSize] = useState<number>(3);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageAnnotations, setPageAnnotations] = useState<Record<number, PageAnnotationData>>({
@@ -118,7 +118,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
   const [gradeInput, setGradeInput] = useState<string>(submission?.grade !== undefined ? String(submission.grade) : '');
   const [teacherNotes, setTeacherNotes] = useState<string>(submission?.teacherNotes || '');
   const [feedbackStatus, setFeedbackStatus] = useState<'approved' | 'needs_revision' | 'excellent'>(
-    submission?.feedbackStatus || 'approved'
+    (submission?.feedbackStatus as 'approved' | 'needs_revision' | 'excellent') || 'approved'
   );
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -165,7 +165,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
         setTeacherNotes(submission.teacherNotes);
       }
       if (submission.feedbackStatus) {
-        setFeedbackStatus(submission.feedbackStatus);
+        setFeedbackStatus(submission.feedbackStatus as 'approved' | 'needs_revision' | 'excellent');
       }
 
       const dataToLoad = mode === 'grade' 
@@ -552,7 +552,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] px-4 sm:px-6 py-3.5 shrink-0">
           
           <div className="flex items-center gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#00B4FF]/10 text-[#00B4FF] dark:bg-[#4C7CFF]/20 dark:text-[#4C7CFF]">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#FDBA74]/10 text-[#FDBA74] dark:bg-[#4C7CFF]/20 dark:text-[#4C7CFF]">
               <FileText className="h-6 w-6" />
             </div>
             <div>
@@ -595,7 +595,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
             {/* Direct PDF Download Action Button */}
             <button
               onClick={() => downloadPdfFile(assignment.pdfUrl || resolvedPdfUrl, `${assignment.title || 'الواجب'}.pdf`)}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#D4AF37] hover:bg-[#D4AF37] text-[#0D1B3E] font-black text-xs shadow-xs transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#F97316] hover:bg-[#F97316] text-[#0D1B3E] font-black text-xs shadow-xs transition-all cursor-pointer"
               title="تنزيل ملف الواجب PDF على جهازك"
             >
               <Download className="h-4 w-4" />
@@ -630,7 +630,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               onClick={() => setActiveTab('upload')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 activeTab === 'upload'
-                  ? 'bg-[#00B4FF] text-white shadow-md'
+                  ? 'bg-[#FDBA74] text-white shadow-md'
                   : 'bg-white dark:bg-[#16224D] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#24336A] hover:bg-slate-50'
               }`}
             >
@@ -650,7 +650,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               onClick={() => setActiveTab('preview')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 activeTab === 'preview'
-                  ? 'bg-[#00B4FF] text-white shadow-md'
+                  ? 'bg-[#FDBA74] text-white shadow-md'
                   : 'bg-white dark:bg-[#16224D] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#24336A] hover:bg-slate-50'
               }`}
             >
@@ -663,7 +663,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               onClick={() => setActiveTab('draw')}
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                 activeTab === 'draw'
-                  ? 'bg-[#00B4FF] text-white shadow-md'
+                  ? 'bg-[#FDBA74] text-white shadow-md'
                   : 'bg-white dark:bg-[#16224D] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#24336A] hover:bg-slate-50'
               }`}
             >
@@ -697,10 +697,10 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                   {/* Step 1 */}
                   <div className="rounded-2xl border border-blue-200 dark:border-blue-900/50 bg-blue-50/60 dark:bg-blue-950/20 p-4 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-[#00B4FF] text-white font-black text-xs">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-[#FDBA74] text-white font-black text-xs">
                         1
                       </span>
-                      <Download className="h-4 w-4 text-[#00B4FF]" />
+                      <Download className="h-4 w-4 text-[#FDBA74]" />
                     </div>
                     <h4 className="font-bold text-sm text-[#0D1B3E] dark:text-white">نزّل ورقة الواجب (PDF)</h4>
                     <p className="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
@@ -709,7 +709,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     <button
                       type="button"
                       onClick={() => downloadPdfFile(assignment.pdfUrl || resolvedPdfUrl, `${assignment.title}.pdf`)}
-                      className="w-full py-2 rounded-xl bg-white dark:bg-[#16224D] border border-blue-200 dark:border-[#24336A] text-xs font-bold text-[#00B4FF] dark:text-[#4C7CFF] hover:bg-blue-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                      className="w-full py-2 rounded-xl bg-white dark:bg-[#16224D] border border-blue-200 dark:border-[#24336A] text-xs font-bold text-[#FDBA74] dark:text-[#4C7CFF] hover:bg-blue-50 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                     >
                       <Download className="h-3.5 w-3.5" />
                       <span>تنزيل الملف الآن</span>
@@ -719,10 +719,10 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                   {/* Step 2 */}
                   <div className="rounded-2xl border border-amber-200 dark:border-amber-900/50 bg-amber-50/60 dark:bg-amber-950/20 p-4 space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-[#D4AF37] text-slate-950 font-black text-xs">
+                      <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-[#F97316] text-slate-950 font-black text-xs">
                         2
                       </span>
-                      <Edit3 className="h-4 w-4 text-[#D4AF37]" />
+                      <Edit3 className="h-4 w-4 text-[#F97316]" />
                     </div>
                     <h4 className="font-bold text-sm text-[#0D1B3E] dark:text-white">حل الأسئلة وصوّر الحل</h4>
                     <p className="text-xs text-[#6B7280] dark:text-slate-400 leading-relaxed">
@@ -758,7 +758,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               {/* Upload Dropzone / Action Area (Enabled for solve or when editing) */}
               {mode !== 'view' && mode !== 'grade' && (
                 <div className="rounded-3xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-[#16224D] p-6 text-center space-y-4 shadow-xs">
-                  <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-blue-50 dark:bg-[#00B4FF]/20 text-[#00B4FF] dark:text-[#4C7CFF]">
+                  <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-blue-50 dark:bg-[#FDBA74]/20 text-[#FDBA74] dark:text-[#4C7CFF]">
                     <Upload className="h-7 w-7" />
                   </div>
                   <div>
@@ -793,7 +793,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
                       disabled={isUploadingFile}
-                      className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#00B4FF] hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+                      className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#FDBA74] hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
                     >
                       <ImageIcon className="h-4 w-4" />
                       <span>اختيار ملفات / صور من الجهاز</span>
@@ -811,7 +811,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                   </div>
 
                   {isUploadingFile && (
-                    <div className="flex items-center justify-center gap-2 text-xs font-bold text-[#00B4FF] pt-2">
+                    <div className="flex items-center justify-center gap-2 text-xs font-bold text-[#FDBA74] pt-2">
                       <RefreshCw className="h-4 w-4 animate-spin" />
                       <span>جاري معالجة ورفع الملفات...</span>
                     </div>
@@ -823,14 +823,14 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <h4 className="font-bold text-sm text-[#0D1B3E] dark:text-white flex items-center gap-2">
-                    <Layers className="h-4 w-4 text-[#00B4FF]" />
+                    <Layers className="h-4 w-4 text-[#FDBA74]" />
                     <span>صفحات الحل المرفوعة ({uploadedFiles.length})</span>
                   </h4>
                   {uploadedFiles.length > 0 && mode !== 'view' && mode !== 'grade' && (
                     <button
                       type="button"
                       onClick={() => fileInputRef.current?.click()}
-                      className="text-xs font-bold text-[#00B4FF] hover:underline flex items-center gap-1 cursor-pointer"
+                      className="text-xs font-bold text-[#FDBA74] hover:underline flex items-center gap-1 cursor-pointer"
                     >
                       <Plus className="h-3.5 w-3.5" />
                       <span>إضافة صفحة أخرى</span>
@@ -890,7 +890,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                           <button
                             type="button"
                             onClick={() => setPreviewImageModal(fileUrl)}
-                            className="text-[11px] font-bold text-[#00B4FF] dark:text-[#4C7CFF] hover:underline flex items-center gap-1"
+                            className="text-[11px] font-bold text-[#FDBA74] dark:text-[#4C7CFF] hover:underline flex items-center gap-1"
                           >
                             <Eye className="h-3 w-3" />
                             <span>تكبير</span>
@@ -926,7 +926,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     value={studentNotesInput}
                     onChange={e => setStudentNotesInput(e.target.value)}
                     placeholder="يمكنك كتابة أي ملاحظة أو استفسار للأستاذ بخصوص خطوات الحل هنا..."
-                    className="w-full rounded-xl border border-slate-200 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-xs text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#00B4FF]"
+                    className="w-full rounded-xl border border-slate-200 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-xs text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#FDBA74]"
                   />
                 ) : (
                   <p className="text-xs text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#0D1B3E] p-3 rounded-xl">
@@ -969,7 +969,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
             <div className="flex-1 w-full h-full relative overflow-hidden bg-slate-200 dark:bg-slate-900 flex flex-col">
               {isLoadingPdf ? (
                 <div className="flex-1 flex flex-col items-center justify-center text-slate-500 p-8">
-                  <div className="h-10 w-10 border-4 border-[#00B4FF] border-t-transparent rounded-full animate-spin mb-3" />
+                  <div className="h-10 w-10 border-4 border-[#FDBA74] border-t-transparent rounded-full animate-spin mb-3" />
                   <p className="text-xs font-bold">جاري تحميل ملف الواجب الـ PDF...</p>
                 </div>
               ) : resolvedPdfUrl ? (
@@ -1000,7 +1000,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     onClick={() => setActiveTool('pen')}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                       activeTool === 'pen'
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'bg-slate-100 dark:bg-[#16224D] text-slate-700 dark:text-slate-200'
                     }`}
                   >
@@ -1012,7 +1012,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     onClick={() => setActiveTool('text')}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                       activeTool === 'text'
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'bg-slate-100 dark:bg-[#16224D] text-slate-700 dark:text-slate-200'
                     }`}
                   >
@@ -1024,7 +1024,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     onClick={() => setActiveTool('eraser')}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer ${
                       activeTool === 'eraser'
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'bg-slate-100 dark:bg-[#16224D] text-slate-700 dark:text-slate-200'
                     }`}
                   >
@@ -1036,7 +1036,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
 
                   {/* Colors */}
                   <div className="flex items-center gap-1 bg-slate-100 dark:bg-[#16224D] p-1 rounded-xl">
-                    {['#00B4FF', '#EF4444', '#10B981', '#D4AF37', '#000000'].map(c => (
+                    {['#FDBA74', '#EF4444', '#10B981', '#F97316', '#000000'].map(c => (
                       <button
                         key={c}
                         onClick={() => setPenColor(c)}
@@ -1123,7 +1123,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
                 {/* Score Input */}
                 <div className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-[#D4AF37]" />
+                  <Award className="h-5 w-5 text-[#F97316]" />
                   <span className="text-xs font-black text-[#0D1B3E] dark:text-white">الدرجة:</span>
                   <input
                     type="number"
@@ -1132,7 +1132,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     value={gradeInput}
                     onChange={e => setGradeInput(e.target.value)}
                     placeholder={`من ${assignment.maxGrade || 20}`}
-                    className="w-24 rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-3 py-2 text-xs font-black text-[#0D1B3E] dark:text-white text-center focus:border-[#00B4FF] focus:outline-none"
+                    className="w-24 rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-3 py-2 text-xs font-black text-[#0D1B3E] dark:text-white text-center focus:border-[#FDBA74] focus:outline-none"
                   />
                   <span className="text-xs font-bold text-slate-500">/ {assignment.maxGrade || 20}</span>
                 </div>
@@ -1174,7 +1174,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     value={teacherNotes}
                     onChange={e => setTeacherNotes(e.target.value)}
                     placeholder="ملاحظات وتوجيهات المعلم للطالب..."
-                    className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-3 py-2 text-xs text-[#0D1B3E] dark:text-white focus:border-[#00B4FF] focus:outline-none"
+                    className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-3 py-2 text-xs text-[#0D1B3E] dark:text-white focus:border-[#FDBA74] focus:outline-none"
                   />
                 </div>
               </div>
@@ -1182,7 +1182,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               <button
                 onClick={handleSaveGrading}
                 disabled={isSubmitting}
-                className="w-full md:w-auto flex items-center justify-center gap-2 rounded-xl bg-[#D4AF37] hover:bg-[#D4AF37] px-6 py-2.5 text-xs font-black text-[#0D1B3E] shadow-sm transition-all disabled:opacity-50 cursor-pointer"
+                className="w-full md:w-auto flex items-center justify-center gap-2 rounded-xl bg-[#F97316] hover:bg-[#F97316] px-6 py-2.5 text-xs font-black text-[#0D1B3E] shadow-sm transition-all disabled:opacity-50 cursor-pointer"
               >
                 <CheckCircle2 className="h-4 w-4" />
                 حفظ التصحيح وإرسال النتيجة
@@ -1194,7 +1194,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
             /* ================================================================= */
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3">
               <div className="flex items-center gap-2 text-xs text-[#6B7280] dark:text-slate-400">
-                <Lightbulb className="h-4 w-4 text-[#D4AF37] shrink-0" />
+                <Lightbulb className="h-4 w-4 text-[#F97316] shrink-0" />
                 <span>
                   {uploadedFiles.length > 0 
                     ? `تم تجهيز ${uploadedFiles.length} صفحة حل للتسليم`
@@ -1207,7 +1207,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                   type="button"
                   onClick={handleSubmitAssignment}
                   disabled={isSubmitting || (uploadedFiles.length === 0 && !hasDrawnAnnotations())}
-                  className="flex-1 sm:flex-initial flex items-center justify-center gap-2 rounded-xl bg-[#00B4FF] hover:bg-blue-700 dark:bg-[#4C7CFF] dark:hover:bg-blue-600 text-white px-7 py-3 text-xs font-black shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="flex-1 sm:flex-initial flex items-center justify-center gap-2 rounded-xl bg-[#FDBA74] hover:bg-blue-700 dark:bg-[#4C7CFF] dark:hover:bg-blue-600 text-white px-7 py-3 text-xs font-black shadow-md transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
                   <Send className="h-4 w-4" />
                   <span>تسليم الواجب الآن للأستاذ</span>
@@ -1236,7 +1236,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
                     setCurrentMode('solve');
                     setActiveTab('upload');
                   }}
-                  className="rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-4 py-2 text-xs font-bold text-[#00B4FF] dark:text-[#4C7CFF] hover:bg-slate-50 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="rounded-xl border border-slate-300 dark:border-[#24336A] bg-white dark:bg-[#16224D] px-4 py-2 text-xs font-bold text-[#FDBA74] dark:text-[#4C7CFF] hover:bg-slate-50 transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <RefreshCw className="h-3.5 w-3.5" />
                   <span>تعديل أو إعادة رفع الحل</span>
@@ -1304,7 +1304,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               value={inputText}
               onChange={e => setInputText(e.target.value)}
               placeholder="اكتب إجابتك أو ملاحظتك هنا..."
-              className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#111C3D] p-3 text-xs text-[#0D1B3E] dark:text-white focus:border-[#00B4FF] focus:outline-none"
+              className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#111C3D] p-3 text-xs text-[#0D1B3E] dark:text-white focus:border-[#FDBA74] focus:outline-none"
               onKeyDown={e => e.key === 'Enter' && handleAddText()}
             />
             <div className="flex items-center justify-end gap-2">
@@ -1316,7 +1316,7 @@ export const AssignmentSolverModal: React.FC<AssignmentSolverModalProps> = ({
               </button>
               <button
                 onClick={handleAddText}
-                className="px-5 py-2 text-xs font-bold bg-[#00B4FF] text-white rounded-xl hover:bg-blue-700 cursor-pointer"
+                className="px-5 py-2 text-xs font-bold bg-[#FDBA74] text-white rounded-xl hover:bg-blue-700 cursor-pointer"
               >
                 إضافة
               </button>

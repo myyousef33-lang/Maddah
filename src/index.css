@@ -5,9 +5,9 @@
 @layer base {
   html {
     font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
-    background-color: #F7FAFD;
-    color: #071A33;
-    color-scheme: light dark;
+    background-color: #0B0B0F;
+    color: #F8FAFC;
+    color-scheme: dark;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -24,8 +24,8 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: #F7FAFD;
-    color: #071A33;
+    background-color: #0B0B0F;
+    color: #F8FAFC;
     overflow-x: hidden;
     overflow-y: auto !important;
   }
@@ -33,87 +33,85 @@
   #root {
     width: 100%;
     min-height: 100vh;
-    background-color: #F7FAFD;
-    color: #071A33;
+    background-color: #0B0B0F;
+    color: #F8FAFC;
     overflow: visible;
   }
 }
 
-/* =========================================================
-   MADDAH MATHEMATICS - LUXURY BRAND COLOR PALETTE
-   ========================================================= */
-
 html.dark,
 body.dark,
 .dark {
-  background-color: #080B10;
-  color: #F1F5F9;
+  background-color: #0B0B0F;
+  color: #F8FAFC;
   color-scheme: dark;
 }
 
 html.dark #root,
 body.dark #root,
 .dark #root {
-  background-color: #080B10;
-  color: #F1F5F9;
+  background-color: #0B0B0F;
+  color: #F8FAFC;
 }
 
-/* Calligraphic font & luxury gold glow for "مداح الرياضيات" */
+/* Calligraphic font & luxury orange glow for "مداح الرياضيات" */
 .font-calligraphy {
   font-family: 'Aref Ruqaa', 'Amiri', 'Cairo', serif;
 }
 
 .gold-glow-text {
-  text-shadow: 0 0 12px rgba(212, 175, 55, 0.45), 0 0 24px rgba(212, 175, 55, 0.25);
+  text-shadow: 0 0 12px rgba(249, 115, 22, 0.45), 0 0 24px rgba(249, 115, 22, 0.25);
 }
 
 .gold-glow-subtle {
-  text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+  text-shadow: 0 0 8px rgba(249, 115, 22, 0.3);
 }
 
 .cyan-glow-subtle {
-  text-shadow: 0 0 8px rgba(25, 199, 232, 0.4);
+  text-shadow: 0 0 8px rgba(253, 186, 116, 0.4);
 }
 
 .cyan-glow {
-  box-shadow: 0 0 15px rgba(25, 199, 232, 0.25);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.25);
 }
 
 .gold-border-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
-  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.25);
+  border: 1px solid rgba(249, 115, 22, 0.5);
 }
 
 /* Luxury Brand Buttons */
 .btn-gold-primary {
-  background-color: #D4AF37;
-  color: #071A33;
-  font-weight: 700;
+  background-color: #F97316;
+  color: #0B0B0F;
+  font-weight: 800;
   border-radius: 0.75rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.25);
 }
 
 .btn-gold-primary:hover {
-  background-color: #C59F2D;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  background-color: #EA580C;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.35);
   transform: translateY(-1px);
 }
 
 .btn-navy-secondary {
-  background-color: #071A33;
-  color: #D4AF37;
-  border: 1px solid rgba(212, 175, 55, 0.35);
+  background-color: #14141E;
+  color: #FDBA74;
+  border: 1px solid rgba(249, 115, 22, 0.35);
   font-weight: 700;
   border-radius: 0.75rem;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 14px rgba(7, 26, 51, 0.15);
+  box-shadow: 0 4px 14px rgba(11, 11, 15, 0.2);
 }
 
 .btn-navy-secondary:hover {
-  background-color: #0C2446;
-  border-color: #D4AF37;
-  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  background-color: #1F1712;
+  border-color: #F97316;
+  color: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.25);
   transform: translateY(-1px);
 }
 
@@ -134,7 +132,7 @@ body.dark #root,
 .dark input:focus,
 .dark select:focus,
 .dark textarea:focus {
-  border-color: #19C7E8;
+  border-color: #FDBA74;
   background-color: #152033;
 }
 
@@ -146,7 +144,7 @@ body.dark #root,
 }
 
 .dark .glass-card-hover:hover {
-  border-color: #19C7E8;
+  border-color: #FDBA74;
   box-shadow: 0 12px 28px -6px rgba(25, 199, 232, 0.25);
 }
 
@@ -166,7 +164,7 @@ body.dark #root,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #19C7E8;
+  background: #FDBA74;
 }
 
 .dark ::-webkit-scrollbar-track {
@@ -179,7 +177,7 @@ body.dark #root,
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #19C7E8;
+  background: #FDBA74;
 }
 
 /* Anti-Print Security & Anti-Copy Protection */
@@ -210,7 +208,7 @@ body.dark #root,
 }
 
 .glass-card-hover:hover {
-  border-color: #19C7E8;
+  border-color: #FDBA74;
   transform: translateY(-2px);
   box-shadow: 0 12px 28px -6px rgba(25, 199, 232, 0.2);
 }

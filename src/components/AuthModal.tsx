@@ -179,12 +179,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
         {/* Header Title */}
         <div className="text-center space-y-1 pt-1">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[#00B4FF] dark:text-[#60A5FA] mb-2 shadow-xs">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-[#FDBA74] dark:text-[#60A5FA] mb-2 shadow-xs">
             <GraduationCap className="h-6 w-6" />
           </div>
           <h2 className="text-xl font-black text-[#0D1B3E] dark:text-white flex items-center justify-center gap-1.5">
             <span>بوابة طلاب</span>
-            <span className="text-[#D4AF37] dark:text-[#FBBF24]">مداح الرياضيات</span>
+            <span className="text-[#F97316] dark:text-[#FBBF24]">مداح الرياضيات</span>
           </h2>
           <p className="text-xs text-[#6B7280] dark:text-slate-300">سجل الدخول برقم هاتفك وكلمة المرور لمتابعة دروسك</p>
         </div>
@@ -195,7 +195,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             onClick={() => { setMode('login'); setError(null); }}
             className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
               mode === 'login' 
-                ? 'bg-[#00B4FF] text-white shadow-xs' 
+                ? 'bg-[#FDBA74] text-white shadow-xs' 
                 : 'text-[#6B7280] dark:text-slate-400 hover:text-[#0D1B3E] dark:hover:text-white'
             }`}
           >
@@ -206,7 +206,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             onClick={() => { setMode('register'); setError(null); }}
             className={`flex-1 flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold transition-all ${
               mode === 'register' 
-                ? 'bg-[#00B4FF] text-white shadow-xs' 
+                ? 'bg-[#FDBA74] text-white shadow-xs' 
                 : 'text-[#6B7280] dark:text-slate-400 hover:text-[#0D1B3E] dark:hover:text-white'
             }`}
           >
@@ -234,7 +234,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
                 <span>رقم الهاتف المحمول</span>
-                <span className="text-[11px] text-[#00B4FF] font-normal">المسجل بالمنصة</span>
+                <span className="text-[11px] text-[#FDBA74] font-normal">المسجل بالمنصة</span>
               </label>
               <div className="relative">
                 <Phone className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
@@ -244,7 +244,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="010XXXXXXXX"
-                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-4 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none transition-all text-sm"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-4 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none transition-all text-sm"
                   autoFocus
                   required
                 />
@@ -265,13 +265,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-10 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none transition-all text-sm"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-10 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none transition-all text-sm"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowLoginPassword(!showLoginPassword)}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#00B4FF] transition-colors"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#FDBA74] transition-colors"
                   title={showLoginPassword ? 'إخفاء كلمة المرور' : 'إظهار كلمة المرور'}
                 >
                   {showLoginPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
@@ -282,7 +282,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-[#D4AF37] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#D4AF37] transition-all disabled:opacity-50 mt-2"
+              className="w-full rounded-2xl bg-[#F97316] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#F97316] transition-all disabled:opacity-50 mt-2"
             >
               {loading ? 'جارٍ تسجيل الدخول...' : 'دخول إلى حسابي'}
             </button>
@@ -294,7 +294,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <button
                   type="button"
                   onClick={() => handleQuickDemoSwitch('student-demo')}
-                  className="rounded-xl border border-slate-200 bg-[#F5F7FA] px-3 py-1.5 text-xs font-bold text-[#00B4FF] hover:border-blue-300 hover:bg-blue-50 transition-all shadow-xs"
+                  className="rounded-xl border border-slate-200 bg-[#F5F7FA] px-3 py-1.5 text-xs font-bold text-[#FDBA74] hover:border-blue-300 hover:bg-blue-50 transition-all shadow-xs"
                 >
                   أحمد محمود (3 ثانوي)
                 </button>
@@ -308,7 +308,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <form onSubmit={handleRegister} className="space-y-3.5 max-h-[60vh] overflow-y-auto pr-1">
             {/* Student Name */}
             <div className="space-y-1">
-              <label className="text-xs font-bold text-[#0D1B3E]">اسم الطالب ثلاثي / رباعي <span className="text-[#D4AF37]">*</span></label>
+              <label className="text-xs font-bold text-[#0D1B3E]">اسم الطالب ثلاثي / رباعي <span className="text-[#F97316]">*</span></label>
               <div className="relative">
                 <User className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
                 <input
@@ -316,7 +316,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="مثال: أحمد محمد مصطفى"
-                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                   required
                 />
               </div>
@@ -325,7 +325,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* Student Phone & Parent Phone */}
             <div className="grid grid-cols-2 gap-2.5">
               <div className="space-y-1">
-                <label className="text-xs font-bold text-[#0D1B3E]">هاتف الطالب <span className="text-[#D4AF37]">*</span></label>
+                <label className="text-xs font-bold text-[#0D1B3E]">هاتف الطالب <span className="text-[#F97316]">*</span></label>
                 <div className="relative">
                   <Phone className="absolute right-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400 pointer-events-none" />
                   <input
@@ -334,7 +334,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
                     placeholder="010XXXXXXXX"
-                    className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-8 pl-2.5 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                    className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-8 pl-2.5 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                     required
                   />
                 </div>
@@ -348,7 +348,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={parentPhone}
                   onChange={(e) => setParentPhone(e.target.value)}
                   placeholder="011XXXXXXXX"
-                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                 />
               </div>
             </div>
@@ -356,8 +356,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* Password Creation */}
             <div className="space-y-1">
               <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
-                <span>كلمة المرور للحساب <span className="text-[#D4AF37]">*</span></span>
-                <span className="text-[10px] text-[#00B4FF] font-medium flex items-center gap-1">
+                <span>كلمة المرور للحساب <span className="text-[#F97316]">*</span></span>
+                <span className="text-[10px] text-[#FDBA74] font-medium flex items-center gap-1">
                   <ShieldCheck className="h-3 w-3 inline" /> أمان الحساب
                 </span>
               </label>
@@ -369,13 +369,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   value={regPassword}
                   onChange={(e) => setRegPassword(e.target.value)}
                   placeholder="أنشئ كلمة مرور (4 خانات أو أكثر)"
-                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-10 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                  className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 pr-10 pl-10 text-xs text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                   required
                 />
                 <button
                   type="button"
                   onClick={() => setShowRegPassword(!showRegPassword)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#00B4FF] transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-[#FDBA74] transition-colors"
                   title={showRegPassword ? 'إخفاء' : 'إظهار'}
                 >
                   {showRegPassword ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
@@ -386,7 +386,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* Gender Selection */}
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-[#0D1B3E] flex items-center justify-between">
-                <span>الجنس (لتخصيص تجربتك وشخصيتك التعليمية) <span className="text-[#D4AF37]">*</span></span>
+                <span>الجنس (لتخصيص تجربتك وشخصيتك التعليمية) <span className="text-[#F97316]">*</span></span>
               </label>
               <div className="grid grid-cols-2 gap-2.5">
                 <button
@@ -394,7 +394,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   onClick={() => setGender('male')}
                   className={`flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-bold transition-all border cursor-pointer ${
                     gender === 'male'
-                      ? 'border-[#00B4FF] bg-blue-50 text-[#00B4FF] shadow-xs ring-1 ring-[#00B4FF]'
+                      ? 'border-[#FDBA74] bg-blue-50 text-[#FDBA74] shadow-xs ring-1 ring-[#FDBA74]'
                       : 'border-slate-200 bg-[#F5F7FA] text-slate-600 hover:bg-slate-100 hover:text-[#0D1B3E]'
                   }`}
                 >
@@ -406,7 +406,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   onClick={() => setGender('female')}
                   className={`flex items-center justify-center gap-2 rounded-xl py-2.5 px-3 text-xs font-bold transition-all border cursor-pointer ${
                     gender === 'female'
-                      ? 'border-[#00B4FF] bg-blue-50 text-[#00B4FF] shadow-xs ring-1 ring-[#00B4FF]'
+                      ? 'border-[#FDBA74] bg-blue-50 text-[#FDBA74] shadow-xs ring-1 ring-[#FDBA74]'
                       : 'border-slate-200 bg-[#F5F7FA] text-slate-600 hover:bg-slate-100 hover:text-[#0D1B3E]'
                   }`}
                 >
@@ -419,11 +419,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             {/* Grade & Governorate in Grid */}
             <div className="grid grid-cols-2 gap-2.5">
               <div className="space-y-1">
-                <label className="text-xs font-bold text-[#0D1B3E]">الصف الدراسي <span className="text-[#D4AF37]">*</span></label>
+                <label className="text-xs font-bold text-[#0D1B3E]">الصف الدراسي <span className="text-[#F97316]">*</span></label>
                 <select
                   value={grade}
                   onChange={(e) => setGrade(e.target.value as GradeLevel)}
-                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                 >
                   <option value={GradeLevel.GRADE_12}>الصف الثالث الثانوي (3 ث)</option>
                   <option value={GradeLevel.GRADE_11}>الصف الثاني الثانوي (2 ث)</option>
@@ -432,11 +432,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-[#0D1B3E]">المحافظة <span className="text-[#D4AF37]">*</span></label>
+                <label className="text-xs font-bold text-[#0D1B3E]">المحافظة <span className="text-[#F97316]">*</span></label>
                 <select
                   value={governorate}
                   onChange={(e) => setGovernorate(e.target.value)}
-                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                  className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] py-2.5 px-3 text-xs text-[#0D1B3E] focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                 >
                   {governorates.map((g) => (
                     <option key={g} value={g}>{g}</option>
@@ -448,7 +448,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-2xl bg-[#D4AF37] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#D4AF37] transition-all disabled:opacity-50 mt-2"
+              className="w-full rounded-2xl bg-[#F97316] py-3 text-sm font-black text-[#0D1B3E] shadow-xs hover:bg-[#F97316] transition-all disabled:opacity-50 mt-2"
             >
               {loading ? 'جارٍ إنشاء الحساب...' : 'إنشاء الحساب وبدء التعلم'}
             </button>

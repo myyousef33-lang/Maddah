@@ -58,7 +58,7 @@ export const MascotWithRank: React.FC<MascotWithRankProps> = ({
             </div>
           ) : isTopThree ? (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-[10px] sm:text-[11px] shadow-md shadow-blue-500/30 ring-2 ring-blue-300/60">
-              <Trophy className="h-3.5 w-3.5 text-[#D4AF37]" />
+              <Trophy className="h-3.5 w-3.5 text-[#F97316]" />
               <span>المركز #{rank} على المنصة</span>
             </div>
           ) : (

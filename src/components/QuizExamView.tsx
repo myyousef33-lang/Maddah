@@ -172,7 +172,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
           <div className="flex justify-center gap-3 pt-2">
             <button
               onClick={() => onNavigate(isAdmin ? 'admin' : 'home')}
-              className="rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37]"
+              className="rounded-xl bg-[#F97316] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316]"
             >
               {isAdmin ? 'العودة للوحة الإدارة' : 'الرئيسية'}
             </button>
@@ -224,7 +224,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               onClick={() => onNavigate('exam-result', { attemptId: existingAttempt.id })}
-              className="flex-1 rounded-xl bg-[#D4AF37] py-3 text-xs font-bold text-[#0D1B3E] shadow-sm hover:bg-[#D4AF37] transition-all"
+              className="flex-1 rounded-xl bg-[#F97316] py-3 text-xs font-bold text-[#0D1B3E] shadow-sm hover:bg-[#F97316] transition-all"
             >
               عرض نموذج الإجابات والتقرير بالتفصيل
             </button>
@@ -264,7 +264,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
           <div className="flex justify-center gap-3 pt-2">
             <button
               onClick={() => onNavigate(isAdmin ? 'admin' : 'home')}
-              className="rounded-xl bg-[#00B4FF] text-white px-5 py-2.5 text-xs font-bold hover:bg-blue-700"
+              className="rounded-xl bg-[#FDBA74] text-white px-5 py-2.5 text-xs font-bold hover:bg-blue-700"
             >
               {isAdmin ? 'العودة للوحة الإدارة لإضافة أسئلة' : 'العودة للرئيسية'}
             </button>
@@ -321,7 +321,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
         
         <div className="space-y-1 text-center sm:text-right">
           <div className="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-            <span className="rounded bg-blue-50 text-[#00B4FF] px-2 py-0.5 text-[10px] font-bold border border-blue-200">
+            <span className="rounded bg-blue-50 text-[#FDBA74] px-2 py-0.5 text-[10px] font-bold border border-blue-200">
               {exam.type === 'quiz' ? 'كويز تقييمي' : 'امتحان شامل'}
             </span>
             <span className="text-xs text-[#6B7280]">سؤال {currentQuestionIdx + 1} من {totalQuestions}</span>
@@ -343,14 +343,14 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
                 ? 'bg-rose-50 text-rose-700 border-rose-300 animate-pulse' 
                 : 'bg-[#F5F7FA] border-slate-200 text-[#0D1B3E]'
             }`}>
-              <Clock className="h-4 w-4 text-[#00B4FF]" />
+              <Clock className="h-4 w-4 text-[#FDBA74]" />
               <span className="font-mono text-base tracking-wider text-[#0D1B3E]">
                 {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
               </span>
             </div>
           ) : (
             <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 px-3 py-1.5 text-xs text-slate-600 font-bold">
-              <Clock className="h-3.5 w-3.5 text-[#00B4FF]" />
+              <Clock className="h-3.5 w-3.5 text-[#FDBA74]" />
               <span>المدة المحددة: {exam.durationMinutes || 30} دقيقة</span>
             </div>
           )}
@@ -372,7 +372,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
           {/* Question Header & Quick Jump Controls */}
           <div className="flex items-center justify-between border-b border-slate-200 pb-4 flex-wrap gap-2">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-sm font-black text-[#00B4FF] border border-blue-200">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-50 text-sm font-black text-[#FDBA74] border border-blue-200">
                 {currentQuestionIdx + 1}
               </div>
               <span className="text-xs font-bold text-[#6B7280]">الدرجة: {currentQ.points || 1} درجات</span>
@@ -420,7 +420,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
                     isCorrectInPreview
                       ? 'border-emerald-500 bg-emerald-50 text-emerald-950 font-bold shadow-xs'
                       : isSelected
-                        ? 'border-[#00B4FF] bg-blue-50/70 text-[#0D1B3E] font-bold shadow-xs'
+                        ? 'border-[#FDBA74] bg-blue-50/70 text-[#0D1B3E] font-bold shadow-xs'
                         : 'border-slate-200 bg-[#F5F7FA] text-[#0D1B3E] hover:border-blue-300 hover:bg-white'
                   }`}
                 >
@@ -429,7 +429,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
                       isCorrectInPreview
                         ? 'border-emerald-600 bg-emerald-600 text-white'
                         : isSelected
-                          ? 'border-[#00B4FF] bg-[#00B4FF] text-white'
+                          ? 'border-[#FDBA74] bg-[#FDBA74] text-white'
                           : 'border-slate-300 bg-white text-[#6B7280]'
                     }`}>
                       {String.fromCharCode(65 + optIdx)}
@@ -445,7 +445,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
                       </span>
                     )}
                     {isSelected && !isCorrectInPreview && (
-                      <CheckCircle2 className="h-5 w-5 text-[#00B4FF]" />
+                      <CheckCircle2 className="h-5 w-5 text-[#FDBA74]" />
                     )}
                   </div>
                 </div>
@@ -456,7 +456,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
           {/* Explanation in Preview Mode */}
           {isPreviewMode && showAnswerKeyInPreview && currentQ.explanation && (
             <div className="p-4 rounded-2xl bg-blue-50 border border-blue-200 text-xs text-[#0D1B3E] space-y-1">
-              <span className="font-bold text-[#00B4FF] block">شرح خطوات الحل والقانون المستخدم:</span>
+              <span className="font-bold text-[#FDBA74] block">شرح خطوات الحل والقانون المستخدم:</span>
               <p className="leading-relaxed">{currentQ.explanation}</p>
             </div>
           )}
@@ -483,7 +483,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
             {currentQuestionIdx < totalQuestions - 1 ? (
               <button
                 onClick={() => setCurrentQuestionIdx(prev => Math.min(totalQuestions - 1, prev + 1))}
-                className="flex items-center gap-2 rounded-xl bg-[#D4AF37] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#D4AF37] transition-colors cursor-pointer"
+                className="flex items-center gap-2 rounded-xl bg-[#F97316] px-5 py-2.5 text-xs font-bold text-[#0D1B3E] hover:bg-[#F97316] transition-colors cursor-pointer"
               >
                 <span>السؤال التالي</span>
                 <ArrowLeft className="h-4 w-4" />
@@ -507,7 +507,7 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
         <div className="flex items-center justify-between text-xs font-bold text-[#6B7280] flex-wrap gap-2">
           <span>خريطة الأسئلة والانتقال السريع</span>
           <div className="flex items-center gap-4 text-[11px]">
-            <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-[#00B4FF] inline-block"></span> تمت الإجابة</span>
+            <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-[#FDBA74] inline-block"></span> تمت الإجابة</span>
             <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-slate-300 inline-block"></span> متبقي</span>
             <span className="flex items-center gap-1"><span className="h-2.5 w-2.5 rounded-full bg-amber-500 inline-block"></span> محدد للمراجعة</span>
           </div>
@@ -525,11 +525,11 @@ export const QuizExamView: React.FC<QuizExamViewProps> = ({
                 onClick={() => setCurrentQuestionIdx(idx)}
                 className={`h-9 w-9 rounded-xl text-xs font-bold transition-all relative cursor-pointer ${
                   isCurrent
-                    ? 'ring-2 ring-[#00B4FF] bg-[#00B4FF] text-white font-black scale-110 shadow-sm'
+                    ? 'ring-2 ring-[#FDBA74] bg-[#FDBA74] text-white font-black scale-110 shadow-sm'
                     : isFlagged
                       ? 'bg-amber-100 text-amber-900 border border-amber-300'
                       : isAnswered
-                        ? 'bg-blue-50 text-[#00B4FF] border border-blue-200'
+                        ? 'bg-blue-50 text-[#FDBA74] border border-blue-200'
                         : 'bg-[#F5F7FA] text-[#6B7280] hover:bg-slate-200 border border-slate-200'
                 }`}
                 title={`الانتقال إلى السؤال رقم ${idx + 1}`}

@@ -124,10 +124,11 @@ export const AdminAssignmentsTab: React.FC = () => {
   };
 
   const handleOpenGradingModal = (sub: AssignmentSubmission) => {
-    const asgn = assignments.find(a => a.id === sub.assignmentId) || {
+    const asgn: Assignment = assignments.find(a => a.id === sub.assignmentId) || {
       id: sub.assignmentId,
       courseId: sub.courseId,
       title: sub.assignmentTitle,
+      description: '',
       pdfUrl: '',
       maxGrade: sub.maxGrade || 20,
       createdAt: sub.submittedAt
@@ -156,7 +157,7 @@ export const AdminAssignmentsTab: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white dark:bg-[#16224D] border border-slate-200 dark:border-[#24336A] p-6 rounded-3xl shadow-xs">
         <div>
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00B4FF]/10 text-[#00B4FF] dark:bg-[#4C7CFF]/20 dark:text-[#4C7CFF]">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDBA74]/10 text-[#FDBA74] dark:bg-[#4C7CFF]/20 dark:text-[#4C7CFF]">
               <FileText className="h-6 w-6" />
             </div>
             <div>
@@ -173,7 +174,7 @@ export const AdminAssignmentsTab: React.FC = () => {
             onClick={() => setActiveSubTab('submissions')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all ${
               activeSubTab === 'submissions'
-                ? 'bg-[#00B4FF] text-white shadow-md'
+                ? 'bg-[#FDBA74] text-white shadow-md'
                 : 'bg-slate-100 dark:bg-[#0D1B3E] text-slate-700 dark:text-slate-300'
             }`}
           >
@@ -190,7 +191,7 @@ export const AdminAssignmentsTab: React.FC = () => {
             onClick={() => setActiveSubTab('assignments')}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all ${
               activeSubTab === 'assignments'
-                ? 'bg-[#00B4FF] text-white shadow-md'
+                ? 'bg-[#FDBA74] text-white shadow-md'
                 : 'bg-slate-100 dark:bg-[#0D1B3E] text-slate-700 dark:text-slate-300'
             }`}
           >
@@ -200,7 +201,7 @@ export const AdminAssignmentsTab: React.FC = () => {
 
           <button
             onClick={() => setIsCreateOpen(true)}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#D4AF37] text-[#0D1B3E] font-black text-xs hover:bg-[#D4AF37] shadow-md transition-all active:scale-95"
+            className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-[#F97316] text-[#0D1B3E] font-black text-xs hover:bg-[#F97316] shadow-md transition-all active:scale-95"
           >
             <Plus className="h-4 w-4" />
             إضافة واجب جديد
@@ -297,7 +298,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                         <tr key={sub.id} className="hover:bg-slate-50/80 dark:hover:bg-[#1A295C]/50 transition-colors">
                           <td className="p-4">
                             <div className="flex items-center gap-3">
-                              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#00B4FF] font-black text-sm">
+                              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-[#FDBA74] font-black text-sm">
                                 {sub.studentName.charAt(0)}
                               </div>
                               <div>
@@ -313,7 +314,7 @@ export const AdminAssignmentsTab: React.FC = () => {
 
                           <td className="p-4">
                             {filesCount > 0 ? (
-                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-blue-50 border border-blue-200 text-[#00B4FF] font-bold text-[11px]">
+                              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-blue-50 border border-blue-200 text-[#FDBA74] font-bold text-[11px]">
                                 <Upload className="h-3 w-3" />
                                 <span>مرفق {filesCount} {filesCount === 1 ? 'صفحة' : 'صفحات'} حل</span>
                               </span>
@@ -360,7 +361,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                             <div className="flex items-center justify-center gap-2">
                               <button
                                 onClick={() => handleOpenGradingModal(sub)}
-                                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#00B4FF] hover:bg-blue-700 text-white font-bold transition-all shadow-xs cursor-pointer"
+                                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#FDBA74] hover:bg-blue-700 text-white font-bold transition-all shadow-xs cursor-pointer"
                               >
                                 <Edit3 className="h-3.5 w-3.5" />
                                 <span>{sub.status === 'graded' ? 'تعديل التصحيح' : 'تصحيح الواجب'}</span>
@@ -400,17 +401,17 @@ export const AdminAssignmentsTab: React.FC = () => {
               <p className="font-bold text-sm text-[#0D1B3E] dark:text-white">لا توجد واجبات مضافة بعد</p>
               <button
                 onClick={() => setIsCreateOpen(true)}
-                className="mt-4 px-5 py-2.5 bg-[#D4AF37] text-[#0D1B3E] font-black text-xs rounded-xl shadow-xs"
+                className="mt-4 px-5 py-2.5 bg-[#F97316] text-[#0D1B3E] font-black text-xs rounded-xl shadow-xs"
               >
                 + إضافة أول واجب دراسي
               </button>
             </div>
           ) : (
             assignments.map(asgn => (
-              <div key={asgn.id} className="bg-white dark:bg-[#16224D] border border-slate-200 dark:border-[#24336A] rounded-3xl p-5 space-y-4 shadow-xs hover:border-[#00B4FF] transition-all">
+              <div key={asgn.id} className="bg-white dark:bg-[#16224D] border border-slate-200 dark:border-[#24336A] rounded-3xl p-5 space-y-4 shadow-xs hover:border-[#FDBA74] transition-all">
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-[#D4AF37] dark:bg-amber-950/40">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-[#F97316] dark:bg-amber-950/40">
                       <FileText className="h-5 w-5 text-[#0D1B3E] dark:text-white" />
                     </div>
                     <div>
@@ -449,7 +450,7 @@ export const AdminAssignmentsTab: React.FC = () => {
 
                   <button
                     onClick={() => window.open(asgn.pdfUrl, '_blank')}
-                    className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#16224D] border border-slate-200 dark:border-[#24336A] text-[10px] font-bold text-slate-700 dark:text-slate-200 hover:text-[#00B4FF] shrink-0"
+                    className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white dark:bg-[#16224D] border border-slate-200 dark:border-[#24336A] text-[10px] font-bold text-slate-700 dark:text-slate-200 hover:text-[#FDBA74] shrink-0"
                   >
                     <ExternalLink className="h-3 w-3" />
                     <span>فتح المعاينة</span>
@@ -457,7 +458,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-[#24336A] text-xs">
-                  <span className="font-bold text-[#D4AF37]">الدرجة: {asgn.maxGrade || 20}</span>
+                  <span className="font-bold text-[#F97316]">الدرجة: {asgn.maxGrade || 20}</span>
                   {asgn.deadline ? (
                     <span className="text-rose-500 font-semibold">
                       موعد التسليم: {new Date(asgn.deadline).toLocaleDateString('ar-EG')}
@@ -491,7 +492,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                   value={newTitle}
                   onChange={e => setNewTitle(e.target.value)}
                   placeholder="مثال: واجب الفصل الأول - قانون أوم وتوصيل المقاومات"
-                  className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#00B4FF]"
+                  className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#FDBA74]"
                 />
               </div>
 
@@ -548,7 +549,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                     onClick={() => setPdfUploadMode('drive')}
                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition-all ${
                       pdfUploadMode === 'drive'
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
@@ -560,7 +561,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                     onClick={() => setPdfUploadMode('file')}
                     className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg text-xs font-bold transition-all ${
                       pdfUploadMode === 'file'
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
@@ -577,7 +578,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                       value={newPdfUrl}
                       onChange={e => setNewPdfUrl(e.target.value)}
                       placeholder="ضع رابط ملف Google Drive هنا (مثال: https://drive.google.com/file/d/.../view)"
-                      className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-xs text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#00B4FF] ltr text-left font-mono"
+                      className="w-full rounded-xl border border-slate-300 dark:border-[#24336A] bg-slate-50 dark:bg-[#0D1B3E] p-3 text-xs text-[#0D1B3E] dark:text-white focus:outline-none focus:border-[#FDBA74] ltr text-left font-mono"
                     />
 
                     {/* Google Drive Status indicator */}
@@ -631,7 +632,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                   /* Direct Local File Upload Mode */
                   <div className="space-y-2">
                     <label className="flex-1 cursor-pointer flex items-center justify-center gap-2 border-2 border-dashed border-slate-300 dark:border-[#24336A] rounded-xl p-3 bg-slate-50 dark:bg-[#0D1B3E] hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
-                      <Upload className="h-4 w-4 text-[#00B4FF]" />
+                      <Upload className="h-4 w-4 text-[#FDBA74]" />
                       <span className="font-bold text-slate-600 dark:text-slate-300">
                         {isUploading ? 'جاري الرفع...' : newPdfUrl && !newPdfUrl.startsWith('http') ? 'تم رفع الملف بنجاح' : 'اختر ملف PDF من جهازك'}
                       </span>
@@ -669,7 +670,7 @@ export const AdminAssignmentsTab: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isUploading || !newPdfUrl}
-                  className="px-6 py-2.5 bg-[#00B4FF] text-white font-bold rounded-xl hover:bg-blue-700 shadow-sm disabled:opacity-50"
+                  className="px-6 py-2.5 bg-[#FDBA74] text-white font-bold rounded-xl hover:bg-blue-700 shadow-sm disabled:opacity-50"
                 >
                   حفظ ونشر الواجب
                 </button>

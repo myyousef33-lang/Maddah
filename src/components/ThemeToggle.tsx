@@ -23,10 +23,10 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', showTe
     <button
       onClick={handleToggle}
       type="button"
-      className={`relative inline-flex items-center gap-2 rounded-2xl border p-2.5 transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-[#00B4FF] ${
+      className={`relative inline-flex items-center gap-2 rounded-2xl border p-2.5 transition-all shadow-xs focus:outline-none focus:ring-2 focus:ring-[#FDBA74] ${
         mode === 'dark'
           ? 'border-amber-500/30 bg-[#16224D] text-amber-400 hover:bg-[#1E2E66]'
-          : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-[#00B4FF]'
+          : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50 hover:text-[#FDBA74]'
       } ${className}`}
       title={mode === 'dark' ? 'التبديل إلى الوضع النهاري' : 'التبديل إلى الوضع الليلي'}
       aria-label="تغيير المظهر (ليلي / نهاري)"

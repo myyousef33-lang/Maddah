@@ -74,11 +74,11 @@ export const AdminSecretModal: React.FC<AdminSecretModalProps> = ({
 
         {/* Security Header */}
         <div className="text-center space-y-2 pt-2">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#00B4FF] mb-1 shadow-xs">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#FDBA74] mb-1 shadow-xs">
             <Shield className="h-7 w-7" />
           </div>
           <div className="space-y-0.5">
-            <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-0.5 text-[11px] font-bold text-[#00B4FF]">
+            <span className="rounded-full bg-blue-50 border border-blue-200 px-3 py-0.5 text-[11px] font-bold text-[#FDBA74]">
               SECRET ADMIN GATEWAY
             </span>
             <h2 className="text-xl font-black text-[#0D1B3E] pt-1">بوابة الإدارة والأمان المشفرة</h2>
@@ -98,7 +98,7 @@ export const AdminSecretModal: React.FC<AdminSecretModalProps> = ({
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
               <label className="text-xs font-bold text-[#0D1B3E]">كلمة المرور الرئيسية (Master Password)</label>
-              <span className="text-[10px] text-[#00B4FF] font-mono font-bold">256-Bit Encrypted</span>
+              <span className="text-[10px] text-[#FDBA74] font-mono font-bold">256-Bit Encrypted</span>
             </div>
             
             <div className="relative">
@@ -109,7 +109,7 @@ export const AdminSecretModal: React.FC<AdminSecretModalProps> = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-11 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none transition-all"
+                className="w-full text-left font-mono rounded-xl border border-slate-200 bg-[#F5F7FA] py-3 pr-10 pl-11 text-[#0D1B3E] placeholder:text-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none transition-all"
                 autoFocus
               />
               <button
@@ -126,7 +126,7 @@ export const AdminSecretModal: React.FC<AdminSecretModalProps> = ({
           <button
             type="submit"
             disabled={loading}
-            className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#D4AF37] py-3 text-sm font-black text-[#0D1B3E] shadow-sm hover:bg-[#D4AF37] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
+            className="w-full flex items-center justify-center gap-2 rounded-2xl bg-[#F97316] py-3 text-sm font-black text-[#0D1B3E] shadow-sm hover:bg-[#F97316] transition-all active:scale-[0.98] disabled:opacity-50 cursor-pointer"
           >
             <Lock className="h-4 w-4 text-[#0D1B3E]" />
             <span>{loading ? 'جاري التحقق...' : 'فتح لوحة التحكم'}</span>

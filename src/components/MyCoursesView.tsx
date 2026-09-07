@@ -53,7 +53,7 @@ export const MyCoursesView: React.FC<MyCoursesViewProps> = ({
       {/* Courses List */}
       {!student ? (
         <div className="rounded-3xl bg-white border border-slate-200 p-12 text-center max-w-md mx-auto space-y-4 shadow-xs">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#00B4FF]">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 border border-blue-200 text-[#FDBA74]">
             <BookOpen className="h-8 w-8" />
           </div>
           <h3 className="text-lg font-bold text-[#0D1B3E]">تسجيل الدخول مطلوب</h3>
@@ -79,7 +79,7 @@ export const MyCoursesView: React.FC<MyCoursesViewProps> = ({
             </button>
             <button
               onClick={() => onNavigate('courses-catalog')}
-              className="px-5 py-2.5 rounded-xl bg-[#00B4FF] text-white font-bold text-xs hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20"
+              className="px-5 py-2.5 rounded-xl bg-[#FDBA74] text-white font-bold text-xs hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20"
             >
               استعرض دليـل الكورسات
             </button>

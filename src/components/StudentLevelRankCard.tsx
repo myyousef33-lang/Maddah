@@ -55,13 +55,13 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
             isFirstOnPlatform 
               ? 'bg-gradient-to-tr from-amber-500 to-yellow-400 text-slate-950 ring-2 ring-amber-400/50' 
               : isTopThree 
-              ? 'bg-blue-100 text-[#00B4FF] dark:bg-blue-900/60 dark:text-blue-300' 
+              ? 'bg-blue-100 text-[#FDBA74] dark:bg-blue-900/60 dark:text-blue-300' 
               : 'bg-slate-100 dark:bg-slate-800 text-[#0D1B3E] dark:text-slate-200'
           }`}>
             {isFirstOnPlatform ? (
               <Crown className="h-5 w-5 text-slate-950 animate-bounce" />
             ) : isTopThree ? (
-              <Trophy className="h-5 w-5 text-[#00B4FF] dark:text-blue-300" />
+              <Trophy className="h-5 w-5 text-[#FDBA74] dark:text-blue-300" />
             ) : (
               <span className="font-mono font-black">#{rank}</span>
             )}
@@ -69,7 +69,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
 
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <RankTierIcon tier={level.tier} className="h-3.5 w-3.5 text-[#00B4FF] shrink-0" />
+              <RankTierIcon tier={level.tier} className="h-3.5 w-3.5 text-[#FDBA74] shrink-0" />
               <span className="text-xs font-black text-[#0D1B3E] dark:text-white truncate">
                 {level.title}
               </span>
@@ -84,7 +84,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
         </div>
 
         <div className="text-left shrink-0">
-          <span className="text-xs font-black text-[#00B4FF] dark:text-blue-400 font-mono">
+          <span className="text-xs font-black text-[#FDBA74] dark:text-blue-400 font-mono">
             {points} نقطة
           </span>
           {onOpenLeaderboard && (
@@ -123,7 +123,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
                 ? 'bg-gradient-to-br from-slate-200 to-slate-400 text-slate-900 ring-2 ring-slate-300' 
                 : rank === 3 
                 ? 'bg-gradient-to-br from-amber-600 to-amber-700 text-amber-100 ring-2 ring-amber-600/30' 
-                : 'bg-blue-50 dark:bg-blue-950/80 text-[#00B4FF] dark:text-blue-300 border border-blue-200 dark:border-blue-800'
+                : 'bg-blue-50 dark:bg-blue-950/80 text-[#FDBA74] dark:text-blue-300 border border-blue-200 dark:border-blue-800'
             }`}>
               {isFirstOnPlatform ? (
                 <Crown className="h-7 w-7 sm:h-8 sm:w-8 text-slate-950" />
@@ -153,7 +153,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
                     <span>المركز الأول على مستوى الجمهورية والمنصة</span>
                   </span>
                 ) : (
-                  <span className="text-xs font-bold text-[#00B4FF] dark:text-blue-400">
+                  <span className="text-xs font-bold text-[#FDBA74] dark:text-blue-400">
                     {rankTitleArabic} (من بين {totalStudents} طالب)
                   </span>
                 )}
@@ -183,17 +183,17 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
           <div className="space-y-1.5 bg-slate-50 dark:bg-slate-900/40 p-3 sm:p-3.5 rounded-2xl border border-slate-100 dark:border-slate-800">
             <div className="flex items-center justify-between text-xs font-bold">
               <span className="text-[#0D1B3E] dark:text-slate-200 flex items-center gap-1.5">
-                <TrendingUp className="h-3.5 w-3.5 text-[#00B4FF] dark:text-blue-400" />
+                <TrendingUp className="h-3.5 w-3.5 text-[#FDBA74] dark:text-blue-400" />
                 <span>الترقية إلى: {nextLevel.title}</span>
               </span>
-              <span className="text-[#00B4FF] dark:text-blue-400 font-mono font-black">
+              <span className="text-[#FDBA74] dark:text-blue-400 font-mono font-black">
                 باقي {pointsToNextLevel} نقطة ({progressToNextLevel}%)
               </span>
             </div>
 
             <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
               <div 
-                className="h-full bg-gradient-to-r from-[#00B4FF] to-blue-500 rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-[#FDBA74] to-blue-500 rounded-full transition-all duration-500"
                 style={{ width: `${progressToNextLevel}%` }}
               />
             </div>
@@ -221,7 +221,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
                 key={lvl.level}
                 className={`flex flex-col items-center justify-center p-2.5 rounded-xl text-center border transition-all ${
                   isCurrent 
-                    ? 'bg-blue-50 dark:bg-blue-950/80 border-[#00B4FF] ring-2 ring-blue-400/40 shadow-xs' 
+                    ? 'bg-blue-50 dark:bg-blue-950/80 border-[#FDBA74] ring-2 ring-blue-400/40 shadow-xs' 
                     : isReached 
                     ? 'bg-emerald-50/60 dark:bg-emerald-950/40 border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300' 
                     : 'bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 opacity-60'
@@ -229,7 +229,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
                 title={`${lvl.title} (${lvl.minPoints} نقطة)`}
               >
                 <div className={`p-1.5 rounded-lg mb-1 ${
-                  isCurrent ? 'bg-blue-100 text-[#00B4FF]' : isReached ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
+                  isCurrent ? 'bg-blue-100 text-[#FDBA74]' : isReached ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'
                 }`}>
                   <RankTierIcon tier={lvl.tier} className="h-4 w-4" />
                 </div>
@@ -249,7 +249,7 @@ export const StudentLevelRankCard: React.FC<StudentLevelRankCardProps> = ({
           <div className="pt-1 flex justify-end">
             <button
               onClick={onOpenLeaderboard}
-              className="inline-flex items-center gap-2 text-xs font-black text-[#00B4FF] dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 text-xs font-black text-[#FDBA74] dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors cursor-pointer"
             >
               <span>فتح لوحة الشرف ومنافسة الأوائل</span>
               <ChevronLeft className="h-4 w-4" />

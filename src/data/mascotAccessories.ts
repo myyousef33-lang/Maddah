@@ -21,7 +21,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'hat',
     description: 'تاج ملكي فاخر مرصع بالأحجار الكريمة لقمة أوائل الجمهورية',
     rarity: 'legendary',
-    primaryColor: '#D4AF37',
+    primaryColor: '#F97316',
     accentColor: '#FFEAA7',
     iconName: 'Crown',
     imageUrl: '/images/accessories/real_gold_crown.png'
@@ -32,7 +32,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'hat',
     description: 'قبعة تخرج حقيقية فاخرة بشرابة حريرية ذهبية وميدالية التفوق',
     rarity: 'rare',
-    primaryColor: '#00B4FF',
+    primaryColor: '#FDBA74',
     accentColor: '#60A5FA',
     iconName: 'GraduationCap',
     imageUrl: '/images/accessories/real_grad_cap.png'
@@ -67,7 +67,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'hoodie',
     description: 'هودي قطني فاخر بتطريز ذهبي لمعادلات ونظريات الرياضيات',
     rarity: 'legendary',
-    primaryColor: '#D4AF37',
+    primaryColor: '#F97316',
     accentColor: '#FBBF24',
     iconName: 'Shirt',
     imageUrl: '/images/accessories/real_physics_hoodie.png'
@@ -101,7 +101,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     description: 'هودي أسود كلاسيكي بأطراف ذهبية ورموز الهندسة الرياضية',
     rarity: 'epic',
     primaryColor: '#1E293B',
-    accentColor: '#D4AF37',
+    accentColor: '#F97316',
     iconName: 'Shield',
     imageUrl: '/images/accessories/real_physics_hoodie.png'
   },
@@ -124,7 +124,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'glasses',
     description: 'إطار معدني ذهبي راقٍ مصمم خصيصاً للرؤية والتركيز الشديد',
     rarity: 'legendary',
-    primaryColor: '#D4AF37',
+    primaryColor: '#F97316',
     accentColor: '#FDE68A',
     iconName: 'Glasses',
     imageUrl: '/images/accessories/real_smart_glasses.png'
@@ -148,7 +148,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'badge',
     description: 'ميدالية رياضيات ذهبية ثقيلة بشريط حريري أزرق محفورة برمز التكامل والنسبة الذهبية',
     rarity: 'legendary',
-    primaryColor: '#D4AF37',
+    primaryColor: '#F97316',
     accentColor: '#FEF08A',
     iconName: 'Award',
     imageUrl: '/images/accessories/real_physics_medal.png'
@@ -159,7 +159,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'badge',
     description: 'وسام التميز الأكاديمي لطلاب الرياضيات الحاصلين على أعلى الدرجات',
     rarity: 'epic',
-    primaryColor: '#00B4FF',
+    primaryColor: '#FDBA74',
     accentColor: '#93C5FD',
     iconName: 'Star',
     imageUrl: '/images/accessories/real_physics_medal.png'
@@ -183,7 +183,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'shoes',
     description: 'حذاء رياضي متطور بنعل مريح وتفاصيل ذهبية أنيقة',
     rarity: 'epic',
-    primaryColor: '#D4AF37',
+    primaryColor: '#F97316',
     accentColor: '#FEF08A',
     iconName: 'Zap'
   },
@@ -193,7 +193,7 @@ export const MASCOT_ACCESSORIES: MascotAccessory[] = [
     category: 'shoes',
     description: 'حذاء رياضي أزرق مخصص للنشاط وسرعة البديهة والحلول الذكية',
     rarity: 'rare',
-    primaryColor: '#00B4FF',
+    primaryColor: '#FDBA74',
     accentColor: '#60A5FA',
     iconName: 'Zap'
   }

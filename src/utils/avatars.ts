@@ -12,14 +12,14 @@ export const PRESET_AVATARS: AvatarOption[] = [
     name: 'رمز اللانهاية والتحليل',
     iconName: 'Infinity',
     bgGradient: 'from-amber-500/20 to-yellow-600/30',
-    borderColor: 'border-[#D4AF37]'
+    borderColor: 'border-[#F97316]'
   },
   {
     id: 'preset:calculator',
     name: 'المحاسب الذكي',
     iconName: 'Calculator',
     bgGradient: 'from-blue-500/20 to-indigo-600/30',
-    borderColor: 'border-[#00B4FF]'
+    borderColor: 'border-[#FDBA74]'
   },
   {
     id: 'preset:geometry',

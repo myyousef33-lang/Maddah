@@ -163,13 +163,13 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
         <div className="bg-gradient-to-r from-blue-50 via-white to-amber-50/40 p-6 border-b border-slate-100">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-[#D4AF37]">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 border border-amber-200 text-[#F97316]">
                 <Wallet className="h-6 w-6" />
               </div>
               <div>
                 <h2 className="text-xl font-black text-[#0D1B3E] flex items-center gap-2">
                   محفظة الطالب
-                  <span className="text-xs font-bold text-[#00B4FF] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                  <span className="text-xs font-bold text-[#FDBA74] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
                     رصيد آمن
                   </span>
                 </h2>
@@ -189,7 +189,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
             <div>
               <span className="text-xs text-[#6B7280] block font-medium">الرصيد المتاح حالياً</span>
               <div className="flex items-baseline gap-2 mt-0.5">
-                <span className="text-3xl font-black text-[#00B4FF] font-mono">
+                <span className="text-3xl font-black text-[#FDBA74] font-mono">
                   {currentBalance.toLocaleString('ar-EG')}
                 </span>
                 <span className="text-sm font-bold text-[#0D1B3E]">جنيه مصري</span>
@@ -201,7 +201,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                 onClick={() => setActiveTab('deposit')}
                 className={`rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
                   activeTab === 'deposit'
-                    ? 'bg-[#D4AF37] text-[#0D1B3E]'
+                    ? 'bg-[#F97316] text-[#0D1B3E]'
                     : 'bg-white text-[#6B7280] border border-slate-200 hover:bg-slate-50'
                 }`}
               >
@@ -211,7 +211,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                 onClick={() => setActiveTab('history')}
                 className={`rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
                   activeTab === 'history'
-                    ? 'bg-[#D4AF37] text-[#0D1B3E]'
+                    ? 'bg-[#F97316] text-[#0D1B3E]'
                     : 'bg-white text-[#6B7280] border border-slate-200 hover:bg-slate-50'
                 }`}
               >
@@ -262,21 +262,21 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                           onClick={() => setSelectedMethod(m)}
                           className={`cursor-pointer rounded-2xl p-4 border transition-all flex flex-col justify-between ${
                             isSelected
-                              ? 'bg-blue-50/60 border-[#00B4FF] shadow-xs'
+                              ? 'bg-blue-50/60 border-[#FDBA74] shadow-xs'
                               : 'bg-[#F5F7FA] border-slate-200 hover:border-blue-200 hover:bg-slate-50'
                           }`}
                         >
                           <div className="flex items-center justify-between mb-2">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100 text-[#00B4FF]">
+                            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100 text-[#FDBA74]">
                               <Smartphone className="h-4 w-4" />
                             </div>
                             {isSelected && (
-                              <div className="h-2 w-2 rounded-full bg-[#00B4FF] shadow-xs" />
+                              <div className="h-2 w-2 rounded-full bg-[#FDBA74] shadow-xs" />
                             )}
                           </div>
                           <div>
                             <span className="text-xs font-black text-[#0D1B3E] block">{m.name}</span>
-                            <span className="text-[11px] text-[#00B4FF] font-mono truncate block mt-0.5">
+                            <span className="text-[11px] text-[#FDBA74] font-mono truncate block mt-0.5">
                               {m.accountNumber}
                             </span>
                           </div>
@@ -292,7 +292,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                 <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4 space-y-3">
                   <div className="flex items-center justify-between border-b border-amber-200/60 pb-3">
                     <div className="flex items-center gap-2">
-                      <ShieldCheck className="h-4 w-4 text-[#D4AF37]" />
+                      <ShieldCheck className="h-4 w-4 text-[#F97316]" />
                       <span className="text-xs font-bold text-[#0D1B3E]">بيانات التحويل لـ {selectedMethod.name}</span>
                     </div>
                     <button
@@ -308,7 +308,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                   <div className="flex items-center justify-between bg-white p-3 rounded-xl border border-amber-200/60">
                     <div>
                       <span className="text-[10px] text-[#6B7280] block">رقم المحفظة / الحساب</span>
-                      <span className="text-sm font-black text-[#00B4FF] font-mono select-all">
+                      <span className="text-sm font-black text-[#FDBA74] font-mono select-all">
                         {selectedMethod.accountNumber}
                       </span>
                     </div>
@@ -324,7 +324,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
 
                   {selectedMethod.instructions && (
                     <div className="text-[11px] text-[#0D1B3E] leading-relaxed bg-white p-3 rounded-xl border border-amber-200/60 flex items-start gap-2">
-                      <Sparkles className="h-4 w-4 text-[#D4AF37] shrink-0 mt-0.5" />
+                      <Sparkles className="h-4 w-4 text-[#F97316] shrink-0 mt-0.5" />
                       <div>
                         <strong>تعليمات التحويل:</strong> {selectedMethod.instructions}
                       </div>
@@ -351,9 +351,9 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                         onChange={(e) => setAmount(e.target.value)}
                         placeholder="150"
                         required
-                        className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] px-4 py-2.5 text-sm font-bold text-[#0D1B3E] placeholder-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                        className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] px-4 py-2.5 text-sm font-bold text-[#0D1B3E] placeholder-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                       />
-                      <span className="absolute left-3 top-2.5 text-xs text-[#00B4FF] font-bold">ج.م</span>
+                      <span className="absolute left-3 top-2.5 text-xs text-[#FDBA74] font-bold">ج.م</span>
                     </div>
                   </div>
 
@@ -364,7 +364,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                       value={refNumber}
                       onChange={(e) => setRefNumber(e.target.value)}
                       placeholder="مثال: 010xxxxxxxx أو رقم الإيصال"
-                      className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] px-4 py-2.5 text-sm font-bold text-[#0D1B3E] placeholder-slate-400 focus:border-[#00B4FF] focus:bg-white focus:outline-none"
+                      className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] px-4 py-2.5 text-sm font-bold text-[#0D1B3E] placeholder-slate-400 focus:border-[#FDBA74] focus:bg-white focus:outline-none"
                     />
                   </div>
                 </div>
@@ -396,7 +396,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                       </div>
                     ) : (
                       <div className="text-center space-y-1">
-                        <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-slate-200 text-[#00B4FF]">
+                        <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-white border border-slate-200 text-[#FDBA74]">
                           <Upload className="h-5 w-5" />
                         </div>
                         <span className="text-xs font-bold text-[#0D1B3E] block">اضغط لرفع صورة الإيصال أو اسحب الملف هنا</span>
@@ -411,7 +411,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-2xl bg-[#D4AF37] py-3.5 text-sm font-black text-[#0D1B3E] hover:bg-[#D4AF37] shadow-xs transition-all disabled:opacity-50"
+                className="w-full rounded-2xl bg-[#F97316] py-3.5 text-sm font-black text-[#0D1B3E] hover:bg-[#F97316] shadow-xs transition-all disabled:opacity-50"
               >
                 {isSubmitting ? 'جارٍ إرسال طلب الشحن...' : 'تأكيد وإرسال طلب الشحن'}
               </button>
@@ -443,7 +443,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
                           className={`flex h-10 w-10 items-center justify-center rounded-xl border ${
                             isDeposit
                               ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
-                              : 'bg-blue-50 border-blue-200 text-[#00B4FF]'
+                              : 'bg-blue-50 border-blue-200 text-[#FDBA74]'
                           }`}
                         >
                           {isDeposit ? <ArrowDownLeft className="h-5 w-5" /> : <ArrowUpRight className="h-5 w-5" />}

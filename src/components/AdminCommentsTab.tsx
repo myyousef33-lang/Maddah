@@ -57,7 +57,7 @@ export const AdminCommentsTab: React.FC = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5">
         <div>
           <h2 className="text-xl font-black text-[#0D1B3E] flex items-center gap-2">
-            <MessageSquare className="h-6 w-6 text-[#00B4FF]" />
+            <MessageSquare className="h-6 w-6 text-[#FDBA74]" />
             <span>إدارة استفسارات وتعليقات الطلاب على الدروس</span>
           </h2>
           <p className="text-xs text-slate-500 mt-1">
@@ -67,7 +67,7 @@ export const AdminCommentsTab: React.FC = () => {
 
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-500">إجمالي التعليقات:</span>
-          <span className="rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-mono font-bold text-[#00B4FF]">
+          <span className="rounded-xl bg-blue-50 border border-blue-200 px-3 py-1 text-xs font-mono font-bold text-[#FDBA74]">
             {comments.length}
           </span>
         </div>
@@ -88,7 +88,7 @@ export const AdminCommentsTab: React.FC = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="بحث باسم الطالب أو محتوى السؤال..."
-          className="w-full rounded-xl border border-slate-200 bg-white pr-10 pl-4 py-2 text-xs text-[#0D1B3E] placeholder-slate-400 focus:border-[#00B4FF] focus:outline-none"
+          className="w-full rounded-xl border border-slate-200 bg-white pr-10 pl-4 py-2 text-xs text-[#0D1B3E] placeholder-slate-400 focus:border-[#FDBA74] focus:outline-none"
         />
       </div>
 
@@ -102,23 +102,23 @@ export const AdminCommentsTab: React.FC = () => {
           {filteredComments.map((cmt) => (
             <div
               key={cmt.id}
-              className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-xs hover:border-[#00B4FF]/40 transition-all"
+              className="rounded-2xl border border-slate-200 bg-white p-5 space-y-4 shadow-xs hover:border-[#FDBA74]/40 transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-[#00B4FF] font-black text-sm">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-[#FDBA74] font-black text-sm">
                     {cmt.studentName.charAt(0)}
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
                       <h4 className="text-sm font-black text-[#0D1B3E]">{cmt.studentName}</h4>
-                      <span className="text-[10px] text-[#00B4FF] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200 font-bold">
+                      <span className="text-[10px] text-[#FDBA74] bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200 font-bold">
                         {cmt.studentGrade}
                       </span>
                       {cmt.rating && (
-                        <div className="flex items-center text-[#D4AF37] text-xs">
+                        <div className="flex items-center text-[#F97316] text-xs">
                           {Array.from({ length: cmt.rating }).map((_, i) => (
-                            <Star key={i} className="h-3 w-3 fill-[#D4AF37]" />
+                            <Star key={i} className="h-3 w-3 fill-[#F97316]" />
                           ))}
                         </div>
                       )}
@@ -174,7 +174,7 @@ export const AdminCommentsTab: React.FC = () => {
                         onChange={(e) => setReplyText(e.target.value)}
                         placeholder="اكتب ردك التوضيحي للطالب..."
                         rows={3}
-                        className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] p-3 text-xs text-[#0D1B3E] placeholder-slate-400 focus:bg-white focus:border-[#00B4FF] focus:outline-none"
+                        className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] p-3 text-xs text-[#0D1B3E] placeholder-slate-400 focus:bg-white focus:border-[#FDBA74] focus:outline-none"
                       />
                       <div className="flex justify-end gap-2">
                         <button
@@ -188,7 +188,7 @@ export const AdminCommentsTab: React.FC = () => {
                         </button>
                         <button
                           onClick={() => handleReplySubmit(cmt.id)}
-                          className="flex items-center gap-1.5 rounded-lg bg-[#D4AF37] px-4 py-1.5 text-xs font-black text-[#0D1B3E] hover:bg-[#D4AF37]"
+                          className="flex items-center gap-1.5 rounded-lg bg-[#F97316] px-4 py-1.5 text-xs font-black text-[#0D1B3E] hover:bg-[#F97316]"
                         >
                           <Send className="h-3.5 w-3.5" />
                           <span>إرسال الرد</span>
@@ -198,7 +198,7 @@ export const AdminCommentsTab: React.FC = () => {
                   ) : (
                     <button
                       onClick={() => setReplyingId(cmt.id)}
-                      className="text-xs font-bold text-[#00B4FF] hover:underline flex items-center gap-1"
+                      className="text-xs font-bold text-[#FDBA74] hover:underline flex items-center gap-1"
                     >
                       <Send className="h-3.5 w-3.5" />
                       <span>كتابة رد من الأستاذ</span>

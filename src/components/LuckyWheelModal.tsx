@@ -48,7 +48,7 @@ const WHEEL_POINT_SECTORS: WheelPointPrize[] = [
     sublabel: 'الجائزة الكبرى لصدارة الجمهورية', 
     badge: '500', 
     bg: '#0F172A', 
-    text: '#D4AF37',
+    text: '#F97316',
     rarity: 'legendary' 
   },
   { 
@@ -57,7 +57,7 @@ const WHEEL_POINT_SECTORS: WheelPointPrize[] = [
     label: '+50 نقطة', 
     sublabel: 'دفعة صعود الترتيب', 
     badge: '50', 
-    bg: '#00B4FF', 
+    bg: '#FDBA74', 
     text: '#FFFFFF',
     rarity: 'common' 
   },
@@ -208,7 +208,7 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
           particleCount: 160,
           spread: 90,
           origin: { y: 0.55 },
-          colors: ['#D4AF37', '#00B4FF', '#0EA5E9', '#FFFFFF', '#10B981']
+          colors: ['#F97316', '#FDBA74', '#0EA5E9', '#FFFFFF', '#10B981']
         });
       } catch (_) {}
 
@@ -352,7 +352,7 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
                   {/* Gold metallic ring gradient */}
                   <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#FFFBEB" />
-                    <stop offset="30%" stopColor="#D4AF37" />
+                    <stop offset="30%" stopColor="#F97316" />
                     <stop offset="70%" stopColor="#B45309" />
                     <stop offset="100%" stopColor="#FDE047" />
                   </linearGradient>
@@ -375,7 +375,7 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
 
                 {/* Outer Rim Ring */}
                 <circle cx="150" cy="150" r="148" fill="#0D1B3E" stroke="url(#goldBorder)" strokeWidth="8" />
-                <circle cx="150" cy="150" r="142" fill="#040814" stroke="#D4AF37" strokeWidth="2" />
+                <circle cx="150" cy="150" r="142" fill="#040814" stroke="#F97316" strokeWidth="2" />
 
                 {/* 8 Distinct Pie Sectors with Points */}
                 {WHEEL_POINT_SECTORS.map((sector, index) => {
@@ -407,14 +407,14 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
                       <path
                         d={pathData}
                         fill={sector.bg}
-                        stroke="#D4AF37"
+                        stroke="#F97316"
                         strokeWidth="2.5"
                       />
 
                       {/* Item Showcase Group rotated facing center */}
                       <g transform={`translate(${ix}, ${iy}) rotate(${midAngle + 90})`}>
                         {/* Circular Points Emblem */}
-                        <circle cx="0" cy="-6" r="20" fill="#0D1B3E" stroke="#D4AF37" strokeWidth="2.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.6))" />
+                        <circle cx="0" cy="-6" r="20" fill="#0D1B3E" stroke="#F97316" strokeWidth="2.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.6))" />
                         
                         {/* Points number in center */}
                         <text
@@ -422,7 +422,7 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
                           y="-5"
                           textAnchor="middle"
                           dominantBaseline="central"
-                          fill="#D4AF37"
+                          fill="#F97316"
                           fontSize="13"
                           fontWeight="900"
                           fontFamily="monospace"
@@ -463,7 +463,7 @@ export const LuckyWheelModal: React.FC<LuckyWheelModalProps> = ({
                 ))}
 
                 {/* Center Hub Metal Base */}
-                <circle cx="150" cy="150" r="32" fill="#0D1B3E" stroke="#D4AF37" strokeWidth="4" />
+                <circle cx="150" cy="150" r="32" fill="#0D1B3E" stroke="#F97316" strokeWidth="4" />
                 <circle cx="150" cy="150" r="24" fill="url(#centerHubGold)" />
                 <circle cx="150" cy="150" r="12" fill="#0D1B3E" />
               </svg>

@@ -403,7 +403,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
       <div className="rounded-3xl border border-[#222230] bg-[#14141E] p-6 shadow-xl relative overflow-hidden">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-xl bg-[#00B4FF]/10 border border-[#00B4FF]/30 px-3 py-1 text-xs font-bold text-[#00B4FF] mb-2">
+            <div className="inline-flex items-center gap-2 rounded-xl bg-[#FDBA74]/10 border border-[#FDBA74]/30 px-3 py-1 text-xs font-bold text-[#FDBA74] mb-2">
               <Microscope className="h-3.5 w-3.5" />
               <span>معمل الرياضيات التطبيقية والميكانيكا</span>
             </div>
@@ -417,7 +417,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
             <button
               onClick={() => setIsRunning(!isRunning)}
               className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
-                isRunning ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-[#00B4FF] text-[#0B0B0F]'
+                isRunning ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' : 'bg-[#FDBA74] text-[#0B0B0F]'
               }`}
             >
               {isRunning ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
@@ -444,7 +444,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           onClick={() => setActiveSim('projectile')}
           className={`flex-1 min-w-[150px] flex items-center justify-center gap-2 rounded-2xl p-3.5 text-xs font-black transition-all border ${
             activeSim === 'projectile'
-              ? 'bg-[#00B4FF] text-white border-[#00B4FF] shadow-xs'
+              ? 'bg-[#FDBA74] text-white border-[#FDBA74] shadow-xs'
               : 'bg-white text-[#6B7280] border-slate-200 hover:border-blue-200 hover:text-[#0D1B3E]'
           }`}
         >
@@ -456,7 +456,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           onClick={() => setActiveSim('circuit')}
           className={`flex-1 min-w-[150px] flex items-center justify-center gap-2 rounded-2xl p-3.5 text-xs font-black transition-all border ${
             activeSim === 'circuit'
-              ? 'bg-[#D4AF37] text-[#0D1B3E] border-[#D4AF37] shadow-xs'
+              ? 'bg-[#F97316] text-[#0D1B3E] border-[#F97316] shadow-xs'
               : 'bg-white text-[#6B7280] border-slate-200 hover:border-blue-200 hover:text-[#0D1B3E]'
           }`}
         >
@@ -468,7 +468,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           onClick={() => setActiveSim('newton')}
           className={`flex-1 min-w-[150px] flex items-center justify-center gap-2 rounded-2xl p-3.5 text-xs font-black transition-all border ${
             activeSim === 'newton'
-              ? 'bg-[#00B4FF] text-white border-[#00B4FF] shadow-xs'
+              ? 'bg-[#FDBA74] text-white border-[#FDBA74] shadow-xs'
               : 'bg-white text-[#6B7280] border-slate-200 hover:border-blue-200 hover:text-[#0D1B3E]'
           }`}
         >
@@ -484,7 +484,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
         <div className="lg:col-span-2 rounded-3xl border border-slate-200 bg-white p-4 shadow-xs space-y-3">
           <div className="flex items-center justify-between px-2">
             <span className="text-xs font-bold text-[#6B7280] flex items-center gap-1.5">
-              <Layers className="h-4 w-4 text-[#00B4FF]" />
+              <Layers className="h-4 w-4 text-[#FDBA74]" />
               منصة العرض البصري الحية
             </span>
             <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-bold">
@@ -529,7 +529,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           {activeSim === 'projectile' && (
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-5 shadow-xs">
               <h3 className="text-sm font-black text-[#0D1B3E] border-b border-slate-100 pb-2 flex items-center gap-2">
-                <Rocket className="h-4 w-4 text-[#00B4FF]" />
+                <Rocket className="h-4 w-4 text-[#FDBA74]" />
                 <span>متغيرات إطلاق المقذوف</span>
               </h3>
 
@@ -537,7 +537,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>زاوية الإطلاق (θ):</span>
-                    <span className="font-mono text-[#00B4FF]">{projAngle}°</span>
+                    <span className="font-mono text-[#FDBA74]">{projAngle}°</span>
                   </div>
                   <input
                     type="range"
@@ -545,14 +545,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={85}
                     value={projAngle}
                     onChange={(e) => setProjAngle(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>السرعة الابتدائية (v₀):</span>
-                    <span className="font-mono text-[#00B4FF]">{projSpeed} m/s</span>
+                    <span className="font-mono text-[#FDBA74]">{projSpeed} m/s</span>
                   </div>
                   <input
                     type="range"
@@ -560,14 +560,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={80}
                     value={projSpeed}
                     onChange={(e) => setProjSpeed(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>عجلة الجاذبية (g):</span>
-                    <span className="font-mono text-[#00B4FF]">{projGravity} m/s²</span>
+                    <span className="font-mono text-[#FDBA74]">{projGravity} m/s²</span>
                   </div>
                   <input
                     type="range"
@@ -576,7 +576,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     step={0.1}
                     value={projGravity}
                     onChange={(e) => setProjGravity(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
               </div>
@@ -589,7 +589,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>المدى الأفقي (R):</span>
-                  <span className="font-bold font-mono text-[#00B4FF]">{range.toFixed(2)} متر</span>
+                  <span className="font-bold font-mono text-[#FDBA74]">{range.toFixed(2)} متر</span>
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>زمن التحليق الكلي (T):</span>
@@ -603,7 +603,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           {activeSim === 'circuit' && (
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-5 shadow-xs">
               <h3 className="text-sm font-black text-[#0D1B3E] border-b border-slate-100 pb-2 flex items-center gap-2">
-                <Zap className="h-4 w-4 text-[#D4AF37]" />
+                <Zap className="h-4 w-4 text-[#F97316]" />
                 <span>عناصر الدائرة الكهربية</span>
               </h3>
 
@@ -611,7 +611,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>القوة الدافعة (V):</span>
-                    <span className="font-mono text-[#00B4FF]">{voltage} فولت</span>
+                    <span className="font-mono text-[#FDBA74]">{voltage} فولت</span>
                   </div>
                   <input
                     type="range"
@@ -619,14 +619,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={36}
                     value={voltage}
                     onChange={(e) => setVoltage(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>المقاومة الخارجية (R):</span>
-                    <span className="font-mono text-[#00B4FF]">{resistance} أوم</span>
+                    <span className="font-mono text-[#FDBA74]">{resistance} أوم</span>
                   </div>
                   <input
                     type="range"
@@ -634,14 +634,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={50}
                     value={resistance}
                     onChange={(e) => setResistance(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>المقاومة الداخلية (r):</span>
-                    <span className="font-mono text-[#00B4FF]">{internalRes} أوم</span>
+                    <span className="font-mono text-[#FDBA74]">{internalRes} أوم</span>
                   </div>
                   <input
                     type="range"
@@ -649,7 +649,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={10}
                     value={internalRes}
                     onChange={(e) => setInternalRes(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
               </div>
@@ -662,7 +662,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>القدرة المستهلكة (P = I²R):</span>
-                  <span className="font-bold font-mono text-[#00B4FF]">{powerWatts.toFixed(2)} واط</span>
+                  <span className="font-bold font-mono text-[#FDBA74]">{powerWatts.toFixed(2)} واط</span>
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>فرق الجهد بين طرفي البطارية:</span>
@@ -676,7 +676,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
           {activeSim === 'newton' && (
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-5 shadow-xs">
               <h3 className="text-sm font-black text-[#0D1B3E] border-b border-slate-100 pb-2 flex items-center gap-2">
-                <Settings className="h-4 w-4 text-[#00B4FF]" />
+                <Settings className="h-4 w-4 text-[#FDBA74]" />
                 <span>قوة السحب واحتكاك السطح</span>
               </h3>
 
@@ -684,7 +684,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>القوة المؤثرة (F):</span>
-                    <span className="font-mono text-[#00B4FF]">{force} نيوتن</span>
+                    <span className="font-mono text-[#FDBA74]">{force} نيوتن</span>
                   </div>
                   <input
                     type="range"
@@ -692,14 +692,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={200}
                     value={force}
                     onChange={(e) => setForce(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>كتلة الجسم (m):</span>
-                    <span className="font-mono text-[#00B4FF]">{mass} كجم</span>
+                    <span className="font-mono text-[#FDBA74]">{mass} كجم</span>
                   </div>
                   <input
                     type="range"
@@ -707,14 +707,14 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     max={50}
                     value={mass}
                     onChange={(e) => setMass(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs font-bold text-[#0D1B3E]">
                     <span>معامل الاحتكاك (μ):</span>
-                    <span className="font-mono text-[#00B4FF]">{friction}</span>
+                    <span className="font-mono text-[#FDBA74]">{friction}</span>
                   </div>
                   <input
                     type="range"
@@ -723,7 +723,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                     step={0.05}
                     value={friction}
                     onChange={(e) => setFriction(Number(e.target.value))}
-                    className="w-full accent-[#00B4FF]"
+                    className="w-full accent-[#FDBA74]"
                   />
                 </div>
               </div>
@@ -736,7 +736,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>محصلة القوة (F_net):</span>
-                  <span className="font-bold font-mono text-[#00B4FF]">{netForce.toFixed(1)} N</span>
+                  <span className="font-bold font-mono text-[#FDBA74]">{netForce.toFixed(1)} N</span>
                 </div>
                 <div className="flex justify-between text-[#6B7280]">
                   <span>العجلة الناتجة (a = F/m):</span>

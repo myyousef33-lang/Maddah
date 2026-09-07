@@ -4,6 +4,7 @@ import { Star } from 'lucide-react';
 interface CourseRatingBadgeProps {
   rating?: number;
   ratingCount?: number;
+  count?: number;
   size?: 'sm' | 'md' | 'lg';
   position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'corner-edge' | 'inline';
   className?: string;
@@ -14,6 +15,7 @@ interface CourseRatingBadgeProps {
 export const CourseRatingBadge: React.FC<CourseRatingBadgeProps> = React.memo(({
   rating,
   ratingCount,
+  count: countProp,
   size = 'sm',
   position = 'top-left',
   className = '',
@@ -22,7 +24,7 @@ export const CourseRatingBadge: React.FC<CourseRatingBadgeProps> = React.memo(({
 }) => {
   // Default to 4.9 if no rating is set yet
   const score = rating && rating > 0 ? rating : 4.9;
-  const count = ratingCount !== undefined ? ratingCount : 68;
+  const count = countProp !== undefined ? countProp : (ratingCount !== undefined ? ratingCount : 68);
 
   const sizeClasses = {
     sm: 'text-[11px] px-2.5 py-1 gap-1',
@@ -55,10 +57,10 @@ export const CourseRatingBadge: React.FC<CourseRatingBadgeProps> = React.memo(({
     <Component
       type={onClick ? 'button' : undefined}
       onClick={onClick}
-      className={`inline-flex items-center rounded-xl bg-[#0D1B3E]/90 dark:bg-[#080D21]/95 backdrop-blur-md text-[#D4AF37] border border-[#D4AF37]/50 shadow-md transition-transform hover:scale-105 select-none ${sizeClasses[size]} ${posClass} ${onClick ? 'cursor-pointer' : ''} ${className}`}
+      className={`inline-flex items-center rounded-xl bg-[#0D1B3E]/90 dark:bg-[#080D21]/95 backdrop-blur-md text-[#F97316] border border-[#F97316]/50 shadow-md transition-transform hover:scale-105 select-none ${sizeClasses[size]} ${posClass} ${onClick ? 'cursor-pointer' : ''} ${className}`}
       title={`تقييم الطلاب: ${score.toFixed(1)} من 5 نجوم (${count} تقييم)`}
     >
-      <Star className={`${starSizes[size]} fill-[#D4AF37] text-[#D4AF37] shrink-0 drop-shadow-xs`} />
+      <Star className={`${starSizes[size]} fill-[#F97316] text-[#F97316] shrink-0 drop-shadow-xs`} />
       <span className="font-black tracking-tight font-mono">{score.toFixed(1)}</span>
       {showCount && count > 0 && (
         <span className="text-[10px] text-slate-200 dark:text-slate-300 font-medium font-mono">

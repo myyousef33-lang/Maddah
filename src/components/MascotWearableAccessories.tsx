@@ -50,7 +50,7 @@ export const WearableGlasses: React.FC<{
     );
   }
 
-  const primaryStroke = isGold ? '#D4AF37' : '#0284C7';
+  const primaryStroke = isGold ? '#F97316' : '#0284C7';
   const highlightStroke = isGold ? '#FEF08A' : '#7DD3FC';
   const rimDark = isGold ? '#92400E' : '#075985';
   const lensFill = isGold ? 'rgba(254, 240, 138, 0.28)' : 'rgba(6, 182, 212, 0.28)';
@@ -153,17 +153,17 @@ export const WearableNecklaceMedal: React.FC<{
         {/* Ribbon Left Stripe */}
         <linearGradient id="ribbonLeft" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#0B132B" />
-          <stop offset="35%" stopColor="#00B4FF" />
-          <stop offset="50%" stopColor="#D4AF37" />
-          <stop offset="65%" stopColor="#00B4FF" />
+          <stop offset="35%" stopColor="#FDBA74" />
+          <stop offset="50%" stopColor="#F97316" />
+          <stop offset="65%" stopColor="#FDBA74" />
           <stop offset="100%" stopColor="#0B132B" />
         </linearGradient>
         {/* Ribbon Right Stripe */}
         <linearGradient id="ribbonRight" x1="100%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stopColor="#0B132B" />
-          <stop offset="35%" stopColor="#00B4FF" />
-          <stop offset="50%" stopColor="#D4AF37" />
-          <stop offset="65%" stopColor="#00B4FF" />
+          <stop offset="35%" stopColor="#FDBA74" />
+          <stop offset="50%" stopColor="#F97316" />
+          <stop offset="65%" stopColor="#FDBA74" />
           <stop offset="100%" stopColor="#0B132B" />
         </linearGradient>
         {/* Real Gold Luster Radial Gradient */}
@@ -176,7 +176,7 @@ export const WearableNecklaceMedal: React.FC<{
         </radialGradient>
         <linearGradient id="goldBezel" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#FFFBEB" />
-          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="50%" stopColor="#F97316" />
           <stop offset="100%" stopColor="#713F12" />
         </linearGradient>
       </defs>
@@ -185,7 +185,7 @@ export const WearableNecklaceMedal: React.FC<{
       <path
         d="M 30,0 L 92,140 L 100,140 L 48,0 Z"
         fill="url(#ribbonLeft)"
-        stroke="#D4AF37"
+        stroke="#F97316"
         strokeWidth="1.5"
       />
 
@@ -193,7 +193,7 @@ export const WearableNecklaceMedal: React.FC<{
       <path
         d="M 170,0 L 108,140 L 100,140 L 152,0 Z"
         fill="url(#ribbonRight)"
-        stroke="#D4AF37"
+        stroke="#F97316"
         strokeWidth="1.5"
       />
 
@@ -381,7 +381,7 @@ export const WearableGraduationCap: React.FC<{
   const isEmerald = type.includes('emerald');
   const capMainColor = isEmerald ? '#064E3B' : '#0F172A';
   const capTopGrad = isEmerald ? '#047857' : '#1E293B';
-  const tasselColor = '#D4AF37';
+  const tasselColor = '#F97316';
 
   return (
     <svg viewBox="0 0 260 160" className="w-full h-auto filter drop-shadow-[0_10px_24px_rgba(0,0,0,0.7)]">
@@ -405,7 +405,7 @@ export const WearableGraduationCap: React.FC<{
       <polygon
         points="130,12 250,52 130,90 10,52"
         fill="url(#capBoardGrad)"
-        stroke="#D4AF37"
+        stroke="#F97316"
         strokeWidth="2.5"
       />
       {/* 3D Board Edges */}

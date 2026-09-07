@@ -128,7 +128,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between p-4 sm:p-6 border-b border-slate-100 bg-gradient-to-l from-blue-50/50 via-white to-amber-50/30">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#00B4FF] text-white shadow-md shadow-blue-500/20">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FDBA74] text-white shadow-md shadow-blue-500/20">
               <Shirt className="h-6 w-6" />
             </div>
             <div>
@@ -150,7 +150,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
                 }}
                 className="flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs sm:text-sm font-black hover:bg-amber-100 transition-all cursor-pointer shadow-2xs"
               >
-                <Gift className="h-4 w-4 text-[#D4AF37]" />
+                <Gift className="h-4 w-4 text-[#F97316]" />
                 <span className="hidden xs:inline">عجلة الحظ</span>
                 <span className="inline-flex items-center justify-center px-1.5 py-0.5 rounded-full bg-amber-400 text-[#0D1B3E] text-[10px] font-black">
                   {availableSpins}
@@ -176,7 +176,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
             
             <div className="w-full flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-[#0D1B3E] flex items-center gap-1.5">
-                <Sparkles className="h-4 w-4 text-[#D4AF37]" />
+                <Sparkles className="h-4 w-4 text-[#F97316]" />
                 <span>المعاينة المباشرة للشخصية</span>
               </span>
 
@@ -219,7 +219,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
                     return (
                       <span
                         key={cat}
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-[#00B4FF] text-xs font-bold"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-[#FDBA74] text-xs font-bold"
                       >
                         {renderSvgIcon(item.iconName, 'h-3.5 w-3.5')}
                         <span>{item.name}</span>
@@ -256,7 +256,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
                       selectedCategory === cat
-                        ? 'bg-[#00B4FF] text-white shadow-xs'
+                        ? 'bg-[#FDBA74] text-white shadow-xs'
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
@@ -278,7 +278,7 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
                     key={accessory.id}
                     className={`relative p-3.5 rounded-2xl border transition-all flex flex-col justify-between gap-3 ${
                       isCurrentlyEquipped
-                        ? 'border-[#00B4FF] bg-blue-50/60 shadow-xs'
+                        ? 'border-[#FDBA74] bg-blue-50/60 shadow-xs'
                         : isUnlocked
                         ? 'border-slate-200 bg-white hover:border-slate-300'
                         : 'border-slate-200/60 bg-slate-50/70 opacity-75'
@@ -346,8 +346,8 @@ export const MascotWardrobeModal: React.FC<MascotWardrobeModalProps> = ({
                           onClick={() => handleToggleEquip(accessory)}
                           className={`w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-xs font-black transition-all cursor-pointer ${
                             isCurrentlyEquipped
-                              ? 'bg-[#00B4FF] text-white hover:bg-blue-700 shadow-xs'
-                              : 'bg-slate-100 hover:bg-blue-50 text-[#0D1B3E] hover:text-[#00B4FF] border border-slate-200'
+                              ? 'bg-[#FDBA74] text-white hover:bg-blue-700 shadow-xs'
+                              : 'bg-slate-100 hover:bg-blue-50 text-[#0D1B3E] hover:text-[#FDBA74] border border-slate-200'
                           }`}
                         >
                           {isCurrentlyEquipped ? (
