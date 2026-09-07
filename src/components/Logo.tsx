@@ -29,16 +29,16 @@ export const Logo: React.FC<LogoProps> = ({
     <div className={`flex items-center gap-3 select-none ${className}`}>
       {/* Visual Mathematical Geometry & Golden Ratio Badge */}
       <div className="relative group">
-        {/* Outer Luxury Gold & Electric Blue Halo */}
-        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#D4AF37]/50 via-[#00F0FF]/30 to-[#D4AF37]/50 blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
+        {/* Outer Luxury Gold & Math Cyan Halo */}
+        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#D4AF37]/50 via-[#19C7E8]/30 to-[#D4AF37]/50 blur-sm opacity-80 group-hover:opacity-100 transition-opacity" />
         
         {/* Inner Badge Frame */}
-        <div className={`relative flex ${iconSizes[size]} items-center justify-center rounded-2xl bg-[#0B0B0F] border-2 border-[#D4AF37] dark:border-[#D4AF37] shadow-md overflow-hidden shrink-0`}>
+        <div className={`relative flex ${iconSizes[size]} items-center justify-center rounded-2xl bg-[#080B10] border-2 border-[#D4AF37] dark:border-[#D4AF37] shadow-md overflow-hidden shrink-0`}>
           
           {/* Subtle Math Geometry Rings & Golden Spirals in Background */}
           <svg className="absolute inset-0 h-full w-full opacity-40 animate-[spin_24s_linear_infinite]" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="38" fill="none" stroke="#D4AF37" strokeWidth="1.5" strokeDasharray="4 3" />
-            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#00F0FF" strokeWidth="1.2" strokeDasharray="3 3" transform="rotate(45 50 50)" />
+            <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#19C7E8" strokeWidth="1.2" strokeDasharray="3 3" transform="rotate(45 50 50)" />
             <ellipse cx="50" cy="50" rx="36" ry="18" fill="none" stroke="#D4AF37" strokeWidth="1.2" transform="rotate(-45 50 50)" />
           </svg>
 
@@ -47,8 +47,8 @@ export const Logo: React.FC<LogoProps> = ({
             <span className="leading-none">∑</span>
           </div>
 
-          {/* Electric Blue Quantum Spark Dot */}
-          <div className="absolute top-1 right-1 h-2 w-2 rounded-full bg-[#00F0FF] shadow-[0_0_8px_#00F0FF] animate-pulse" />
+          {/* Math Cyan Quantum Spark Dot */}
+          <div className="absolute top-1 right-1 h-2 w-2 rounded-full bg-[#19C7E8] shadow-[0_0_8px_#19C7E8] animate-pulse" />
         </div>
       </div>
 
@@ -59,11 +59,11 @@ export const Logo: React.FC<LogoProps> = ({
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] gold-glow-subtle font-extrabold">
               مداح
             </span>
-            <span className="text-[#0D1B3E] dark:text-white transition-colors">
+            <span className="text-[#071A33] dark:text-white transition-colors">
               الرياضيات
             </span>
           </div>
-          <span className="hidden xs:inline-block rounded-md bg-[#00F0FF]/10 dark:bg-[#00F0FF]/20 border border-[#00F0FF]/30 px-1.5 py-0.5 text-[9px] font-black text-[#0284C7] dark:text-[#00F0FF] tracking-wider uppercase font-mono shadow-xs whitespace-nowrap">
+          <span className="hidden xs:inline-block rounded-md bg-[#19C7E8]/10 dark:bg-[#19C7E8]/20 border border-[#19C7E8]/30 px-1.5 py-0.5 text-[9px] font-black text-[#19C7E8] dark:text-[#19C7E8] tracking-wider uppercase font-mono shadow-xs whitespace-nowrap">
             MATHEMATICS
           </span>
         </div>

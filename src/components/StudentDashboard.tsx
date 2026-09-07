@@ -307,7 +307,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
   const mascotSrc = isFemale ? '/images/student-mascot-female-half.png' : '/images/student-mascot-male-half.png';
 
   return (
-    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-5 sm:space-y-6 pb-24 md:pb-12 text-slate-100" dir="rtl">
+    <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8 py-5 sm:py-7 space-y-5 sm:space-y-6 pb-24 md:pb-12 text-[#071A33] dark:text-slate-100" dir="rtl">
       
       {/* Guest Mode Notice for Visitors */}
       {!student && (
@@ -317,20 +317,20 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
-              <h3 className="text-sm font-black text-white">أنت تتصفح لوحة دراستي كزائر (طالب تجريبي)</h3>
-              <p className="text-xs text-slate-400 mt-0.5">سجل دخولك أو أنشئ حسابك لحفظ تقدمك الفعلي وتفعيل الأكواد ومتابعة نتائج امتحاناتك.</p>
+              <h3 className="text-sm font-black text-[#071A33] dark:text-white">أنت تتصفح لوحة دراستي كزائر (طالب تجريبي)</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">سجل دخولك أو أنشئ حسابك لحفظ تقدمك الفعلي وتفعيل الأكواد ومتابعة نتائج امتحاناتك.</p>
             </div>
           </div>
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
             <button
               onClick={() => onNavigate('home')}
-              className="flex-1 sm:flex-initial rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 px-4 py-2 text-xs font-black text-slate-950 hover:from-amber-300 hover:to-amber-400 transition-all cursor-pointer text-center shadow-xs"
+              className="flex-1 sm:flex-initial rounded-xl bg-[#D4AF37] hover:bg-[#C59F2D] px-4 py-2 text-xs font-black text-[#071A33] transition-all cursor-pointer text-center shadow-xs"
             >
               تسجيل الدخول / إنشاء حساب
             </button>
             <button
               onClick={onOpenActivationModal}
-              className="flex-1 sm:flex-initial rounded-xl border border-[#222230] bg-[#181824] px-4 py-2 text-xs font-bold text-slate-200 hover:bg-[#222232] transition-all cursor-pointer text-center"
+              className="flex-1 sm:flex-initial rounded-xl border border-[#071A33]/20 dark:border-[#1E293B] bg-[#071A33] px-4 py-2 text-xs font-bold text-[#D4AF37] hover:bg-[#0C2446] transition-all cursor-pointer text-center"
             >
               تفعيل كود
             </button>
@@ -341,7 +341,7 @@ export const StudentDashboard: React.FC<StudentDashboardProps> = ({
       {/* ========================================================================= */}
       {/* 1. Welcome Section (قسم الترحيب مع الشخصية الكرتونية 3D Mascot)             */}
       {/* ========================================================================= */}
-      <section className="rounded-2xl sm:rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-l from-[#14141E] via-[#0F0F18] to-[#0B0B0F] p-4 sm:p-6 lg:p-8 shadow-sm relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-[310px] lg:min-h-[330px] flex items-center">
+      <section className="rounded-2xl sm:rounded-3xl border border-[#D4AF37]/40 bg-gradient-to-l from-[#071A33] via-[#0C2446] to-[#071A33] p-4 sm:p-6 lg:p-8 shadow-lg relative overflow-hidden min-h-[240px] sm:min-h-[280px] md:min-h-[310px] lg:min-h-[330px] flex items-center text-white">
         {/* Decorative physics ambient glow behind mascot */}
         <div className="absolute -left-12 -bottom-12 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-blue-600/15 blur-3xl pointer-events-none" />
         <div className="absolute left-8 bottom-0 h-56 w-56 sm:h-72 sm:w-72 rounded-full bg-amber-500/15 blur-2xl pointer-events-none" />

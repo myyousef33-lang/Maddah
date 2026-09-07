@@ -5,13 +5,15 @@
 @layer base {
   html {
     font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
-    background-color: #0B0B0F;
-    color: #F8FAFC;
-    color-scheme: dark;
+    background-color: #F7FAFD;
+    color: #071A33;
+    color-scheme: light dark;
     margin: 0;
     padding: 0;
     width: 100%;
     min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -22,37 +24,38 @@
     padding: 0;
     width: 100%;
     min-height: 100vh;
-    background-color: #0B0B0F;
-    color: #F8FAFC;
+    background-color: #F7FAFD;
+    color: #071A33;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto !important;
   }
 
   #root {
     width: 100%;
     min-height: 100vh;
-    background-color: #0B0B0F;
-    color: #F8FAFC;
+    background-color: #F7FAFD;
+    color: #071A33;
+    overflow: visible;
   }
 }
 
 /* =========================================================
-   LUXURY BRAND & DUAL LIGHT / DARK THEME SYSTEM
+   MADDAH MATHEMATICS - LUXURY BRAND COLOR PALETTE
    ========================================================= */
 
 html.dark,
 body.dark,
 .dark {
-  background-color: #0B0B0F;
-  color: #F8FAFC;
+  background-color: #080B10;
+  color: #F1F5F9;
   color-scheme: dark;
 }
 
 html.dark #root,
 body.dark #root,
 .dark #root {
-  background-color: #0B0B0F;
-  color: #F8FAFC;
+  background-color: #080B10;
+  color: #F1F5F9;
 }
 
 /* Calligraphic font & luxury gold glow for "مداح الرياضيات" */
@@ -68,8 +71,12 @@ body.dark #root,
   text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
 }
 
-.electric-glow {
-  text-shadow: 0 0 12px rgba(0, 180, 255, 0.45);
+.cyan-glow-subtle {
+  text-shadow: 0 0 8px rgba(25, 199, 232, 0.4);
+}
+
+.cyan-glow {
+  box-shadow: 0 0 15px rgba(25, 199, 232, 0.25);
 }
 
 .gold-border-glow {
@@ -77,13 +84,46 @@ body.dark #root,
   border: 1px solid rgba(212, 175, 55, 0.5);
 }
 
+/* Luxury Brand Buttons */
+.btn-gold-primary {
+  background-color: #D4AF37;
+  color: #071A33;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+}
+
+.btn-gold-primary:hover {
+  background-color: #C59F2D;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-navy-secondary {
+  background-color: #071A33;
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(7, 26, 51, 0.15);
+}
+
+.btn-navy-secondary:hover {
+  background-color: #0C2446;
+  border-color: #D4AF37;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+  transform: translateY(-1px);
+}
+
 /* Dark Mode Input & Select Fields */
 .dark input,
 .dark select,
 .dark textarea {
-  background-color: #12121A;
+  background-color: #101827;
   color: #F8FAFC;
-  border-color: #222230;
+  border-color: #1E293B;
 }
 
 .dark input::placeholder,
@@ -94,20 +134,20 @@ body.dark #root,
 .dark input:focus,
 .dark select:focus,
 .dark textarea:focus {
-  border-color: #00B4FF;
-  background-color: #161622;
+  border-color: #19C7E8;
+  background-color: #152033;
 }
 
 /* Modals & Overlays in Dark Mode */
 .dark .glass-card {
-  background: #14141E;
-  border-color: #222230;
+  background: #101827;
+  border-color: #1E293B;
   box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
 }
 
 .dark .glass-card-hover:hover {
-  border-color: #00B4FF;
-  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.25);
+  border-color: #19C7E8;
+  box-shadow: 0 12px 28px -6px rgba(25, 199, 232, 0.25);
 }
 
 /* Custom Scrollbar for sleek physics platform */
@@ -117,7 +157,7 @@ body.dark #root,
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F5F9;
+  background: #F7FAFD;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -126,25 +166,20 @@ body.dark #root,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00B4FF;
+  background: #19C7E8;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #0B0B0F;
+  background: #080B10;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #222230;
+  background: #1E293B;
   border-radius: 4px;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #00B4FF;
-}
-
-/* Physics Glowing & Glass UI Accents */
-.physics-glow {
-  text-shadow: 0 2px 10px rgba(212, 175, 55, 0.4);
+  background: #19C7E8;
 }
 
 /* Anti-Print Security & Anti-Copy Protection */
@@ -165,9 +200,9 @@ body.dark #root,
 }
 
 .glass-card {
-  background: #EBF1FE;
-  border: 1px solid #C7D9FE;
-  box-shadow: 0 4px 20px -2px rgba(0, 180, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(7, 26, 51, 0.06);
 }
 
 .glass-card-hover {
@@ -175,9 +210,9 @@ body.dark #root,
 }
 
 .glass-card-hover:hover {
-  border-color: #00B4FF;
+  border-color: #19C7E8;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(0, 180, 255, 0.2);
+  box-shadow: 0 12px 28px -6px rgba(25, 199, 232, 0.2);
 }
 
 /* =========================================================

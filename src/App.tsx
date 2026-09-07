@@ -36,6 +36,12 @@ const AdminDashboard = React.lazy(() =>
   import('./components/AdminDashboard').then(module => ({ default: module.AdminDashboard }))
 );
 
+const pageVariants = {
+  initial: { opacity: 0, y: 0, pointerEvents: 'none' as const },
+  animate: { opacity: 1, y: 0, pointerEvents: 'auto' as const },
+  exit: { opacity: 0, y: 0, pointerEvents: 'none' as const },
+};
+
 export default function App() {
   const [currentView, setCurrentView] = useState<string>('home');
   const [viewParams, setViewParams] = useState<Record<string, any>>({});
@@ -132,7 +138,7 @@ export default function App() {
 
   return (
     <GlobalAntiScreenshotShield>
-      <div className="min-h-screen bg-[#F5F7FA] dark:bg-[#0B0B0F] text-[#0D1B3E] dark:text-slate-100 flex flex-col font-sans selection:bg-[#D4AF37]/30 selection:text-[#D4AF37] max-w-full w-full relative transition-colors duration-200">
+      <div className="min-h-screen bg-[#F7FAFD] dark:bg-[#080B10] text-[#071A33] dark:text-slate-100 flex flex-col font-sans selection:bg-[#D4AF37]/30 selection:text-[#D4AF37] max-w-full w-full relative transition-colors duration-200">
       
       {/* Top Navbar */}
       <Navbar
@@ -151,9 +157,11 @@ export default function App() {
           <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentView + (viewParams.courseId || '') + (viewParams.lessonId || '') + (viewParams.attemptId || '') + (viewParams.examId || '')}
-            initial={{ opacity: 1, y: 0 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.15 }}
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.1, ease: 'easeInOut' }}
             className="w-full flex-1 flex flex-col"
           >
             {currentView === 'home' && (

@@ -134,9 +134,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   const isToolActive = smartToolsItems.some(item => item.id === currentView);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-blue-100 dark:border-[#222230] bg-white/98 dark:bg-[#0B0B0F]/98 backdrop-blur-xl shadow-xs transition-all">
-      {/* Top Royal Blue Accent Line */}
-      <div className="h-1 w-full bg-gradient-to-r from-[#00B4FF] via-[#3B82F6] to-[#00B4FF]" />
+    <header className="sticky top-0 z-40 w-full border-b border-slate-200 dark:border-[#1E293B] bg-white/98 dark:bg-[#080B10]/98 backdrop-blur-xl shadow-xs transition-all">
+      {/* Top Royal Gold Accent Line */}
+      <div className="h-1 w-full bg-gradient-to-r from-[#D4AF37] via-[#19C7E8] to-[#D4AF37]" />
 
       <div className="mx-auto flex h-20 lg:h-24 max-w-7xl 2xl:max-w-screen-2xl items-center justify-between px-3 sm:px-6 lg:px-10 xl:px-12 gap-2">
         
@@ -160,11 +160,11 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => onNavigate(item.id)}
                 className={`flex items-center gap-1.5 rounded-xl px-3 xl:px-4 py-2 xl:py-2.5 text-xs xl:text-sm font-bold transition-all ${
                   isActive
-                    ? 'bg-blue-50 dark:bg-blue-950/60 text-[#00B4FF] dark:text-[#60A5FA] border border-blue-200 dark:border-blue-800/60 shadow-xs'
-                    : 'text-[#0D1B3E] dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60 hover:text-[#00B4FF] dark:hover:text-[#60A5FA]'
+                    ? 'bg-[#071A33] text-[#D4AF37] border border-[#D4AF37]/50 shadow-xs'
+                    : 'text-[#071A33] dark:text-slate-200 hover:bg-[#071A33]/10 dark:hover:bg-slate-800/60 hover:text-[#19C7E8] dark:hover:text-[#19C7E8]'
                 }`}
               >
-                <Icon className={`h-4 w-4 xl:h-5 xl:w-5 ${isActive ? 'text-[#00B4FF] dark:text-[#60A5FA]' : 'text-[#6B7280] dark:text-slate-400'}`} />
+                <Icon className={`h-4 w-4 xl:h-5 xl:w-5 ${isActive ? 'text-[#D4AF37]' : 'text-[#071A33]/70 dark:text-slate-400'}`} />
                 <span>{item.label}</span>
               </button>
             );
@@ -250,7 +250,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Activation Key Button */}
           <button
             onClick={onOpenActivationModal}
-            className="hidden sm:flex items-center gap-1.5 rounded-2xl bg-[#0D1B3E] text-white px-3.5 py-2 text-xs font-bold shadow-sm transition-transform hover:scale-105 active:scale-95 hover:bg-slate-800 shrink-0"
+            className="hidden sm:flex items-center gap-1.5 rounded-2xl bg-[#071A33] text-[#D4AF37] border border-[#D4AF37]/40 px-3.5 py-2 text-xs font-bold shadow-sm transition-transform hover:scale-105 active:scale-95 hover:bg-[#0C2446] shrink-0"
             title="تفعيل كود مسبق الدفع"
           >
             <Key className="h-4 w-4 text-[#D4AF37]" />
@@ -260,7 +260,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Notifications Button */}
           <button
             onClick={onOpenNotificationModal}
-            className="relative rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#16224D] p-2 sm:p-2.5 text-[#0D1B3E] dark:text-slate-100 transition-all hover:border-[#00B4FF] dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/60 shadow-xs shrink-0"
+            className="relative rounded-2xl border border-slate-200 dark:border-[#1E293B] bg-white dark:bg-[#101827] p-2 sm:p-2.5 text-[#071A33] dark:text-slate-100 transition-all hover:border-[#19C7E8] hover:text-[#19C7E8] shadow-xs shrink-0"
             title="الإشعارات والتنبيهات"
           >
             <Bell className="h-4.5 w-4.5 sm:h-5 sm:w-5" />
@@ -402,9 +402,9 @@ export const Navbar: React.FC<NavbarProps> = ({
           ) : (
             <button
               onClick={onOpenAuthModal}
-              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-2xl border-2 border-[#00B4FF] dark:border-[#3B82F6] bg-white dark:bg-[#16224D] px-3.5 py-2 text-xs sm:text-sm font-bold text-[#00B4FF] dark:text-[#60A5FA] transition-all hover:bg-blue-50 dark:hover:bg-blue-950/60 shadow-xs shrink-0"
+              className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-2xl bg-[#D4AF37] hover:bg-[#C59F2D] border border-[#E5C158] px-4 py-2 text-xs sm:text-sm font-black text-[#071A33] transition-all shadow-md hover:shadow-lg hover:shadow-[#D4AF37]/20 shrink-0 cursor-pointer"
             >
-              <User className="h-4 w-4 shrink-0 text-[#00B4FF] dark:text-[#60A5FA]" />
+              <User className="h-4 w-4 shrink-0 text-[#071A33]" />
               <span className="hidden sm:inline">تسجيل الدخول / حساب جديد</span>
               <span className="sm:hidden">دخول</span>
             </button>

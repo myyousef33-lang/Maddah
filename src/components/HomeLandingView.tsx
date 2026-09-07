@@ -286,20 +286,20 @@ export const HomeLandingView: React.FC<HomeLandingViewProps> = ({
               <div className="absolute top-4 w-[250px] h-[250px] sm:w-[290px] sm:h-[290px] md:w-[320px] md:h-[320px] rounded-full bg-gradient-to-b from-[#0B0B0F] via-[#0D1527] to-[#162238] border border-[#D4AF37]/50 shadow-xl shadow-[#D4AF37]/15 flex items-center justify-center overflow-hidden">
                 {/* Subtle internal energy rings */}
                 <div className="absolute inset-2 rounded-full border border-[#D4AF37]/20" />
-                <div className="absolute inset-8 rounded-full border border-[#00F0FF]/15" />
+                <div className="absolute inset-8 rounded-full border border-[#19C7E8]/15" />
                 <div className="absolute -top-10 -right-10 w-36 h-36 bg-[#D4AF37]/15 rounded-full blur-xl" />
               </div>
 
               {/* Floating Math Equation Badge on Left: f(x) = ∫ e^x dx */}
-              <div className="absolute -left-2 sm:-left-4 top-1/3 z-20 bg-[#0B0B0F]/95 backdrop-blur-md border border-[#D4AF37]/60 px-3 py-1 rounded-2xl shadow-md">
+              <div className="absolute -left-2 sm:-left-4 top-1/3 z-20 bg-[#080B10]/95 backdrop-blur-md border border-[#D4AF37]/60 px-3 py-1 rounded-2xl shadow-md">
                 <span className="text-xs sm:text-sm font-black font-mono text-[#D4AF37] tracking-wide dir-ltr inline-block">
                   f(x) = ∫ e^x
                 </span>
               </div>
 
               {/* Floating Math Equation Badge on Right: e^(iπ) + 1 = 0 */}
-              <div className="absolute -right-2 sm:-right-4 top-1/3 z-20 bg-[#0B0B0F]/95 backdrop-blur-md border border-[#00F0FF]/50 px-3 py-1 rounded-2xl shadow-md">
-                <span className="text-xs sm:text-sm font-black font-mono text-[#00F0FF] tracking-wide dir-ltr inline-block">
+              <div className="absolute -right-2 sm:-right-4 top-1/3 z-20 bg-[#080B10]/95 backdrop-blur-md border border-[#19C7E8]/50 px-3 py-1 rounded-2xl shadow-md">
+                <span className="text-xs sm:text-sm font-black font-mono text-[#19C7E8] tracking-wide dir-ltr inline-block">
                   e^(iπ) + 1 = 0
                 </span>
               </div>
@@ -338,12 +338,12 @@ export const HomeLandingView: React.FC<HomeLandingViewProps> = ({
               <span>المنصة الأولى لتعليم الرياضيات لجميع المراحل الدراسية</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#0D1B3E] dark:text-white leading-[1.2] tracking-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-[#071A33] dark:text-white leading-[1.2] tracking-tight">
               <span className="block font-calligraphy text-4xl sm:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#B8860B] gold-glow-text py-1">
                 مداح الرياضيات
               </span>
               <span className="block text-2xl sm:text-4xl lg:text-5xl mt-1">
-                طريقك إلى <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#38BDF8]">الدرجة النهائية</span> في الرياضيات
+                طريقك إلى <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#19C7E8] to-[#0284C7]">الدرجة النهائية</span> في الرياضيات
               </span>
             </h1>
 
@@ -358,24 +358,24 @@ export const HomeLandingView: React.FC<HomeLandingViewProps> = ({
             {student ? (
               <button
                 onClick={() => onNavigate('dashboard')}
-                className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-black text-[#0B0B0F] shadow-lg shadow-[#D4AF37]/25 hover:brightness-105 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-black text-[#071A33] shadow-lg shadow-[#D4AF37]/25 hover:brightness-105 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <GraduationCap className="h-5 w-5 text-[#0B0B0F]" />
+                <GraduationCap className="h-5 w-5 text-[#071A33]" />
                 <span>الدخول إلى لوحة دراستي</span>
               </button>
             ) : (
               <button
                 onClick={onOpenAuthModal}
-                className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-black text-[#0B0B0F] shadow-lg shadow-[#D4AF37]/25 hover:brightness-105 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex items-center justify-center gap-2.5 rounded-2xl bg-gradient-to-r from-[#D4AF37] via-[#D4AF37] to-[#E5B83B] px-8 py-3.5 sm:px-9 sm:py-4 text-sm sm:text-base font-black text-[#071A33] shadow-lg shadow-[#D4AF37]/25 hover:brightness-105 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <Sparkles className="h-5 w-5 text-[#0B0B0F]" />
+                <Sparkles className="h-5 w-5 text-[#071A33]" />
                 <span>ابدأ التعلم الآن مجاناً</span>
               </button>
             )}
 
             <button
               onClick={onOpenActivationModal}
-              className="inline-flex items-center justify-center gap-2.5 rounded-2xl border-2 border-[#D4AF37] bg-[#0B0B0F] px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-[#D4AF37] hover:bg-[#0E1526] hover:border-[#00F0FF] hover:text-[#00F0FF] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
+              className="inline-flex items-center justify-center gap-2.5 rounded-2xl border-2 border-[#D4AF37] bg-[#071A33] px-7 py-3.5 sm:px-8 sm:py-4 text-sm sm:text-base font-bold text-[#D4AF37] hover:bg-[#0C2446] hover:border-[#19C7E8] hover:text-[#19C7E8] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md"
             >
               <Key className="h-5 w-5 text-[#D4AF37]" />
               <span>تفعيل كود الاشتراك</span>
