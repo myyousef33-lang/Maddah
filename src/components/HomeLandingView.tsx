@@ -260,7 +260,7 @@ export const HomeLandingView: React.FC<HomeLandingViewProps> = ({
   };
 
   return (
-    <div className="space-y-16 lg:space-y-24 animate-in fade-in duration-300 overflow-x-hidden max-w-full pb-16 bg-[#F5F7FA] dark:bg-[#080D21] text-[#0D1B3E] dark:text-slate-100 transition-colors">
+    <div className="space-y-16 lg:space-y-24 animate-in fade-in duration-300 max-w-full pb-16 bg-[#F5F7FA] dark:bg-[#080D21] text-[#0D1B3E] dark:text-slate-100 transition-colors">
       
       {/* INTRO VIDEO IF PLACEMENT IS TOP */}
       {settings.homeVideoPlacement === 'top' && renderIntroVideo()}

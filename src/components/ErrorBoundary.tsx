@@ -1,6 +1,5 @@
 import React, { ErrorInfo, ReactNode } from 'react';
 import { AlertCircle, RefreshCw, Home } from 'lucide-react';
-import { showDiagnosticErrorBanner } from '../utils/diagnosticOverlay';
 
 interface Props {
   children: ReactNode;
@@ -25,12 +24,6 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
   public override componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('Uncaught Error in Component Tree:', error, errorInfo);
-    showDiagnosticErrorBanner(
-      'React Component Boundary Error',
-      error?.message || 'Error occurred during rendering',
-      error?.stack,
-      errorInfo?.componentStack || undefined
-    );
   }
 
   public handleReload = () => {

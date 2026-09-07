@@ -3,35 +3,35 @@
 @variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  html, body {
+  html {
     font-family: 'Cairo', 'Tajawal', system-ui, -apple-system, sans-serif;
     background-color: #0B0B0F;
     color: #F8FAFC;
     color-scheme: dark;
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Native high-performance touch scrolling on mobile while preventing accidental zoom */
-  @media (hover: none) and (pointer: coarse) {
-    html, body {
-      touch-action: pan-x pan-y;
-      -webkit-overflow-scrolling: touch;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #0B0B0F;
+    color: #F8FAFC;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   #root {
-    overflow-x: hidden !important;
-    max-width: 100vw !important;
-    width: 100% !important;
-    background-color: #0B0B0F;
+    width: 100%;
     min-height: 100vh;
+    background-color: #0B0B0F;
     color: #F8FAFC;
   }
 }

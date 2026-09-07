@@ -27,7 +27,6 @@ import { GlobalAntiScreenshotShield } from './components/GlobalAntiScreenshotShi
 import { StudentWalletModal } from './components/StudentWalletModal';
 import { FloatingSupportButton } from './components/FloatingSupportButton';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { LiveDebugOverlay } from './components/LiveDebugOverlay';
 import { StorageService, subscribeToStorage } from './services/storage';
 import { PresenceService } from './services/presence';
 import { EarnedCertificate, Student } from './types';
@@ -133,7 +132,7 @@ export default function App() {
 
   return (
     <GlobalAntiScreenshotShield>
-      <div className="min-h-screen bg-[#F5F7FA] dark:bg-[#0B0B0F] text-[#0D1B3E] dark:text-slate-100 flex flex-col font-sans selection:bg-[#D4AF37]/30 selection:text-[#D4AF37] overflow-x-hidden max-w-full w-full relative transition-colors duration-200">
+      <div className="min-h-screen bg-[#F5F7FA] dark:bg-[#0B0B0F] text-[#0D1B3E] dark:text-slate-100 flex flex-col font-sans selection:bg-[#D4AF37]/30 selection:text-[#D4AF37] max-w-full w-full relative transition-colors duration-200">
       
       {/* Top Navbar */}
       <Navbar
@@ -147,7 +146,7 @@ export default function App() {
       />
 
       {/* Main Content Area with Smooth Page/View Transitions */}
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
+      <main className="flex-1 w-full max-w-full">
         <ErrorBoundary onReset={() => setCurrentView('home')}>
           <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -155,7 +154,7 @@ export default function App() {
             initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.15 }}
-            className="w-full min-h-[calc(100vh-80px)] flex flex-col"
+            className="w-full flex-1 flex flex-col"
           >
             {currentView === 'home' && (
               <HomeLandingView
@@ -375,9 +374,6 @@ export default function App() {
 
       {/* Floating Customer Support Action Button (WhatsApp) */}
       <FloatingSupportButton currentView={currentView} />
-
-      {/* Persistent Live Diagnostic Overlay */}
-      <LiveDebugOverlay currentView={currentView} />
 
       </div>
     </GlobalAntiScreenshotShield>

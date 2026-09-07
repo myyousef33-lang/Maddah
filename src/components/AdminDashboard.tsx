@@ -1229,7 +1229,7 @@ ${weakConceptsText}
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#0D1B3E] pb-20 lg:pb-12 animate-in fade-in duration-300 selection:bg-[#00B4FF] selection:text-white font-sans antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-[#F5F7FA] text-[#0D1B3E] pb-20 lg:pb-12 animate-in fade-in duration-300 selection:bg-[#00B4FF] selection:text-white font-sans antialiased">
       
       {/* 1. TOP EXECUTIVE HEADER BAR */}
       <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-xs">
