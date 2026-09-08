@@ -215,7 +215,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({
         lastActiveAt: new Date().toISOString()
       };
 
-      // Optimistic & Durable Firestore Update
+      // Optimistic & Durable Cloud Database Update
       StorageService.updateStudent(student.id, updates);
 
       const updatedObj: Student = {

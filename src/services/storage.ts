@@ -27,7 +27,7 @@ import {
   Assignment,
   AssignmentSubmission
 } from '../types';
-import { db, doc, getDoc, setDoc, onSnapshot } from './firebase';
+import { db, doc, getDoc, setDoc, onSnapshot } from './supabase';
 
 const STORAGE_KEYS = {
   STUDENTS: 'maddah_math_db_students_v1',
@@ -163,8 +163,8 @@ export const notifyListeners = () => {
   });
 };
 
-// Sanitizer to remove any undefined fields before sending to Firestore
-const sanitizeForFirestore = (val: any): any => {
+// Sanitizer to remove any undefined fields before sending to Cloud Database (Supabase)
+const sanitizeForCloud = (val: any): any => {
   if (val === undefined) return null;
   return JSON.parse(JSON.stringify(val, (_, v) => (v === undefined ? null : v)));
 };
@@ -197,7 +197,7 @@ const syncKeys = [
 // Cloud Sync Helpers with debouncing
 const pendingSyncTimers: Record<string, any> = {};
 
-const syncToFirestore = async (key: string, data: any) => {
+const syncToSupabase = async (key: string, data: any) => {
   if (pendingSyncTimers[key]) {
     clearTimeout(pendingSyncTimers[key]);
   }
@@ -207,7 +207,7 @@ const syncToFirestore = async (key: string, data: any) => {
     try {
       cloudSyncStatus = 'syncing';
       const docRef = doc(db, 'app_data', key);
-      const cleanData = sanitizeForFirestore(data);
+      const cleanData = sanitizeForCloud(data);
       const nowIso = localStorage.getItem(key + '_updated_at') || new Date().toISOString();
       await setDoc(docRef, { data: cleanData, updatedAt: nowIso });
       cloudSyncStatus = 'synced';
@@ -219,10 +219,10 @@ const syncToFirestore = async (key: string, data: any) => {
   }, 300);
 };
 
-let isFirestoreInitialized = false;
-const initFirestoreSync = () => {
-  if (isFirestoreInitialized) return;
-  isFirestoreInitialized = true;
+let isSupabaseInitialized = false;
+const initSupabaseSync = () => {
+  if (isSupabaseInitialized) return;
+  isSupabaseInitialized = true;
 
   syncKeys.forEach((key, index) => {
     // Stagger listener attachments to prevent initial network spike
@@ -256,27 +256,8 @@ const initFirestoreSync = () => {
         }
 
         // Case: SETTINGS reconciliation
-        if (key === STORAGE_KEYS.SETTINGS && typeof localVal === 'object' && localVal !== null && typeof remoteData === 'object' && remoteData !== null) {
-          const isLocalCustomPhoto = localVal.instructorPhotoUrl && localVal.instructorPhotoUrl !== '/teacher.jpg' && localVal.instructorPhotoUrl.trim() !== '';
-          const isRemoteDefaultPhoto = !remoteData.instructorPhotoUrl || remoteData.instructorPhotoUrl === '/teacher.jpg' || remoteData.instructorPhotoUrl.trim() === '';
-
-          // If local has a custom photo and remote has the default, preserve local photo
-          if (isLocalCustomPhoto && isRemoteDefaultPhoto) {
-            const merged = { ...SEED_SETTINGS, ...remoteData, ...localVal };
-            const mergedStr = JSON.stringify(merged);
-            if (localStr !== mergedStr) {
-              memoryCache[key] = cloneData(merged);
-              try {
-                localStorage.setItem(key, mergedStr);
-              } catch (_) {}
-              notifyListeners();
-            }
-            await setDoc(docRef, { data: sanitizeForFirestore(merged), updatedAt: new Date().toISOString() }).catch(() => {});
-            return;
-          }
-
-          // Otherwise merge remote over local gracefully
-          const merged = { ...SEED_SETTINGS, ...localVal, ...remoteData };
+        if (key === STORAGE_KEYS.SETTINGS && typeof remoteData === 'object' && remoteData !== null) {
+          const merged = { ...SEED_SETTINGS, ...(localVal || {}), ...remoteData };
           const mergedStr = JSON.stringify(merged);
           if (localStr !== mergedStr) {
             memoryCache[key] = cloneData(merged);
@@ -292,7 +273,7 @@ const initFirestoreSync = () => {
         }
 
         // For all collections (Courses, Exams, Assignments, PDFs, etc.):
-        // Remote Firestore data is the authoritative truth across all student and admin devices.
+        // Remote Supabase data is the authoritative truth across all student and admin devices.
         // Update local storage directly to reflect remote state (including deletions)
         const remoteStr = JSON.stringify(remoteData);
         if (localStr !== remoteStr) {
@@ -319,19 +300,19 @@ const initFirestoreSync = () => {
           const remoteUpdatedAt = snapshot.data()?.updatedAt;
           processRemoteData(remoteData, remoteUpdatedAt).catch(() => {});
         } else {
-          // If remote doc does not exist yet, push local cache to Firestore if present
+          // If remote doc does not exist yet, push local cache to Supabase if present
           const localStr = localStorage.getItem(key);
           if (localStr) {
             try {
               const localVal = JSON.parse(localStr);
               if (key === STORAGE_KEYS.SETTINGS || (Array.isArray(localVal) && localVal.length > 0)) {
-                setDoc(docRef, { data: sanitizeForFirestore(localVal), updatedAt: new Date().toISOString() }).catch(() => {});
+                setDoc(docRef, { data: sanitizeForCloud(localVal), updatedAt: new Date().toISOString() }).catch(() => {});
               }
             } catch (_) {}
           }
         }
       }, (err) => {
-        console.warn('Firestore listener warning for', key, err);
+        console.warn('Supabase listener warning for', key, err);
       });
     } catch (e) {
       console.warn('Error setting up snapshot for', key, e);
@@ -346,7 +327,7 @@ const SEED_SETTINGS: PlatformSettings = {
   instructorName: 'مداح الرياضيات',
   instructorTitle: 'مداح الرياضيات • معلم الرياضيات لجميع المراحل',
   instructorPhone: '01012345678',
-  instructorPhotoUrl: '/teacher.jpg',
+  instructorPhotoUrl: '/teacher.png',
   telegramChannel: 'https://t.me/maddah_math',
   whatsappNumber: '01012345678',
   adminPin: '********',
@@ -766,7 +747,7 @@ const setStored = <T>(key: string, val: T, skipNotify: boolean = false): void =>
       key !== STORAGE_KEYS.ADMIN_TOKEN &&
       key !== STORAGE_KEYS.AI_CHAT_HISTORY
     ) {
-      syncToFirestore(key, val);
+      syncToSupabase(key, val);
     }
   } catch (e) {
     console.error(`Error writing ${key} to storage:`, e);
@@ -818,8 +799,8 @@ export const initializeStorage = () => {
   if (!localStorage.getItem(STORAGE_KEYS.ATTEMPTS)) {
     localStorage.setItem(STORAGE_KEYS.ATTEMPTS, JSON.stringify([]));
   }
-  // Initialize Cloud Firestore Real-time Sync
-  initFirestoreSync();
+  // Initialize Cloud Supabase Real-time Sync
+  initSupabaseSync();
 };
 
 // Execute initial storage bootstrap
@@ -1732,7 +1713,7 @@ export const StorageService = {
       };
     }
 
-    // 2. If not found locally, query Firestore directly for freshest cloud keys
+    // 2. If not found locally, query Supabase cloud directly for freshest cloud keys
     try {
       const docRef = doc(db, 'app_data', STORAGE_KEYS.KEYS);
       const snap = await getDoc(docRef);
@@ -2820,14 +2801,14 @@ export const StorageService = {
     notifyListeners();
   },
 
-  // === Cloud Firestore Sync Diagnostics & Manual Controls ===
+  // === Cloud Database (Supabase) Sync Diagnostics & Manual Controls ===
   getCloudSyncStatus(): 'synced' | 'syncing' | 'error' {
     return cloudSyncStatus;
   },
   getLastSyncTimestamp(): string {
     return lastSyncTimestamp;
   },
-  async forceSyncAllToFirestore(): Promise<boolean> {
+  async forceSyncAllToCloud(): Promise<boolean> {
     try {
       cloudSyncStatus = 'syncing';
       notifyListeners();
@@ -2836,7 +2817,7 @@ export const StorageService = {
         if (localStr) {
           const localData = JSON.parse(localStr);
           const docRef = doc(db, 'app_data', key);
-          await setDoc(docRef, { data: sanitizeForFirestore(localData), updatedAt: new Date().toISOString() });
+          await setDoc(docRef, { data: sanitizeForCloud(localData), updatedAt: new Date().toISOString() });
         }
       }
       cloudSyncStatus = 'synced';
@@ -2844,13 +2825,16 @@ export const StorageService = {
       notifyListeners();
       return true;
     } catch (e) {
-      console.error('Failed to force sync to Firestore:', e);
+      console.error('Failed to force sync to Supabase Cloud:', e);
       cloudSyncStatus = 'error';
       notifyListeners();
       return false;
     }
   },
-  async forcePullFromFirestore(): Promise<boolean> {
+  async forceSyncAllToFirestore(): Promise<boolean> {
+    return this.forceSyncAllToCloud();
+  },
+  async forcePullFromCloud(): Promise<boolean> {
     try {
       cloudSyncStatus = 'syncing';
       notifyListeners();
@@ -2874,10 +2858,13 @@ export const StorageService = {
       notifyListeners();
       return true;
     } catch (e) {
-      console.error('Failed to force pull from Firestore:', e);
+      console.error('Failed to force pull from Supabase Cloud:', e);
       cloudSyncStatus = 'error';
       notifyListeners();
       return false;
     }
+  },
+  async forcePullFromFirestore(): Promise<boolean> {
+    return this.forcePullFromCloud();
   }
 };

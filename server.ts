@@ -420,6 +420,37 @@ async function startServer() {
     }
   });
 
+  // Dedicated Instructor Photo Upload Endpoint
+  app.post('/api/admin/instructor-photo', requireAdminAuth, requireUploadRateLimit, upload.single('file'), (req, res): any => {
+    try {
+      if (!req.file) {
+        return res.status(400).json({ success: false, error: 'لم يتم استلام أي ملف للصورة' });
+      }
+
+      const file = req.file;
+      const ext = path.extname(file.originalname).toLowerCase() || '.png';
+      const uniqueName = `instructor_photo_${Date.now()}${ext}`;
+      const destPath = path.join(uploadsDir, uniqueName);
+
+      fs.copyFileSync(file.path, destPath);
+
+      // Overwrite static default teacher pictures for seamless instant offline & visitor fallback
+      try {
+        fs.copyFileSync(file.path, path.join(process.cwd(), 'public', 'teacher.png'));
+        fs.copyFileSync(file.path, path.join(process.cwd(), 'public', 'teacher.jpg'));
+      } catch (_) {}
+
+      return res.json({
+        success: true,
+        url: `/uploads/${uniqueName}`,
+        filename: uniqueName,
+      });
+    } catch (err: any) {
+      console.error('Instructor photo upload error:', err);
+      return res.status(500).json({ success: false, error: err?.message || 'فشل في رفع صورة المعلم' });
+    }
+  });
+
   // Student Avatar Upload endpoint (Image only, max 15MB, validated)
   app.post('/api/student/upload-avatar', requireUploadRateLimit, upload.single('file'), (req, res): any => {
     try {

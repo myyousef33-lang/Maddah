@@ -1,5 +1,5 @@
 import { StorageService } from './storage';
-import { db, doc, getDoc, setDoc } from './firebase';
+import { db, doc, getDoc, setDoc } from './supabase';
 
 const PRESENCE_STORAGE_KEY = 'maddah_math_db_presence_v1';
 const HEARTBEAT_INTERVAL_MS = 30000;
@@ -33,7 +33,7 @@ const writePresence = async (data: PresenceData) => {
     const docRef = doc(db, 'app_data', PRESENCE_STORAGE_KEY);
     await setDoc(docRef, { data, updatedAt: new Date().toISOString() });
   } catch (err) {
-    console.warn('[Firebase Presence] Write error:', err);
+    console.warn('[Supabase Presence] Write error:', err);
   }
 };
 
@@ -45,7 +45,7 @@ const readPresence = async (): Promise<PresenceData | null> => {
       return snap.data()?.data || null;
     }
   } catch (err) {
-    console.warn('[Firebase Presence] Read error:', err);
+    console.warn('[Supabase Presence] Read error:', err);
   }
   return null;
 };

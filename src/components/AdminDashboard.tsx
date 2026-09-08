@@ -786,10 +786,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
 
   const handleForceSyncCloud = async () => {
     setIsSyncingCloud(true);
-    const success = await StorageService.forceSyncAllToFirestore();
+    const success = await StorageService.forceSyncAllToCloud();
     setIsSyncingCloud(false);
     if (success) {
-      setSyncFeedback('تمت مزامنة جميع الكورسات والبيانات سحابياً مع Firestore بنجاح');
+      setSyncFeedback('تمت مزامنة جميع الكورسات والبيانات سحابياً مع قاعدة بيانات Supabase بنجاح');
     } else {
       setSyncFeedback('حدث خطأ أثناء المزامنة السحابية. يرجى المحاولة لاحقاً');
     }
@@ -1089,11 +1089,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
   };
 
   // Save Settings
-  const handleSaveSettings = (e: React.FormEvent) => {
+  const handleSaveSettings = async (e: React.FormEvent) => {
     e.preventDefault();
     StorageService.saveSettings(settings);
     setSettings(StorageService.getSettings());
-    alert('تم حفظ إعدادات المنصة بنجاح.');
+    await StorageService.forceSyncAllToCloud();
+    alert('تم حفظ إعدادات المنصة ومزامنتها سحابياً لجميع الطلاب بنجاح.');
   };
 
   const formatForDatetimeInput = (dateStr?: string) => {
@@ -1303,14 +1304,14 @@ ${weakConceptsText}
               </div>
             </div>
 
-            {/* Left in RTL: Action Buttons (Firestore Sync, Student View, Logout) */}
+            {/* Left in RTL: Action Buttons (Supabase Cloud Sync, Student View, Logout) */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
 
               <button
                 onClick={handleForceSyncCloud}
                 disabled={isSyncingCloud}
                 className="flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-all shadow-xs disabled:opacity-50"
-                title="مزامنة فورية لكل البيانات مع قاعدة بيانات Firebase Firestore"
+                title="مزامنة فورية لكل البيانات مع قاعدة بيانات Supabase السحابية"
               >
                 <RefreshCw className={`h-3.5 w-3.5 shrink-0 ${isSyncingCloud ? 'animate-spin' : ''}`} />
                 <span className="hidden sm:inline">{isSyncingCloud ? 'جارٍ المزامنة...' : 'مزامنة السحابة'}</span>
@@ -1445,7 +1446,7 @@ ${weakConceptsText}
               <Cloud className="h-4 w-4 text-emerald-600 shrink-0" />
               <span className="font-bold">{syncFeedback}</span>
             </div>
-            <span className="text-[10px] text-emerald-600 font-mono hidden sm:inline">Firebase Firestore Active</span>
+            <span className="text-[10px] text-emerald-600 font-mono hidden sm:inline">Supabase Cloud DB Active</span>
           </div>
         )}
 
@@ -5115,11 +5116,11 @@ ${weakConceptsText}
                 {/* Current Photo Preview with Background Arch Simulation */}
                 <div className="relative h-36 w-32 shrink-0 rounded-2xl overflow-hidden border-2 border-[#FDBA74]/40 bg-gradient-to-b from-blue-100 to-white shadow-md flex items-end justify-center p-1">
                   <img
-                    src={settings.instructorPhotoUrl || '/teacher.jpg'}
+                    src={settings.instructorPhotoUrl || '/teacher.png'}
                     alt="صورة المعلم"
                     className="h-full w-auto max-w-full object-contain object-bottom drop-shadow-md"
                     onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src = '/teacher.jpg';
+                      (e.currentTarget as HTMLImageElement).src = '/teacher.png';
                     }}
                   />
                   <div className="absolute top-2 right-2 rounded-full bg-white/90 px-2 py-0.5 text-[9px] font-bold text-[#FDBA74] border border-blue-200 shadow-xs">
@@ -5131,7 +5132,7 @@ ${weakConceptsText}
                 <div className="space-y-3.5 flex-1 w-full">
                   <div>
                     <label className="text-xs text-[#0D1B3E] block mb-1.5 font-bold">
-                      اختيار صورة جديدة من جهازك (يتم تحويلها لـ Base64 سحابي لتظهر لجميع الطلاب فوراً):
+                      اختيار صورة جديدة من جهازك (يتم حفظها ومزامنتها سحابياً لتظهر لجميع الطلاب فوراً):
                     </label>
                     <input
                       type="file"
@@ -5140,14 +5141,41 @@ ${weakConceptsText}
                         const file = e.target.files?.[0];
                         if (file) {
                           setIsUploadingFile(true);
-                          setUploadProgressText('جارٍ ضغط وتجهيز الصورة للمزامنة السحابية العامة...');
+                          setUploadProgressText('جارٍ رفع وضغط وتجهيز الصورة للمزامنة السحابية العامة...');
                           try {
-                            const compressedDataUrl = await compressImageFile(file, 800, 0.85);
-                            const updated = { ...settings, instructorPhotoUrl: compressedDataUrl };
+                            let photoUrl = '';
+                            // 1. Try server direct upload first
+                            try {
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              const adminToken = StorageService.getAdminToken();
+                              const headers: Record<string, string> = {};
+                              if (adminToken) {
+                                headers['Authorization'] = `Bearer ${adminToken}`;
+                              }
+                              const res = await fetch('/api/admin/instructor-photo', {
+                                method: 'POST',
+                                headers,
+                                body: formData
+                              });
+                              if (res.ok) {
+                                const data = await res.json();
+                                if (data.success && data.url) {
+                                  photoUrl = data.url;
+                                }
+                              }
+                            } catch (_) {}
+
+                            // 2. Fallback to high-efficiency client compressed Base64 if server upload was skipped
+                            if (!photoUrl) {
+                              photoUrl = await compressImageFile(file, 700, 0.8);
+                            }
+
+                            const updated = { ...settings, instructorPhotoUrl: photoUrl };
                             setSettings(updated);
                             StorageService.saveSettings(updated);
-                            await StorageService.forceSyncAllToFirestore();
-                            setPhotoUpdateFeedback('تم حفظ الصورة ومزامنتها سحابياً لتظهر لجميع الطلاب فوراً!');
+                            await StorageService.forceSyncAllToCloud();
+                            setPhotoUpdateFeedback('تم حفظ الصورة ومزامنتها سحابياً لتظهر لجميع الطلاب والزوار فوراً!');
                             setTimeout(() => setPhotoUpdateFeedback(null), 5000);
                           } catch (err) {
                             console.error('Photo upload error:', err);
@@ -5179,11 +5207,11 @@ ${weakConceptsText}
                       type="button"
                       onClick={async () => {
                         const raw = (settings.instructorPhotoUrl || '').trim();
-                        const normalized = normalizeImageUrl(raw) || '/teacher.jpg';
+                        const normalized = normalizeImageUrl(raw) || '/teacher.png';
                         const updated = { ...settings, instructorPhotoUrl: normalized };
                         setSettings(updated);
                         StorageService.saveSettings(updated);
-                        await StorageService.forceSyncAllToFirestore();
+                        await StorageService.forceSyncAllToCloud();
                         setPhotoUpdateFeedback('تم حفظ الرابط ومزامنته سحابياً بنجاح!');
                         setTimeout(() => setPhotoUpdateFeedback(null), 4000);
                       }}
@@ -5194,10 +5222,10 @@ ${weakConceptsText}
                     <button
                       type="button"
                       onClick={async () => {
-                        const updated = { ...settings, instructorPhotoUrl: '/teacher.jpg' };
+                        const updated = { ...settings, instructorPhotoUrl: '/teacher.png' };
                         setSettings(updated);
                         StorageService.saveSettings(updated);
-                        await StorageService.forceSyncAllToFirestore();
+                        await StorageService.forceSyncAllToCloud();
                         setPhotoUpdateFeedback('تمت استعادة الصورة الافتراضية ومزامنتها بنجاح!');
                         setTimeout(() => setPhotoUpdateFeedback(null), 4000);
                       }}

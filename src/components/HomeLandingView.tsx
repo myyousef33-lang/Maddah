@@ -28,7 +28,7 @@ import { Course, PdfMaterial, Student } from '../types';
 import { CourseRatingBadge } from './CourseRatingBadge';
 import { ExamCountdownBanner } from './ExamCountdownBanner';
 import { ScrollReveal } from './ScrollReveal';
-const teacherCutout = '/images/student-mascot-male.png';
+const teacherCutout = '/teacher.png';
 
 interface HomeLandingViewProps {
   onNavigate: (view: string, params?: any) => void;
@@ -314,7 +314,7 @@ export const HomeLandingView: React.FC<HomeLandingViewProps> = ({
                   const target = e.currentTarget;
                   if (!target.dataset.triedFallback1) {
                     target.dataset.triedFallback1 = 'true';
-                    target.src = teacherCutout;
+                    target.src = '/teacher.png';
                   } else if (!target.dataset.triedFallback2) {
                     target.dataset.triedFallback2 = 'true';
                     target.src = '/teacher.jpg';
