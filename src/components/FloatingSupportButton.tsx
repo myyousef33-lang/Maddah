@@ -18,8 +18,8 @@ export const FloatingSupportButton: React.FC<FloatingSupportButtonProps> = ({ cu
     return subscribeToStorage(update);
   }, []);
 
-  // Do not render on Admin Dashboard
-  if (currentView === 'admin') {
+  // Do not render on Admin Dashboard, Lesson Player, or Exam views to avoid blocking video, controls or answers
+  if (currentView === 'admin' || currentView === 'lesson-player' || currentView === 'exam-runner' || currentView === 'exam-result') {
     return null;
   }
 

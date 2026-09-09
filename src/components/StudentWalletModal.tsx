@@ -16,7 +16,8 @@ import {
   ShieldCheck,
   Smartphone,
   QrCode,
-  Sparkles
+  Sparkles,
+  Key
 } from 'lucide-react';
 import { StorageService, subscribeToStorage } from '../services/storage';
 import { Student, PaymentMethod, WalletTransaction } from '../types';
@@ -35,7 +36,7 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
   const [student, setStudent] = useState<Student | null>(StorageService.getCurrentStudent());
   const [methods, setMethods] = useState<PaymentMethod[]>([]);
   const [transactions, setTransactions] = useState<WalletTransaction[]>([]);
-  const [activeTab, setActiveTab] = useState<'deposit' | 'history'>('deposit');
+  const [activeTab, setActiveTab] = useState<'deposit' | 'voucher' | 'history'>('deposit');
   
   // Deposit form state
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod | null>(null);
@@ -46,6 +47,10 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  // Instant Voucher / Code recharge state
+  const [voucherCode, setVoucherCode] = useState<string>('');
+  const [isRedeemingVoucher, setIsRedeemingVoucher] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -141,6 +146,37 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
     }
   };
 
+  const handleVoucherSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!student) {
+      setStatusMessage({ type: 'error', text: 'يرجى تسجيل الدخول أولاً لتفعيل كود الشحن.' });
+      return;
+    }
+    if (!voucherCode.trim()) {
+      setStatusMessage({ type: 'error', text: 'يرجى إدخال كود الشحن الفوري أولاً.' });
+      return;
+    }
+    setIsRedeemingVoucher(true);
+    setStatusMessage(null);
+    try {
+      const res = await StorageService.redeemCodeAsync(voucherCode.trim(), student.id);
+      setIsRedeemingVoucher(false);
+      if (res.success) {
+        setStatusMessage({ type: 'success', text: res.message });
+        setVoucherCode('');
+        setStudent(StorageService.getCurrentStudent());
+        setTransactions(StorageService.getStudentWalletTransactions(student.id));
+        setActiveTab('history');
+        if (onSuccess) onSuccess();
+      } else {
+        setStatusMessage({ type: 'error', text: res.message });
+      }
+    } catch (err) {
+      setIsRedeemingVoucher(false);
+      setStatusMessage({ type: 'error', text: 'حدث خطأ أثناء الاتصال للتحقق من كود الشحن.' });
+    }
+  };
+
   const currentBalance = student?.walletBalance || 0;
 
   return (
@@ -199,23 +235,34 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setActiveTab('deposit')}
-                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
+                className={`rounded-xl px-3.5 py-2 text-xs font-bold transition-all shadow-xs ${
                   activeTab === 'deposit'
-                    ? 'bg-[#F97316] text-[#0D1B3E]'
+                    ? 'bg-[#F97316] text-white font-black shadow-xs'
                     : 'bg-white text-[#6B7280] border border-slate-200 hover:bg-slate-50'
                 }`}
               >
-                + شحن رصيد
+                + شحن تحويل
+              </button>
+              <button
+                onClick={() => setActiveTab('voucher')}
+                className={`rounded-xl px-3.5 py-2 text-xs font-bold transition-all shadow-xs flex items-center gap-1.5 ${
+                  activeTab === 'voucher'
+                    ? 'bg-gradient-to-r from-[#F97316] to-[#EA580C] text-white font-black shadow-xs'
+                    : 'bg-white text-[#6B7280] border border-slate-200 hover:bg-slate-50'
+                }`}
+              >
+                <Key className="h-3 w-3 text-amber-500" />
+                <span>كود شحن فوري</span>
               </button>
               <button
                 onClick={() => setActiveTab('history')}
-                className={`rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-xs ${
+                className={`rounded-xl px-3.5 py-2 text-xs font-bold transition-all shadow-xs ${
                   activeTab === 'history'
-                    ? 'bg-[#F97316] text-[#0D1B3E]'
+                    ? 'bg-[#F97316] text-white font-black shadow-xs'
                     : 'bg-white text-[#6B7280] border border-slate-200 hover:bg-slate-50'
                 }`}
               >
-                سجل العمليات ({transactions.length})
+                العمليات ({transactions.length})
               </button>
             </div>
           </div>
@@ -411,9 +458,52 @@ export const StudentWalletModal: React.FC<StudentWalletModalProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-2xl bg-[#F97316] py-3.5 text-sm font-black text-[#0D1B3E] hover:bg-[#F97316] shadow-xs transition-all disabled:opacity-50"
+                className="w-full rounded-2xl bg-[#F97316] py-3.5 text-sm font-black text-[#0D1B3E] hover:bg-[#F97316] shadow-xs transition-all disabled:opacity-50 cursor-pointer"
               >
                 {isSubmitting ? 'جارٍ إرسال طلب الشحن...' : 'تأكيد وإرسال طلب الشحن'}
+              </button>
+            </form>
+          )}
+
+          {activeTab === 'voucher' && (
+            <form onSubmit={handleVoucherSubmit} className="space-y-6 animate-in fade-in duration-200">
+              <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50/80 to-orange-50/40 p-5 space-y-2">
+                <div className="flex items-center gap-2 text-[#EA580C] font-black text-sm">
+                  <Key className="h-4 w-4 text-[#F97316]" />
+                  <span>شحن المحفظة الفوري عبر كارت الشحن</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  إذا حصلت على كود شحن أو كارت شحن رصيد من المنصة أو السنتر، اكتب الكود أدناه وسيتم إضافة المبلغ لمحفظتك فوراً دون الحاجة لانتظار مراجعة الإيصال.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-black text-[#0D1B3E] block">كود الشحن الفوري (Voucher Code):</label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={voucherCode}
+                    onChange={(e) => setVoucherCode(e.target.value.toUpperCase())}
+                    placeholder="مثال: WALLET-ABCD-1234 أو MATH-XXXX"
+                    className="w-full rounded-2xl border-2 border-slate-200 bg-[#F8FAFC] p-4 text-center text-lg font-mono font-black tracking-widest text-[#0D1B3E] uppercase focus:bg-white focus:border-[#F97316] focus:outline-none transition-colors"
+                    required
+                  />
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                    <Key className="h-5 w-5" />
+                  </div>
+                </div>
+                <span className="text-[11px] text-slate-500 block text-center font-medium">
+                  تأكد من إدخال الحروف والأرقام كما هي مطبوعة
+                </span>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isRedeemingVoucher}
+                className="w-full rounded-2xl bg-gradient-to-r from-[#F97316] to-[#EA580C] py-3.5 text-sm font-black text-white hover:brightness-105 shadow-md shadow-orange-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <Sparkles className="h-4 w-4" />
+                <span>{isRedeemingVoucher ? 'جارٍ التحقق وشحن الرصيد...' : 'شحن المحفظة الآن بالرصيد'}</span>
               </button>
             </form>
           )}

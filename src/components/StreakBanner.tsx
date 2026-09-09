@@ -16,7 +16,9 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
   useEffect(() => {
     // Check and update daily streak using real student data
     const res = StorageService.checkAndUpdateStudentStreak(student.id);
-    setStreakDays(res.streakDays);
+    if (res.streakDays !== streakDays) {
+      setStreakDays(res.streakDays);
+    }
 
     if (res.isNewStreak) {
       setIsNew(true);
@@ -31,7 +33,7 @@ export const StreakBanner: React.FC<StreakBannerProps> = ({ student }) => {
     if (currentHour >= 12 && !hasActivityToday) {
       setShowWarning(true);
     }
-  }, [student.id, student.lastActiveDate]);
+  }, [student.id]);
 
   // Milestone calculation
   const targetMilestone = streakDays < 7 ? 7 : streakDays < 14 ? 14 : streakDays < 30 ? 30 : Math.ceil((streakDays + 1) / 10) * 10;

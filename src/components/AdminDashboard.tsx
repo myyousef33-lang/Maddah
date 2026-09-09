@@ -201,8 +201,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
   const [chartPeriod, setChartPeriod] = useState<'month' | 'week' | 'all'>('month');
   const [activeChartPointIdx, setActiveChartPointIdx] = useState<number | null>(null);
 
-  // Admin PDF Preview Modal State
+  // Admin PDF & Video Preview Modal State
   const [adminPreviewPdf, setAdminPreviewPdf] = useState<PdfMaterial | null>(null);
+  const [adminPreviewVideo, setAdminPreviewVideo] = useState<{ url: string; title: string; type?: string } | null>(null);
 
   // Overview Layout Reorder & Placement Customization State (Saved to localStorage)
   const defaultSectionOrder = ['stats_cards', 'chart_activity', 'bento_actions', 'countdown_control'];
@@ -306,10 +307,11 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
 
   // Code Generator Form
   const [codeGenForm, setCodeGenForm] = useState({
-    targetType: 'course' as const,
+    targetType: 'course' as 'course' | 'pdf' | 'wallet',
     targetId: '',
     count: 5,
-    expiresInDays: 365
+    expiresInDays: 365,
+    walletAmount: 100
   });
 
   // PDF Form
@@ -954,23 +956,38 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
     const count = Number(codeGenForm.count) || 1;
     let targetId = codeGenForm.targetId;
     if (!targetId) {
-      targetId = codeGenForm.targetType === 'course' ? 'ALL' : (pdfs[0]?.id || 'ALL_PDFS');
+      if (codeGenForm.targetType === 'course') {
+        targetId = 'ALL';
+      } else if (codeGenForm.targetType === 'pdf') {
+        targetId = pdfs[0]?.id || 'ALL_PDFS';
+      } else {
+        targetId = 'WALLET';
+      }
     }
 
     let targetName = 'كورس الرياضيات';
+    let prefix = 'MATH';
+    let valueAmount: number | undefined = undefined;
+
     if (codeGenForm.targetType === 'course') {
+      prefix = 'MATH';
       if (targetId === 'ALL') {
         targetName = 'جميع كورسات المنصة (اشتراك شامل)';
       } else {
         const found = courses.find(c => c.id === targetId);
         targetName = found ? `${found.title} (${found.grade})` : 'كورس رياضيات';
       }
-    } else {
+    } else if (codeGenForm.targetType === 'pdf') {
+      prefix = 'PDF';
       targetName = pdfs.find(p => p.id === targetId)?.title || 'مذكرة رياضيات';
+    } else if (codeGenForm.targetType === 'wallet') {
+      prefix = 'WALLET';
+      valueAmount = Number(codeGenForm.walletAmount) || 100;
+      targetName = `كارت شحن رصيد محفظة (${valueAmount} ج.م)`;
+      targetId = 'WALLET';
     }
 
     const newCodes: ActivationCode[] = [];
-    const prefix = codeGenForm.targetType === 'course' ? 'MATH' : 'PDF';
 
     for (let i = 0; i < count; i++) {
       const randomStr = Math.random().toString(36).substring(2, 6).toUpperCase();
@@ -982,7 +999,8 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onNavigate }) =>
         targetId,
         targetName,
         isUsed: false,
-        createdAt: new Date().toISOString()
+        createdAt: new Date().toISOString(),
+        valueAmount
       });
     }
 
@@ -2550,6 +2568,22 @@ ${weakConceptsText}
                                   />
                                 </label>
                               </div>
+                              {lessonForm.unitId === u.id && lessonForm.videoUrl && (
+                                <div className="flex items-center justify-between bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
+                                  <span className="text-[11px] font-bold text-emerald-800 flex items-center gap-1.5">
+                                    <Check className="h-3.5 w-3.5 text-emerald-600" />
+                                    <span>تم إرفاق رابط الفيديو</span>
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => setAdminPreviewVideo({ url: lessonForm.videoUrl, title: lessonForm.title || 'معاينة فيديو الدرس', type: lessonForm.videoType })}
+                                    className="text-[11px] font-black text-emerald-700 hover:text-emerald-900 bg-white border border-emerald-300 hover:bg-emerald-100 px-2.5 py-0.5 rounded-md transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
+                                  >
+                                    <Eye className="h-3 w-3" />
+                                    <span>تشغيل ومعاينة الفيديو الآن</span>
+                                  </button>
+                                </div>
+                              )}
                             </div>
 
                             {/* Optional Attached PDF Material for this Lesson */}
@@ -2586,6 +2620,31 @@ ${weakConceptsText}
                                   />
                                 </label>
                               </div>
+                              {lessonForm.unitId === u.id && lessonForm.pdfUrl && (
+                                <div className="flex items-center justify-between bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg">
+                                  <span className="text-[11px] font-bold text-amber-800 flex items-center gap-1.5">
+                                    <Check className="h-3.5 w-3.5 text-amber-600" />
+                                    <span>تم إرفاق ملزمة PDF</span>
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => setAdminPreviewPdf({
+                                      id: 'temp-preview',
+                                      title: lessonForm.pdfTitle || lessonForm.title || 'ملزمة الدرس',
+                                      category: 'ملزمة الدرس',
+                                      grade: (selectedCourseForUnits?.grade || GradeLevel.GRADE_12),
+                                      url: lessonForm.pdfUrl,
+                                      price: 0,
+                                      pageCount: 1,
+                                      isLocked: false
+                                    })}
+                                    className="text-[11px] font-black text-amber-800 hover:text-amber-950 bg-white border border-amber-300 hover:bg-amber-100 px-2.5 py-0.5 rounded-md transition-all flex items-center gap-1 shadow-2xs cursor-pointer"
+                                  >
+                                    <Eye className="h-3 w-3" />
+                                    <span>فتح ومعاينة الـ PDF الآن</span>
+                                  </button>
+                                </div>
+                              )}
                             </div>
 
                             <div className="flex items-center justify-between pt-1">
@@ -3552,36 +3611,54 @@ ${weakConceptsText}
                     >
                       <option value="course">كورس تعليمي</option>
                       <option value="pdf">مذكرة / ملزمة PDF</option>
+                      <option value="wallet">كارت شحن رصيد محفظة (ج.م)</option>
                     </select>
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-xs font-bold text-[#0D1B3E]">اختر الكورس / المذكرة</label>
-                    <select
-                      value={codeGenForm.targetId}
-                      onChange={e => setCodeGenForm({ ...codeGenForm, targetId: e.target.value })}
-                      className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] p-2.5 text-xs text-[#0D1B3E] font-medium focus:bg-white focus:border-[#FDBA74]"
-                    >
-                      {codeGenForm.targetType === 'course' ? (
-                        <>
-                          <option value="ALL">كود شامل (تفعيل لجميع كورسات المنصة)</option>
-                          {courses.map(c => (
-                            <option key={c.id} value={c.id}>
-                              {c.title} • {c.grade}
-                            </option>
-                          ))}
-                        </>
-                      ) : (
-                        <>
-                          <option value="ALL_PDFS">جميع مذكرات المنصة</option>
-                          {pdfs.map(p => (
-                            <option key={p.id} value={p.id}>
-                              {p.title}
-                            </option>
-                          ))}
-                        </>
-                      )}
-                    </select>
+                    {codeGenForm.targetType === 'wallet' ? (
+                      <>
+                        <label className="text-xs font-bold text-[#0D1B3E]">قيمة كارت الشحن (جنيه مصري)</label>
+                        <input
+                          type="number"
+                          min={10}
+                          step={10}
+                          value={codeGenForm.walletAmount}
+                          onChange={e => setCodeGenForm({ ...codeGenForm, walletAmount: Number(e.target.value) })}
+                          placeholder="مثال: 100"
+                          className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] p-2.5 text-xs text-[#0D1B3E] font-medium focus:bg-white focus:border-[#FDBA74]"
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <label className="text-xs font-bold text-[#0D1B3E]">اختر الكورس / المذكرة</label>
+                        <select
+                          value={codeGenForm.targetId}
+                          onChange={e => setCodeGenForm({ ...codeGenForm, targetId: e.target.value })}
+                          className="w-full rounded-xl border border-slate-200 bg-[#F5F7FA] p-2.5 text-xs text-[#0D1B3E] font-medium focus:bg-white focus:border-[#FDBA74]"
+                        >
+                          {codeGenForm.targetType === 'course' ? (
+                            <>
+                              <option value="ALL">كود شامل (تفعيل لجميع كورسات المنصة)</option>
+                              {courses.map(c => (
+                                <option key={c.id} value={c.id}>
+                                  {c.title} • {c.grade}
+                                </option>
+                              ))}
+                            </>
+                          ) : (
+                            <>
+                              <option value="ALL_PDFS">جميع مذكرات المنصة</option>
+                              {pdfs.map(p => (
+                                <option key={p.id} value={p.id}>
+                                  {p.title}
+                                </option>
+                              ))}
+                            </>
+                          )}
+                        </select>
+                      </>
+                    )}
                   </div>
 
                   <div className="space-y-1">
@@ -3667,7 +3744,17 @@ ${weakConceptsText}
                           </button>
                         </td>
                         <td className="py-3.5 px-4 text-[#0D1B3E] font-bold">{code.targetName}</td>
-                        <td className="py-3.5 px-4 text-[#6B7280]">{code.targetType === 'course' ? 'كورس' : 'مذكرة PDF'}</td>
+                        <td className="py-3.5 px-4 text-[#6B7280]">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold ${
+                            code.targetType === 'course' 
+                              ? 'bg-blue-50 text-[#FDBA74]' 
+                              : code.targetType === 'wallet' 
+                              ? 'bg-emerald-50 text-emerald-700' 
+                              : 'bg-amber-50 text-amber-800'
+                          }`}>
+                            {code.targetType === 'course' ? 'كورس' : code.targetType === 'wallet' ? 'شحن محفظة' : 'ملزمة PDF'}
+                          </span>
+                        </td>
                         <td className="py-3.5 px-4">
                           <span className={`rounded px-2 py-0.5 text-[10px] font-bold ${
                             code.isUsed 
@@ -5314,25 +5401,26 @@ ${weakConceptsText}
           </form>
 
           {/* Database Reset / Clean Slate */}
-          <div className="rounded-3xl border border-rose-500/20 bg-rose-500/5 p-6 space-y-4">
-            <div className="flex items-center gap-3 text-rose-400">
+          <div className="rounded-3xl border border-rose-200 bg-rose-50/50 p-6 space-y-4">
+            <div className="flex items-center gap-3 text-rose-600">
               <ShieldAlert className="h-5 w-5 shrink-0" />
               <div>
-                <h3 className="font-bold text-sm text-white">إعادة تعيين وتفريغ البيانات (Clean Slate)</h3>
-                <p className="text-xs text-slate-400">تفريغ كافة الكورسات والطلاب وأكواد التفعيل للبدء بقاعدة بيانات نظيفة 100%</p>
+                <h3 className="font-bold text-sm text-rose-900">إعادة تعيين وتفريغ البيانات (Clean Slate)</h3>
+                <p className="text-xs text-rose-700/80">تفريغ كافة الكورسات الوهمية والتجريبية، الطلاب، الامتحانات، والملازم للبدء بقاعدة بيانات حقيقية نظيفة 100% ومزامنتها سحابياً</p>
               </div>
             </div>
             <button
               type="button"
-              onClick={() => {
-                if (window.confirm('هل أنت متأكد من تفريغ كافة البيانات المؤقتة والبدء بصفحة نظيفة تماماً؟')) {
-                  StorageService.clearAllData();
-                  alert('تم تفريغ كافة البيانات بنجاح!');
+              onClick={async () => {
+                if (window.confirm('هل أنت متأكد من تفريغ كافة البيانات الوهمية والتجريبية وقاعدة البيانات للبدء بصفحة نظيفة تماماً؟')) {
+                  await StorageService.clearAllData();
+                  alert('تم تفريغ كافة البيانات ومزامنة قاعدة البيانات السحابية بنجاح!');
+                  window.location.reload();
                 }
               }}
-              className="rounded-xl border border-rose-500/30 bg-rose-500/10 px-5 py-2.5 text-xs font-bold text-rose-400 hover:bg-rose-500/20 transition-colors"
+              className="rounded-xl border border-rose-300 bg-rose-600 px-5 py-2.5 text-xs font-bold text-white hover:bg-rose-700 shadow-sm transition-colors cursor-pointer"
             >
-              تفريغ كافة البيانات الآن
+              تفريغ كافة البيانات الوهمية وقاعدة البيانات الآن
             </button>
           </div>
         </div>
@@ -6043,6 +6131,64 @@ ${weakConceptsText}
           pageCount={adminPreviewPdf.pageCount}
           onClose={() => setAdminPreviewPdf(null)}
         />
+      )}
+
+      {/* Universal Video Viewer Modal for Admin */}
+      {adminPreviewVideo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-xs animate-in fade-in duration-200">
+          <div className="relative w-full max-w-3xl rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between p-3.5 border-b border-slate-800 bg-slate-900/80">
+              <div className="flex items-center gap-2">
+                <Film className="h-4 w-4 text-[#F97316]" />
+                <h4 className="text-xs font-bold text-white truncate">{adminPreviewVideo.title || 'معاينة الفيديو'}</h4>
+              </div>
+              <button
+                onClick={() => setAdminPreviewVideo(null)}
+                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="relative w-full aspect-video bg-black flex items-center justify-center">
+              {adminPreviewVideo.url.includes('youtube.com') || adminPreviewVideo.url.includes('youtu.be') ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${
+                    adminPreviewVideo.url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/)?.[1] || ''
+                  }?autoplay=1`}
+                  title={adminPreviewVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              ) : adminPreviewVideo.url.includes('drive.google.com') || adminPreviewVideo.url.includes('docs.google.com') ? (
+                <iframe
+                  src={`https://drive.google.com/file/d/${
+                    adminPreviewVideo.url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)?.[1] ||
+                    adminPreviewVideo.url.match(/\/d\/([a-zA-Z0-9_-]+)/)?.[1] ||
+                    adminPreviewVideo.url.match(/[?&]id=([a-zA-Z0-9_-]+)/)?.[1] || ''
+                  }/preview`}
+                  title={adminPreviewVideo.title}
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              ) : (
+                <video
+                  src={adminPreviewVideo.url}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain"
+                >
+                  متصفحك لا يدعم تشغيل هذا الفيديو مباشرة.
+                </video>
+              )}
+            </div>
+            <div className="p-3 bg-slate-900 text-center text-[11px] text-slate-400 border-t border-slate-800">
+              💡 هذه المعاينة المباشرة تؤكد أن الرابط يعمل بشكل صحيح وبجودة عالية قبل الحفظ للطلاب.
+            </div>
+          </div>
+        </div>
       )}
 
     </div>

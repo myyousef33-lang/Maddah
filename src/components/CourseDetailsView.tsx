@@ -86,10 +86,13 @@ export const CourseDetailsView: React.FC<CourseDetailsViewProps> = ({
       }
 
       // Open all units by default if not set
-      if (c?.units && Object.keys(openUnits).length === 0) {
-        const initialOpen: Record<string, boolean> = {};
-        c.units.forEach(u => { initialOpen[u.id] = true; });
-        setOpenUnits(initialOpen);
+      if (c?.units) {
+        setOpenUnits(prev => {
+          if (Object.keys(prev).length > 0) return prev;
+          const initialOpen: Record<string, boolean> = {};
+          c.units.forEach(u => { initialOpen[u.id] = true; });
+          return initialOpen;
+        });
       }
     };
     update();

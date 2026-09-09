@@ -9,7 +9,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
   const [projAngle, setProjAngle] = useState(45); // degrees
   const [projSpeed, setProjSpeed] = useState(40); // m/s
   const [projGravity, setProjGravity] = useState(9.8); // m/s2
-  const [projTime, setProjTime] = useState(0);
+  const projTimeRef = useRef(0);
   const projCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // --- Ohm's Law Circuit State ---
@@ -17,22 +17,23 @@ export const PhysicsSimulationsLab: React.FC = () => {
   const [resistance, setResistance] = useState(6); // Ohms
   const [internalRes, setInternalRes] = useState(1); // Ohms
   const circuitCanvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [electronOffset, setElectronOffset] = useState(0);
+  const electronOffsetRef = useRef(0);
 
   // --- Newton's 2nd Law State ---
   const [mass, setMass] = useState(10); // kg
   const [force, setForce] = useState(50); // N
   const [friction, setFriction] = useState(0.2); // friction coefficient
-  const [boxPosX, setBoxPosX] = useState(50);
-  const [boxVelX, setBoxVelX] = useState(0);
+  const boxPosRef = useRef(50);
+  const boxVelRef = useRef(0);
   const newtonCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Reset animations on tab switch
   useEffect(() => {
     setIsRunning(true);
-    setProjTime(0);
-    setBoxPosX(50);
-    setBoxVelX(0);
+    projTimeRef.current = 0;
+    electronOffsetRef.current = 0;
+    boxPosRef.current = 50;
+    boxVelRef.current = 0;
   }, [activeSim]);
 
   // -----------------------------------------------------------------
@@ -118,15 +119,15 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
       // Draw Animated Projectile
       if (isRunning) {
-        setProjTime(prev => {
-          let next = prev + 0.05;
-          if (next > tTotal) next = 0;
-          return next;
-        });
+        projTimeRef.current += 0.05;
+        if (projTimeRef.current > tTotal) {
+          projTimeRef.current = 0;
+        }
       }
 
-      const currX = startX + vx0 * projTime * scaleX;
-      const currY = groundY - (vy0 * projTime - 0.5 * projGravity * projTime * projTime) * scaleY;
+      const currentTime = projTimeRef.current;
+      const currX = startX + vx0 * currentTime * scaleX;
+      const currY = groundY - (vy0 * currentTime - 0.5 * projGravity * currentTime * currentTime) * scaleY;
 
       // Projectile glow & sphere
       ctx.shadowColor = '#f97316';
@@ -138,7 +139,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
       ctx.shadowBlur = 0;
 
       // Velocity Vectors
-      const currVy = vy0 - projGravity * projTime;
+      const currVy = vy0 - projGravity * currentTime;
       ctx.strokeStyle = '#22c55e'; // Vx
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -157,7 +158,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
     render();
     return () => cancelAnimationFrame(animId);
-  }, [activeSim, projAngle, projSpeed, projGravity, isRunning, projTime]);
+  }, [activeSim, projAngle, projSpeed, projGravity, isRunning]);
 
   // -----------------------------------------------------------------
   // 2. OHM'S LAW ELECTRIC CIRCUIT CANVAS
@@ -247,12 +248,13 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
       // Electrons Motion
       if (isRunning) {
-        setElectronOffset(prev => (prev + currentI * 1.5) % 30);
+        electronOffsetRef.current = (electronOffsetRef.current + currentI * 1.5) % 30;
       }
 
       ctx.fillStyle = '#38bdf8';
       const perimeter = 2 * (right - left) + 2 * (bottom - top);
-      for (let d = electronOffset; d < perimeter; d += 30) {
+      const currentOffset = electronOffsetRef.current;
+      for (let d = currentOffset; d < perimeter; d += 30) {
         let ex = left, ey = top;
         if (d < right - left) {
           ex = left + d;
@@ -278,7 +280,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
     render();
     return () => cancelAnimationFrame(animId);
-  }, [activeSim, voltage, resistance, internalRes, isRunning, electronOffset]);
+  }, [activeSim, voltage, resistance, internalRes, isRunning]);
 
   // -----------------------------------------------------------------
   // 3. NEWTON'S SECOND LAW CANVAS (F = m * a)
@@ -313,31 +315,29 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
       // Update position
       if (isRunning && force > 0) {
-        setBoxVelX(v => {
-          let nv = v + accel * 0.04;
-          if (force <= maxFriction) nv = Math.max(0, nv - 0.5);
-          return nv;
-        });
-        setBoxPosX(p => {
-          let np = p + boxVelX * 0.1;
-          if (np > canvas.width - 90) np = 40;
-          return np;
-        });
+        let nv = boxVelRef.current + accel * 0.04;
+        if (force <= maxFriction) nv = Math.max(0, nv - 0.5);
+        boxVelRef.current = nv;
+
+        let np = boxPosRef.current + nv * 0.1;
+        if (np > canvas.width - 90) np = 40;
+        boxPosRef.current = np;
       }
 
+      const currentBoxX = boxPosRef.current;
       const boxSize = Math.min(30 + mass * 0.8, 70);
       const boxY = groundY - boxSize;
 
       // Sliding Box
       ctx.fillStyle = '#1e293b';
-      ctx.fillRect(boxPosX, boxY, boxSize, boxSize);
+      ctx.fillRect(currentBoxX, boxY, boxSize, boxSize);
       ctx.strokeStyle = '#fb923c';
       ctx.lineWidth = 2;
-      ctx.strokeRect(boxPosX, boxY, boxSize, boxSize);
+      ctx.strokeRect(currentBoxX, boxY, boxSize, boxSize);
 
       ctx.fillStyle = '#fb923c';
       ctx.font = 'bold 12px sans-serif';
-      ctx.fillText(`m = ${mass}kg`, boxPosX + 8, boxY + boxSize / 2);
+      ctx.fillText(`m = ${mass}kg`, currentBoxX + 8, boxY + boxSize / 2);
 
       // Applied Force Arrow (Orange -> Right)
       if (force > 0) {
@@ -345,18 +345,18 @@ export const PhysicsSimulationsLab: React.FC = () => {
         ctx.strokeStyle = '#f97316';
         ctx.lineWidth = 4;
         ctx.beginPath();
-        ctx.moveTo(boxPosX + boxSize, boxY + boxSize / 2);
-        ctx.lineTo(boxPosX + boxSize + arrowLen, boxY + boxSize / 2);
+        ctx.moveTo(currentBoxX + boxSize, boxY + boxSize / 2);
+        ctx.lineTo(currentBoxX + boxSize + arrowLen, boxY + boxSize / 2);
         ctx.stroke();
 
         // Arrow tip
         ctx.fillStyle = '#f97316';
         ctx.beginPath();
-        ctx.moveTo(boxPosX + boxSize + arrowLen + 8, boxY + boxSize / 2);
-        ctx.lineTo(boxPosX + boxSize + arrowLen, boxY + boxSize / 2 - 6);
-        ctx.lineTo(boxPosX + boxSize + arrowLen, boxY + boxSize / 2 + 6);
+        ctx.moveTo(currentBoxX + boxSize + arrowLen + 8, boxY + boxSize / 2);
+        ctx.lineTo(currentBoxX + boxSize + arrowLen, boxY + boxSize / 2 - 6);
+        ctx.lineTo(currentBoxX + boxSize + arrowLen, boxY + boxSize / 2 + 6);
         ctx.fill();
-        ctx.fillText(`F = ${force}N`, boxPosX + boxSize + 10, boxY + boxSize / 2 - 10);
+        ctx.fillText(`F = ${force}N`, currentBoxX + boxSize + 10, boxY + boxSize / 2 - 10);
       }
 
       // Friction Arrow (Red <- Left)
@@ -365,11 +365,11 @@ export const PhysicsSimulationsLab: React.FC = () => {
         ctx.strokeStyle = '#ef4444';
         ctx.lineWidth = 3;
         ctx.beginPath();
-        ctx.moveTo(boxPosX, boxY + boxSize - 5);
-        ctx.lineTo(boxPosX - frictLen, boxY + boxSize - 5);
+        ctx.moveTo(currentBoxX, boxY + boxSize - 5);
+        ctx.lineTo(currentBoxX - frictLen, boxY + boxSize - 5);
         ctx.stroke();
         ctx.fillStyle = '#ef4444';
-        ctx.fillText(`f = ${maxFriction.toFixed(1)}N`, boxPosX - frictLen - 10, boxY + boxSize - 12);
+        ctx.fillText(`f = ${maxFriction.toFixed(1)}N`, currentBoxX - frictLen - 10, boxY + boxSize - 12);
       }
 
       animId = requestAnimationFrame(render);
@@ -377,7 +377,7 @@ export const PhysicsSimulationsLab: React.FC = () => {
 
     render();
     return () => cancelAnimationFrame(animId);
-  }, [activeSim, mass, force, friction, isRunning, boxPosX, boxVelX]);
+  }, [activeSim, mass, force, friction, isRunning]);
 
   // Derived Projectile Calculations
   const rad = (projAngle * Math.PI) / 180;
@@ -425,9 +425,10 @@ export const PhysicsSimulationsLab: React.FC = () => {
             </button>
             <button
               onClick={() => {
-                setProjTime(0);
-                setBoxPosX(50);
-                setBoxVelX(0);
+                projTimeRef.current = 0;
+                electronOffsetRef.current = 0;
+                boxPosRef.current = 50;
+                boxVelRef.current = 0;
               }}
               className="rounded-xl border border-[#222230] bg-[#14141E] p-2 text-white hover:bg-[#1A1A26] transition-colors shadow-xs"
               title="إعادة التعيين"

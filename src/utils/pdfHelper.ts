@@ -1,7 +1,7 @@
 import { MediaStore } from '../services/mediaStore';
 
 /**
- * Universal PDF Resolver & Helper for Wiki Physics LMS
+ * Universal PDF Resolver & Helper for Math Madah (منصة مداح الرياضيات)
  */
 
 // Memory cache for created Blob URLs so we don't leak or regenerate unnecessarily
@@ -34,15 +34,44 @@ function base64ToBlob(base64Data: string, contentType = 'application/pdf'): Blob
 export function extractGoogleDriveId(url: string): string | null {
   if (!url) return null;
   if (!url.includes('drive.google.com') && !url.includes('docs.google.com')) return null;
-  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+  const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/) ||
+                url.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
+                url.match(/[?&]id=([a-zA-Z0-9_-]+)/) ||
+                url.match(/\/document\/d\/([a-zA-Z0-9_-]+)/);
   return match ? match[1] : null;
 }
 
 /**
- * Creates a high-quality SVG Data URL representing a Physics Worksheet Document.
+ * Clean & Format external PDF links (Dropbox, OneDrive, Google Drive, direct links)
+ */
+export function formatExternalPdfUrl(rawUrl: string): string {
+  if (!rawUrl) return '';
+  let url = rawUrl.trim();
+
+  // 1. Google Drive
+  const driveId = extractGoogleDriveId(url);
+  if (driveId) {
+    return `https://drive.google.com/file/d/${driveId}/preview`;
+  }
+
+  // 2. Dropbox: convert dl=0 to raw=1 for direct streaming
+  if (url.includes('dropbox.com')) {
+    if (url.includes('dl=0')) {
+      return url.replace('dl=0', 'raw=1');
+    }
+    if (!url.includes('raw=1')) {
+      return url.includes('?') ? `${url}&raw=1` : `${url}?raw=1`;
+    }
+  }
+
+  return url;
+}
+
+/**
+ * Creates a high-quality SVG Data URL representing a Mathematics Worksheet Document.
  * Used as an instant fallback whenever a PDF file URL is missing, broken, or unreachable.
  */
-export function generateSamplePhysicsWorksheetDataUrl(title = 'شيت أسئلة وتمارين الرياضيات'): string {
+export function generateSamplePhysicsWorksheetDataUrl(title = 'شيت أسئلة ومسائل الرياضيات'): string {
   const svg = `
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1130" width="100%" height="100%">
   <defs>
@@ -72,12 +101,12 @@ export function generateSamplePhysicsWorksheetDataUrl(title = 'شيت أسئلة
   <rect x="20" y="125" width="760" height="6" class="gold-accent" />
 
   <text x="400" y="65" class="title">${title}</text>
-  <text x="400" y="95" class="subtitle">منصة مداح الرياضيات التعليمية • مداح الرياضيات • جميع المراحل الدراسية</text>
-  <text x="740" y="110" font-size="12" fill="#94A3B8" text-anchor="end">تاريخ الإصدار: 2026</text>
+  <text x="400" y="95" class="subtitle">منصة مداح الرياضيات التعليمية • الأستاذ أحمد مداح • جميع المراحل الدراسية</text>
+  <text x="740" y="110" font-size="12" fill="#94A3B8" text-anchor="end">دفعة 2026</text>
 
   <!-- Instructions Banner -->
   <rect x="40" y="145" width="720" height="40" fill="#FEF9E7" rx="10" stroke="#FDE68A" />
-  <text x="740" y="170" font-size="13" font-weight="700" fill="#B45309" text-anchor="end">تعليمات الواجب: يمكنك الكتابة والرسم مباشرة بالقلم فوق هذا المستند للحل والتسليم.</text>
+  <text x="740" y="170" font-size="13" font-weight="700" fill="#B45309" text-anchor="end">توجيهات المذاكرة: احرص على كتابة خطوات الحل الرياضية النموذجية بالتفصيل.</text>
 
   <!-- Question 1 -->
   <g transform="translate(40, 200)">
@@ -89,7 +118,7 @@ export function generateSamplePhysicsWorksheetDataUrl(title = 'شيت أسئلة
     <!-- Formula / Diagram Box -->
     <rect x="30" y="105" width="660" height="70" fill="#F8FAFC" rx="10" stroke="#E2E8F0" />
     <text x="670" y="132" class="formula" text-anchor="end">f'(x) = 3x² - 3 = 0  ⇒  x² = 1  ⇒  x = 1, x = -1</text>
-    <text x="670" y="158" class="formula" text-anchor="end">f''(x) = 6x  ⇒  f''(1) = 6 > 0 (Local Min),  f''(-1) = -6 &lt; 0 (Local Max)</text>
+    <text x="670" y="158" class="formula" text-anchor="end">f''(x) = 6x  ⇒  f''(1) = 6 &gt; 0 (صغرى محلية),  f''(-1) = -6 &lt; 0 (عظمى محلية)</text>
 
     <!-- Answer Box -->
     <rect x="30" y="185" width="660" height="60" class="answer-box" />
@@ -177,14 +206,9 @@ export async function resolvePdfUrl(rawUrl?: string): Promise<string> {
     return url;
   }
 
-  // 4. Check for Google Drive URL
-  const driveId = extractGoogleDriveId(url);
-  if (driveId) {
-    return `https://drive.google.com/file/d/${driveId}/preview`;
-  }
-
-  // 5. Standard remote or local server URL (/uploads/...)
-  return url;
+  // 4. Formatted External Links (Google Drive, Dropbox, etc.)
+  const formatted = formatExternalPdfUrl(url);
+  return formatted;
 }
 
 /**
@@ -193,8 +217,13 @@ export async function resolvePdfUrl(rawUrl?: string): Promise<string> {
 export function getEmbedPdfSource(resolvedUrl: string, hideToolbar = false): string {
   if (!resolvedUrl) return generateSamplePhysicsWorksheetDataUrl();
 
-  // If Google Drive link, return preview link without any query/hash mutation
+  // If Google Drive link, return preview link directly
   if (resolvedUrl.includes('drive.google.com')) {
+    return resolvedUrl;
+  }
+
+  // If Dropbox raw link
+  if (resolvedUrl.includes('dropbox.com')) {
     return resolvedUrl;
   }
 
@@ -234,6 +263,12 @@ export async function downloadPdfFile(rawUrl: string, fileName = 'مذكرة_ر�
   }
 
   const resolvedUrl = await resolvePdfUrl(rawUrl);
+
+  // If external link (http/https), open directly in new tab for browser native download / viewer
+  if (resolvedUrl.startsWith('http://') || resolvedUrl.startsWith('https://')) {
+    window.open(resolvedUrl, '_blank', 'noopener,noreferrer');
+    return;
+  }
 
   const cleanName = fileName.endsWith('.pdf') ? fileName : `${fileName}.pdf`;
   const link = document.createElement('a');

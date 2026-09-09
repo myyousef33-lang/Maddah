@@ -137,10 +137,13 @@ export default function App() {
   };
 
   const handleActivationSuccess = (targetType: string, targetId?: string) => {
+    setStudent(StorageService.getCurrentStudent());
     if (targetType === 'course' && targetId) {
       handleNavigate('course-details', { courseId: targetId });
     } else if (targetType === 'pdf') {
       handleNavigate('pdf-library');
+    } else if (targetType === 'wallet') {
+      handleNavigate('wallet');
     } else {
       handleNavigate('my-courses');
     }
